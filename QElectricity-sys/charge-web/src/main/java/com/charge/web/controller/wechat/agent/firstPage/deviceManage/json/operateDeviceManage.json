@@ -1,0 +1,22 @@
+//operate  设备管理页中解绑/重启操作数据返回样例
+
+{
+  //状态码
+  //可选值OPERATE_SUCCESS_CODE=1或OPERATE_FAIL_CODE=0
+  "code": "",
+  //返回信息
+  //和code代码一一对应,比如code为OPERATE_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:OPERATE_SUCCESS_CODE:请求失败:OPERATE_FAIL_CODE
+  "msg": "",
+  //返回数据
+  "data": {
+    //设备管理操作类
+    "operate": {
+      //操作类型,unbind或reboot
+      "operateType": "",
+
+      //设备编号,即充电箱编号
+      "deviceNO": ""
+    }
+  }
+}

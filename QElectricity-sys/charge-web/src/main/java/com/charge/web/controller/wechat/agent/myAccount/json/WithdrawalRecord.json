@@ -1,0 +1,53 @@
+//withdrawalRecord  提现记录页数据返回样例
+
+{
+  //状态码
+  //可选值WITHDRAWALRECORD_SUCCESS_CODE=1或WITHDRAWALRECORD_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为WITHDRAWALRECORD_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:WITHDRAWALRECORD_SUCCESS_CODE:请求失败:WITHDRAWALRECORD_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    //提现记录类,按提现时间从近到远返回
+    "withdrawalRecord" :
+        [
+          {
+            //提现订单编号
+            "withdrawalNo" : "",
+
+            //具体时间,
+            "withdrawalTime" : "",
+
+            //提现金额
+            "withdrawalAmount" : "",
+
+            //提现状态
+            "withdrawalStatus" : ""
+
+            //收款方式,为了给用户点击状态栏后进入的页面的数据显示,提前返回给小程序端
+            "withdrawalType" : ""
+          },
+
+          {
+            //提现订单编号
+            "withdrawalNo" : "",
+
+            //具体时间,
+            "withdrawalTime" : "",
+
+            //提现金额
+            "withdrawalAmount" : "",
+
+            //提现状态
+            "withdrawalStatus" : "",
+
+            //收款方式,为了给用户点击状态栏后进入的页面的数据显示,提前返回给小程序端
+            "withdrawalType" : ""
+          }
+        ]
+  }
+}

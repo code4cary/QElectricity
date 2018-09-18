@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.charge.dao.mapper.mapping.AgentShopMapper" >
+  <resultMap id="BaseResultMap" type="com.charge.entity.po.mapping.AgentShop" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="A_ID" property="aId" jdbcType="INTEGER" />
+    <result column="S_ID" property="sId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, A_ID, S_ID, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_agent_shop
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_agent_shop
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.charge.entity.po.mapping.AgentShop" >
+    insert into t_agent_shop (ID, A_ID, S_ID, 
+      CREATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.charge.entity.po.mapping.AgentShop" >
+    insert into t_agent_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="aId != null" >
+        A_ID,
+      </if>
+      <if test="sId != null" >
+        S_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="aId != null" >
+        #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.mapping.AgentShop" >
+    update t_agent_shop
+    <set >
+      <if test="aId != null" >
+        A_ID = #{aId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null" >
+        S_ID = #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.mapping.AgentShop" >
+    update t_agent_shop
+    set A_ID = #{aId,jdbcType=INTEGER},
+      S_ID = #{sId,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.mapping.AgentShop" >
+     select * from t_agent_shop
+  </select>
+</mapper>

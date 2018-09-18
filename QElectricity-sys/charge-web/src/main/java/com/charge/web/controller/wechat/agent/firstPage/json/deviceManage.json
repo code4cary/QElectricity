@@ -1,0 +1,38 @@
+//deviceManage设备管理页数据返回样例
+
+{
+  //状态码
+  //可选值DEVICEMANAGE_SUCCESS_CODE=1或DEVICEMANAGE_FAIL_CODE=0
+  "code": "",
+  //返回信息
+  //和code代码一一对应,比如code为DEVICEMANAGE_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:DEVICEMANAGE_SUCCESS_CODE:请求失败:DEVICEMANAGE_FAIL_CODE
+  "msg": "",
+  //返回数据
+  "data": {
+    //设备管理类
+    "deviceManage": [
+      {
+        //充电箱数量
+        "chargingBoxNum":"",
+        //充电宝个数
+        "powerBankNum":"",
+        //合作点名称,即商户名
+        "shopName":"",
+        //充电箱状态 "离线","在线"
+        "status":""
+      },
+
+      {
+        //充电箱数量
+        "chargingBoxNum":"",
+        //充电宝个数
+        "powerBankNum":"",
+        //合作点名称,即商户名
+        "shopName":"",
+        //充电箱状态 "离线","在线"
+        "status":""
+      }
+    ]
+  }
+}

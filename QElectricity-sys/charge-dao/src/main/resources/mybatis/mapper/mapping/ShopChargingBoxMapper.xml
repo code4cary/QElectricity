@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.charge.dao.mapper.mapping.ShopChargingBoxMapper" >
+  <resultMap id="BaseResultMap" type="com.charge.entity.po.mapping.ShopChargingBox" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="S_ID" property="sId" jdbcType="INTEGER" />
+    <result column="CB_ID" property="cbId" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, S_ID, CB_ID, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_shop_chargingBox
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_shop_chargingBox
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.charge.entity.po.mapping.ShopChargingBox" >
+    insert into t_shop_chargingBox (ID, S_ID, CB_ID, 
+      CREATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER}, #{cbId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.charge.entity.po.mapping.ShopChargingBox" >
+    insert into t_shop_chargingBox
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sId != null" >
+        S_ID,
+      </if>
+      <if test="cbId != null" >
+        CB_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="cbId != null" >
+        #{cbId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.mapping.ShopChargingBox" >
+    update t_shop_chargingBox
+    <set >
+      <if test="sId != null" >
+        S_ID = #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="cbId != null" >
+        CB_ID = #{cbId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.mapping.ShopChargingBox" >
+    update t_shop_chargingBox
+    set S_ID = #{sId,jdbcType=INTEGER},
+      CB_ID = #{cbId,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.mapping.ShopChargingBox" >
+     select * from t_shop_chargingBox
+  </select>
+</mapper>

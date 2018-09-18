@@ -1,0 +1,19 @@
+version: '3'
+services:
+  java:
+    image: java:8-jdk-alpine
+
+  maven:
+      image: maven:3.3.9
+
+  web:
+    container_name: web-qelectricity-sys
+    build: .
+    working_dir: /QElectricity-sys/charge-web
+    volumes:
+          - ~/QElectricity/QElectricity-sys:/QElectricity-sys
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    command: mvn clean spring-boot:run

@@ -1,0 +1,44 @@
+//earlyWarning 预警页数据返回样例
+
+{
+  //状态码
+  //可选值EARLYWARING_SUCCESS_CODE=1或EARLYWARING_FAIL_CODE=0
+  "code": "",
+
+  //返回信息
+  //和code代码一一对应,比如code为EARLYWARING_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:EARLYWARING_SUCCESS_CODE:请求失败:EARLYWARING_FAIL_CODE
+  "msg": "",
+
+  //返回数据
+  "data": {
+    //预警类,shopName一样的数据对象
+    //在集合中是紧挨着的,然后按充电宝数量升序排列
+    "earlyWarning": [
+      {
+        //商户名字
+        "shopName": "",
+        //商户联系方式
+        "shopContract": "",
+        //商户地址
+        "shopAddress": "",
+        //充电宝数量
+        "powerBankNum": "",
+        //设备编号
+        "deviceNO": ""
+      },
+      {
+        //商户名字
+        "shopName": "",
+        //商户联系方式
+        "shopContract": "",
+        //商户地址
+        "shopAddress": "",
+        //充电宝数量
+        "powerBankNum": "",
+        //设备编号
+        "deviceNO": ""
+      }
+    ]
+  }
+}

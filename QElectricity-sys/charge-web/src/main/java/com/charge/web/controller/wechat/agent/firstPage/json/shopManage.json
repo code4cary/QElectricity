@@ -1,0 +1,34 @@
+//shopManage  商户管理页数据返回样例
+
+{
+  //状态码
+  //可选值SHOPMANAGE_SUCCESS_CODE=1或SHOPMANAGE_FAIL_CODE=0
+  "code": "",
+  //返回信息
+  //和code代码一一对应,比如code为SHOPMANAGE_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:SHOPMANAGE_SUCCESS_CODE:请求失败:SHOPMANAGE_FAIL_CODE
+  "msg": "",
+  //返回数据
+  "data": {
+    //商户管理类
+    "shopManage": [
+      {
+        //商户名
+        "shopName": "",
+        //联系方式
+        "shopContract": "",
+        //地址
+        "shopAddress": "",
+        //收入
+        "shopIncome": "",
+        //充电箱数量
+        "chargingBoxNum": "",
+        //以下字段为代理商点击商家设备管理后进入的页面显示的多增的字段
+        //充电宝数量
+        "powerBankNum": "",
+        //充电箱状态
+        "chargingBoxStatus": ""
+      }
+    ]
+  }
+}

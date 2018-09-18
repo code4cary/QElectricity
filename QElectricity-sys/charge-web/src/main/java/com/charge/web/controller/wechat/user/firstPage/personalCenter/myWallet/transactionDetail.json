@@ -1,0 +1,77 @@
+//transactionDetail 交易明细页数据返回样例
+{
+  //状态码
+  //可选值 TRANSACTIONDETAILDETAIL_SUCCESS_CODE=1或 TRANSACTIONDETAILDETAIL_FAIL_CODE=0
+  "code" : "",
+  //返回信息
+  //和code代码一一对应,比如code为 TRANSACTIONDETAILDETAIL_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功: TRANSACTIONDETAILDETAIL_SUCCESS_CODE:请求失败: TRANSACTIONDETAILDETAIL_FAIL_CODE
+  "msg" : "",
+  //返回数据
+  "data" : {
+    //交易明细类
+    "transactionDetail" : {
+      //充值记录
+      "rechargeRecord" :[
+        {
+          //充值开始时间
+          "rechargeStartTime" ; "",
+          //充值金额
+          "rechargeAmount" : "",
+          //充值方式,微信或者支付宝
+          "rechargeType" : ""
+        },
+        {
+          //充值开始时间
+          "rechargeStartTime" ; "",
+          //充值金额
+          "rechargeAmount" : "",
+          //充值方式,微信或者支付宝
+          "rechargeType" : ""
+        }
+      ],
+      //退押金记录
+      "backDepositRecord" : [
+        {
+          //退押金金额
+          "backDepositAmount": "",
+          //退押金时间
+          "backDeposit" : "",
+        },
+        {
+          //退押金金额
+          "backDepositAmount": "",
+          //退押金时间
+          "backDeposit" : "",
+        }
+      ],
+      //充电记录
+      "chargingRecord" : [
+        {
+          //充电开始时间
+          "chargingStartTime" : "",
+          //充电宝编号
+          "powerBankNO" : "",
+          //充电时长
+          "chargingTimeAmount" : "",
+          //充电花费
+          "chargingCost" : "",
+          //充电状态
+          "chargingStatus" : ""
+        },
+        {
+          //记录时间
+          "time" : "",
+          //充电宝编号
+          "powerBankNO" : "",
+          //充电时长
+          "timeAmount" : "",
+          //充电花费
+          "cost" : "",
+          //充电状态
+          "chargingStatus" : ""
+        }
+      ]
+    }
+  }
+}

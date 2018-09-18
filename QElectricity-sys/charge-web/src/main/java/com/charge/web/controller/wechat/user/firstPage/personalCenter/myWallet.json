@@ -1,0 +1,24 @@
+//myWallet 我的钱包页数据返回样例
+
+{
+  //状态码
+  //可选值 MYWALLET_SUCCESS_CODE=1或 MYWALLET_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为 MYWALLET_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功: MYWALLET_SUCCESS_CODE:请求失败: MYWALLET_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    //用户登录
+    "myWallet" : {
+      //余下两个数据其实是为了在余额页显示 提前返回
+      //充值余额
+      "rechargeDeposit" : "",
+      //赠送余额
+      "balanceGived" : ""
+    }
+  }
+}

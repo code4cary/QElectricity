@@ -1,0 +1,20 @@
+//withdraw  提现页数据返回样例
+
+{
+  //状态码
+  //可选值WITHDRAW_SUCCESS_CODE=1或WITHDRAW_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为WITHDRAW_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:WITHDRAW_SUCCESS_CODE:请求失败:WITHDRAW_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    "withdraw" : {
+
+
+    }
+  }
+}

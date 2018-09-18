@@ -1,0 +1,34 @@
+//myAccount  我的账户页数据返回样例
+
+{
+  //状态码
+  //可选值MYACCOUNT_SUCCESS_CODE=1或MYACCOUNT_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为MYACCOUNT_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:MYACCOUNT_SUCCESS_CODE:请求失败:MYACCOUNT_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    "myAccount" : {
+
+      //账户余额(直营)
+      "accountBalanceDirectOperation" : "",
+
+      //账户余额(代理)
+      "accountBalanceAgent" : "",
+
+      //已提现总额(元)
+      "totalWithdrawalAmount" : "",
+
+      //提现次数(月/次)
+      "withdrawNum" : "",
+
+      //冻结资金,为了给提现数据显示,所以就提前返回到小程序
+      "freezingFunds" : ""
+
+    }
+  }
+}

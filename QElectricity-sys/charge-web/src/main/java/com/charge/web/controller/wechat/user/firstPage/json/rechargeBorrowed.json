@@ -1,0 +1,20 @@
+//rechargeBorrowed 用户归还充电后的支付页数据返回样例
+
+{
+  //状态码
+  //可选值 RECHARGEBORROW_SUCCESS_CODE=1或 RECHARGEBORROW_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为 RECHARGEBORROW_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功: RECHARGEBORROW_SUCCESS_CODE:请求失败: RECHARGEBORROW_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    //用户支付类
+    "rechargeBorrowed" : {
+
+    }
+  }
+}

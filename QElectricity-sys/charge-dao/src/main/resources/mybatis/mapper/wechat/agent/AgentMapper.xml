@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.charge.dao.mapper.wechat.agent.AgentMapper" >
+  <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.agent.Agent" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="REAL_NAME" property="realName" jdbcType="VARCHAR" />
+    <result column="CREDENTIALS_SALT" property="credentialsSalt" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="ID_NUMBER" property="idNumber" jdbcType="VARCHAR" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+    <result column="PARENT_AGENT_ID" property="parentAgentId" jdbcType="VARCHAR" />
+    <result column="SHARGING_RATIO" property="shargingRatio" jdbcType="VARCHAR" />
+    <result column="SERVICE_CHARGES" property="serviceCharges" jdbcType="VARCHAR" />
+    <result column="CAN_WITHDRAW" property="canWithdraw" jdbcType="VARCHAR" />
+    <result column="CHARGING_BOX_NUM" property="chargingBoxNum" jdbcType="VARCHAR" />
+    <result column="FROZEN_AMOUNT" property="frozenAmount" jdbcType="VARCHAR" />
+    <result column="ORDER_NUM" property="orderNum" jdbcType="VARCHAR" />
+    <result column="TOTAL_REVENUE" property="totalRevenue" jdbcType="VARCHAR" />
+    <result column="TOTAL_SHARE" property="totalShare" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="LEAVE_TIME" property="leaveTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, REAL_NAME, CREDENTIALS_SALT, USER_NAME, PASSWORD, ID_NUMBER, LEVEL, PARENT_AGENT_ID, 
+    SHARGING_RATIO, SERVICE_CHARGES, CAN_WITHDRAW, CHARGING_BOX_NUM, FROZEN_AMOUNT, ORDER_NUM, 
+    TOTAL_REVENUE, TOTAL_SHARE, CREATE_TIME, LEAVE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_agent
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_agent
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.charge.entity.po.wechat.agent.Agent" >
+    insert into t_agent (ID, REAL_NAME, CREDENTIALS_SALT, 
+      USER_NAME, PASSWORD, ID_NUMBER, 
+      LEVEL, PARENT_AGENT_ID, SHARGING_RATIO, 
+      SERVICE_CHARGES, CAN_WITHDRAW, CHARGING_BOX_NUM, 
+      FROZEN_AMOUNT, ORDER_NUM, TOTAL_REVENUE, 
+      TOTAL_SHARE, CREATE_TIME, LEAVE_TIME, 
+      UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{credentialsSalt,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, 
+      #{level,jdbcType=VARCHAR}, #{parentAgentId,jdbcType=VARCHAR}, #{shargingRatio,jdbcType=VARCHAR}, 
+      #{serviceCharges,jdbcType=VARCHAR}, #{canWithdraw,jdbcType=VARCHAR}, #{chargingBoxNum,jdbcType=VARCHAR}, 
+      #{frozenAmount,jdbcType=VARCHAR}, #{orderNum,jdbcType=VARCHAR}, #{totalRevenue,jdbcType=VARCHAR}, 
+      #{totalShare,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{leaveTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.agent.Agent" >
+    insert into t_agent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="realName != null" >
+        REAL_NAME,
+      </if>
+      <if test="credentialsSalt != null" >
+        CREDENTIALS_SALT,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="parentAgentId != null" >
+        PARENT_AGENT_ID,
+      </if>
+      <if test="shargingRatio != null" >
+        SHARGING_RATIO,
+      </if>
+      <if test="serviceCharges != null" >
+        SERVICE_CHARGES,
+      </if>
+      <if test="canWithdraw != null" >
+        CAN_WITHDRAW,
+      </if>
+      <if test="chargingBoxNum != null" >
+        CHARGING_BOX_NUM,
+      </if>
+      <if test="frozenAmount != null" >
+        FROZEN_AMOUNT,
+      </if>
+      <if test="orderNum != null" >
+        ORDER_NUM,
+      </if>
+      <if test="totalRevenue != null" >
+        TOTAL_REVENUE,
+      </if>
+      <if test="totalShare != null" >
+        TOTAL_SHARE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="leaveTime != null" >
+        LEAVE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="credentialsSalt != null" >
+        #{credentialsSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAgentId != null" >
+        #{parentAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="shargingRatio != null" >
+        #{shargingRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCharges != null" >
+        #{serviceCharges,jdbcType=VARCHAR},
+      </if>
+      <if test="canWithdraw != null" >
+        #{canWithdraw,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingBoxNum != null" >
+        #{chargingBoxNum,jdbcType=VARCHAR},
+      </if>
+      <if test="frozenAmount != null" >
+        #{frozenAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="totalRevenue != null" >
+        #{totalRevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="totalShare != null" >
+        #{totalShare,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveTime != null" >
+        #{leaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.agent.Agent" >
+    update t_agent
+    <set >
+      <if test="realName != null" >
+        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="credentialsSalt != null" >
+        CREDENTIALS_SALT = #{credentialsSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="parentAgentId != null" >
+        PARENT_AGENT_ID = #{parentAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="shargingRatio != null" >
+        SHARGING_RATIO = #{shargingRatio,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceCharges != null" >
+        SERVICE_CHARGES = #{serviceCharges,jdbcType=VARCHAR},
+      </if>
+      <if test="canWithdraw != null" >
+        CAN_WITHDRAW = #{canWithdraw,jdbcType=VARCHAR},
+      </if>
+      <if test="chargingBoxNum != null" >
+        CHARGING_BOX_NUM = #{chargingBoxNum,jdbcType=VARCHAR},
+      </if>
+      <if test="frozenAmount != null" >
+        FROZEN_AMOUNT = #{frozenAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNum != null" >
+        ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="totalRevenue != null" >
+        TOTAL_REVENUE = #{totalRevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="totalShare != null" >
+        TOTAL_SHARE = #{totalShare,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveTime != null" >
+        LEAVE_TIME = #{leaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.agent.Agent" >
+    update t_agent
+    set REAL_NAME = #{realName,jdbcType=VARCHAR},
+      CREDENTIALS_SALT = #{credentialsSalt,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      LEVEL = #{level,jdbcType=VARCHAR},
+      PARENT_AGENT_ID = #{parentAgentId,jdbcType=VARCHAR},
+      SHARGING_RATIO = #{shargingRatio,jdbcType=VARCHAR},
+      SERVICE_CHARGES = #{serviceCharges,jdbcType=VARCHAR},
+      CAN_WITHDRAW = #{canWithdraw,jdbcType=VARCHAR},
+      CHARGING_BOX_NUM = #{chargingBoxNum,jdbcType=VARCHAR},
+      FROZEN_AMOUNT = #{frozenAmount,jdbcType=VARCHAR},
+      ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
+      TOTAL_REVENUE = #{totalRevenue,jdbcType=VARCHAR},
+      TOTAL_SHARE = #{totalShare,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      LEAVE_TIME = #{leaveTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.agent.Agent" >
+     select * from t_agent
+  </select>
+</mapper>

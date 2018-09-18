@@ -1,0 +1,20 @@
+//recharge 余额页和押金页充值接口数据返回样例
+
+{
+  //状态码
+  //可选值 RECHARGE_SUCCESS_CODE=1或 RECHARGE_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为 RECHARGE_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功: RECHARGE_SUCCESS_CODE:请求失败: RECHARGE_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    //充值类
+    "recharge" : {
+
+    }
+  }
+}

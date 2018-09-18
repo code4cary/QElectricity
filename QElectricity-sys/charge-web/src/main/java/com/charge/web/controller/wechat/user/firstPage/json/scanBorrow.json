@@ -1,0 +1,58 @@
+//scanBorrow 扫码借充电宝页数据返回样例
+
+{
+  //状态码
+  //可选值 SCANBORROW_SUCCESS_CODE=1或 SCANBORROW_CHARGING_FAIL_CODE=0或SCANBORROW_UNDERPAYMENT_FAIL_CODE=2
+  "code" : "",
+
+  //返回信息
+  //请求成功,可借充电宝: SCANBORROW_SUCCESS_CODE=1
+  //请求失败,用户有正在进行的订单: SCANBORROW_CHARGING_FAIL_CODE=0
+  //请求失败,用户有未完成支付的订单:SCANBORROW_UNDERPAYMENT_FAIL_CODE=2
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    //扫码借充电宝
+    "scanBorrow" : {
+      //1:如果用户有正在进行的订单,返回数据如下:
+      //充电开始时间
+      "chargingStartTime" : "",
+      //充电宝编号
+      "powerBankNO" : "",
+      //充电时长,随着时间推移变大
+      "chargingTimeAmount" : "",
+      //充电花费,随着时间推移变大
+      "chargingCost" : "",
+      //充电状态:正在充电
+      "chargingStatus" : "onCharging",
+
+      //2:如果用户有未完成支付的订单
+      //充电开始时间
+      "time" : "",
+      //充电宝编号
+      "powerBankNO" : "",
+      //充电时长
+      "timeAmount" : "",
+      //充电花费
+      "cost" : "",
+      //充电状态
+      "chargingStatus" : "",
+      //订单状态,未完成支付
+      "orderStatus" : "unfinished",
+
+      //3:请求成功,可借充电宝
+      //充电宝编号
+      "powerBankNO" : "",
+      //窗口号
+      "window" : "",
+      //设备编号
+      "deviceNO": "",
+      //设备所在位置的经度
+      "longitude" : "",
+      //设备所在位置的维度
+      "latitude" :""
+
+    }
+  }
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.charge.dao.mapper.wechat.user.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.Account" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ACCOUNT_DEPOSIT" property="accountDeposit" jdbcType="VARCHAR" />
+    <result column="IS_REFUND_DEPOSIT" property="isRefundDeposit" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_BALANCE" property="accountBalance" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ACCOUNT_DEPOSIT, IS_REFUND_DEPOSIT, ACCOUNT_BALANCE, CREATE_TIME, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_account
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_account
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.charge.entity.po.wechat.user.Account" >
+    insert into t_account (ID, ACCOUNT_DEPOSIT, IS_REFUND_DEPOSIT, 
+      ACCOUNT_BALANCE, CREATE_TIME, UPDATE_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountDeposit,jdbcType=VARCHAR}, #{isRefundDeposit,jdbcType=VARCHAR}, 
+      #{accountBalance,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.Account" >
+    insert into t_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="accountDeposit != null" >
+        ACCOUNT_DEPOSIT,
+      </if>
+      <if test="isRefundDeposit != null" >
+        IS_REFUND_DEPOSIT,
+      </if>
+      <if test="accountBalance != null" >
+        ACCOUNT_BALANCE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountDeposit != null" >
+        #{accountDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="isRefundDeposit != null" >
+        #{isRefundDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="accountBalance != null" >
+        #{accountBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.user.Account" >
+    update t_account
+    <set >
+      <if test="accountDeposit != null" >
+        ACCOUNT_DEPOSIT = #{accountDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="isRefundDeposit != null" >
+        IS_REFUND_DEPOSIT = #{isRefundDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="accountBalance != null" >
+        ACCOUNT_BALANCE = #{accountBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.Account" >
+    update t_account
+    set ACCOUNT_DEPOSIT = #{accountDeposit,jdbcType=VARCHAR},
+      IS_REFUND_DEPOSIT = #{isRefundDeposit,jdbcType=VARCHAR},
+      ACCOUNT_BALANCE = #{accountBalance,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.user.Account" >
+     select * from t_account
+  </select>
+</mapper>

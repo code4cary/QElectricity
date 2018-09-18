@@ -1,0 +1,48 @@
+//orderRecord  订单记录页数据返回样例
+
+{
+  //状态码
+  //可选值ORDERRECORD_SUCCESS_CODE=1或ORDERRECORD_FAIL_CODE=0
+  "code": "",
+
+  //返回信息
+  //和code代码一一对应,比如code为ORDERRECORD_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:ORDERRECORD_SUCCESS_CODE;请求失败:ORDERRECORD_FAIL_CODE
+  "msg": "",
+
+  //返回数据
+  "data": {
+    //订单记录
+    "orderRecord": [
+      {
+        //用户手机号,注意是借充电宝的用户手机号
+        "userPhone":"",
+        //商户名,即用户从哪个商户借的充电宝
+        "shopName":"",
+        //消费金额
+        "cost":"",
+        //开始时间
+        "startTime":"",
+        //结束时间
+        "endTime":"",
+        //订单状态
+        "orderStatus":""
+      },
+
+      {
+        //用户手机号,注意是借充电宝的用户手机号
+        "userPhone":"",
+        //商户名,即用户从哪个商户借的充电宝
+        "shopName":"",
+        //消费金额
+        "cost":"",
+        //开始时间
+        "startTime":"",
+        //结束时间
+        "endTime":"",
+        //订单状态
+        "orderStatus":""
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+//devicePop  设备弹出页数据返回样例
+{
+  //状态码
+  //可选值DEVICEPOP_SUCCESS_CODE=1或DEVICEPOP_FAIL_CODE=0
+  "code": "",
+
+  //返回信息
+  //和code代码一一对应,比如code为DEVICEPOP_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:DEVICEPOP_SUCCESS_CODE:请求失败:DEVICEPOP_FAIL_CODE
+  "msg": "",
+
+  //返回数据
+  "data": {
+    //设备信息类
+    "deviceInfo": {
+      //版本号
+      "version" : "",
+      //箱子状态
+      "device" : "",
+      //绑定商户
+      "shopName" : "",
+      //可弹出的充电宝编号对应在充电箱里放置的位置编号:位置编号1-10
+      "canPopPowerBankNOMapping" : [
+        {
+          //充电宝编号
+          "powerBankNO" : "",
+          //对应的位置编号
+          "positionNO" : ""
+        },
+
+        {
+          //充电宝编号
+          "powerBankNO" : "",
+          //对应的位置编号
+          "positionNO" : ""
+        }
+
+      ]
+    }
+  }
+}

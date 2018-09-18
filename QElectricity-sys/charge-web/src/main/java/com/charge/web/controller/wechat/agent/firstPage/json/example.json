@@ -1,0 +1,17 @@
+//json文件说明  格式:xxx页数据返回样例
+
+{
+  //状态码
+  //可选值XXX_SUCCESS_CODE=1或XXX_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为XXX_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:XXX_SUCCESS_CODE:请求失败:XXX_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+    "页命名" : {}
+  }
+}

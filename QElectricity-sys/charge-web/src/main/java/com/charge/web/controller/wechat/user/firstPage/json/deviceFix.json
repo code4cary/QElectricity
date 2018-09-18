@@ -1,0 +1,17 @@
+//deviceFix  故障维修页数据返回样例
+
+{
+  //状态码
+  //可选值 DEVICEFIX_SUCCESS_CODE=1或 DEVICEFIX_FAIL_CODE=0
+  "code" : "",
+
+  //返回信息
+  //和code代码一一对应,比如code为 DEVICEFIX_SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功: DEVICEFIX_SUCCESS_CODE:请求失败: DEVICEFIX_FAIL_CODE
+  "msg" : "",
+
+  //返回数据
+  "data" : {
+
+  }
+}
