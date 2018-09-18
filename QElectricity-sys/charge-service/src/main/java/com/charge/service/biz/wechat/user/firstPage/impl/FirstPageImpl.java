@@ -1,11 +1,11 @@
-package com.charge.service.biz.wechat.agent.impl;
+package com.charge.service.biz.wechat.user.firstPage.impl;
 
 import com.charge.common.pojo.ShopInfo;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.agent.FirstPageService;
+import com.charge.service.biz.wechat.user.firstPage.FirstPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +53,7 @@ public class FirstPageImpl extends BaseServiceImpl<Shop, Integer> implements Fir
 
 
         //查询该商户名下充电箱的可借充电宝,可还充电宝数量
-        return null;
+        return shopInfoList;
     }
 
 

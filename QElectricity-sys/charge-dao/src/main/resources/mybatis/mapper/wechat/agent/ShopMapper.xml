@@ -325,8 +325,6 @@
         <result column="SHOP_PHOTO" property="shopPhoto"/>
         <result column="NAME" property="shopName"/>
         <result column="BUSINESS_TIME" property="businessTime"/>
-        <result column="LONGITUDE" property=""/>
-        <result column="LATITUDE" property="shopTel"/>
         <result column="SHOP_STATUS" property="shopStatus"/>
         <result column="CONTRACT_PERSON_NAME" property="shopTel"/>
     </resultMap>
@@ -334,7 +332,7 @@
     <!--根据经纬度范围查询商户-->
     <select id="findShopByCoordinates" resultMap="shopInfoMap" parameterType="Map">
       select
-        SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,CONTRACT_PERSON_NAME
+        SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,LONGITUDE,LATITUDE,CONTRACT_PERSON_NAME
       from t_shop
       where
         <if test="map.MinLng != null">

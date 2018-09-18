@@ -55,7 +55,7 @@
           "canBorrowNum" : "",
           //可还充电宝数量
           "canBackNum" : "",
-          //离当前用户的距离
+          //离当前用户的距离,单位千米
           "distance" : "",
           //商户联系方式
           "shopTel" : ""

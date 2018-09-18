@@ -1,4 +1,4 @@
-package com.charge.service.biz.wechat.agent;
+package com.charge.service.biz.wechat.user.firstPage;
 
 import com.charge.common.pojo.ShopInfo;
 import com.charge.entity.po.wechat.agent.Shop;
