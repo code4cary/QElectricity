@@ -1,8 +1,8 @@
 package com.charge.web.utils;
 
 import com.charge.common.enums.StatusInfo;
-import com.charge.entity.model.CommonReturnDataMap;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,32 +12,44 @@ import java.util.Map;
 public class CommonDataReturnUtil {
 
 
+    //状态码key
+    private static final String codeKey = "code";
+    //状态信息key
+    private static final String msgKey = "msg";
+
     /**
      * 小程序请求后台请求失败
+     *
      * @param statusInfo
      * @return
      */
     public static Map requestFail(StatusInfo statusInfo) {
-
-       return new CommonReturnDataMap(statusInfo).getReturnData();
+        Map dataMap = new HashMap<>();
+        dataMap.put(codeKey, statusInfo.getCode());
+        dataMap.put(msgKey, statusInfo.getMsg());
+        return dataMap;
     }
 
 
     /**
      * 小程序请求后台成功,返回数据
+     *
      * @param statusInfo
      * @param pageKey
      * @param dataKey
-     * @param dataList
+     * @param data
      * @return
      */
-    public static Map requestSuccess(StatusInfo statusInfo,String pageKey, String dataKey, List dataList) {
+    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, Object data) {
 
-        return new CommonReturnDataMap(statusInfo,pageKey,dataKey,dataList).getReturnData();
+        Map dataMap = new HashMap<>();
+        dataMap.put(codeKey, statusInfo.getCode());
+        dataMap.put(msgKey, statusInfo.getMsg());
+        if (data instanceof List) data = (List) data;
+        dataMap.put(pageKey, new HashMap<>().put(dataKey, data));
+
+        return dataMap;
     }
 
-    public static Map requestSuccess(StatusInfo statusInfo,String pageKey, String dataKey, String data) {
 
-        return new CommonReturnDataMap(statusInfo,pageKey,dataKey,data).getReturnData();
-    }
 }

@@ -8,8 +8,8 @@ import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.RedisPoolUtil;
 import com.charge.web.utils.UserEndecryptUtil;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -43,15 +43,15 @@ public class LoginUserController {
      */
     @ResponseBody
     @RequestMapping
-    public Map<String, Object> doLogin(@RequestParam(value = "code", required = true) String code) {
+    public Map<String, Object> doLogin(@RequestBody(required = true) Map<String, String>  code) {
 
         //判断code是否合法
-        if (code == null || code.length() == 0) {
+        if (code == null || code.isEmpty()) {
             return CommonDataReturnUtil.requestFail(StatusInfo.FailInfo0);//微信端小程序传来的数据错误
         }
 
         //获取用户的session_key和openID
-        JSONObject SessionKeyOpenId = getSessionKeyOrOpenId(code);
+        JSONObject SessionKeyOpenId = getSessionKeyOrOpenId(code.get("code"));
 
         //用户的openId
         String openId = SessionKeyOpenId.getString("openId");
