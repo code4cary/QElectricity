@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.user;
 
 import com.charge.common.enums.StatusInfo;
 import com.charge.common.pojo.ShopInfo;
-import com.charge.service.biz.wechat.user.firstPage.FirstPageService;
+import com.charge.service.biz.wechat.user.FirstPageService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
 import com.charge.web.utils.PositionModel;
@@ -11,17 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 /**
  * Created by vincent on 17/09/2018.
  */
 
 @Controller
+@RestController
 @RequestMapping("wechat/user/firstPage")
 public class FirstPageController {
 
@@ -31,18 +31,37 @@ public class FirstPageController {
     //目前查询距离用户50km范围内的商户
     private static final Double distance = 50.00;
 
+    @RequestMapping("/test")
+    public String home(HttpServletRequest request) {
+        String name = "sb";
+        System.out.println(request.getAttributeNames());
+        return "傻屌 " + name;
+    }
 
     // post模式下，使用@RequestBody 绑定请求对象，
     // Spring会帮你进行协议转换，将Json、Xml协议转换成你需要的对象。
     @ResponseBody
-    public Map getFirstPageInfo(@RequestBody(required = true) Map userPosition) {//{"userPosition":["userLongitude"，"userLatitude"]}
+    @RequestMapping
+    public Map getFirstPageInfo(@RequestBody Map<String, ArrayList<String>> userPosition) {//{"userPosition":["userLongitude"，"userLatitude"]}
+
+        System.out.println("userPosition= " + userPosition.get("userPosition"));
+
+        ArrayList userPosition1 = userPosition.get("userPosition");
+        System.out.println(userPosition1.get(0));
+        System.out.println(userPosition1.get(1));
+
         //如果传入的参数不符合要求
         if (userPosition == null || userPosition.isEmpty()) CommonDataReturnUtil.requestFail(StatusInfo.FailInfo0);
 
+        System.out.println("userPosition" + userPosition.get("userPosition"));
+
         //获取用户当前所在位置的的经度
-        Double userLongitude = Double.valueOf((String) userPosition.get("longitude"));
+        Double userLongitude = Double.parseDouble((String)userPosition1.get(0));
         //获取用户当前所在位置的维度
-        Double userLatitude = Double.valueOf((String) userPosition.get("latitude"));
+        Double userLatitude =  Double.parseDouble((String)userPosition1.get(1));
+
+        System.out.println("userLongitude= " + userLongitude);
+        System.out.println("userLatitude= " + userLatitude);
 
 
         //获取离当前用户50km范围的最大最小经纬度,
@@ -74,3 +93,4 @@ public class FirstPageController {
 
     }
 }
+

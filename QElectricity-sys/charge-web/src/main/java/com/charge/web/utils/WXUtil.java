@@ -22,8 +22,8 @@ public class WXUtil {
 
         String requestUrl = "https://api.weixin.qq.com/sns/jscode2session";
         Map<String,String> requestUrlParam = new HashMap<String, String>(  );
-        requestUrlParam.put( "appid", appid );//小程序appId
-        requestUrlParam.put( "secret",secret );
+        requestUrlParam.put( "appid", appid );//开发者小程序的appId
+        requestUrlParam.put( "secret",secret );//开发者小程序的secret
         requestUrlParam.put( "js_code",wxCode );//小程序端返回的code
         requestUrlParam.put( "grant_type",grant_type );//默认参数
 

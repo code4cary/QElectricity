@@ -2,7 +2,10 @@ package com.charge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by vincent on 04/09/2018.
@@ -18,6 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class ChargeApplication {
 
+    @RequestMapping("/test")
+    public String home(HttpServletRequest request) {
+        String name = "sb";
+        System.out.println(request.getAttributeNames());
+        return "傻屌 " + name;
+    }
 
     public static void main(String[] args) {
 

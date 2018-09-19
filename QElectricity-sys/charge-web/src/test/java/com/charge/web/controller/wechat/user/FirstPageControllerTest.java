@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.user;
 
 import com.charge.ChargeApplication;
 import com.charge.common.pojo.ShopInfo;
-import com.charge.service.biz.wechat.user.firstPage.FirstPageService;
+import com.charge.service.biz.wechat.user.FirstPageService;
 import com.charge.web.utils.DistanceHelperUtil;
 import com.charge.web.utils.PositionModel;
 import org.junit.Test;

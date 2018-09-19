@@ -35,4 +35,9 @@ public class CommonDataReturnUtil {
 
         return new CommonReturnDataMap(statusInfo,pageKey,dataKey,dataList).getReturnData();
     }
+
+    public static Map requestSuccess(StatusInfo statusInfo,String pageKey, String dataKey, String data) {
+
+        return new CommonReturnDataMap(statusInfo,pageKey,dataKey,data).getReturnData();
+    }
 }

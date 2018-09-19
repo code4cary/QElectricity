@@ -12,7 +12,7 @@ public class User extends BaseEntity implements Serializable {
 
     private String gender;
 
-    private String from;
+    private String userFrom;
 
     private String wxOpenid;
 
@@ -70,12 +70,12 @@ public class User extends BaseEntity implements Serializable {
         this.gender = gender == null ? null : gender.trim();
     }
 
-    public String getFrom() {
-        return from;
+    public String getUserFrom() {
+        return userFrom;
     }
 
-    public void setFrom(String from) {
-        this.from = from == null ? null : from.trim();
+    public void setUserFrom(String from) {
+        this.userFrom = from == null ? null : from.trim();
     }
 
     public String getWxOpenid() {
@@ -208,7 +208,7 @@ public class User extends BaseEntity implements Serializable {
         sb.append(", nickName=").append(nickName);
         sb.append(", avatar=").append(avatar);
         sb.append(", gender=").append(gender);
-        sb.append(", from=").append(from);
+        sb.append(", userFrom=").append(userFrom);
         sb.append(", wxOpenid=").append(wxOpenid);
         sb.append(", city=").append(city);
         sb.append(", location=").append(location);

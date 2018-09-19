@@ -1,19 +1,19 @@
 package com.charge.web.filter;
 
-import com.charge.common.enums.StatusInfo;
-import com.charge.web.utils.CommonDataReturnUtil;
-
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
-import java.util.Map;
 
 /**
- * Created by vincent on 18/09/2018.
+ * Created by vincent on 19/09/2018.
  */
 
-@WebFilter(filterName="paramFilter",urlPatterns="/*")
-public class servletFilter implements Filter {
+/**
+ * 过滤微信用户端请求
+ */
+//@WebFilter(filterName="wechatUserServletFilterr",urlPatterns="/wechat/user/firstPage/*")
+//@Order(2)
+public class WechatUserServletFilter implements Filter {
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("过滤器初始化");
@@ -23,9 +23,10 @@ public class servletFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         System.out.println("执行过滤操作");
 
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        if (parameterMap == null || parameterMap .isEmpty()) {
-            CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
+        //判断是登录还是请求数据
+        String code = (String) request.getAttribute("code");
+        if ( code == null || code.length()==0) {
+            //chain.doFilter();
         }
 
 

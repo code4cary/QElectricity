@@ -1,11 +1,11 @@
-package com.charge.service.biz.wechat.user.firstPage.impl;
+package com.charge.service.biz.wechat.user.impl;
 
 import com.charge.common.pojo.ShopInfo;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.user.firstPage.FirstPageService;
+import com.charge.service.biz.wechat.user.FirstPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

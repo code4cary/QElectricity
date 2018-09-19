@@ -1,14 +1,19 @@
 package com.charge.web.controller.wechat.user.firstPage;
 
 import com.alibaba.fastjson.JSONObject;
-import com.charge.service.biz.wechat.login.UserService;
+import com.charge.common.enums.StatusInfo;
+import com.charge.entity.po.wechat.user.User;
+import com.charge.service.biz.wechat.user.firstPage.UserService;
+import com.charge.web.utils.CommonDataReturnUtil;
+import com.charge.web.utils.RedisPoolUtil;
+import com.charge.web.utils.UserEndecryptUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.Map;
 
 import static com.charge.web.utils.WXUtil.getSessionKeyOrOpenId;
@@ -38,51 +43,54 @@ public class LoginUserController {
      */
     @ResponseBody
     @RequestMapping
-    public Map<String, Object> doLogin(@RequestParam(value = "code", required = false) String code) {
+    public Map<String, Object> doLogin(@RequestParam(value = "code", required = true) String code) {
 
         //判断code是否合法
-//        if (code == null || code.length() == 0) {
-//            return StatusLoginWX.status(StatusLoginWX.ERROR_WX_LOGIN, StatusLoginWX.ERROR_DATA);//微信端小程序传来的数据错误
-//        }
+        if (code == null || code.length() == 0) {
+            return CommonDataReturnUtil.requestFail(StatusInfo.FailInfo0);//微信端小程序传来的数据错误
+        }
 
         //获取用户的session_key和openID
         JSONObject SessionKeyOpenId = getSessionKeyOrOpenId(code);
-        System.out.println("post请求获取的SessionAndopenId=" + SessionKeyOpenId);
 
-        //用户的openID
-        String openid = SessionKeyOpenId.getString("openid");
+        //用户的openId
+        String openId = SessionKeyOpenId.getString("openId");
 
         //用户的session_key
         String sessionKey = SessionKeyOpenId.getString("session_key");
-        System.out.println("openid=" + openid + ",session_key=" + sessionKey);
 
-        //去数据库查询openid是否存在,即是否存在该openid对应的这个用户
-        //User user = userService.findByOpenid(openid);
+        //将openId和session_key加生成唯一skey
+        String skey = UserEndecryptUtil.md5OpenIDSessionKey(openId, sessionKey, 2);
 
+        //先去redis查询是否有openId对应skey的用户
+        String skeyRedis = RedisPoolUtil.getRedis(openId);
 
-        //将openid和session_key加生成唯一key
-        //UserEndecryptUtil.md5OpenIDSessionKey(openid,sessionKey,2);
+        //如果redis缓存没有openid,可能是过期了,也可能是该用户是新注册的.
+        //再去数据库查询openId是否存在,即是否存在该openId对应的这个用户
+        User user = null;
+        if (skeyRedis == null || skeyRedis.length() == 0) {
+            user = userService.findUserByOpenId(openId);
+        }
 
-        //用于保存用户信息的map集合
-        Map<String, Object> map = new HashMap<>();
+        if ((skeyRedis == null || skeyRedis.length() == 0) && user == null) {//用户未注册过
+            //将openId和skey存入数据库并缓存一份skey进redis
+            //openId和skey存入数据库
+            User userNew = new User();
+            System.out.println(user);
+            userNew.setWxOpenid(openId);
+            userNew.setSkey(skey);
+            userNew.setTelephone("5555");
+            userNew.setCreateTime(new Date());
+            userService.insert(userNew);
+        } else {
+            //更新已存在用户的skey并缓存一份skey进redis
+            //更新数据库skey
+            userService.updateSkeyByOpenId(openId, skey);
+        }
 
+        //将openId和skey缓存入redis,以openId为键,skey为值;
+        RedisPoolUtil.storeRedis(openId, skey);
 
-//        if (user == null) {//用户为注册过
-//            //将用户信息存入数据库
-//
-//        } else {//用户已注册过
-//            //LOGGER.info("用户openid已存在,不需要插入");
-//            return StatusLoginWX.status(StatusLoginWX.SUCCESS_WX_LOGIN,StatusLoginWX.SUCCESS_DATA);
-//        }
-
-
-        //把加密后的sessionKey和oppenid即skey返回给小程序
-        //map.put("skey", skey);
-
-
-        map.put("result", "0");
-
-
-        return map;
+        return CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "loginUser", "skey", skey);
     }
 }

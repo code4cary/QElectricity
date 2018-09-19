@@ -10,4 +10,10 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper extends BaseMapper<User, Integer> {
 
     User findUserByUserName(@Param("userName") String userName);
+
+    User findUserByOpenId(@Param("openId") String openId);
+
+    void updateSkeyById(@Param("Id")Integer id,@Param("skey") String skey);
+
+    void updateSkeyByOpenId(@Param("openId")String openId,@Param("skey")String skey);
 }
