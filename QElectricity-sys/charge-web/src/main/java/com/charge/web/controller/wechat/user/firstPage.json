@@ -15,11 +15,7 @@
     //dataKey
     "shopInfo": [
       {
-        //商户位置信息,经纬度
-        "shopPosition": [
-          "",
-          ""
-        ],
+
         //商户店面照
         "shopPhoto": "",
         //商户名
@@ -28,6 +24,13 @@
         "businessTime": "",
         //地址
         "address": "",
+        //商户位置信息,经纬度
+        "longitude" :"",
+        "latitude" : "",
+        //商户位置经度
+        "longitude" : "",
+        //商户位置纬度
+        "latitude" : "",
         //商户营业状态
         "shopStatus": "",
         //可借充电宝数量
@@ -40,11 +43,6 @@
         "shopTel": ""
       },
       {
-        //商户位置信息,经纬度
-        "shopPosition": [
-          "",
-          ""
-        ],
         //商户店面照
         "shopPhoto": "",
         //商户名
@@ -53,6 +51,13 @@
         "businessTime": "",
         //地址
         "address": "",
+        //商户位置信息,经纬度
+        "longitude" :"",
+        "latitude" : "",
+        //商户位置经度
+        "longitude" : "",
+        //商户位置纬度
+        "latitude" : "",
         //商户营业状态
         "shopStatus": "",
         //可借充电宝数量

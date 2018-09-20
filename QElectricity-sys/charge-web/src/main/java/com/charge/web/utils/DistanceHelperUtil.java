@@ -38,8 +38,8 @@ public class DistanceHelperUtil {
     /// <param name="lng1">第一点经度</param>
     /// <param name="lat2">第二点纬度</param>
     /// <param name="lng2">第二点经度</param>
-    /// <returns>返回两点的距离，单位：公里或千米</returns>
-    public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {
+    /// <returns>返回两点的距离，单位：米</returns>
+    public static Integer GetDistance(double lat1, double lng1, double lat2, double lng2) {
         //地球半径，单位米
         double EARTH_RADIUS = 6378137;
         double radLat1 = Rad(lat1);
@@ -50,7 +50,8 @@ public class DistanceHelperUtil {
         double b = radLng1 - radLng2;
         double result = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2)
                 + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2))) * EARTH_RADIUS;
-        return result / 1000;
+
+        return new Double(result).intValue();
     }
 
     /// <summary>
@@ -61,6 +62,8 @@ public class DistanceHelperUtil {
     private static double Rad(double d) {
         return (double) d * Math.PI / 180d;
     }
+
+
 
 
 

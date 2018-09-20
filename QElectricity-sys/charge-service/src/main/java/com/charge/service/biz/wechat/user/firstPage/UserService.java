@@ -3,6 +3,8 @@ package com.charge.service.biz.wechat.user.firstPage;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.BaseService;
 
+import java.util.Map;
+
 /**
  * Created by vincent on 10/09/2018.
  *
@@ -17,4 +19,6 @@ public interface UserService extends BaseService<User, Integer> {
     void updateSkeyById(Integer Id,String skey);
 
     void updateSkeyByOpenId(String openId,String skey);
+
+    Map<String,String> findUserBySkey(String skey);
 }

@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Map;
 
 /**
  * @since: JDK1.7
@@ -60,5 +61,17 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
     @Override
     public void updateSkeyByOpenId(String openId, String skey) {
         userMapper.updateSkeyByOpenId(openId, skey);
+    }
+
+    /**
+     * 根据skey查询用户个人信息返回给前端个人中心展示
+     * 只需要查询:积分,余额,押金状态
+     * 设计到关联表的查询
+     * @param skey
+     * @return
+     */
+    @Override
+    public Map<String, String> findUserBySkey(String skey) {
+        return null;
     }
 }

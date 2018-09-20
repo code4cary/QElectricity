@@ -45,26 +45,18 @@ public class FirstPageController {
     // Spring会帮你进行协议转换，将Json、Xml协议转换成你需要的对象。
     @ResponseBody
     @RequestMapping
-    public Map getFirstPageInfo(@RequestBody Map<String, ArrayList<String>> userPosition) {//{"userPosition":["userLongitude"，"userLatitude"]}
-
-        // System.out.println("userPosition= " + userPosition.get("userPosition"));
+    public Map getFirstPageInfo(@RequestBody Map<String, List<String>> userPosition) {//{"userPosition":["userLongitude"，"userLatitude"]}
 
         //如果传入的参数不符合要求
         if (userPosition == null || userPosition.isEmpty()) CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
 
-        ArrayList userPosition1 = userPosition.get("userPosition");
-
-        //System.out.println(userPosition1.get(0));
-        //System.out.println(userPosition1.get(1));
+        // ArrayList userPositionList = userPosition.get("userPosition");
+        List userPositionList = userPosition.get("userPosition");
 
         //获取用户当前所在位置的的经度
-        Double userLongitude = Double.parseDouble((String) userPosition1.get(0));
+        Double userLongitude = Double.parseDouble((String) userPositionList.get(0));
         //获取用户当前所在位置的维度
-        Double userLatitude = Double.parseDouble((String) userPosition1.get(1));
-
-        //System.out.println("userLongitude= " + userLongitude);
-        //System.out.println("userLatitude= " + userLatitude);
-
+        Double userLatitude = Double.parseDouble((String) userPositionList.get(1));
 
         //获取离当前用户50km范围的最大最小经纬度,
         List<ShopInfo> shopList = null;
@@ -80,12 +72,11 @@ public class FirstPageController {
 
             //根据经纬度关系查询用户附近的商户
             shopList = firstPageService.findShopByCoordinates(positionMap);
-        }
-        while ((shopList == null || shopList.isEmpty()) && distance <= thresholdDistance);//如果50千米范围内没有商户,那么将distance增大50,继续去数据库查询.直到设定的上限
+        } while ((shopList == null || shopList.isEmpty()) && distance <= thresholdDistance);//如果50千米范围内没有商户,那么将distance增大50,继续去数据库查询.直到设定的上限
 
-        //根据用户的经纬度和商户的经纬度计算用户和商户的距离,并按最近->最远的顺序排序
+        //根据用户的经纬度和商户的经纬度计算用户和商户的距离
         shopList.forEach(shopInfo -> {
-            Double distanceUser2Shop = DistanceHelperUtil.GetDistance(Double.valueOf(shopInfo.getLatitude()),
+            Integer distanceUser2Shop = DistanceHelperUtil.GetDistance(Double.valueOf(shopInfo.getLatitude()),
                     Double.valueOf(shopInfo.getLongitude()), userLatitude, userLongitude);
             shopInfo.setDistance(String.valueOf(distanceUser2Shop));
         });

@@ -293,7 +293,7 @@
     </select>
 
     <!-- 根据id更新skey-->
-    <update id="updateSkeyById" parameterType="Integer">
+    <update id="updateSkeyById" >
         update t_user
         <if test="Id != null ">
             <if test="skey != null">
@@ -305,7 +305,7 @@
     </update>
 
     <!-- 根据openId更新skey-->
-    <update id="updateSkeyByOpenId" parameterType="String">
+    <update id="updateSkeyByOpenId" parameterType="String" >
         update t_user
         <if test="openId != null ">
             <if test="skey != null">

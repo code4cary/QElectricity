@@ -320,6 +320,30 @@
      select * from t_shop
   </select>
 
+    <!--创建动态SQL,即sql片段-->
+    <sql id="find_shop">
+        select
+        SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,LONGITUDE,LATITUDE,CONTRACT_PERSON_NAME
+        from t_shop
+        where
+        <if test="map.MinLng != null">
+            <!--商户经度大于最小经度 -->
+            LONGITUDE+0 &gt; #{map.MinLng} and
+        </if>
+        <if test="map.MaxLng != null">
+            <!--商户经度小于最大经度 -->
+            LONGITUDE+0 &lt; #{map.MaxLng} and
+        </if>
+        <if test="map.MinLat != null">
+            <!--商户纬度大于最小纬度 -->
+            LATITUDE+0 &gt; #{map.MinLat} and
+        </if>
+        <if test="map.MaxLat != null">
+            <!--商户纬度小于最大纬度 -->
+            LATITUDE+0 &lt; #{map.MaxLat}
+        </if>
+    </sql>
+
     <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
     <resultMap type="com.charge.common.pojo.ShopInfo" id="shopInfoMap">
         <result column="SHOP_PHOTO" property="shopPhoto"/>
@@ -331,30 +355,28 @@
 
     <!--根据经纬度范围查询商户-->
     <select id="findShopByCoordinates" resultMap="shopInfoMap" parameterType="Map">
-      select
-        SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,LONGITUDE,LATITUDE,CONTRACT_PERSON_NAME
-      from t_shop
-      where
-        <if test="map.MinLng != null">
-            <!--商户经度大于最小经度 -->
-            LONGITUDE+0 &gt; #{map.MinLng} and
-        </if>
-        <if test="map.MaxLng != null">
-            <!--商户经度小于最大经度 -->
-            LONGITUDE+0 &lt; #{map.MaxLng}  and
-        </if>
-        <if test="map.MinLat != null">
-            <!--商户纬度大于最小纬度 -->
-            LATITUDE+0 &gt; #{map.MinLat} and
-        </if>
-        <if test="map.MaxLat != null">
-            <!--商户纬度小于最大纬度 -->
-            LATITUDE+0 &lt;  #{map.MaxLat}
+        <include refid="find_shop"/>
+    </select>
+
+    <!--
+        根据搜索内容以及经纬度范围查询商户
+        搜索内容匹配字段:NAME,ADDRESS,SHOP_STATUS
+    -->
+    <select id="findShopBySearch" resultMap="shopInfoMap">
+
+        <include refid="find_shop"/>
+
+        <if test="searchData != null">
+            and
+
+            NAME like '%${searchData}%' or
+
+            ADDRESS like '%${searchData}%' or
+
+            SHOP_STATUS like '%${searchData}%'
         </if>
 
 
-
-
-   </select>
+    </select>
 
 </mapper>

@@ -1,13 +1,13 @@
 package com.charge.web.controller.wechat.user.firstPage.personalCenter;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by vincent on 17/09/2018.
  */
 
-@Controller
+@RestController
 @RequestMapping("wechat/user/firstPage/personalCenter/rechargingRecord")
 public class RechargingRecordController {
 }

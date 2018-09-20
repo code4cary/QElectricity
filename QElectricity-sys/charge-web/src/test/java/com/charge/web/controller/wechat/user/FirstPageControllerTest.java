@@ -64,7 +64,7 @@ public class FirstPageControllerTest {
 
         //根据用户的经纬度和商户的经纬度计算用户和商户的距离,并按最近->最远的顺序排序
         shopList.forEach(shopInfo -> {
-            Double distanceUser2Shop = DistanceHelperUtil.GetDistance(Double.valueOf(shopInfo.getLatitude()),
+            Integer distanceUser2Shop = DistanceHelperUtil.GetDistance(Double.valueOf(shopInfo.getLatitude()),
                     Double.valueOf(shopInfo.getLongitude()), userLatitude,userLongitude);
 
             shopInfo.setDistance(String.valueOf(distanceUser2Shop));

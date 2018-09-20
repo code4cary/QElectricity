@@ -37,16 +37,34 @@ public class CommonDataReturnUtil {
      * @param statusInfo
      * @param pageKey
      * @param dataKey
-     * @param data
+     * @param dataList
      * @return
      */
-    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, Object data) {
+    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, List dataList) {
 
         Map dataMap = new HashMap<>();
         dataMap.put(codeKey, statusInfo.getCode());
         dataMap.put(msgKey, statusInfo.getMsg());
-        if (data instanceof List) data = (List) data;
-        dataMap.put(pageKey, new HashMap<>().put(dataKey, data));
+        //if (data instanceof List) data = (List) data;
+        Map  map = new HashMap<>();
+        map.put(dataKey, dataList);
+        //dataMap.put(pageKey, new HashMap<String,List<ShopInfo>>().put(dataKey, dataList));
+        dataMap.put(pageKey, map);
+
+
+        return dataMap;
+    }
+
+    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, String data) {
+
+        Map dataMap = new HashMap<>();
+        dataMap.put(codeKey, statusInfo.getCode());
+        dataMap.put(msgKey, statusInfo.getMsg());
+        //if (data instanceof List) data = (List) data;
+        Map  map = new HashMap<>();
+        map.put(dataKey, data);
+        //dataMap.put(pageKey, new HashMap<String,List<ShopInfo>>().put(dataKey, dataList));
+        dataMap.put(pageKey, map);
 
         return dataMap;
     }

@@ -3,63 +3,74 @@
 {
   //状态码
   //可选值 SHOP_SUCCESS_CODE=1或 SHOP_FAIL_CODE=0
-  "code" : "",
-
+  "code": "",
   //返回信息
   //和code代码一一对应,比如code为 SHOP_SUCCESS_CODE,则msg为请求成功,如此类推.
   //请求成功: SHOP_SUCCESS_CODE:请求失败: SHOP_FAIL_CODE
-  "msg" : "",
-
+  "msg": "",
   //返回数据
-  "data" : {
-    //商户类
-    "shop" : {
-      //商户信息
-      "shopInfo" : [
-        {
-          //商户位置信息,经纬度
-          "shopPosition" : ["",""],
-          //商户店面照
-          "shopPhoto" : "",
-          //商户名
-          "shopName" : "",
-          //营业时间
-          "businessTime" : "",
-          //地址
-          "address" : "",
-          //商户营业状态
-          "shopStatus" : "",
-          //可借充电宝数量
-          "canBorrowNum" : "",
-          //可还充电宝数量
-          "canBackNum" : "",
-          //离当前用户的距离
-          "distance" : "",
-          //商户联系方式
-          "shopTel" : ""
-        },{
-          //商户位置信息,经纬度
-          "shopPosition" : ["",""],
-          //商户店面照
-          "shopPhoto" : "",
-          //商户名
-          "shopName" : "",
-          //营业时间
-          "businessTime" : "",
-          //地址
-          "address" : "",
-          //商户营业状态
-          "shopStatus" : "",
-          //可借充电宝数量
-          "canBorrowNum" : "",
-          //可还充电宝数量
-          "canBackNum" : "",
-          //离当前用户的距离
-          "distance" : "",
-          //商户联系方式
-          "shopTel" : ""
-        }
-      ]
-    }
+  //商户类
+  "shop": {
+    //商户信息
+    "shopInfo": [
+      {
+        //商户位置信息,经纬度
+        "shopPosition": [
+          "",
+          ""
+        ],
+        //商户店面照
+        "shopPhoto": "",
+        //商户名
+        "shopName": "",
+        //营业时间
+        "businessTime": "",
+        //地址
+        "address": "",
+        //商户位置经度
+        "longitude" : "",
+        //商户位置纬度
+        "latitude" : "",
+        //商户营业状态
+        "shopStatus": "",
+        //可借充电宝数量
+        "canBorrowNum": "",
+        //可还充电宝数量
+        "canBackNum": "",
+        //离当前用户的距离
+        "distance": "",
+        //商户联系方式
+        "shopTel": ""
+      },
+      {
+        //商户位置信息,经纬度
+        "shopPosition": [
+          "",
+          ""
+        ],
+        //商户店面照
+        "shopPhoto": "",
+        //商户名
+        "shopName": "",
+        //营业时间
+        "businessTime": "",
+        //地址
+        "address": "",
+        //商户位置经度
+        "longitude" : "",
+        //商户位置纬度
+        "latitude" : "",
+        //商户营业状态
+        "shopStatus": "",
+        //可借充电宝数量
+        "canBorrowNum": "",
+        //可还充电宝数量
+        "canBackNum": "",
+        //离当前用户的距离
+        "distance": "",
+        //商户联系方式
+        "shopTel": ""
+      }
+    ]
   }
 }

@@ -5,13 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="defdbaf1-e301-4f14-8bf6-31d64d662d55" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/resources/prop.properties" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/model/CommonReturnDataMap.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/ShopService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/ShopServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/firstPage/ShopControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/agent/ShopMapper.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/agent/ShopMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/agent/ShopMapper.xml" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/agent/ShopMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/user/UserMapper.xml" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/user/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/UserService.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/UserServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/impl/FirstPageImpl.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/impl/FirstPageImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DeviceManageController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DeviceManageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DevicePopController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DevicePopController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/EarlyWarningController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/EarlyWarningController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/IncomeDataController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/IncomeDataController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderDataController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderDataController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderRecordController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderRecordController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ReciptRecordController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ReciptRecordController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ShopManageController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ShopManageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/TodayIncomeController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/TodayIncomeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/deviceManage/OperateController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/deviceManage/OperateController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/devicePop/OperateDevicePopController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/devicePop/OperateDevicePopController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/AddDeviceController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/AddDeviceController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/CreateShopController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/CreateShopController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/DeleteShopController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/DeleteShopController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/ModifyPriceController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/ModifyPriceController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/editShopController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/editShopController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/login/LoginAgentController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/login/LoginAgentController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/MyAccountController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/MyAccountController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/WithdrawController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/WithdrawController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/WithdrawalRecordController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/WithdrawalRecordController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/FirstPageController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/FirstPageController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage.json" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/DeviceFixController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/DeviceFixController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/LoginUserController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/LoginUserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/RechargeBorrowed.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/RechargeBorrowed.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ScanBorrowController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ScanBorrowController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ShopController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ShopController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/personalCenter.json" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/personalCenter.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/shop.json" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/shop.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/MyWalletController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/MyWalletController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/RechargingRecordController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/RechargingRecordController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/myWallet/RechargeController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/myWallet/RechargeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/myWallet/TransactionDetailController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/myWallet/TransactionDetailController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenterController.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenterController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/CommonDataReturnUtil.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/CommonDataReturnUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/DistanceHelperUtil.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/DistanceHelperUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/FirstPageControllerTest.java" afterPath="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/FirstPageControllerTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,28 +85,15 @@
     <favorites_list name="QElectricity" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FirstPageController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/FirstPageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.1821191">
-              <caret line="93" column="60" selection-start-line="93" selection-start-column="60" selection-end-line="93" selection-end-column="60" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
-        <option value="JUnit4 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -139,57 +166,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/mapping/ChargingBoxPriceType.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/device/PriceTypeCB.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-common/src/main/java/com/charge/common/enums/ErrCode.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/base/BaseReturnMap.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/model/CommonReturnWxDO.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/base/BaseReturnMapController.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/base/returnDataMap.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/model/commonReturnDataMap.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/commonDataReturnUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/base/BaseController.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/devicePop/OperateDevicePopController.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/pom.xml" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/DistanceHelper.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/PositionModelUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/PositionModel.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/agent/FirstPageService.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/test/java/com/charge/dao/mapper/wechat/agent/shopMapperTest.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/agent/shopMapperTest.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/pom.xml" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/dao/mapper/wechat/agent/shopMapperTest.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/agent/ShopMapper.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-common/src/main/java/com/charge/common/pojo/ShopInfo.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/agent/impl/FirstPageImpl.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/FirstPageImpl.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/agent/ShopMapper.xml" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/DistanceHelperUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/FirstPageControllerTest.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-common/src/main/java/com/charge/common/enums/StatusInfo.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/filter/servletFilter.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/filter/CommonservletFilter.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/filter/WechatServletFilter.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/WXUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/UserEndecryptUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/wechat/user/User.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/RedisJavaUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/resources/redis.properties" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/UserService.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/user/UserMapper.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/user/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/RedisPoolUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/firstPage/LoginUserControllerTest.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/filter/CommonServletFilter.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/filter/WechatUserServletFilter.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/ChargeApplication.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage.json" />
         <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/resources/prop.properties" />
         <option value="$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/model/CommonReturnDataMap.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/CommonDataReturnUtil.java" />
-        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/FirstPageController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/DeviceFixController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/RechargeBorrowed.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ScanBorrowController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/MyWalletController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/RechargingRecordController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/myWallet/RechargeController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/myWallet/TransactionDetailController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/MyAccountController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/WithdrawalRecordController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/myAccount/WithdrawController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/login/LoginAgentController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DeviceManageController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DevicePopController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/EarlyWarningController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/IncomeDataController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderDataController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderRecordController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ReciptRecordController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ShopManageController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/TodayIncomeController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/AddDeviceController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/CreateShopController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/DeleteShopController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/editShopController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/ModifyPriceController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/devicePop/OperateDevicePopController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/deviceManage/OperateController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/impl/FirstPageImpl.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/shop.json" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/ControllerUtil.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/shopService.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/ShopService.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/agent/ShopMapper.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/user/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/test/java/com/charge/service/biz/wechat/user/firstPage/impl/ShopServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/ShopServiceImpl.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/personalCenter.json" />
         <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/LoginUserController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenterController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/UserService.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/CommonDataReturnUtil.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage.json" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/agent/ShopMapper.xml" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/DistanceHelperUtil.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/FirstPageController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ShopController.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/FirstPageControllerTest.java" />
+        <option value="$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/firstPage/ShopControllerTest.java" />
       </list>
     </option>
   </component>
@@ -276,1448 +303,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="firstPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="firstPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="firstPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biz" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="po" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="po" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="po" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mybatis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mybatis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mybatis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mybatis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mapper" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QElectricity-sys" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="charge-dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -1734,7 +319,7 @@
     <property name="project.structure.proportion" value="0.15072832" />
     <property name="project.structure.side.proportion" value="0.19313945" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="last_opened_file_path" value="$USER_HOME$/program/java/idea/interview" />
+    <property name="last_opened_file_path" value="$USER_HOME$/program/java/idea/QElectricity 2" />
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v9.11.1/bin/node" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
@@ -1760,6 +345,7 @@
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.charge.web.controller.wechat.user.firstPage" />
+      <recent name="com.charge.service.biz.wechat.user.firstPage.impl" />
       <recent name="com.charge.web.controller.wechat.user" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -1806,64 +392,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ChargeApplication">
-    <configuration default="false" name="shopMapperTest.findShopByCoordinatesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.charge.dao.mapper.wechat.agent.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="charge-dao" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.charge.dao.mapper.wechat.agent" />
-      <option name="MAIN_CLASS_NAME" value="com.charge.dao.mapper.wechat.agent.shopMapperTest" />
-      <option name="METHOD_NAME" value="findShopByCoordinatesTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="JProfiler">
-        <option name="WINDOW" value="false" />
-      </RunnerSettings>
-      <method />
-    </configuration>
-    <configuration default="false" name="shopMapperTest.findShopByCoordinatesTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.charge.dao.mapper.wechat.agent.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="charge-web" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.charge.dao.mapper.wechat.agent" />
-      <option name="MAIN_CLASS_NAME" value="com.charge.dao.mapper.wechat.agent.shopMapperTest" />
-      <option name="METHOD_NAME" value="findShopByCoordinatesTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="JProfiler">
-        <option name="WINDOW" value="false" />
-      </RunnerSettings>
-      <method />
-    </configuration>
     <configuration default="false" name="FirstPageControllerTest.testGetFirstPageInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1934,6 +462,58 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="charge-web" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ShopServiceImplTest.testFindShopBySearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.charge.service.biz.wechat.user.firstPage.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="charge-service" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.charge.service.biz.wechat.user.firstPage.impl" />
+      <option name="MAIN_CLASS_NAME" value="com.charge.service.biz.wechat.user.firstPage.impl.ShopServiceImplTest" />
+      <option name="METHOD_NAME" value="testFindShopBySearch" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ShopControllerTest.testGetShopInfo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.charge.web.controller.wechat.user.firstPage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="charge-web" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.charge.web.controller.wechat.user.firstPage" />
+      <option name="MAIN_CLASS_NAME" value="com.charge.web.controller.wechat.user.firstPage.ShopControllerTest" />
+      <option name="METHOD_NAME" value="testGetShopInfo" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -2389,19 +969,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Spring Boot.ChargeApplication" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.shopMapperTest.findShopByCoordinatesTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.shopMapperTest.findShopByCoordinatesTest (1)" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.FirstPageControllerTest.testGetFirstPageInfo" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.LoginUserControllerTest.testDoLogin" />
-      <item index="5" class="java.lang.String" itemvalue="Application.RedisJavaUtil" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.FirstPageControllerTest.testGetFirstPageInfo" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.LoginUserControllerTest.testDoLogin" />
+      <item index="3" class="java.lang.String" itemvalue="Application.RedisJavaUtil" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ShopServiceImplTest.testFindShopBySearch" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ShopControllerTest.testGetShopInfo" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.LoginUserControllerTest.testDoLogin" />
-        <item index="1" class="java.lang.String" itemvalue="Application.RedisJavaUtil" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.FirstPageControllerTest.testGetFirstPageInfo" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.shopMapperTest.findShopByCoordinatesTest (1)" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.shopMapperTest.findShopByCoordinatesTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ShopControllerTest.testGetShopInfo" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ShopServiceImplTest.testFindShopBySearch" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.LoginUserControllerTest.testDoLogin" />
+        <item index="3" class="java.lang.String" itemvalue="Application.RedisJavaUtil" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.FirstPageControllerTest.testGetFirstPageInfo" />
       </list>
     </recent_temporary>
   </component>
@@ -2427,7 +1007,7 @@
       <workItem from="1536998345788" duration="39235000" />
       <workItem from="1537193548718" duration="10669000" />
       <workItem from="1537240157678" duration="41882000" />
-      <workItem from="1537296528172" duration="42685000" />
+      <workItem from="1537296528172" duration="62940000" />
     </task>
     <task id="LOCAL-00001" summary="add">
       <created>1536253715494</created>
@@ -2555,43 +1135,49 @@
       <option name="project" value="LOCAL" />
       <updated>1537374465068</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="查询用户附近商家ing...">
+      <created>1537382734646</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1537382734646</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 18h 20m 50s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 14m 56s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 18h 27m 11s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 19m 34s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 18h 30m 20s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 21m 23s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 18h 31m 22s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 23m 14s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 20h 55m 53s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 27m 36s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 20h 58m 59s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 28m 24s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 21h 01m 09s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 28m 52s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 21h 19m 39s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopControllerTest_testGetShopInfo - 2018.09.20 at 19h 36m 41s.xml">
+      <configuration name="ShopControllerTest.testGetShopInfo" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 21h 25m 00s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopServiceImplTest_testFindShopBySearch - 2018.09.20 at 19h 03m 54s.xml">
+      <configuration name="ShopServiceImplTest.testFindShopBySearch" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginUserControllerTest_testDoLogin - 2018.09.19 at 21h 44m 43s.xml">
-      <configuration name="LoginUserControllerTest.testDoLogin" configurationId="JUnit" />
+    <history-entry file="ShopServiceImplTest_testFindShopBySearch - 2018.09.20 at 19h 06m 39s.xml">
+      <configuration name="ShopServiceImplTest.testFindShopBySearch" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="269004000" />
+    <option name="totallyTimeSpent" value="289259000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2618,12 +1204,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3621347" sideWeight="0.45631453" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43583226" sideWeight="0.45631453" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.49841145" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931423" sideWeight="0.49682286" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.49682286" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29389602" sideWeight="0.50357425" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29841748" sideWeight="0.71454114" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40919366" sideWeight="0.71454114" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22363405" sideWeight="0.49841145" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20532168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2675,7 +1261,7 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="25" />
+      <option name="time" value="37" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2684,87 +1270,165 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/function/BiConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.099121705">
-          <caret line="47" column="54" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="41.14516">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/wechat/agent/Shop.java">
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DeviceManageController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="28" selection-start-line="20" selection-start-column="4" selection-end-line="22" selection-end-column="28" />
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/agent/ShopMapper.java">
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/DevicePopController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/EarlyWarningController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/IncomeDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/OrderRecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ReciptRecordController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/ShopManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/TodayIncomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/AddDeviceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/CreateShopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/DeleteShopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/editShopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/shopManage/ModifyPriceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/devicePop/OperateDevicePopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/agent/firstPage/deviceManage/OperateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.410596">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/FirstPageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/base/impl/BaseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#422#423#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-90.0">
-          <caret line="180" column="25" selection-start-line="180" selection-start-column="25" selection-end-line="180" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/dao/mapper/wechat/agent/shopMapperTest.java">
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/user/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="69" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-common/src/main/java/com/charge/common/pojo/ShopInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="18" selection-start-line="103" selection-start-column="18" selection-end-line="103" selection-end-column="18" />
-          <folding>
-            <element signature="e#2134#2135#0" expanded="false" />
-            <element signature="e#2166#2167#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/function/Consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/loginUser.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39085895">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -2773,370 +1437,281 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/user/WaterBillsMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1536945647000" expanded="true" signature="763:872" placeholder="select from t_water_bills" />
-            <marker date="1536945647000" expanded="true" signature="959:1022" placeholder="delete from " />
-            <marker date="1536945647000" expanded="true" signature="1123:1318" placeholder="insert into t_water_bills... " />
-            <marker date="1536945647000" expanded="true" signature="2285:2647" placeholder="update t_wat... " />
-            <marker date="1536945647000" expanded="true" signature="2760:2955" placeholder="update t_wat... " />
-            <marker date="1536945647000" expanded="true" signature="3086:3113" placeholder="select * fro... t_water_bills" />
+            <marker date="1536945647000" expanded="true" signature="1581:1684" placeholder="select from t_order" />
+            <marker date="1536945647000" expanded="true" signature="1771:1828" placeholder="delete from " />
+            <marker date="1536945647000" expanded="true" signature="1924:2582" placeholder="insert into t_order... " />
+            <marker date="1536945647000" expanded="true" signature="4942:6224" placeholder="update t_ord... " />
+            <marker date="1536945647000" expanded="true" signature="6332:7004" placeholder="update t_ord... " />
+            <marker date="1536945647000" expanded="true" signature="7130:7151" placeholder="select * fro... t_order" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/agent/ShopMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.181818">
-          <caret line="339" column="46" selection-start-line="339" selection-start-column="46" selection-end-line="339" selection-end-column="46" />
-          <folding>
-            <marker date="1537298649776" expanded="true" signature="2683:2795" placeholder="select from t_shop" />
-            <marker date="1537298649776" expanded="true" signature="2885:2941" placeholder="delete from " />
-            <marker date="1537298649776" expanded="true" signature="3038:4249" placeholder="insert into t_shop... " />
-            <marker date="1537298649776" expanded="true" signature="9404:12323" placeholder="update t_sho... " />
-            <marker date="1537298649776" expanded="true" signature="12434:13687" placeholder="update t_sho... " />
-            <marker date="1537298649776" expanded="true" signature="13814:13834" placeholder="select * fro... t_shop" />
-            <marker date="1537298649776" expanded="true" signature="14403:14525" placeholder="select from t_shop" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/crypto/hash/Md5Hash.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.814815">
-          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
-          <folding>
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#707#708#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/UserEndecryptUtil.java">
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/agent/ShopMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+          <caret line="17" column="84" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="84" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/base/BaseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/base/BaseMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/base/impl/BaseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/wechat/user/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/wechat/user/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/base/BaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6535433">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-          <folding>
-            <element signature="e#619#620#0" expanded="false" />
-            <element signature="e#663#664#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/wechat/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/mapper/wechat/user/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/user/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.964286">
-          <caret line="313" column="17" selection-start-line="313" selection-start-column="17" selection-end-line="313" selection-end-column="17" />
-          <folding>
-            <marker date="1537363015136" expanded="true" signature="2279:2391" placeholder="select from t_user" />
-            <marker date="1537363015136" expanded="true" signature="2481:2537" placeholder="delete from " />
-            <marker date="1537363015136" expanded="true" signature="2633:3591" placeholder="insert into t_user... " />
-            <marker date="1537363015136" expanded="true" signature="7951:10352" placeholder="update t_use... " />
-            <marker date="1537363015136" expanded="true" signature="10462:11457" placeholder="update t_use... " />
-            <marker date="1537363015136" expanded="true" signature="11583:11603" placeholder="select * fro... t_user" />
-            <marker date="1537363015136" expanded="true" signature="11776:11818" placeholder="select * fro... t_user" />
-            <marker date="1537363015136" expanded="true" signature="11776:11840" placeholder="select * fro... t_user" />
-            <marker date="1537363015136" expanded="true" signature="11958:12141" placeholder="update if() " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/firstPage/LoginUserControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="57" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/resources/application-dev.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/DistanceHelperUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1706485">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/exception/TipException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21314387">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/FirstPageControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57714283">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/filter/CommonServletFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.88073397">
-          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/filter/WechatUserServletFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82285714">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35913312">
-          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.10.RELEASE/spring-webmvc-4.3.10.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3374613">
-          <caret line="518" column="27" selection-start-line="518" selection-start-column="27" selection-end-line="518" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/WXUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19897084">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.28/fastjson-1.2.28.jar!/com/alibaba/fastjson/JSONObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.4388489">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40827337">
-          <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-64.818184">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-          <folding>
-            <marker date="1537377512475" expanded="true" signature="22:1292" placeholder="{&quot;code&quot;: &quot;&quot;...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/impl/FirstPageImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="27" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+          <caret line="53" column="34" selection-start-line="50" selection-start-column="7" selection-end-line="53" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/dao/mapper/wechat/agent/shopMapperTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/firstPage/LoginUserControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/ShopService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/RechargeBorrowed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ScanBorrowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/DeviceFixController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenter/MyWalletController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37795275">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/shop.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.015089164">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-common/src/main/java/com/charge/common/enums/StatusInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="31" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/json/personalCenter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46090534">
+          <caret line="14" column="20" selection-start-line="13" selection-start-column="3" selection-end-line="14" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/personalCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/ShopServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+          <folding>
+            <element signature="e#1780#1781#0" expanded="false" />
+            <element signature="e#1807#1808#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-entity/src/main/java/com/charge/entity/po/wechat/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5695538">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/ChargeApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07940161">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/resources/redis.properties">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.10.RELEASE/spring-web-4.3.10.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21403913">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/RedisPoolUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3912543">
-          <caret line="45" column="14" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/java/com/charge/dao/config/DruidDBConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.37037">
-          <caret line="47" column="42" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/FirstPageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24971232">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-service/src/main/java/com/charge/service/biz/wechat/user/firstPage/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7146145">
-          <caret line="60" column="64" selection-start-line="60" selection-start-column="64" selection-end-line="60" selection-end-column="64" />
-          <folding>
-            <element signature="e#1558#1559#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/resources/prop.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24971232">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.20857988">
+          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/CommonDataReturnUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4982738">
-          <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <marker date="1537454367295" expanded="true" signature="1362:1893" placeholder="//..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-common/src/main/java/com/charge/common/enums/StatusInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29689297">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/LoginUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6766398">
-          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="43" selection-start-line="97" selection-start-column="43" selection-end-line="97" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-common/src/main/java/com/charge/common/pojo/ShopInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33399603">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.7789474">
+          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/user/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44421053">
+          <caret line="313" column="17" selection-start-line="313" selection-start-column="17" selection-end-line="313" selection-end-column="17" />
+          <folding>
+            <marker date="1537440001273" expanded="true" signature="2279:2391" placeholder="select from t_user" />
+            <marker date="1537440001273" expanded="true" signature="2481:2537" placeholder="delete from " />
+            <marker date="1537440001273" expanded="true" signature="2633:3591" placeholder="insert into t_user... " />
+            <marker date="1537440001273" expanded="true" signature="7951:10352" placeholder="update t_use... " />
+            <marker date="1537440001273" expanded="true" signature="10462:11457" placeholder="update t_use... " />
+            <marker date="1537440001273" expanded="true" signature="11583:11603" placeholder="select * fro... t_user" />
+            <marker date="1537440001273" expanded="true" signature="11776:11840" placeholder="select ID,WX... t_user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/src/main/resources/mybatis/mapper/wechat/agent/ShopMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36842105">
+          <caret line="370" column="0" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
+          <folding>
+            <marker date="1537455783644" expanded="true" signature="2683:2795" placeholder="select from t_shop" />
+            <marker date="1537455783644" expanded="true" signature="2885:2941" placeholder="delete from " />
+            <marker date="1537455783644" expanded="true" signature="3038:4249" placeholder="insert into t_shop... " />
+            <marker date="1537455783644" expanded="true" signature="9404:12323" placeholder="update t_sho... " />
+            <marker date="1537455783644" expanded="true" signature="12434:13687" placeholder="update t_sho... " />
+            <marker date="1537455783644" expanded="true" signature="13814:13834" placeholder="select * fro... t_shop" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/utils/DistanceHelperUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73956263">
+          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/FirstPageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.1821191">
-          <caret line="93" column="60" selection-start-line="93" selection-start-column="60" selection-end-line="93" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/main/java/com/charge/web/controller/wechat/user/firstPage/ShopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36580518">
+          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/FirstPageControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="19" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QElectricity-sys/charge-web/src/test/java/com/charge/web/controller/wechat/user/firstPage/ShopControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22580644">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
