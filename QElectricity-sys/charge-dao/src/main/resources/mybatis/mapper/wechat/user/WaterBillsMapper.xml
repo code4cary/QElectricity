@@ -3,12 +3,13 @@
 <mapper namespace="com.charge.dao.mapper.wechat.user.WaterBillsMapper" >
   <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.WaterBills" >
     <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="OID" property="oid" jdbcType="INTEGER" />
     <result column="AMOUNT" property="amount" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="TYPE" property="type" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, AMOUNT, CREATE_TIME, TYPE
+    ID, OID, AMOUNT, CREATE_TIME, TYPE
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -21,16 +22,19 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
-    insert into t_water_bills (ID, AMOUNT, CREATE_TIME, 
-      TYPE)
-    values (#{id,jdbcType=INTEGER}, #{amount,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{type,jdbcType=VARCHAR})
+    insert into t_water_bills (ID, OID, AMOUNT, 
+      CREATE_TIME, TYPE)
+    values (#{id,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{amount,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
     insert into t_water_bills
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
+      </if>
+      <if test="oid != null" >
+        OID,
       </if>
       <if test="amount != null" >
         AMOUNT,
@@ -46,6 +50,9 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="oid != null" >
+        #{oid,jdbcType=INTEGER},
+      </if>
       <if test="amount != null" >
         #{amount,jdbcType=VARCHAR},
       </if>
@@ -60,6 +67,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
     update t_water_bills
     <set >
+      <if test="oid != null" >
+        OID = #{oid,jdbcType=INTEGER},
+      </if>
       <if test="amount != null" >
         AMOUNT = #{amount,jdbcType=VARCHAR},
       </if>
@@ -74,7 +84,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
     update t_water_bills
-    set AMOUNT = #{amount,jdbcType=VARCHAR},
+    set OID = #{oid,jdbcType=INTEGER},
+      AMOUNT = #{amount,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       TYPE = #{type,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}

@@ -43,7 +43,7 @@ public class LoginUserControllerTest {
 
         //用户的openID
         //String openId = SessionKeyOpenId.getString("openId");
-        String openId = "VINCENT654321";
+        String openId = "VINCENT";
 
         //用户的session_key
         //String sessionKey = SessionKeyOpenId.getString("session_key");

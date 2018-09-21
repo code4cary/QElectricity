@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- namespace为命名空间，应该是mapper接口的全称-->
 <mapper namespace="com.charge.dao.mapper.wechat.user.UserMapper">
     <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.User">
         <id column="ID" property="id" jdbcType="INTEGER"/>
         <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR"/>
         <result column="AVATAR" property="avatar" jdbcType="VARCHAR"/>
         <result column="GENDER" property="gender" jdbcType="VARCHAR"/>
-        <result column="USERFROM" property="userFrom" jdbcType="VARCHAR"/>
+        <result column="USERFROM" property="userfrom" jdbcType="VARCHAR"/>
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="WX_OPENID" property="wxOpenid" jdbcType="VARCHAR"/>
         <result column="CITY" property="city" jdbcType="VARCHAR"/>
@@ -26,9 +25,9 @@
         <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <sql id="Base_Column_List">
-    ID, NICK_NAME, AVATAR, GENDER, USERFROM, CREATE_TIME, WX_OPENID, CITY, LOCATION, POINT,
-    TELEPHONE, APP_STATUS, IS_STAFF, IS_AGENT, IS_VIP, FREE_TIME, SKEY, WX_UIONID, IS_UNSUBSCRIBE, 
-    DESCRIPTION, UPDATE_TIME
+    ID, NICK_NAME, AVATAR, GENDER, USERFROM, CREATE_TIME, WX_OPENID, CITY, LOCATION, 
+    POINT, TELEPHONE, APP_STATUS, IS_STAFF, IS_AGENT, IS_VIP, FREE_TIME, SKEY, WX_UIONID, 
+    IS_UNSUBSCRIBE, DESCRIPTION, UPDATE_TIME
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -42,7 +41,7 @@
   </delete>
     <insert id="insert" parameterType="com.charge.entity.po.wechat.user.User">
     insert into t_user (ID, NICK_NAME, AVATAR, 
-      GENDER, USERFROM, CREATE_TIME,
+      GENDER, USERFROM, CREATE_TIME, 
       WX_OPENID, CITY, LOCATION, 
       POINT, TELEPHONE, APP_STATUS, 
       IS_STAFF, IS_AGENT, IS_VIP, 
@@ -50,7 +49,7 @@
       IS_UNSUBSCRIBE, DESCRIPTION, UPDATE_TIME
       )
     values (#{id,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=VARCHAR}, #{userFrom,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+      #{gender,jdbcType=VARCHAR}, #{userfrom,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{wxOpenid,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
       #{point,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, #{appStatus,jdbcType=VARCHAR}, 
       #{isStaff,jdbcType=VARCHAR}, #{isAgent,jdbcType=VARCHAR}, #{isVip,jdbcType=VARCHAR}, 
@@ -73,7 +72,7 @@
             <if test="gender != null">
                 GENDER,
             </if>
-            <if test="userFrom != null">
+            <if test="userfrom != null">
                 USERFROM,
             </if>
             <if test="createTime != null">
@@ -138,8 +137,8 @@
             <if test="gender != null">
                 #{gender,jdbcType=VARCHAR},
             </if>
-            <if test="userFrom != null">
-                #{userFrom,jdbcType=VARCHAR},
+            <if test="userfrom != null">
+                #{userfrom,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
@@ -203,8 +202,8 @@
             <if test="gender != null">
                 GENDER = #{gender,jdbcType=VARCHAR},
             </if>
-            <if test="userFrom != null">
-                USERFROM = #{userFrom,jdbcType=VARCHAR},
+            <if test="userfrom != null">
+                USERFROM = #{userfrom,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
@@ -262,7 +261,7 @@
     set NICK_NAME = #{nickName,jdbcType=VARCHAR},
       AVATAR = #{avatar,jdbcType=VARCHAR},
       GENDER = #{gender,jdbcType=VARCHAR},
-      USERFROM = #{userFrom,jdbcType=VARCHAR},
+      USERFROM = #{userfrom,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       WX_OPENID = #{wxOpenid,jdbcType=VARCHAR},
       CITY = #{city,jdbcType=VARCHAR},
@@ -293,7 +292,7 @@
     </select>
 
     <!-- 根据id更新skey-->
-    <update id="updateSkeyById" >
+    <update id="updateSkeyById">
         update t_user
         <if test="Id != null ">
             <if test="skey != null">
@@ -305,7 +304,7 @@
     </update>
 
     <!-- 根据openId更新skey-->
-    <update id="updateSkeyByOpenId" parameterType="String" >
+    <update id="updateSkeyByOpenId" parameterType="String">
         update t_user
         <if test="openId != null ">
             <if test="skey != null">

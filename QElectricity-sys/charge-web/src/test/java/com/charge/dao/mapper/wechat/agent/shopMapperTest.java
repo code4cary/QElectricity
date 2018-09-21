@@ -32,10 +32,10 @@ public class shopMapperTest {
     public void findShopByCoordinatesTest() {
 
         Map<String, Double> map = new HashMap<>();
-        map.put("MinLng", 60.00);
-        map.put("MaxLng", 100.00);
-        map.put("MinLat", 30.00);
-        map.put("MaxLat", 70.00);
+        map.put("MinLng", 113.00);
+        map.put("MaxLng", 114.00);
+        map.put("MinLat", 22.00);
+        map.put("MaxLat", 24.00);
         System.out.println(map);
 
         List<ShopInfo> shopInfoList = shopMapper.findShopByCoordinates(map);

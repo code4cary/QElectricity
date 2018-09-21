@@ -3,6 +3,7 @@
 <mapper namespace="com.charge.dao.mapper.wechat.agent.ShopMapper">
     <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.agent.Shop">
         <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="AG_ID" property="agId" jdbcType="INTEGER"/>
         <result column="SHOP_NO" property="shopNo" jdbcType="VARCHAR"/>
         <result column="LOGO" property="logo" jdbcType="VARCHAR"/>
         <result column="NAME" property="name" jdbcType="VARCHAR"/>
@@ -13,25 +14,25 @@
         <result column="STAR_LEVEL" property="starLevel" jdbcType="VARCHAR"/>
         <result column="AREA_LABEL" property="areaLabel" jdbcType="VARCHAR"/>
         <result column="CATEGORY_LABEL" property="categoryLabel" jdbcType="VARCHAR"/>
-        <result column="LOCATION_TAG" property="locationTag" jdbcType="VARCHAR"/>
+        <result column="LOCATION_LABEL" property="locationLabel" jdbcType="VARCHAR"/>
         <result column="BUSINESS" property="business" jdbcType="VARCHAR"/>
+        <result column="SHOP_STATUS" property="shopStatus" jdbcType="VARCHAR"/>
         <result column="CONTRACT_PERSON_NAME" property="contractPersonName" jdbcType="VARCHAR"/>
         <result column="CONTRACT_PERSON_PHONE" property="contractPersonPhone" jdbcType="VARCHAR"/>
         <result column="ID_NUMBER" property="idNumber" jdbcType="VARCHAR"/>
         <result column="SHOP_PHOTO" property="shopPhoto" jdbcType="VARCHAR"/>
         <result column="CONTRACT_PHOTO" property="contractPhoto" jdbcType="VARCHAR"/>
         <result column="BANK_ACCOUNT" property="bankAccount" jdbcType="VARCHAR"/>
-        <result column="START_BUSINESS_TIME" property="startBusinessTime" jdbcType="VARCHAR"/>
-        <result column="END_BUSINESS_TIME" property="endBusinessTime" jdbcType="VARCHAR"/>
+        <result column="BUSINESS_TIME" property="businessTime" jdbcType="VARCHAR"/>
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="LEAVE_TIME" property="leaveTime" jdbcType="TIMESTAMP"/>
         <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <sql id="Base_Column_List">
-    ID, SHOP_NO, LOGO, NAME, ADDRESS, CITY, LONGITUDE, LATITUDE, STAR_LEVEL, AREA_LABEL, 
-    CATEGORY_LABEL, LOCATION_TAG, BUSINESS, CONTRACT_PERSON_NAME, CONTRACT_PERSON_PHONE, 
-    ID_NUMBER, SHOP_PHOTO, CONTRACT_PHOTO, BANK_ACCOUNT, START_BUSINESS_TIME, END_BUSINESS_TIME, 
-    CREATE_TIME, LEAVE_TIME, UPDATE_TIME
+    ID, AG_ID, SHOP_NO, LOGO, NAME, ADDRESS, CITY, LONGITUDE, LATITUDE, STAR_LEVEL, AREA_LABEL, 
+    CATEGORY_LABEL, LOCATION_LABEL, BUSINESS, SHOP_STATUS, CONTRACT_PERSON_NAME, CONTRACT_PERSON_PHONE, 
+    ID_NUMBER, SHOP_PHOTO, CONTRACT_PHOTO, BANK_ACCOUNT, BUSINESS_TIME, CREATE_TIME, 
+    LEAVE_TIME, UPDATE_TIME
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -44,30 +45,33 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.charge.entity.po.wechat.agent.Shop">
-    insert into t_shop (ID, SHOP_NO, LOGO, 
-      NAME, ADDRESS, CITY, 
-      LONGITUDE, LATITUDE, STAR_LEVEL, 
-      AREA_LABEL, CATEGORY_LABEL, LOCATION_TAG, 
-      BUSINESS, CONTRACT_PERSON_NAME, CONTRACT_PERSON_PHONE, 
+    insert into t_shop (ID, AG_ID, SHOP_NO, 
+      LOGO, NAME, ADDRESS, 
+      CITY, LONGITUDE, LATITUDE, 
+      STAR_LEVEL, AREA_LABEL, CATEGORY_LABEL, 
+      LOCATION_LABEL, BUSINESS, SHOP_STATUS, 
+      CONTRACT_PERSON_NAME, CONTRACT_PERSON_PHONE, 
       ID_NUMBER, SHOP_PHOTO, CONTRACT_PHOTO, 
-      BANK_ACCOUNT, START_BUSINESS_TIME, END_BUSINESS_TIME, 
-      CREATE_TIME, LEAVE_TIME, UPDATE_TIME
-      )
-    values (#{id,jdbcType=INTEGER}, #{shopNo,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
-      #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, #{starLevel,jdbcType=VARCHAR}, 
-      #{areaLabel,jdbcType=VARCHAR}, #{categoryLabel,jdbcType=VARCHAR}, #{locationTag,jdbcType=VARCHAR}, 
-      #{business,jdbcType=VARCHAR}, #{contractPersonName,jdbcType=VARCHAR}, #{contractPersonPhone,jdbcType=VARCHAR}, 
+      BANK_ACCOUNT, BUSINESS_TIME, CREATE_TIME, 
+      LEAVE_TIME, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{agId,jdbcType=INTEGER}, #{shopNo,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{starLevel,jdbcType=VARCHAR}, #{areaLabel,jdbcType=VARCHAR}, #{categoryLabel,jdbcType=VARCHAR}, 
+      #{locationLabel,jdbcType=VARCHAR}, #{business,jdbcType=VARCHAR}, #{shopStatus,jdbcType=VARCHAR}, 
+      #{contractPersonName,jdbcType=VARCHAR}, #{contractPersonPhone,jdbcType=VARCHAR}, 
       #{idNumber,jdbcType=VARCHAR}, #{shopPhoto,jdbcType=VARCHAR}, #{contractPhoto,jdbcType=VARCHAR}, 
-      #{bankAccount,jdbcType=VARCHAR}, #{startBusinessTime,jdbcType=VARCHAR}, #{endBusinessTime,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{leaveTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+      #{bankAccount,jdbcType=VARCHAR}, #{businessTime,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{leaveTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
     <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.agent.Shop">
         insert into t_shop
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 ID,
+            </if>
+            <if test="agId != null">
+                AG_ID,
             </if>
             <if test="shopNo != null">
                 SHOP_NO,
@@ -99,11 +103,14 @@
             <if test="categoryLabel != null">
                 CATEGORY_LABEL,
             </if>
-            <if test="locationTag != null">
-                LOCATION_TAG,
+            <if test="locationLabel != null">
+                LOCATION_LABEL,
             </if>
             <if test="business != null">
                 BUSINESS,
+            </if>
+            <if test="shopStatus != null">
+                SHOP_STATUS,
             </if>
             <if test="contractPersonName != null">
                 CONTRACT_PERSON_NAME,
@@ -123,11 +130,8 @@
             <if test="bankAccount != null">
                 BANK_ACCOUNT,
             </if>
-            <if test="startBusinessTime != null">
-                START_BUSINESS_TIME,
-            </if>
-            <if test="endBusinessTime != null">
-                END_BUSINESS_TIME,
+            <if test="businessTime != null">
+                BUSINESS_TIME,
             </if>
             <if test="createTime != null">
                 CREATE_TIME,
@@ -142,6 +146,9 @@
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id,jdbcType=INTEGER},
+            </if>
+            <if test="agId != null">
+                #{agId,jdbcType=INTEGER},
             </if>
             <if test="shopNo != null">
                 #{shopNo,jdbcType=VARCHAR},
@@ -173,11 +180,14 @@
             <if test="categoryLabel != null">
                 #{categoryLabel,jdbcType=VARCHAR},
             </if>
-            <if test="locationTag != null">
-                #{locationTag,jdbcType=VARCHAR},
+            <if test="locationLabel != null">
+                #{locationLabel,jdbcType=VARCHAR},
             </if>
             <if test="business != null">
                 #{business,jdbcType=VARCHAR},
+            </if>
+            <if test="shopStatus != null">
+                #{shopStatus,jdbcType=VARCHAR},
             </if>
             <if test="contractPersonName != null">
                 #{contractPersonName,jdbcType=VARCHAR},
@@ -197,11 +207,8 @@
             <if test="bankAccount != null">
                 #{bankAccount,jdbcType=VARCHAR},
             </if>
-            <if test="startBusinessTime != null">
-                #{startBusinessTime,jdbcType=VARCHAR},
-            </if>
-            <if test="endBusinessTime != null">
-                #{endBusinessTime,jdbcType=VARCHAR},
+            <if test="businessTime != null">
+                #{businessTime,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
@@ -217,6 +224,9 @@
     <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.agent.Shop">
         update t_shop
         <set>
+            <if test="agId != null">
+                AG_ID = #{agId,jdbcType=INTEGER},
+            </if>
             <if test="shopNo != null">
                 SHOP_NO = #{shopNo,jdbcType=VARCHAR},
             </if>
@@ -247,11 +257,14 @@
             <if test="categoryLabel != null">
                 CATEGORY_LABEL = #{categoryLabel,jdbcType=VARCHAR},
             </if>
-            <if test="locationTag != null">
-                LOCATION_TAG = #{locationTag,jdbcType=VARCHAR},
+            <if test="locationLabel != null">
+                LOCATION_LABEL = #{locationLabel,jdbcType=VARCHAR},
             </if>
             <if test="business != null">
                 BUSINESS = #{business,jdbcType=VARCHAR},
+            </if>
+            <if test="shopStatus != null">
+                SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR},
             </if>
             <if test="contractPersonName != null">
                 CONTRACT_PERSON_NAME = #{contractPersonName,jdbcType=VARCHAR},
@@ -271,11 +284,8 @@
             <if test="bankAccount != null">
                 BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
             </if>
-            <if test="startBusinessTime != null">
-                START_BUSINESS_TIME = #{startBusinessTime,jdbcType=VARCHAR},
-            </if>
-            <if test="endBusinessTime != null">
-                END_BUSINESS_TIME = #{endBusinessTime,jdbcType=VARCHAR},
+            <if test="businessTime != null">
+                BUSINESS_TIME = #{businessTime,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
@@ -291,7 +301,8 @@
     </update>
     <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.agent.Shop">
     update t_shop
-    set SHOP_NO = #{shopNo,jdbcType=VARCHAR},
+    set AG_ID = #{agId,jdbcType=INTEGER},
+      SHOP_NO = #{shopNo,jdbcType=VARCHAR},
       LOGO = #{logo,jdbcType=VARCHAR},
       NAME = #{name,jdbcType=VARCHAR},
       ADDRESS = #{address,jdbcType=VARCHAR},
@@ -301,16 +312,16 @@
       STAR_LEVEL = #{starLevel,jdbcType=VARCHAR},
       AREA_LABEL = #{areaLabel,jdbcType=VARCHAR},
       CATEGORY_LABEL = #{categoryLabel,jdbcType=VARCHAR},
-      LOCATION_TAG = #{locationTag,jdbcType=VARCHAR},
+      LOCATION_LABEL = #{locationLabel,jdbcType=VARCHAR},
       BUSINESS = #{business,jdbcType=VARCHAR},
+      SHOP_STATUS = #{shopStatus,jdbcType=VARCHAR},
       CONTRACT_PERSON_NAME = #{contractPersonName,jdbcType=VARCHAR},
       CONTRACT_PERSON_PHONE = #{contractPersonPhone,jdbcType=VARCHAR},
       ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
       SHOP_PHOTO = #{shopPhoto,jdbcType=VARCHAR},
       CONTRACT_PHOTO = #{contractPhoto,jdbcType=VARCHAR},
       BANK_ACCOUNT = #{bankAccount,jdbcType=VARCHAR},
-      START_BUSINESS_TIME = #{startBusinessTime,jdbcType=VARCHAR},
-      END_BUSINESS_TIME = #{endBusinessTime,jdbcType=VARCHAR},
+      BUSINESS_TIME = #{businessTime,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       LEAVE_TIME = #{leaveTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
@@ -375,8 +386,5 @@
 
             SHOP_STATUS like '%${searchData}%'
         </if>
-
-
     </select>
-
 </mapper>

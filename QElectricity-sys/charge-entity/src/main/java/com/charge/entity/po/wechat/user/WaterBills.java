@@ -5,11 +5,34 @@ import com.charge.entity.po.base.BaseEntity;
 import java.io.Serializable;
 
 public class WaterBills extends BaseEntity implements Serializable {
+    private Integer oid;
+
     private String amount;
 
     private String type;
 
+    /**
+     * t_water_bills关联t_order 一对一
+     */
+    private Order order;
+
     private static final long serialVersionUID = 1L;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Integer getOid() {
+        return oid;
+    }
+
+    public void setOid(Integer oid) {
+        this.oid = oid;
+    }
 
     public String getAmount() {
         return amount;
@@ -29,14 +52,11 @@ public class WaterBills extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", amount=").append(amount);
-        sb.append(", type=").append(type);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "WaterBills{" +
+                "oid=" + oid +
+                ", amount='" + amount + '\'' +
+                ", type='" + type + '\'' +
+                ", order=" + order +
+                '}';
     }
 }

@@ -4,6 +4,7 @@ import com.charge.entity.po.base.BaseEntity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class PowerBank extends BaseEntity implements Serializable {
     private String lockId;
@@ -32,7 +33,20 @@ public class PowerBank extends BaseEntity implements Serializable {
 
     private Date updateTime;
 
+    /**
+     * t_power_bank关联t_charging_box  多对多关系
+     */
+    private List<ChargingBox> chargingBoxList;
+
     private static final long serialVersionUID = 1L;
+
+    public List<ChargingBox> getChargingBoxList() {
+        return chargingBoxList;
+    }
+
+    public void setChargingBoxList(List<ChargingBox> chargingBoxList) {
+        this.chargingBoxList = chargingBoxList;
+    }
 
     public String getLockId() {
         return lockId;
@@ -138,27 +152,24 @@ public class PowerBank extends BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", lockId=").append(lockId);
-        sb.append(", lockStatus=").append(lockStatus);
-        sb.append(", lockOperationStatus=").append(lockOperationStatus);
-        sb.append(", pbCustomerId=").append(pbCustomerId);
-        sb.append(", pbModel=").append(pbModel);
-        sb.append(", pbDate=").append(pbDate);
-        sb.append(", pbSn=").append(pbSn);
-        sb.append(", pbCapacity=").append(pbCapacity);
-        sb.append(", pbStatus=").append(pbStatus);
-        sb.append(", pbPriority=").append(pbPriority);
-        sb.append(", borrowTimes=").append(borrowTimes);
-        sb.append(", totalUseTime=").append(totalUseTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "PowerBank{" +
+                "lockId='" + lockId + '\'' +
+                ", lockStatus='" + lockStatus + '\'' +
+                ", lockOperationStatus='" + lockOperationStatus + '\'' +
+                ", pbCustomerId='" + pbCustomerId + '\'' +
+                ", pbModel='" + pbModel + '\'' +
+                ", pbDate='" + pbDate + '\'' +
+                ", pbSn='" + pbSn + '\'' +
+                ", pbCapacity='" + pbCapacity + '\'' +
+                ", pbStatus='" + pbStatus + '\'' +
+                ", pbPriority='" + pbPriority + '\'' +
+                ", borrowTimes='" + borrowTimes + '\'' +
+                ", totalUseTime='" + totalUseTime + '\'' +
+                ", updateTime=" + updateTime +
+                ", chargingBoxList=" + chargingBoxList +
+                '}';
     }
 }

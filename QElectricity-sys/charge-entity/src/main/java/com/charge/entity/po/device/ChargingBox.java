@@ -7,6 +7,10 @@ import java.util.Date;
 import java.util.List;
 
 public class ChargingBox extends BaseEntity implements Serializable {
+    private Integer ptId;
+
+    private Integer sId;
+
     private String boxCustomerId;
 
     private String boxDate;
@@ -39,18 +43,48 @@ public class ChargingBox extends BaseEntity implements Serializable {
 
     private Date updateTime;
 
-    private static final long serialVersionUID = 1L;
+    /**
+     * t_charging_box关联t_price_type 多对一关系
+     */
+    private PriceTypeCB  priceTypeCB;
 
     /**
-     * @des:充电箱关联多个充电宝 one2many
-     * @associate:
-     * @see:
-
+     * t_charging_box关联t_power_bank 多对多关系
      */
     private List<PowerBank> powerBankList;
 
+    private static final long serialVersionUID = 1L;
+
     public List<PowerBank> getPowerBankList() {
         return powerBankList;
+    }
+
+    public void setPowerBankList(List<PowerBank> powerBankList) {
+        this.powerBankList = powerBankList;
+    }
+
+    public PriceTypeCB getPriceTypeCB() {
+        return priceTypeCB;
+    }
+
+    public void setPriceTypeCB(PriceTypeCB priceTypeCB) {
+        this.priceTypeCB = priceTypeCB;
+    }
+
+    public Integer getPtId() {
+        return ptId;
+    }
+
+    public void setPtId(Integer ptId) {
+        this.ptId = ptId;
+    }
+
+    public Integer getsId() {
+        return sId;
+    }
+
+    public void setsId(Integer sId) {
+        this.sId = sId;
     }
 
     public String getBoxCustomerId() {
@@ -181,34 +215,29 @@ public class ChargingBox extends BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public void setPowerBankList(List<PowerBank> powerBankList) {
-        this.powerBankList = powerBankList;
-    }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", boxCustomerId=").append(boxCustomerId);
-        sb.append(", boxDate=").append(boxDate);
-        sb.append(", boxSn=").append(boxSn);
-        sb.append(", location=").append(location);
-        sb.append(", status=").append(status);
-        sb.append(", model=").append(model);
-        sb.append(", softwareVersion=").append(softwareVersion);
-        sb.append(", business=").append(business);
-        sb.append(", borrowNum=").append(borrowNum);
-        sb.append(", powerBankNum=").append(powerBankNum);
-        sb.append(", canBorrowNum=").append(canBorrowNum);
-        sb.append(", canBackNum=").append(canBackNum);
-        sb.append(", malfunctionNum=").append(malfunctionNum);
-        sb.append(", speakerStatus=").append(speakerStatus);
-        sb.append(", simCcid=").append(simCcid);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "ChargingBox{" +
+                "ptId=" + ptId +
+                ", sId=" + sId +
+                ", boxCustomerId='" + boxCustomerId + '\'' +
+                ", boxDate='" + boxDate + '\'' +
+                ", boxSn='" + boxSn + '\'' +
+                ", location='" + location + '\'' +
+                ", status='" + status + '\'' +
+                ", model='" + model + '\'' +
+                ", softwareVersion='" + softwareVersion + '\'' +
+                ", business='" + business + '\'' +
+                ", borrowNum='" + borrowNum + '\'' +
+                ", powerBankNum='" + powerBankNum + '\'' +
+                ", canBorrowNum='" + canBorrowNum + '\'' +
+                ", canBackNum='" + canBackNum + '\'' +
+                ", malfunctionNum='" + malfunctionNum + '\'' +
+                ", speakerStatus='" + speakerStatus + '\'' +
+                ", simCcid='" + simCcid + '\'' +
+                ", updateTime=" + updateTime +
+                ", priceTypeCB=" + priceTypeCB +
+                ", powerBankList=" + powerBankList +
+                '}';
     }
 }

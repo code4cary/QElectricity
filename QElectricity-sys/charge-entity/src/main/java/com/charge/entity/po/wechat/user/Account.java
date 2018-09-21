@@ -7,24 +7,51 @@ import java.util.Date;
 import java.util.List;
 
 public class Account extends BaseEntity implements Serializable {
+    private Integer uid;
+
     private String accountDeposit;
 
-    private String isRefundDeposit;
+    private String depositStatus;
 
     private String accountBalance;
 
     private Date updateTime;
 
-    private static final long serialVersionUID = 1L;
+    /**
+     * t_account关联t_user  一对一关系
+     */
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
 
     /**
-     * @des:账户关联多个订单 one2many
-     * @associate:
-     * @see:
+     * t_account关联t_order 一对多关系
      */
     private List<Order> orderList;
 
-    public List<Order> getOrderList() { return orderList; }
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
 
     public String getAccountDeposit() {
         return accountDeposit;
@@ -34,12 +61,12 @@ public class Account extends BaseEntity implements Serializable {
         this.accountDeposit = accountDeposit == null ? null : accountDeposit.trim();
     }
 
-    public String getIsRefundDeposit() {
-        return isRefundDeposit;
+    public String getDepositStatus() {
+        return depositStatus;
     }
 
-    public void setIsRefundDeposit(String isRefundDeposit) {
-        this.isRefundDeposit = isRefundDeposit == null ? null : isRefundDeposit.trim();
+    public void setDepositStatus(String depositStatus) {
+        this.depositStatus = depositStatus == null ? null : depositStatus.trim();
     }
 
     public String getAccountBalance() {
@@ -58,20 +85,16 @@ public class Account extends BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public void setOrderList(List<Order> orderList) { this.orderList = orderList; }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", accountDeposit=").append(accountDeposit);
-        sb.append(", isRefundDeposit=").append(isRefundDeposit);
-        sb.append(", accountBalance=").append(accountBalance);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "Account{" +
+                "uid=" + uid +
+                ", accountDeposit='" + accountDeposit + '\'' +
+                ", depositStatus='" + depositStatus + '\'' +
+                ", accountBalance='" + accountBalance + '\'' +
+                ", updateTime=" + updateTime +
+                ", user=" + user +
+                ", orderList=" + orderList +
+                '}';
     }
 }

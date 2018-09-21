@@ -15,17 +15,19 @@ public class PriceTypeCB extends BaseEntity implements Serializable {
 
     private Date updateTime;
 
-    private static final long serialVersionUID = 1L;
-
     /**
-     * @des:定价策略关联多个充电箱 one2many
-     * @associate:
-     * @see:
+     * t_price_type关联t_charging_box  一对多关系
      */
     private List<ChargingBox> chargingBoxList;
 
+    private static final long serialVersionUID = 1L;
+
     public List<ChargingBox> getChargingBoxList() {
         return chargingBoxList;
+    }
+
+    public void setChargingBoxList(List<ChargingBox> chargingBoxList) {
+        this.chargingBoxList = chargingBoxList;
     }
 
     public String getFreeTime() {
@@ -60,22 +62,14 @@ public class PriceTypeCB extends BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public void setChargingBoxList(List<ChargingBox> chargingBoxList) {
-        this.chargingBoxList = chargingBoxList;
-    }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", freeTime=").append(freeTime);
-        sb.append(", pricePerHour=").append(pricePerHour);
-        sb.append(", topPricePerDay=").append(topPricePerDay);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "PriceTypeCB{" +
+                "freeTime='" + freeTime + '\'' +
+                ", pricePerHour='" + pricePerHour + '\'' +
+                ", topPricePerDay='" + topPricePerDay + '\'' +
+                ", updateTime=" + updateTime +
+                ", chargingBoxList=" + chargingBoxList +
+                '}';
     }
 }

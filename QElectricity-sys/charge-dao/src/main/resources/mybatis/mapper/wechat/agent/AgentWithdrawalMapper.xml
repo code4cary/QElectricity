@@ -3,6 +3,7 @@
 <mapper namespace="com.charge.dao.mapper.wechat.agent.AgentWithdrawalMapper" >
   <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.agent.AgentWithdrawal" >
     <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AG_ID" property="agId" jdbcType="INTEGER" />
     <result column="WITHDRAWAL_NO" property="withdrawalNo" jdbcType="VARCHAR" />
     <result column="AMOUNT" property="amount" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="VARCHAR" />
@@ -10,7 +11,7 @@
     <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, WITHDRAWAL_NO, AMOUNT, STATUS, CREATE_TIME, END_TIME
+    ID, AG_ID, WITHDRAWAL_NO, AMOUNT, STATUS, CREATE_TIME, END_TIME
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,18 +24,21 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.charge.entity.po.wechat.agent.AgentWithdrawal" >
-    insert into t_agent_withdrawal (ID, WITHDRAWAL_NO, AMOUNT, 
-      STATUS, CREATE_TIME, END_TIME
-      )
-    values (#{id,jdbcType=INTEGER}, #{withdrawalNo,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}
-      )
+    insert into t_agent_withdrawal (ID, AG_ID, WITHDRAWAL_NO, 
+      AMOUNT, STATUS, CREATE_TIME, 
+      END_TIME)
+    values (#{id,jdbcType=INTEGER}, #{agId,jdbcType=INTEGER}, #{withdrawalNo,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.agent.AgentWithdrawal" >
     insert into t_agent_withdrawal
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
+      </if>
+      <if test="agId != null" >
+        AG_ID,
       </if>
       <if test="withdrawalNo != null" >
         WITHDRAWAL_NO,
@@ -56,6 +60,9 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="agId != null" >
+        #{agId,jdbcType=INTEGER},
+      </if>
       <if test="withdrawalNo != null" >
         #{withdrawalNo,jdbcType=VARCHAR},
       </if>
@@ -76,6 +83,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.agent.AgentWithdrawal" >
     update t_agent_withdrawal
     <set >
+      <if test="agId != null" >
+        AG_ID = #{agId,jdbcType=INTEGER},
+      </if>
       <if test="withdrawalNo != null" >
         WITHDRAWAL_NO = #{withdrawalNo,jdbcType=VARCHAR},
       </if>
@@ -96,7 +106,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.agent.AgentWithdrawal" >
     update t_agent_withdrawal
-    set WITHDRAWAL_NO = #{withdrawalNo,jdbcType=VARCHAR},
+    set AG_ID = #{agId,jdbcType=INTEGER},
+      WITHDRAWAL_NO = #{withdrawalNo,jdbcType=VARCHAR},
       AMOUNT = #{amount,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},

@@ -12,7 +12,7 @@ public class User extends BaseEntity implements Serializable {
 
     private String gender;
 
-    private String userFrom;
+    private String userfrom;
 
     private String wxOpenid;
 
@@ -44,6 +44,19 @@ public class User extends BaseEntity implements Serializable {
 
     private Date updateTime;
 
+    /**
+     * t_user关联t_account 一对一关系
+     */
+    private Account account;
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public String getNickName() {
@@ -70,12 +83,12 @@ public class User extends BaseEntity implements Serializable {
         this.gender = gender == null ? null : gender.trim();
     }
 
-    public String getUserFrom() {
-        return userFrom;
+    public String getUserfrom() {
+        return userfrom;
     }
 
-    public void setUserFrom(String from) {
-        this.userFrom = from == null ? null : from.trim();
+    public void setUserfrom(String userfrom) {
+        this.userfrom = userfrom == null ? null : userfrom.trim();
     }
 
     public String getWxOpenid() {
@@ -198,34 +211,29 @@ public class User extends BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", nickName=").append(nickName);
-        sb.append(", avatar=").append(avatar);
-        sb.append(", gender=").append(gender);
-        sb.append(", userFrom=").append(userFrom);
-        sb.append(", wxOpenid=").append(wxOpenid);
-        sb.append(", city=").append(city);
-        sb.append(", location=").append(location);
-        sb.append(", point=").append(point);
-        sb.append(", telephone=").append(telephone);
-        sb.append(", appStatus=").append(appStatus);
-        sb.append(", isStaff=").append(isStaff);
-        sb.append(", isAgent=").append(isAgent);
-        sb.append(", isVip=").append(isVip);
-        sb.append(", freeTime=").append(freeTime);
-        sb.append(", skey=").append(skey);
-        sb.append(", wxUionid=").append(wxUionid);
-        sb.append(", isUnsubscribe=").append(isUnsubscribe);
-        sb.append(", description=").append(description);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "User{" +
+                "nickName='" + nickName + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", gender='" + gender + '\'' +
+                ", userfrom='" + userfrom + '\'' +
+                ", wxOpenid='" + wxOpenid + '\'' +
+                ", city='" + city + '\'' +
+                ", location='" + location + '\'' +
+                ", point=" + point +
+                ", telephone='" + telephone + '\'' +
+                ", appStatus='" + appStatus + '\'' +
+                ", isStaff='" + isStaff + '\'' +
+                ", isAgent='" + isAgent + '\'' +
+                ", isVip='" + isVip + '\'' +
+                ", freeTime='" + freeTime + '\'' +
+                ", skey='" + skey + '\'' +
+                ", wxUionid='" + wxUionid + '\'' +
+                ", isUnsubscribe='" + isUnsubscribe + '\'' +
+                ", description='" + description + '\'' +
+                ", updateTime=" + updateTime +
+                ", account=" + account +
+                '}';
     }
 }

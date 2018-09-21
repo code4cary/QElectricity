@@ -1,13 +1,13 @@
 package com.charge.entity.po.wechat.agent;
 
 import com.charge.entity.po.base.BaseEntity;
-import com.charge.entity.po.device.ChargingBox;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class Shop extends BaseEntity implements Serializable {
+    private Integer agId;
+
     private String shopNo;
 
     private String logo;
@@ -28,9 +28,11 @@ public class Shop extends BaseEntity implements Serializable {
 
     private String categoryLabel;
 
-    private String locationTag;
+    private String locationLabel;
 
     private String business;
+
+    private String shopStatus;
 
     private String contractPersonName;
 
@@ -44,27 +46,33 @@ public class Shop extends BaseEntity implements Serializable {
 
     private String bankAccount;
 
-    private String startBusinessTime;
-
-    private String endBusinessTime;
+    private String businessTime;
 
     private Date leaveTime;
 
     private Date updateTime;
 
+    /**
+     * t_shop关联t_agent 多对一关系
+     */
+    private Agent agent;
+
     private static final long serialVersionUID = 1L;
 
+    public Agent getAgent() {
+        return agent;
+    }
 
-    /**
-     * @des:商户关联多个充电箱 one2many
-     * @associate:
-     * @see:
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
 
-     */
-    private List<ChargingBox> chargingBoxList;
+    public Integer getAgId() {
+        return agId;
+    }
 
-    public List<ChargingBox> getChargingBoxList() {
-        return chargingBoxList;
+    public void setAgId(Integer agId) {
+        this.agId = agId;
     }
 
     public String getShopNo() {
@@ -147,12 +155,12 @@ public class Shop extends BaseEntity implements Serializable {
         this.categoryLabel = categoryLabel == null ? null : categoryLabel.trim();
     }
 
-    public String getLocationTag() {
-        return locationTag;
+    public String getLocationLabel() {
+        return locationLabel;
     }
 
-    public void setLocationTag(String locationTag) {
-        this.locationTag = locationTag == null ? null : locationTag.trim();
+    public void setLocationLabel(String locationLabel) {
+        this.locationLabel = locationLabel == null ? null : locationLabel.trim();
     }
 
     public String getBusiness() {
@@ -161,6 +169,14 @@ public class Shop extends BaseEntity implements Serializable {
 
     public void setBusiness(String business) {
         this.business = business == null ? null : business.trim();
+    }
+
+    public String getShopStatus() {
+        return shopStatus;
+    }
+
+    public void setShopStatus(String shopStatus) {
+        this.shopStatus = shopStatus == null ? null : shopStatus.trim();
     }
 
     public String getContractPersonName() {
@@ -211,20 +227,12 @@ public class Shop extends BaseEntity implements Serializable {
         this.bankAccount = bankAccount == null ? null : bankAccount.trim();
     }
 
-    public String getStartBusinessTime() {
-        return startBusinessTime;
+    public String getBusinessTime() {
+        return businessTime;
     }
 
-    public void setStartBusinessTime(String startBusinessTime) {
-        this.startBusinessTime = startBusinessTime == null ? null : startBusinessTime.trim();
-    }
-
-    public String getEndBusinessTime() {
-        return endBusinessTime;
-    }
-
-    public void setEndBusinessTime(String endBusinessTime) {
-        this.endBusinessTime = endBusinessTime == null ? null : endBusinessTime.trim();
+    public void setBusinessTime(String businessTime) {
+        this.businessTime = businessTime == null ? null : businessTime.trim();
     }
 
     public Date getLeaveTime() {
@@ -243,40 +251,33 @@ public class Shop extends BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public void setChargingBoxList(List<ChargingBox> chargingBoxList) {
-        this.chargingBoxList = chargingBoxList;
-    }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", shopNo=").append(shopNo);
-        sb.append(", logo=").append(logo);
-        sb.append(", name=").append(name);
-        sb.append(", address=").append(address);
-        sb.append(", city=").append(city);
-        sb.append(", longitude=").append(longitude);
-        sb.append(", latitude=").append(latitude);
-        sb.append(", starLevel=").append(starLevel);
-        sb.append(", areaLabel=").append(areaLabel);
-        sb.append(", categoryLabel=").append(categoryLabel);
-        sb.append(", locationTag=").append(locationTag);
-        sb.append(", business=").append(business);
-        sb.append(", contractPersonName=").append(contractPersonName);
-        sb.append(", contractPersonPhone=").append(contractPersonPhone);
-        sb.append(", idNumber=").append(idNumber);
-        sb.append(", shopPhoto=").append(shopPhoto);
-        sb.append(", contractPhoto=").append(contractPhoto);
-        sb.append(", bankAccount=").append(bankAccount);
-        sb.append(", startBusinessTime=").append(startBusinessTime);
-        sb.append(", endBusinessTime=").append(endBusinessTime);
-        sb.append(", leaveTime=").append(leaveTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "Shop{" +
+                "agId=" + agId +
+                ", shopNo='" + shopNo + '\'' +
+                ", logo='" + logo + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", starLevel='" + starLevel + '\'' +
+                ", areaLabel='" + areaLabel + '\'' +
+                ", categoryLabel='" + categoryLabel + '\'' +
+                ", locationLabel='" + locationLabel + '\'' +
+                ", business='" + business + '\'' +
+                ", shopStatus='" + shopStatus + '\'' +
+                ", contractPersonName='" + contractPersonName + '\'' +
+                ", contractPersonPhone='" + contractPersonPhone + '\'' +
+                ", idNumber='" + idNumber + '\'' +
+                ", shopPhoto='" + shopPhoto + '\'' +
+                ", contractPhoto='" + contractPhoto + '\'' +
+                ", bankAccount='" + bankAccount + '\'' +
+                ", businessTime='" + businessTime + '\'' +
+                ", leaveTime=" + leaveTime +
+                ", updateTime=" + updateTime +
+                ", agent=" + agent +
+                '}';
     }
 }

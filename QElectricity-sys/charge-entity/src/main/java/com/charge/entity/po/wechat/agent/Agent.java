@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Agent extends BaseEntity implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String realName;
 
     private String credentialsSalt;
@@ -41,30 +43,30 @@ public class Agent extends BaseEntity implements Serializable {
 
     private Date updateTime;
 
-    private static final long serialVersionUID = 1L;
-
+    /**
+     * t_agent关联t_shop 一对多关系
+     */
+    private List<Shop> shopList;
 
     /**
-     * @des:代理商关联代理商提现 one2many
-     * @associate:
-     * @see:
+     * t_agent关联t_agent_withdrawal 一对多
      */
     private List<AgentWithdrawal> agentWithdrawalList;
-
-    /**
-     * @des:代理商关联商户 one2many
-     * @associate:
-     * @see:
-     */
-
-    private List<Shop> shopList;
 
     public List<Shop> getShopList() {
         return shopList;
     }
 
+    public void setShopList(List<Shop> shopList) {
+        this.shopList = shopList;
+    }
+
     public List<AgentWithdrawal> getAgentWithdrawalList() {
         return agentWithdrawalList;
+    }
+
+    public void setAgentWithdrawalList(List<AgentWithdrawal> agentWithdrawalList) {
+        this.agentWithdrawalList = agentWithdrawalList;
     }
 
     public String getRealName() {
@@ -203,39 +205,28 @@ public class Agent extends BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public void setAgentWithdrawalList(List<AgentWithdrawal> agentWithdrawalList) {
-        this.agentWithdrawalList = agentWithdrawalList;
-    }
-
-    public void setShopList(List<Shop> shopList) {
-        this.shopList = shopList;
-    }
-
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", realName=").append(realName);
-        sb.append(", credentialsSalt=").append(credentialsSalt);
-        sb.append(", userName=").append(userName);
-        sb.append(", password=").append(password);
-        sb.append(", idNumber=").append(idNumber);
-        sb.append(", level=").append(level);
-        sb.append(", parentAgentId=").append(parentAgentId);
-        sb.append(", shargingRatio=").append(shargingRatio);
-        sb.append(", serviceCharges=").append(serviceCharges);
-        sb.append(", canWithdraw=").append(canWithdraw);
-        sb.append(", chargingBoxNum=").append(chargingBoxNum);
-        sb.append(", frozenAmount=").append(frozenAmount);
-        sb.append(", orderNum=").append(orderNum);
-        sb.append(", totalRevenue=").append(totalRevenue);
-        sb.append(", totalShare=").append(totalShare);
-        sb.append(", leaveTime=").append(leaveTime);
-        sb.append(", updateTime=").append(updateTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "Agent{" +
+                "realName='" + realName + '\'' +
+                ", credentialsSalt='" + credentialsSalt + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", idNumber='" + idNumber + '\'' +
+                ", level='" + level + '\'' +
+                ", parentAgentId='" + parentAgentId + '\'' +
+                ", shargingRatio='" + shargingRatio + '\'' +
+                ", serviceCharges='" + serviceCharges + '\'' +
+                ", canWithdraw='" + canWithdraw + '\'' +
+                ", chargingBoxNum='" + chargingBoxNum + '\'' +
+                ", frozenAmount='" + frozenAmount + '\'' +
+                ", orderNum='" + orderNum + '\'' +
+                ", totalRevenue='" + totalRevenue + '\'' +
+                ", totalShare='" + totalShare + '\'' +
+                ", leaveTime=" + leaveTime +
+                ", updateTime=" + updateTime +
+                ", shopList=" + shopList +
+                ", agentWithdrawalList=" + agentWithdrawalList +
+                '}';
     }
 }

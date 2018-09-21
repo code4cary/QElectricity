@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class AgentWithdrawal extends BaseEntity implements Serializable {
+    private Integer agId;
+
     private String withdrawalNo;
 
     private String amount;
@@ -15,6 +17,27 @@ public class AgentWithdrawal extends BaseEntity implements Serializable {
     private Date endTime;
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * t_agent_withdrawal关联t_agent 多对一
+     */
+    private Agent agent;
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
+    public Integer getAgId() {
+        return agId;
+    }
+
+    public void setAgId(Integer agId) {
+        this.agId = agId;
+    }
 
     public String getWithdrawalNo() {
         return withdrawalNo;
@@ -50,16 +73,13 @@ public class AgentWithdrawal extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", withdrawalNo=").append(withdrawalNo);
-        sb.append(", amount=").append(amount);
-        sb.append(", status=").append(status);
-        sb.append(", endTime=").append(endTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "AgentWithdrawal{" +
+                "agId=" + agId +
+                ", withdrawalNo='" + withdrawalNo + '\'' +
+                ", amount='" + amount + '\'' +
+                ", status='" + status + '\'' +
+                ", endTime=" + endTime +
+                ", agent=" + agent +
+                '}';
     }
 }

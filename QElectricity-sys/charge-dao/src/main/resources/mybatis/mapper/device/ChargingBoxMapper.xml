@@ -3,6 +3,8 @@
 <mapper namespace="com.charge.dao.mapper.device.ChargingBoxMapper" >
   <resultMap id="BaseResultMap" type="com.charge.entity.po.device.ChargingBox" >
     <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PT_ID" property="ptId" jdbcType="INTEGER" />
+    <result column="S_ID" property="sId" jdbcType="INTEGER" />
     <result column="BOX_CUSTOMER_ID" property="boxCustomerId" jdbcType="VARCHAR" />
     <result column="BOX_DATE" property="boxDate" jdbcType="VARCHAR" />
     <result column="BOX_SN" property="boxSn" jdbcType="VARCHAR" />
@@ -22,7 +24,7 @@
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, BOX_CUSTOMER_ID, BOX_DATE, BOX_SN, LOCATION, STATUS, MODEL, SOFTWARE_VERSION, 
+    ID, PT_ID, S_ID, BOX_CUSTOMER_ID, BOX_DATE, BOX_SN, LOCATION, STATUS, MODEL, SOFTWARE_VERSION, 
     BUSINESS, BORROW_NUM, POWER_BANK_NUM, CAN_BORROW_NUM, CAN_BACK_NUM, MALFUNCTION_NUM, 
     SPEAKER_STATUS, SIM_CCID, CREATE_TIME, UPDATE_TIME
   </sql>
@@ -37,26 +39,32 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.charge.entity.po.device.ChargingBox" >
-    insert into t_charging_box (ID, BOX_CUSTOMER_ID, BOX_DATE, 
-      BOX_SN, LOCATION, STATUS, 
-      MODEL, SOFTWARE_VERSION, BUSINESS, 
-      BORROW_NUM, POWER_BANK_NUM, CAN_BORROW_NUM, 
-      CAN_BACK_NUM, MALFUNCTION_NUM, SPEAKER_STATUS, 
-      SIM_CCID, CREATE_TIME, UPDATE_TIME
-      )
-    values (#{id,jdbcType=INTEGER}, #{boxCustomerId,jdbcType=VARCHAR}, #{boxDate,jdbcType=VARCHAR}, 
-      #{boxSn,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{model,jdbcType=VARCHAR}, #{softwareVersion,jdbcType=VARCHAR}, #{business,jdbcType=VARCHAR}, 
-      #{borrowNum,jdbcType=VARCHAR}, #{powerBankNum,jdbcType=VARCHAR}, #{canBorrowNum,jdbcType=VARCHAR}, 
-      #{canBackNum,jdbcType=VARCHAR}, #{malfunctionNum,jdbcType=VARCHAR}, #{speakerStatus,jdbcType=VARCHAR}, 
-      #{simCcid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into t_charging_box (ID, PT_ID, S_ID, 
+      BOX_CUSTOMER_ID, BOX_DATE, BOX_SN, 
+      LOCATION, STATUS, MODEL, 
+      SOFTWARE_VERSION, BUSINESS, BORROW_NUM, 
+      POWER_BANK_NUM, CAN_BORROW_NUM, CAN_BACK_NUM, 
+      MALFUNCTION_NUM, SPEAKER_STATUS, SIM_CCID, 
+      CREATE_TIME, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{ptId,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER}, 
+      #{boxCustomerId,jdbcType=VARCHAR}, #{boxDate,jdbcType=VARCHAR}, #{boxSn,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, 
+      #{softwareVersion,jdbcType=VARCHAR}, #{business,jdbcType=VARCHAR}, #{borrowNum,jdbcType=VARCHAR}, 
+      #{powerBankNum,jdbcType=VARCHAR}, #{canBorrowNum,jdbcType=VARCHAR}, #{canBackNum,jdbcType=VARCHAR}, 
+      #{malfunctionNum,jdbcType=VARCHAR}, #{speakerStatus,jdbcType=VARCHAR}, #{simCcid,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.charge.entity.po.device.ChargingBox" >
     insert into t_charging_box
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
+      </if>
+      <if test="ptId != null" >
+        PT_ID,
+      </if>
+      <if test="sId != null" >
+        S_ID,
       </if>
       <if test="boxCustomerId != null" >
         BOX_CUSTOMER_ID,
@@ -114,6 +122,12 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="ptId != null" >
+        #{ptId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null" >
+        #{sId,jdbcType=INTEGER},
+      </if>
       <if test="boxCustomerId != null" >
         #{boxCustomerId,jdbcType=VARCHAR},
       </if>
@@ -170,6 +184,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.device.ChargingBox" >
     update t_charging_box
     <set >
+      <if test="ptId != null" >
+        PT_ID = #{ptId,jdbcType=INTEGER},
+      </if>
+      <if test="sId != null" >
+        S_ID = #{sId,jdbcType=INTEGER},
+      </if>
       <if test="boxCustomerId != null" >
         BOX_CUSTOMER_ID = #{boxCustomerId,jdbcType=VARCHAR},
       </if>
@@ -226,7 +246,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.device.ChargingBox" >
     update t_charging_box
-    set BOX_CUSTOMER_ID = #{boxCustomerId,jdbcType=VARCHAR},
+    set PT_ID = #{ptId,jdbcType=INTEGER},
+      S_ID = #{sId,jdbcType=INTEGER},
+      BOX_CUSTOMER_ID = #{boxCustomerId,jdbcType=VARCHAR},
       BOX_DATE = #{boxDate,jdbcType=VARCHAR},
       BOX_SN = #{boxSn,jdbcType=VARCHAR},
       LOCATION = #{location,jdbcType=VARCHAR},

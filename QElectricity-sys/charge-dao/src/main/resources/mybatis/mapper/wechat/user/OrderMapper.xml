@@ -3,6 +3,7 @@
 <mapper namespace="com.charge.dao.mapper.wechat.user.OrderMapper" >
   <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.Order" >
     <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AID" property="aid" jdbcType="INTEGER" />
     <result column="ORDER_NUM" property="orderNum" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
@@ -16,7 +17,7 @@
     <result column="PAY_TIME" property="payTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, ORDER_NUM, CREATE_TIME, END_TIME, PAY_AMOUNT, PAY_STATUS, POWER_BANK_BORROW_PLACE, 
+    ID, AID, ORDER_NUM, CREATE_TIME, END_TIME, PAY_AMOUNT, PAY_STATUS, POWER_BANK_BORROW_PLACE, 
     POWER_BANK_BACK_PLACE, POWER_BANK_STATUS, POWER_BANK_ID, BOX_CHARGING_ID, PAY_TIME
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -30,14 +31,14 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.charge.entity.po.wechat.user.Order" >
-    insert into t_order (ID, ORDER_NUM, CREATE_TIME, 
-      END_TIME, PAY_AMOUNT, PAY_STATUS, 
-      POWER_BANK_BORROW_PLACE, POWER_BANK_BACK_PLACE, 
+    insert into t_order (ID, AID, ORDER_NUM, 
+      CREATE_TIME, END_TIME, PAY_AMOUNT, 
+      PAY_STATUS, POWER_BANK_BORROW_PLACE, POWER_BANK_BACK_PLACE, 
       POWER_BANK_STATUS, POWER_BANK_ID, BOX_CHARGING_ID, 
       PAY_TIME)
-    values (#{id,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{payAmount,jdbcType=VARCHAR}, #{payStatus,jdbcType=VARCHAR}, 
-      #{powerBankBorrowPlace,jdbcType=VARCHAR}, #{powerBankBackPlace,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{payAmount,jdbcType=VARCHAR}, 
+      #{payStatus,jdbcType=VARCHAR}, #{powerBankBorrowPlace,jdbcType=VARCHAR}, #{powerBankBackPlace,jdbcType=VARCHAR}, 
       #{powerBankStatus,jdbcType=VARCHAR}, #{powerBankId,jdbcType=VARCHAR}, #{boxChargingId,jdbcType=VARCHAR}, 
       #{payTime,jdbcType=TIMESTAMP})
   </insert>
@@ -46,6 +47,9 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
+      </if>
+      <if test="aid != null" >
+        AID,
       </if>
       <if test="orderNum != null" >
         ORDER_NUM,
@@ -85,6 +89,9 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
       <if test="orderNum != null" >
         #{orderNum,jdbcType=VARCHAR},
       </if>
@@ -123,6 +130,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.user.Order" >
     update t_order
     <set >
+      <if test="aid != null" >
+        AID = #{aid,jdbcType=INTEGER},
+      </if>
       <if test="orderNum != null" >
         ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
       </if>
@@ -161,7 +171,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.Order" >
     update t_order
-    set ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
+    set AID = #{aid,jdbcType=INTEGER},
+      ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       END_TIME = #{endTime,jdbcType=TIMESTAMP},
       PAY_AMOUNT = #{payAmount,jdbcType=VARCHAR},

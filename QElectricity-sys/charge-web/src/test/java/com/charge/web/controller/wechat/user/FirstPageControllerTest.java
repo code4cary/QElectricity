@@ -38,9 +38,9 @@ public class FirstPageControllerTest {
     @Test
     public void testGetFirstPageInfo() throws Exception {
 
-        Double userLongitude = 70.0;
+        Double userLongitude = 113.836378;
 
-        Double userLatitude = 40.0;
+        Double userLatitude = 22.631872;
 
         Double distance =  50.0;
 

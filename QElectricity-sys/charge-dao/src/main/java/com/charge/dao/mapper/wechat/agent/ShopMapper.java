@@ -12,7 +12,6 @@ import java.util.Map;
  * 由MyBatis Generator工具自动生成，请不要手动修改
  */
 public interface ShopMapper extends BaseMapper<Shop, Integer> {
-
     List<ShopInfo> findShopByCoordinates(@Param("map") Map<String, Double> map);
 
     List<ShopInfo> findShopBySearch(@Param("map") Map positionMap,@Param("searchData") String searchDataValue);
