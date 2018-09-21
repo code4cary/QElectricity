@@ -24,6 +24,7 @@ public class ChargingRecordControllerTest {
     @Autowired
     private UserService userService;
 
+
     //
     public static void main(String... args) {
 
@@ -36,10 +37,12 @@ public class ChargingRecordControllerTest {
         String skey = "skey123456";
 
         //直接查询数据库该skey对应的用户的信息.如果前端能传来skey,说明skey肯定没过期,所以数据库存的skey也没有更新
-        List<ChargingRecord> userChargingRecord= userService.findUserChargingRecordBySkey(skey);
+        List<ChargingRecord> chargingRecordList= userService.findUserChargingRecordBySkey(skey);
 
-        Map chargingRecord = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "personalCenter", "personalInfo", userChargingRecord);
+        Map chargingRecord = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "chargingRecord", "chargingRecord", chargingRecordList);
         Object json = JSON.toJSON(chargingRecord);
         System.out.println(json);
+
+
     }
 }

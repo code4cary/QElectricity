@@ -1,7 +1,6 @@
 package com.charge.service.biz.wechat.user.firstPage.impl;
 
 import com.charge.common.pojo.ChargingRecord;
-import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.device.PowerBankMapper;
 import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
@@ -16,6 +15,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,9 +33,6 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 
     @Autowired
     private PriceTypeCBMapper priceTypeCBMapper;
-
-    @Autowired
-    private ChargingBoxMapper chargingBoxMapper;
 
     @Autowired
     private PowerBankMapper powerBankMapper;
@@ -138,11 +135,10 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 
         //-- 1:先把订单记录查询出
         //根据skey在t_order表下关联查询该用户的账户下的订单
-        List<Order> orderList = orderMapper.findUserChargingRecordBySkey(skey);
+        List<Order> orderList = orderMapper.findUserOrderRecordBySkey(skey);
         System.out.println(orderList);
 
         List<ChargingRecord> chargingRecordList = new ArrayList<>();
-
         orderList.forEach(order -> {
             ChargingRecord chargingRecord = new ChargingRecord();
             Double timeAmount = null;
@@ -156,15 +152,14 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 
                 //计算用户当前已使用充电宝时间,单位分钟
                 timeAmount = Math.ceil(Double.valueOf(createTime - nowTime) / 1000.0 / 60.0);
-                chargingRecord.setChargingTimeAmount(String.valueOf(timeAmount));
+                chargingRecord.setChargingTimeAmount(String.valueOf(new Double(timeAmount).intValue()));
 
                 //查询该充电箱的定价策略
                 //获得该充电箱的id
                 String chargingBoxId = order.getBoxChargingId();//此id为充电箱id,不是编号
-                //根据充电箱id获得该充电箱的价格策略表的PT_ID
-                String pt_id = chargingBoxMapper.findPtIdById(chargingBoxId);
-                //根据介个策略表的id去价格策略表里面查询该充电箱的价格策略
-                PriceTypeCB priceTypeCB = priceTypeCBMapper.findPriceTypeById(pt_id);
+                //根据充电箱id去定价策略表查询该充电箱的定价策略
+                PriceTypeCB priceTypeCB = priceTypeCBMapper.findPriceTypeCBByCbId(order.getBoxChargingId());
+
 
                 //获取详细价格策略,免费时长,每小时价格,每日封顶都为整型
                 //免费时长
@@ -207,19 +202,25 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
                 }
             } else {//3:如果用户当前没有使用充电宝 --重新计算使用时长
                 timeAmount = Math.ceil(Double.valueOf(order.getEndTime().getTime()
-                        - order.getCreateTime().getTime()) / 1000.0 / 60.0);
+                        - order.getCreateTime().getTime())/1000.0/60.0);
 
-                chargingRecord.setChargingTimeAmount(String.valueOf(timeAmount));
+                chargingRecord.setChargingTimeAmount(String.valueOf(new Double(timeAmount).intValue()));
 
             }
 
             //用户正在使用充电宝或没使用充电宝
             chargingRecord.setChargingStatus(order.getPowerBankStatus());
-            chargingRecord.setChargingStartTime(String.valueOf(order.getCreateTime()));
+            //时间格式化下
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String startTime = df.format(order.getCreateTime());
+            chargingRecord.setChargingStartTime(startTime);
+            //金额
             chargingRecord.setChargingCost(order.getPayAmount());
             //获取充电宝sn,即充电宝编号
             String powerBankNO = powerBankMapper.findSNById(order.getPowerBankId());
             chargingRecord.setPowerBankNO(powerBankNO);
+
+            chargingRecordList.add(chargingRecord);
 
         });
 

@@ -6,7 +6,7 @@
         <result column="NICK_NAME" property="nickName" jdbcType="VARCHAR"/>
         <result column="AVATAR" property="avatar" jdbcType="VARCHAR"/>
         <result column="GENDER" property="gender" jdbcType="VARCHAR"/>
-        <result column="USERFROM" property="userfrom" jdbcType="VARCHAR"/>
+        <result column="USERFROM" property="userFrom" jdbcType="VARCHAR"/>
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="WX_OPENID" property="wxOpenid" jdbcType="VARCHAR"/>
         <result column="CITY" property="city" jdbcType="VARCHAR"/>
@@ -49,7 +49,7 @@
       IS_UNSUBSCRIBE, DESCRIPTION, UPDATE_TIME
       )
     values (#{id,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{gender,jdbcType=VARCHAR}, #{userfrom,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{gender,jdbcType=VARCHAR}, #{userFrom,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
       #{wxOpenid,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
       #{point,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR}, #{appStatus,jdbcType=VARCHAR}, 
       #{isStaff,jdbcType=VARCHAR}, #{isAgent,jdbcType=VARCHAR}, #{isVip,jdbcType=VARCHAR}, 
@@ -72,7 +72,7 @@
             <if test="gender != null">
                 GENDER,
             </if>
-            <if test="userfrom != null">
+            <if test="userFrom != null">
                 USERFROM,
             </if>
             <if test="createTime != null">
@@ -137,8 +137,8 @@
             <if test="gender != null">
                 #{gender,jdbcType=VARCHAR},
             </if>
-            <if test="userfrom != null">
-                #{userfrom,jdbcType=VARCHAR},
+            <if test="userFrom != null">
+                #{userFrom,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
@@ -202,8 +202,8 @@
             <if test="gender != null">
                 GENDER = #{gender,jdbcType=VARCHAR},
             </if>
-            <if test="userfrom != null">
-                USERFROM = #{userfrom,jdbcType=VARCHAR},
+            <if test="userFrom != null">
+                USERFROM = #{userFrom,jdbcType=VARCHAR},
             </if>
             <if test="createTime != null">
                 CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
@@ -261,7 +261,7 @@
     set NICK_NAME = #{nickName,jdbcType=VARCHAR},
       AVATAR = #{avatar,jdbcType=VARCHAR},
       GENDER = #{gender,jdbcType=VARCHAR},
-      USERFROM = #{userfrom,jdbcType=VARCHAR},
+      USERFROM = #{userFrom,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       WX_OPENID = #{wxOpenid,jdbcType=VARCHAR},
       CITY = #{city,jdbcType=VARCHAR},
@@ -345,37 +345,7 @@
     </select>
 
 
-    <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
-    <resultMap type="com.charge.common.pojo.ChargingRecord" id="chargingRecordMap">
-        <result column="SHOP_PHOTO" property="shopPhoto"/>
-        <result column="NAME" property="shopName"/>
-        <result column="BUSINESS_TIME" property="businessTime"/>
-        <result column="SHOP_STATUS" property="shopStatus"/>
-        <result column="CONTRACT_PERSON_NAME" property="shopTel"/>
-    </resultMap>
 
-    <!--
-        根据skey查询用户充电记录(订单记录和流水记录集合查询)数据返回前端个人中心页展示
 
-        前端充电记录页需要展示的信息:
-            1:充电时间即订单创建时间(精确到秒),
-            2:充电宝编号,
-            3:充电时长,如果充电状态为充电中,则充电时长为现在的时间减去订单创建的时间;反之,则用订单结束时间减去订单创建时间
-            4:充电花费,如果充电状态为充电中,则充电花费为现在的时间减去订单创建的时间之差乘以相应的定价策略值,此时需要查出充电箱编号,进而查出定价策略;
-            反之,则用订单结束时间减去订单创建时间之差乘以相应的定价策略值.
-            5:充电状态,充电中或充电完成
-             按照创建时间先后排序返回
-    -->
-    <select id="findUserChargingRecordBySkey" parameterType="String" resultMap="com.charge.entity.po.wechat.user.Order">
-        <if test="skey != null">
-            select
-                *
-            from
-              t_order
-            where
-              #{skey}=t_user.SKEY and t_account.UID=t_user.ID
-              t_order.AID=t_account.ID
-        </if>
-    </select>
 
 </mapper>

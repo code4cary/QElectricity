@@ -8,5 +8,6 @@ import org.apache.ibatis.annotations.Param;
  * 由MyBatis Generator工具自动生成，请不要手动修改
  */
 public interface PowerBankMapper extends BaseMapper<PowerBank, Integer> {
-    String findSNById(@Param("id") String powerBankId);
+
+    String findSNById(@Param("id") String id);
 }

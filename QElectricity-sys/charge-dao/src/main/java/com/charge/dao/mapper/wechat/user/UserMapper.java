@@ -22,5 +22,4 @@ public interface UserMapper extends BaseMapper<User, Integer> {
 
     Map<String,String> findUserWalletInfoBySkey(@Param("skey") String skey);
 
-    Integer findUIDBySkey(@Param("skey")String skey);
 }

@@ -10,5 +10,5 @@ import org.apache.ibatis.annotations.Param;
 public interface PriceTypeCBMapper extends BaseMapper<PriceTypeCB, Integer> {
 
 
-    PriceTypeCB findPriceTypeById(@Param("id") String pt_id);
+    PriceTypeCB findPriceTypeCBByCbId(@Param("cbId") String cb_id);
 }

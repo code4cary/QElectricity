@@ -10,6 +10,7 @@ import java.util.List;
  * 由MyBatis Generator工具自动生成，请不要手动修改
  */
 public interface OrderMapper extends BaseMapper<Order, Integer> {
+    String findPbIdById(@Param("id") int id);
 
-    List<Order> findUserChargingRecordBySkey(@Param("skey") String skey);
+    List<Order> findUserOrderRecordBySkey(@Param("skey") String skey);
 }
