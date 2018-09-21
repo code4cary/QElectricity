@@ -1,8 +1,10 @@
 package com.charge.service.biz.wechat.user.firstPage;
 
+import com.charge.common.pojo.ChargingRecord;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.BaseService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,5 +22,9 @@ public interface UserService extends BaseService<User, Integer> {
 
     void updateSkeyByOpenId(String openId,String skey);
 
-    Map<String,String> findUserBySkey(String skey);
+    Map<String,String> findUserInfoBySkey(String skey);
+
+    Map<String,String> findUserWalletInfoBySkey(String skey);
+
+    List<ChargingRecord> findUserChargingRecordBySkey(String skey);
 }

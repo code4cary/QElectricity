@@ -1,8 +1,11 @@
 package com.charge.web.controller.wechat.user;
 
+import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
+import com.charge.common.enums.StatusInfo;
 import com.charge.common.pojo.ShopInfo;
 import com.charge.service.biz.wechat.user.FirstPageService;
+import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
 import com.charge.web.utils.PositionModel;
 import org.junit.Test;
@@ -77,6 +80,11 @@ public class FirstPageControllerTest {
 
         System.out.println("-----------------------------------------------");
         shopList.forEach(shopInfo -> System.out.println(shopInfo.getDistance()));
+        System.out.println("-----------------------------------------------");
 
+        Map firstPage = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "firstPage", "shopInfo", shopList);
+
+        Object json = JSON.toJSON(firstPage);
+        System.out.println(json);
     }
 }

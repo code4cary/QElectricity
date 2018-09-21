@@ -15,33 +15,21 @@ public class Account extends BaseEntity implements Serializable {
 
     private String accountBalance;
 
+    private String rechargeBalance;
+
+    private String balanceGived;
+
     private Date updateTime;
 
     /**
-     * t_account关联t_user  一对一关系
+     * t_account关联t_user 一对一关系
      */
     private User user;
-
-    public User getUser() {
-        return user;
-    }
 
     /**
      * t_account关联t_order 一对多关系
      */
     private List<Order> orderList;
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     private static final long serialVersionUID = 1L;
 
@@ -77,6 +65,22 @@ public class Account extends BaseEntity implements Serializable {
         this.accountBalance = accountBalance == null ? null : accountBalance.trim();
     }
 
+    public String getRechargBalance() {
+        return rechargeBalance;
+    }
+
+    public void setRechargBalance(String rechargeBalance) {
+        this.rechargeBalance = rechargeBalance == null ? null : rechargeBalance.trim();
+    }
+
+    public String getBalanceGived() {
+        return balanceGived;
+    }
+
+    public void setBalanceGived(String balanceGived) {
+        this.balanceGived = balanceGived == null ? null : balanceGived.trim();
+    }
+
     public Date getUpdateTime() {
         return updateTime;
     }
@@ -87,14 +91,19 @@ public class Account extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "uid=" + uid +
-                ", accountDeposit='" + accountDeposit + '\'' +
-                ", depositStatus='" + depositStatus + '\'' +
-                ", accountBalance='" + accountBalance + '\'' +
-                ", updateTime=" + updateTime +
-                ", user=" + user +
-                ", orderList=" + orderList +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", uid=").append(uid);
+        sb.append(", accountDeposit=").append(accountDeposit);
+        sb.append(", depositStatus=").append(depositStatus);
+        sb.append(", accountBalance=").append(accountBalance);
+        sb.append(", rechargeBalance=").append(rechargeBalance);
+        sb.append(", balanceGived=").append(balanceGived);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
     }
 }

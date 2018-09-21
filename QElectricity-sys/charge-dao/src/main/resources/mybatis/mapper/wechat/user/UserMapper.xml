@@ -315,4 +315,67 @@
 
     </update>
 
+    <!--根据skey查询用户个人相关信息(前端个人中心页需要展示的信息:积分,余额(总余额),押金状态)-->
+    <select id="findUserInfoBySkey" parameterType="String" resultType="java.util.HashMap"><!--返回类型为map时,resultType一定不要写成resultMap!!! -->
+        <if test="skey != null">
+            select
+                t_user.POINT,
+                t_account.ACCOUNT_BALANCE,
+                t_account.DEPOSIT_STATUS
+            from
+                t_user,
+                t_account
+            where
+                #{skey}=t_user.SKEY and t_account.UID= t_user.ID
+        </if>
+    </select>
+
+    <!--根据skey查询用户个人钱包信息(前端我的钱包页需要展示的信息:充值余额,赠送余额)-->
+    <select id="findUserWalletInfoBySkey" parameterType="String" resultType="java.util.HashMap"><!--返回类型为map时,resultType一定不要写成resultMap!!! -->
+        <if test="skey != null">
+            select
+              t_account.RECHARGE_BALANCE,
+              t_account.BALANCE_GIVED
+            from
+              t_user,
+              t_account
+            where
+              #{skey}=t_user.SKEY and t_account.UID= t_user.ID
+        </if>
+    </select>
+
+
+    <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
+    <resultMap type="com.charge.common.pojo.ChargingRecord" id="chargingRecordMap">
+        <result column="SHOP_PHOTO" property="shopPhoto"/>
+        <result column="NAME" property="shopName"/>
+        <result column="BUSINESS_TIME" property="businessTime"/>
+        <result column="SHOP_STATUS" property="shopStatus"/>
+        <result column="CONTRACT_PERSON_NAME" property="shopTel"/>
+    </resultMap>
+
+    <!--
+        根据skey查询用户充电记录(订单记录和流水记录集合查询)数据返回前端个人中心页展示
+
+        前端充电记录页需要展示的信息:
+            1:充电时间即订单创建时间(精确到秒),
+            2:充电宝编号,
+            3:充电时长,如果充电状态为充电中,则充电时长为现在的时间减去订单创建的时间;反之,则用订单结束时间减去订单创建时间
+            4:充电花费,如果充电状态为充电中,则充电花费为现在的时间减去订单创建的时间之差乘以相应的定价策略值,此时需要查出充电箱编号,进而查出定价策略;
+            反之,则用订单结束时间减去订单创建时间之差乘以相应的定价策略值.
+            5:充电状态,充电中或充电完成
+             按照创建时间先后排序返回
+    -->
+    <select id="findUserChargingRecordBySkey" parameterType="String" resultMap="com.charge.entity.po.wechat.user.Order">
+        <if test="skey != null">
+            select
+                *
+            from
+              t_order
+            where
+              #{skey}=t_user.SKEY and t_account.UID=t_user.ID
+              t_order.AID=t_account.ID
+        </if>
+    </select>
+
 </mapper>

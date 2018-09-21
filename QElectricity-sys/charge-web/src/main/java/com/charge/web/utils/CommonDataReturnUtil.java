@@ -3,7 +3,6 @@ package com.charge.web.utils;
 import com.charge.common.enums.StatusInfo;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,43 +30,56 @@ public class CommonDataReturnUtil {
     }
 
 
+//    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, List dataList) {
+//
+//        Map dataMap = new HashMap<>();
+//        dataMap.put(codeKey, statusInfo.getCode());
+//        dataMap.put(msgKey, statusInfo.getMsg());
+//        Map map = new HashMap<>();
+//        map.put(dataKey, dataList);
+//        //dataMap.put(pageKey, new HashMap<String,List<ShopInfo>>().put(dataKey, dataList));
+//        dataMap.put(pageKey, map);
+//
+//        return dataMap;
+//    }
+
+//    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, String dataString) {
+//
+//        List dataList = new ArrayList<>();
+//        dataList.add(dataString);
+//        Map dataMap = requestSuccess(statusInfo, pageKey, dataKey, dataList);
+//
+//        return dataMap;
+//    }
+
+//    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, Map dataMap) {
+//
+//        List dataList = new ArrayList<>();
+//        dataList.add(dataMap);
+//        Map data = requestSuccess(statusInfo, pageKey, dataKey, dataList);
+//
+//        return data;
+//    }
+
+
+
+
     /**
      * 小程序请求后台成功,返回数据
      *
      * @param statusInfo
      * @param pageKey
      * @param dataKey
-     * @param dataList
+     * @param data
      * @return
      */
-    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, List dataList) {
-
+    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, Object data) {
         Map dataMap = new HashMap<>();
         dataMap.put(codeKey, statusInfo.getCode());
         dataMap.put(msgKey, statusInfo.getMsg());
-        //if (data instanceof List) data = (List) data;
-        Map  map = new HashMap<>();
-        map.put(dataKey, dataList);
-        //dataMap.put(pageKey, new HashMap<String,List<ShopInfo>>().put(dataKey, dataList));
-        dataMap.put(pageKey, map);
-
-
-        return dataMap;
-    }
-
-    public static Map requestSuccess(StatusInfo statusInfo, String pageKey, String dataKey, String data) {
-
-        Map dataMap = new HashMap<>();
-        dataMap.put(codeKey, statusInfo.getCode());
-        dataMap.put(msgKey, statusInfo.getMsg());
-        //if (data instanceof List) data = (List) data;
-        Map  map = new HashMap<>();
+        Map map = new HashMap<>();
         map.put(dataKey, data);
-        //dataMap.put(pageKey, new HashMap<String,List<ShopInfo>>().put(dataKey, dataList));
         dataMap.put(pageKey, map);
-
         return dataMap;
     }
-
-
 }

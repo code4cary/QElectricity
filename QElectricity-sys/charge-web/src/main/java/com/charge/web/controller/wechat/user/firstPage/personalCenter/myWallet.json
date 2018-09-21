@@ -16,7 +16,7 @@
     "myWallet" : {
       //余下两个数据其实是为了在余额页显示 提前返回
       //充值余额
-      "rechargeDeposit" : "",
+      "rechargeBlance" : "",
       //赠送余额
       "balanceGived" : ""
     }

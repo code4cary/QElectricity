@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by vincent on 17/09/2018.
@@ -43,7 +45,6 @@ public class FirstPageController {
 
     // post模式下，使用@RequestBody 绑定请求对象，
     // Spring会帮你进行协议转换，将Json、Xml协议转换成你需要的对象。
-    @ResponseBody
     @RequestMapping
     public Map getFirstPageInfo(@RequestBody Map<String, List<String>> userPosition) {//{"userPosition":["userLongitude"，"userLatitude"]}
 

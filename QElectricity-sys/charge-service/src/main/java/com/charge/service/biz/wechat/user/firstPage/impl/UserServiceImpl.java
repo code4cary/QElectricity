@@ -1,6 +1,13 @@
 package com.charge.service.biz.wechat.user.firstPage.impl;
 
+import com.charge.common.pojo.ChargingRecord;
+import com.charge.dao.mapper.device.ChargingBoxMapper;
+import com.charge.dao.mapper.device.PowerBankMapper;
+import com.charge.dao.mapper.device.PriceTypeCBMapper;
+import com.charge.dao.mapper.wechat.user.OrderMapper;
 import com.charge.dao.mapper.wechat.user.UserMapper;
+import com.charge.entity.po.device.PriceTypeCB;
+import com.charge.entity.po.wechat.user.Order;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.wechat.user.firstPage.UserService;
@@ -9,6 +16,9 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,6 +31,19 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private PriceTypeCBMapper priceTypeCBMapper;
+
+    @Autowired
+    private ChargingBoxMapper chargingBoxMapper;
+
+    @Autowired
+    private PowerBankMapper powerBankMapper;
+
+    @Autowired
+    private OrderMapper orderMapper;
+
+
     /**
      * @des:注入之后执行初始化方法通用mapper注入
      * @param:
@@ -32,9 +55,10 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
     public void initBaseMapper() {
 
         setBaseMapper(userMapper);
+
     }
 
-    @Cacheable(value = "catCache")
+    @Cacheable(value = "catCache")//???
     @Override
     public User findUserByUserName(String userName) {
         User user = userMapper.findUserByUserName(userName);
@@ -53,25 +77,152 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
         return userMapper.findUserByOpenId(openId);
     }
 
+    /**
+     * 根据id跟新用户skey
+     *
+     * @param Id
+     * @param skey
+     */
     @Override
     public void updateSkeyById(Integer Id, String skey) {
         userMapper.updateSkeyById(Id, skey);
     }
 
+    /**
+     * 根据openId更新skey
+     *
+     * @param openId
+     * @param skey
+     */
     @Override
     public void updateSkeyByOpenId(String openId, String skey) {
         userMapper.updateSkeyByOpenId(openId, skey);
     }
 
     /**
-     * 根据skey查询用户个人信息返回给前端个人中心展示
+     * 根据skey查询用户个人信息返回给前端个人中心页展示
      * 只需要查询:积分,余额,押金状态
      * 设计到关联表的查询
+     *
      * @param skey
      * @return
      */
     @Override
-    public Map<String, String> findUserBySkey(String skey) {
-        return null;
+    public Map<String, String> findUserInfoBySkey(String skey) {
+        Map<String, String> personInfo = userMapper.findUserInfoBySkey(skey);
+        return personInfo;
+    }
+
+
+    /**
+     * 根据skey查询用户钱包信息返回给前端我的钱包页展示
+     *
+     * @param skey
+     * @return
+     */
+    @Override
+    public Map<String, String> findUserWalletInfoBySkey(String skey) {
+
+        Map<String, String> userWalletInfo = userMapper.findUserWalletInfoBySkey(skey);
+        return userWalletInfo;
+    }
+
+    /**
+     * 根据skey查询用户充电记录数据返回前端个人中心页展示
+     *
+     * @param skey
+     * @return
+     */
+    @Override
+    public List<ChargingRecord> findUserChargingRecordBySkey(String skey) {
+
+        //-- 1:先把订单记录查询出
+        //根据skey在t_order表下关联查询该用户的账户下的订单
+        List<Order> orderList = orderMapper.findUserChargingRecordBySkey(skey);
+        System.out.println(orderList);
+
+        List<ChargingRecord> chargingRecordList = new ArrayList<>();
+
+        orderList.forEach(order -> {
+            ChargingRecord chargingRecord = new ChargingRecord();
+            Double timeAmount = null;
+            //-- 2:判断订单中是否有未完成充电的订单,如果有,就要根据时间变化来计算费用
+            //①如果用户正在使用充电宝
+            if (order.getPowerBankStatus().equals("0")) {
+                //获取创建时间(即用户充电开始时间)的时间戳,单位毫秒
+                Long createTime = order.getCreateTime().getTime();
+                //获取当前时间的时间戳,单位毫秒
+                Long nowTime = new Date().getTime();
+
+                //计算用户当前已使用充电宝时间,单位分钟
+                timeAmount = Math.ceil(Double.valueOf(createTime - nowTime) / 1000.0 / 60.0);
+                chargingRecord.setChargingTimeAmount(String.valueOf(timeAmount));
+
+                //查询该充电箱的定价策略
+                //获得该充电箱的id
+                String chargingBoxId = order.getBoxChargingId();//此id为充电箱id,不是编号
+                //根据充电箱id获得该充电箱的价格策略表的PT_ID
+                String pt_id = chargingBoxMapper.findPtIdById(chargingBoxId);
+                //根据介个策略表的id去价格策略表里面查询该充电箱的价格策略
+                PriceTypeCB priceTypeCB = priceTypeCBMapper.findPriceTypeById(pt_id);
+
+                //获取详细价格策略,免费时长,每小时价格,每日封顶都为整型
+                //免费时长
+                Integer freeTime = Integer.valueOf(priceTypeCB.getFreeTime());
+                //每小时价格(0-10元/小时),不足一小时按一小时计算
+                Integer pricePerHour = Integer.valueOf(priceTypeCB.getPricePerHour());
+                //每日封顶(0-50/天)  这是根据每天价格来计算的
+                Integer topPricePerDay = Integer.valueOf(priceTypeCB.getTopPricePerDay());
+
+                //判断当前使用时间是否大于免费时长,如果不大于,费用就为0
+                if (timeAmount <= freeTime) {
+                    order.setPayAmount("0");
+                }
+
+                timeAmount = timeAmount - freeTime;//减去免费时长后的使用时长
+
+                //按当前使用小时数计算的费用
+                Integer tempPayAmount = new Double(Math.ceil(timeAmount / 60.0)).intValue() * pricePerHour;
+
+                //判断费用是否大于每日封顶费用
+                if (tempPayAmount >= topPricePerDay) {//如果费用大于每日封顶了,这里会有两种情况:使用时长小于一天;使用时长大于一天
+                    if (timeAmount < 24 * 60) {//使用时长小于一天
+                        order.setPayAmount(String.valueOf(topPricePerDay));
+                    } else {//使用时长大于一天
+                        //获取时长大于一天的个数部分,即使用时长有多少个一天,向下取整
+                        Integer moreThanOneDay = new Double(Math.floor(timeAmount / (24.0 * 60.0))).intValue();
+                        //获取时长小于一天的部分,单位分钟
+                        Double lessThanOneDay = timeAmount - moreThanOneDay * 24 * 60;
+                        //时长小于一天的部分又要分为:费用达到每日封顶和没达到
+                        Integer tempPayAmountOneDay = new Double(Math.ceil(lessThanOneDay / 60.0)).intValue() * pricePerHour;
+                        if (tempPayAmountOneDay >= topPricePerDay) {//费用大于等于每日封顶
+                            order.setPayAmount(String.valueOf((++moreThanOneDay) * topPricePerDay));//相当于使用时长不足一天的部分给它算一天
+                        } else {//费用小于每日封顶
+                            order.setPayAmount(String.valueOf(tempPayAmountOneDay + lessThanOneDay * topPricePerDay));
+                        }
+
+                    }
+                } else { //费用没大于每日封顶
+                    order.setPayAmount(String.valueOf(tempPayAmount));
+                }
+            } else {//3:如果用户当前没有使用充电宝 --重新计算使用时长
+                timeAmount = Math.ceil(Double.valueOf(order.getEndTime().getTime()
+                        - order.getCreateTime().getTime()) / 1000.0 / 60.0);
+
+                chargingRecord.setChargingTimeAmount(String.valueOf(timeAmount));
+
+            }
+
+            //用户正在使用充电宝或没使用充电宝
+            chargingRecord.setChargingStatus(order.getPowerBankStatus());
+            chargingRecord.setChargingStartTime(String.valueOf(order.getCreateTime()));
+            chargingRecord.setChargingCost(order.getPayAmount());
+            //获取充电宝sn,即充电宝编号
+            String powerBankNO = powerBankMapper.findSNById(order.getPowerBankId());
+            chargingRecord.setPowerBankNO(powerBankNO);
+
+        });
+
+        return chargingRecordList;
     }
 }

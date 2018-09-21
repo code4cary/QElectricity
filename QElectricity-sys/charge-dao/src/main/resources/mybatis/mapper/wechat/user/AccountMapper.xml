@@ -7,11 +7,14 @@
     <result column="ACCOUNT_DEPOSIT" property="accountDeposit" jdbcType="VARCHAR" />
     <result column="DEPOSIT_STATUS" property="depositStatus" jdbcType="VARCHAR" />
     <result column="ACCOUNT_BALANCE" property="accountBalance" jdbcType="VARCHAR" />
+    <result column="RECHARGE_BALANCE" property="rechargeBalance" jdbcType="VARCHAR" />
+    <result column="BALANCE_GIVED" property="balanceGived" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
     <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    ID, UID, ACCOUNT_DEPOSIT, DEPOSIT_STATUS, ACCOUNT_BALANCE, CREATE_TIME, UPDATE_TIME
+    ID, UID, ACCOUNT_DEPOSIT, DEPOSIT_STATUS, ACCOUNT_BALANCE, RECHARGE_BALANCE, BALANCE_GIVED, 
+    CREATE_TIME, UPDATE_TIME
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,11 +28,13 @@
   </delete>
   <insert id="insert" parameterType="com.charge.entity.po.wechat.user.Account" >
     insert into t_account (ID, UID, ACCOUNT_DEPOSIT, 
-      DEPOSIT_STATUS, ACCOUNT_BALANCE, CREATE_TIME, 
-      UPDATE_TIME)
+      DEPOSIT_STATUS, ACCOUNT_BALANCE, RECHARGE_BALANCE, 
+      BALANCE_GIVED, CREATE_TIME, UPDATE_TIME
+      )
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{accountDeposit,jdbcType=VARCHAR}, 
-      #{depositStatus,jdbcType=VARCHAR}, #{accountBalance,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{depositStatus,jdbcType=VARCHAR}, #{accountBalance,jdbcType=VARCHAR}, #{rechargeBalance,jdbcType=VARCHAR}, 
+      #{balanceGived,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.Account" >
     insert into t_account
@@ -48,6 +53,12 @@
       </if>
       <if test="accountBalance != null" >
         ACCOUNT_BALANCE,
+      </if>
+      <if test="rechargeBalance != null" >
+        RECHARGE_BALANCE,
+      </if>
+      <if test="balanceGived != null" >
+        BALANCE_GIVED,
       </if>
       <if test="createTime != null" >
         CREATE_TIME,
@@ -72,6 +83,12 @@
       <if test="accountBalance != null" >
         #{accountBalance,jdbcType=VARCHAR},
       </if>
+      <if test="rechargeBalance != null" >
+        #{rechargeBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceGived != null" >
+        #{balanceGived,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -95,6 +112,12 @@
       <if test="accountBalance != null" >
         ACCOUNT_BALANCE = #{accountBalance,jdbcType=VARCHAR},
       </if>
+      <if test="rechargeBalance != null" >
+        RECHARGE_BALANCE = #{rechargeBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="balanceGived != null" >
+        BALANCE_GIVED = #{balanceGived,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null" >
         CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -110,6 +133,8 @@
       ACCOUNT_DEPOSIT = #{accountDeposit,jdbcType=VARCHAR},
       DEPOSIT_STATUS = #{depositStatus,jdbcType=VARCHAR},
       ACCOUNT_BALANCE = #{accountBalance,jdbcType=VARCHAR},
+      RECHARGE_BALANCE = #{rechargeBalance,jdbcType=VARCHAR},
+      BALANCE_GIVED = #{balanceGived,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}

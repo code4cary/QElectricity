@@ -1,41 +1,44 @@
 package com.charge.web.controller.wechat.user.firstPage;
 
+import com.alibaba.fastjson.JSON;
+import com.charge.ChargeApplication;
 import com.charge.common.enums.StatusInfo;
 import com.charge.service.biz.wechat.user.firstPage.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Map;
 
 /**
- * Created by vincent on 17/09/2018.
+ * Created by vincent on 21/09/2018.
  */
 
-@RestController
-@RequestMapping("wechat/user/firstPage/personalCenter")
-public class personalCenterController {
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = ChargeApplication.class)
+public class personalCenterControllerTest {
 
     @Autowired
     private UserService userService;
+    //
+    public static void main(String... args) {
 
-    @RequestMapping
-    public Map getPersonCenterInfo(@RequestBody(required = true) Map<String,String> skeyMap) {
+    }
 
-        if (skeyMap == null || skeyMap.isEmpty())  return CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
+    @Test
+    public void testGetPersonCenterInfo() throws Exception {
 
-        //获得skey
-        String skey = skeyMap.get("skey");
+        String skey = "skey9876543210";
 
 
         //直接查询数据库该skey对应的用户的信息.如果前端能传来skey,说明skey肯定没过期,所以数据库存的skey也没有更新
         Map<String,String> personInfo = userService.findUserInfoBySkey(skey);
-
         Map personCenter = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "personalCenter", "personalInfo", personInfo);
+        Object json = JSON.toJSON(personCenter);
+        System.out.println(json);
 
-        return personCenter;
     }
-
 }

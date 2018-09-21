@@ -9,13 +9,17 @@
   //请求成功: PERSONALCENTER_SUCCESS_CODE:请求失败: PERSONALCENTER_FAIL_CODE
   "msg": "",
   //返回数据
-  //个人中心类
+  //pageKey
   "personalCenter": {
-    //我的积分
-    "myCredits": "",
-    //余额
-    "balance": "",
-    //押金状态
-    "depositStatus": ""
+    //个人信息
+    "personalInfo": {
+      //我的积分
+      "myCredits": "",
+      //余额
+      "balance": "",
+      //押金状态
+      "depositStatus": ""
+    }
   }
 }
+

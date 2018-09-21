@@ -81,8 +81,9 @@ public class ShopController {
         //将shopList中商户按离用户最近->最远的顺序排序
         Collections.sort(shopInfoList, (s1, s2) -> Double.valueOf(s1.getDistance()).compareTo(Double.valueOf(s2.getDistance())));
 
+        Map shop = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "shop", "shopInfo", shopInfoList);
 
-        return CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "shop", "shopInfo", shopInfoList);
+        return shop;
 
     }
 }

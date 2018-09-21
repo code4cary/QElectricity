@@ -188,4 +188,18 @@
   <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.user.Order" >
      select * from t_order
   </select>
+
+
+  <!--根据skey关联查询该表下的用户订单-->
+  <select id="findUserChargingRecordBySkey" resultMap="BaseResultMap" parameterType="String">
+    select * from t_order
+
+    <if test="skey != null">
+
+
+    </if>
+
+  </select>
+
+
 </mapper>

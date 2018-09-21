@@ -95,6 +95,8 @@ public class LoginUserController {
         //将openId和skey缓存入redis,以openId为键,skey为值;
         RedisPoolUtil.storeRedis(openId, skey);
 
-        return CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "loginUser", "skey", skey);
+        Map loginUser = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "loginUser", "skey", skey);
+
+        return loginUser;
     }
 }
