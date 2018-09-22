@@ -33,7 +33,7 @@ public class ChargingRecordController {
         //查询用户充电记录
         List<ChargingRecord> userChargingRecord = userService.findUserChargingRecordBySkey(skey);
 
-        Map chargingRecord = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "personalCenter", "personalInfo", userChargingRecord);
+        Map chargingRecord = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "chargingRecordPage", "chargingRecord", userChargingRecord);
 
         return chargingRecord;
     }

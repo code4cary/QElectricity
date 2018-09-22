@@ -27,4 +27,6 @@ public interface UserService extends BaseService<User, Integer> {
     Map<String,String> findUserWalletInfoBySkey(String skey);
 
     List<ChargingRecord> findUserChargingRecordBySkey(String skey);
+
+    String findUserOpenIdBySkey(String skey);
 }

@@ -1,175 +1,185 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.charge.dao.mapper.wechat.user.OrderMapper">
-    <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.Order">
-        <id column="ID" property="id" jdbcType="INTEGER"/>
-        <result column="AID" property="aid" jdbcType="INTEGER"/>
-        <result column="ORDER_NUM" property="orderNum" jdbcType="VARCHAR"/>
-        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
-        <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP"/>
-        <result column="PAY_AMOUNT" property="payAmount" jdbcType="VARCHAR"/>
-        <result column="PAY_STATUS" property="payStatus" jdbcType="VARCHAR"/>
-        <result column="POWER_BANK_BORROW_PLACE" property="powerBankBorrowPlace" jdbcType="VARCHAR"/>
-        <result column="POWER_BANK_BACK_PLACE" property="powerBankBackPlace" jdbcType="VARCHAR"/>
-        <result column="POWER_BANK_STATUS" property="powerBankStatus" jdbcType="VARCHAR"/>
-        <result column="POWER_BANK_ID" property="powerBankId" jdbcType="VARCHAR"/>
-        <result column="BOX_CHARGING_ID" property="boxChargingId" jdbcType="VARCHAR"/>
-        <result column="PAY_TIME" property="payTime" jdbcType="TIMESTAMP"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-    ID, AID, ORDER_NUM, CREATE_TIME, END_TIME, PAY_AMOUNT, PAY_STATUS, POWER_BANK_BORROW_PLACE, 
+<mapper namespace="com.charge.dao.mapper.wechat.user.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.Order" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AID" property="aid" jdbcType="INTEGER" />
+    <result column="ORDER_NUM" property="orderNum" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="PAY_AMOUNT" property="payAmount" jdbcType="VARCHAR" />
+    <result column="PAY_STATUS" property="payStatus" jdbcType="VARCHAR" />
+    <result column="ORDER_TYPE" property="orderType" jdbcType="VARCHAR" />
+    <result column="POWER_BANK_BORROW_PLACE" property="powerBankBorrowPlace" jdbcType="VARCHAR" />
+    <result column="POWER_BANK_BACK_PLACE" property="powerBankBackPlace" jdbcType="VARCHAR" />
+    <result column="POWER_BANK_STATUS" property="powerBankStatus" jdbcType="VARCHAR" />
+    <result column="POWER_BANK_ID" property="powerBankId" jdbcType="VARCHAR" />
+    <result column="BOX_CHARGING_ID" property="boxChargingId" jdbcType="VARCHAR" />
+    <result column="PAY_TIME" property="payTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, AID, ORDER_NUM, CREATE_TIME, END_TIME, PAY_AMOUNT, PAY_STATUS, ORDER_TYPE, POWER_BANK_BORROW_PLACE, 
     POWER_BANK_BACK_PLACE, POWER_BANK_STATUS, POWER_BANK_ID, BOX_CHARGING_ID, PAY_TIME
   </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from t_order
-        where ID = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_order
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from t_order
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.charge.entity.po.wechat.user.Order">
+  <insert id="insert" parameterType="com.charge.entity.po.wechat.user.Order" >
     insert into t_order (ID, AID, ORDER_NUM, 
       CREATE_TIME, END_TIME, PAY_AMOUNT, 
-      PAY_STATUS, POWER_BANK_BORROW_PLACE, POWER_BANK_BACK_PLACE, 
-      POWER_BANK_STATUS, POWER_BANK_ID, BOX_CHARGING_ID, 
-      PAY_TIME)
+      PAY_STATUS, ORDER_TYPE, POWER_BANK_BORROW_PLACE, 
+      POWER_BANK_BACK_PLACE, POWER_BANK_STATUS, POWER_BANK_ID, 
+      BOX_CHARGING_ID, PAY_TIME)
     values (#{id,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{payAmount,jdbcType=VARCHAR}, 
-      #{payStatus,jdbcType=VARCHAR}, #{powerBankBorrowPlace,jdbcType=VARCHAR}, #{powerBankBackPlace,jdbcType=VARCHAR}, 
-      #{powerBankStatus,jdbcType=VARCHAR}, #{powerBankId,jdbcType=VARCHAR}, #{boxChargingId,jdbcType=VARCHAR}, 
-      #{payTime,jdbcType=TIMESTAMP})
+      #{payStatus,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, #{powerBankBorrowPlace,jdbcType=VARCHAR}, 
+      #{powerBankBackPlace,jdbcType=VARCHAR}, #{powerBankStatus,jdbcType=VARCHAR}, #{powerBankId,jdbcType=VARCHAR}, 
+      #{boxChargingId,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.Order">
-        insert into t_order
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                ID,
-            </if>
-            <if test="aid != null">
-                AID,
-            </if>
-            <if test="orderNum != null">
-                ORDER_NUM,
-            </if>
-            <if test="createTime != null">
-                CREATE_TIME,
-            </if>
-            <if test="endTime != null">
-                END_TIME,
-            </if>
-            <if test="payAmount != null">
-                PAY_AMOUNT,
-            </if>
-            <if test="payStatus != null">
-                PAY_STATUS,
-            </if>
-            <if test="powerBankBorrowPlace != null">
-                POWER_BANK_BORROW_PLACE,
-            </if>
-            <if test="powerBankBackPlace != null">
-                POWER_BANK_BACK_PLACE,
-            </if>
-            <if test="powerBankStatus != null">
-                POWER_BANK_STATUS,
-            </if>
-            <if test="powerBankId != null">
-                POWER_BANK_ID,
-            </if>
-            <if test="boxChargingId != null">
-                BOX_CHARGING_ID,
-            </if>
-            <if test="payTime != null">
-                PAY_TIME,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="aid != null">
-                #{aid,jdbcType=INTEGER},
-            </if>
-            <if test="orderNum != null">
-                #{orderNum,jdbcType=VARCHAR},
-            </if>
-            <if test="createTime != null">
-                #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="endTime != null">
-                #{endTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="payAmount != null">
-                #{payAmount,jdbcType=VARCHAR},
-            </if>
-            <if test="payStatus != null">
-                #{payStatus,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankBorrowPlace != null">
-                #{powerBankBorrowPlace,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankBackPlace != null">
-                #{powerBankBackPlace,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankStatus != null">
-                #{powerBankStatus,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankId != null">
-                #{powerBankId,jdbcType=VARCHAR},
-            </if>
-            <if test="boxChargingId != null">
-                #{boxChargingId,jdbcType=VARCHAR},
-            </if>
-            <if test="payTime != null">
-                #{payTime,jdbcType=TIMESTAMP},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.user.Order">
-        update t_order
-        <set>
-            <if test="aid != null">
-                AID = #{aid,jdbcType=INTEGER},
-            </if>
-            <if test="orderNum != null">
-                ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
-            </if>
-            <if test="createTime != null">
-                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="endTime != null">
-                END_TIME = #{endTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="payAmount != null">
-                PAY_AMOUNT = #{payAmount,jdbcType=VARCHAR},
-            </if>
-            <if test="payStatus != null">
-                PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankBorrowPlace != null">
-                POWER_BANK_BORROW_PLACE = #{powerBankBorrowPlace,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankBackPlace != null">
-                POWER_BANK_BACK_PLACE = #{powerBankBackPlace,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankStatus != null">
-                POWER_BANK_STATUS = #{powerBankStatus,jdbcType=VARCHAR},
-            </if>
-            <if test="powerBankId != null">
-                POWER_BANK_ID = #{powerBankId,jdbcType=VARCHAR},
-            </if>
-            <if test="boxChargingId != null">
-                BOX_CHARGING_ID = #{boxChargingId,jdbcType=VARCHAR},
-            </if>
-            <if test="payTime != null">
-                PAY_TIME = #{payTime,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        where ID = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.Order">
+  <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.Order" >
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="aid != null" >
+        AID,
+      </if>
+      <if test="orderNum != null" >
+        ORDER_NUM,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="payAmount != null" >
+        PAY_AMOUNT,
+      </if>
+      <if test="payStatus != null" >
+        PAY_STATUS,
+      </if>
+      <if test="orderType != null" >
+        ORDER_TYPE,
+      </if>
+      <if test="powerBankBorrowPlace != null" >
+        POWER_BANK_BORROW_PLACE,
+      </if>
+      <if test="powerBankBackPlace != null" >
+        POWER_BANK_BACK_PLACE,
+      </if>
+      <if test="powerBankStatus != null" >
+        POWER_BANK_STATUS,
+      </if>
+      <if test="powerBankId != null" >
+        POWER_BANK_ID,
+      </if>
+      <if test="boxChargingId != null" >
+        BOX_CHARGING_ID,
+      </if>
+      <if test="payTime != null" >
+        PAY_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payAmount != null" >
+        #{payAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null" >
+        #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankBorrowPlace != null" >
+        #{powerBankBorrowPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankBackPlace != null" >
+        #{powerBankBackPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankStatus != null" >
+        #{powerBankStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankId != null" >
+        #{powerBankId,jdbcType=VARCHAR},
+      </if>
+      <if test="boxChargingId != null" >
+        #{boxChargingId,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.user.Order" >
+    update t_order
+    <set >
+      <if test="aid != null" >
+        AID = #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null" >
+        ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payAmount != null" >
+        PAY_AMOUNT = #{payAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null" >
+        PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankBorrowPlace != null" >
+        POWER_BANK_BORROW_PLACE = #{powerBankBorrowPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankBackPlace != null" >
+        POWER_BANK_BACK_PLACE = #{powerBankBackPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankStatus != null" >
+        POWER_BANK_STATUS = #{powerBankStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="powerBankId != null" >
+        POWER_BANK_ID = #{powerBankId,jdbcType=VARCHAR},
+      </if>
+      <if test="boxChargingId != null" >
+        BOX_CHARGING_ID = #{boxChargingId,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        PAY_TIME = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.Order" >
     update t_order
     set AID = #{aid,jdbcType=INTEGER},
       ORDER_NUM = #{orderNum,jdbcType=VARCHAR},
@@ -177,6 +187,7 @@
       END_TIME = #{endTime,jdbcType=TIMESTAMP},
       PAY_AMOUNT = #{payAmount,jdbcType=VARCHAR},
       PAY_STATUS = #{payStatus,jdbcType=VARCHAR},
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
       POWER_BANK_BORROW_PLACE = #{powerBankBorrowPlace,jdbcType=VARCHAR},
       POWER_BANK_BACK_PLACE = #{powerBankBackPlace,jdbcType=VARCHAR},
       POWER_BANK_STATUS = #{powerBankStatus,jdbcType=VARCHAR},
@@ -185,38 +196,37 @@
       PAY_TIME = #{payTime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.user.Order">
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.user.Order" >
      select * from t_order
   </select>
 
+  <!--
+           根据skey查询用户充电记录(订单记录和流水记录集合查询)数据返回前端个人中心页展示
 
-    <!--
-            根据skey查询用户充电记录(订单记录和流水记录集合查询)数据返回前端个人中心页展示
+           前端充电记录页需要展示的信息:
+               1:充电时间即订单创建时间(精确到秒),
+               2:充电宝编号,
+               3:充电时长,如果充电状态为充电中,则充电时长为现在的时间减去订单创建的时间;反之,则用订单结束时间减去订单创建时间
+               4:充电花费,如果充电状态为充电中,则充电花费为现在的时间减去订单创建的时间之差乘以相应的定价策略值,此时需要查出充电箱编号,进而查出定价策略;
+               反之,则用订单结束时间减去订单创建时间之差乘以相应的定价策略值.
+               5:充电状态,充电中或充电完成
+                按照创建时间先后排序返回
+       -->
+  <!--根据skey关联查询该表下的用户订单-->
+  <select id="findUserOrderRecordBySkey" resultMap="BaseResultMap" parameterType="java.lang.String">
 
-            前端充电记录页需要展示的信息:
-                1:充电时间即订单创建时间(精确到秒),
-                2:充电宝编号,
-                3:充电时长,如果充电状态为充电中,则充电时长为现在的时间减去订单创建的时间;反之,则用订单结束时间减去订单创建时间
-                4:充电花费,如果充电状态为充电中,则充电花费为现在的时间减去订单创建的时间之差乘以相应的定价策略值,此时需要查出充电箱编号,进而查出定价策略;
-                反之,则用订单结束时间减去订单创建时间之差乘以相应的定价策略值.
-                5:充电状态,充电中或充电完成
-                 按照创建时间先后排序返回
-        -->
-    <!--根据skey关联查询该表下的用户订单-->
-    <select id="findUserOrderRecordBySkey" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <if test="skey != null">
+      select *
+      from
+      t_order,
+      t_user,
+      t_account
+      where
+      #{skey} = t_user.SKEY and
+      t_user.ID = t_account.UID and
+      t_order.AID = t_account.ID
 
-        <if test="skey != null">
-            select *
-            from
-            t_order,
-            t_user,
-            t_account
-            where
-            #{skey} = t_user.SKEY and
-            t_user.ID = t_account.UID and
-            t_order.AID = t_account.ID
+    </if>
 
-        </if>
-
-    </select>
+  </select>
 </mapper>

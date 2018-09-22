@@ -147,10 +147,10 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
             if (order.getPowerBankStatus().equals("0")) {
                 //获取创建时间(即用户充电开始时间)的时间戳,单位毫秒
                 Long createTime = order.getCreateTime().getTime();
-                System.out.println("createTime= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( order.getCreateTime()));
+                System.out.println("createTime= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(order.getCreateTime()));
                 //获取当前时间的时间戳,单位毫秒
                 Long nowTime = new Date().getTime();
-                System.out.println("nowTime= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( new Date()));
+                System.out.println("nowTime= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 
                 //计算用户当前已使用充电宝时间,单位分钟
                 timeAmount = Math.ceil(Double.valueOf(nowTime - createTime) / 1000.0 / 60.0);
@@ -174,37 +174,51 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
                 //判断当前使用时间是否大于免费时长,如果不大于,费用就为0
                 if (timeAmount <= freeTime) {
                     order.setPayAmount("0");
-                }
+                } else {
+                    timeAmount = timeAmount - freeTime;//减去免费时长后的使用时长
 
-                timeAmount = timeAmount - freeTime;//减去免费时长后的使用时长
+//                    //按当前使用小时数计算的费用
+//                    Integer tempPayAmount = new Double(Math.ceil(timeAmount / 60.0)).intValue() * pricePerHour;
 
-                //按当前使用小时数计算的费用
-                Integer tempPayAmount = new Double(Math.ceil(timeAmount / 60.0)).intValue() * pricePerHour;
 
-                //判断费用是否大于每日封顶费用
-                if (tempPayAmount >= topPricePerDay) {//如果费用大于每日封顶了,这里会有两种情况:使用时长小于一天;使用时长大于一天
-                    if (timeAmount < 24 * 60) {//使用时长小于一天
-                        order.setPayAmount(String.valueOf(topPricePerDay));
-                    } else {//使用时长大于一天
-                        //获取时长大于一天的个数部分,即使用时长有多少个一天,向下取整
-                        Integer moreThanOneDay = new Double(Math.floor(timeAmount / (24.0 * 60.0))).intValue();
-                        //获取时长小于一天的部分,单位分钟
-                        Double lessThanOneDay = timeAmount - moreThanOneDay * 24 * 60;
-                        //时长小于一天的部分又要分为:费用达到每日封顶和没达到
-                        Integer tempPayAmountOneDay = new Double(Math.ceil(lessThanOneDay / 60.0)).intValue() * pricePerHour;
-                        if (tempPayAmountOneDay >= topPricePerDay) {//费用大于等于每日封顶
-                            order.setPayAmount(String.valueOf((++moreThanOneDay) * topPricePerDay));//相当于使用时长不足一天的部分给它算一天
-                        } else {//费用小于每日封顶
-                            order.setPayAmount(String.valueOf(tempPayAmountOneDay + lessThanOneDay * topPricePerDay));
-                        }
+                    //总的使用时间,单位分钟
+                    int totalUseTime = new Double(Math.ceil(timeAmount)).intValue();
+                    //总的使用天数
+                    int useDay = totalUseTime / 24 / 60;
+                    //不够一整天的使用时间,min
+                    int dayUseMin = totalUseTime % (24 * 60);
+                    //不够一整天的使用时间,hour
+                    int dayUseHour = new Double(Math.ceil(dayUseMin / 60.0)).intValue();
 
-                    }
-                } else { //费用没大于每日封顶
-                    order.setPayAmount(String.valueOf(tempPayAmount));
+                    Integer totalPayAmount = useDay*topPricePerDay + (dayUseHour*pricePerHour>topPricePerDay?topPricePerDay:dayUseHour*pricePerHour);
+
+                    order.setPayAmount(String.valueOf(totalPayAmount));
+
+//                    //判断费用是否大于每日封顶费用
+//                        if (tempPayAmount >= topPricePerDay) {//如果费用大于每日封顶了,这里会有两种情况:使用时长小于一天;使用时长大于一天
+//                            if (timeAmount < 24 * 60) {//使用时长小于一天
+//                                order.setPayAmount(String.valueOf(topPricePerDay));
+//                            } else {//使用时长大于一天
+//                                //获取时长大于一天的个数部分,即使用时长有多少个一天,向下取整
+//                                Integer moreThanOneDay = new Double(Math.floor(timeAmount / (24.0 * 60.0))).intValue();
+//                                //获取时长小于一天的部分,单位分钟
+//                                Double lessThanOneDay = timeAmount - moreThanOneDay * 24 * 60;
+//                                //时长小于一天的部分又要分为:费用达到每日封顶和没达到
+//                                Integer tempPayAmountOneDay = new Double(Math.ceil(lessThanOneDay / 60.0)).intValue() * pricePerHour;
+//                                if (tempPayAmountOneDay >= topPricePerDay) {//费用大于等于每日封顶
+//                                    order.setPayAmount(String.valueOf((++moreThanOneDay) * topPricePerDay));//相当于使用时长不足一天的部分给它算一天
+//                                } else {//费用小于每日封顶
+//                                    order.setPayAmount(String.valueOf(tempPayAmountOneDay + lessThanOneDay * topPricePerDay));
+//                                }
+//
+//                            }
+//                    } else { //费用没大于每日封顶
+//                        order.setPayAmount(String.valueOf(tempPayAmount));
+//                    }
                 }
             } else {//3:如果用户当前没有使用充电宝 --重新计算使用时长
                 timeAmount = Math.ceil(Double.valueOf(order.getEndTime().getTime()
-                        - order.getCreateTime().getTime())/1000.0/60.0);
+                        - order.getCreateTime().getTime()) / 1000.0 / 60.0);
 
                 chargingRecord.setChargingTimeAmount(String.valueOf(new Double(timeAmount).intValue()));
 
@@ -227,5 +241,17 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
         });
 
         return chargingRecordList;
+    }
+
+
+    /**
+     * 根据skey获取用户的openid
+     * @param skey
+     * @return
+     */
+    @Override
+    public String findUserOpenIdBySkey(String skey) {
+        String openid = userMapper.findUserOpenIdBySkey(skey);
+        return openid;
     }
 }

@@ -14,11 +14,11 @@
     //个人信息
     "personalInfo": {
       //我的积分
-      "myCredits": "",
+      "point": "",
       //余额
-      "balance": "",
+      "account_balance": "",
       //押金状态
-      "depositStatus": ""
+      "deposit_status": ""
     }
   }
 }

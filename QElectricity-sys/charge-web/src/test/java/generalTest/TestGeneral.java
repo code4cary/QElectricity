@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by vincent on 21/09/2018.
@@ -20,6 +21,10 @@ public class TestGeneral {
 
     @Test
     public void testMothed() {
+
+        //生成uuid
+        String uuid = UUID.randomUUID().toString().trim().replace("-", "");
+
 
         // 精确到毫秒
         // 获取当前时间戳

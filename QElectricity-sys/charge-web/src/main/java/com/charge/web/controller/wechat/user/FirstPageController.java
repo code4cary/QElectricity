@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vincent on 17/09/2018.
@@ -47,6 +44,7 @@ public class FirstPageController {
     // Spring会帮你进行协议转换，将Json、Xml协议转换成你需要的对象。
     @RequestMapping
     public Map getFirstPageInfo(@RequestBody Map<String, List<String>> userPosition) {//{"userPosition":["userLongitude"，"userLatitude"]}
+
 
         //如果传入的参数不符合要求
         if (userPosition == null || userPosition.isEmpty()) CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);

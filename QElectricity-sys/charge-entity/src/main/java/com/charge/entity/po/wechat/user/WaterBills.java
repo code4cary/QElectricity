@@ -11,8 +11,10 @@ public class WaterBills extends BaseEntity implements Serializable {
 
     private String type;
 
+    private String waterbillssource;
+
     /**
-     * t_water_bills关联t_order 一对一
+     * 流水表关联订单表 一对一
      */
     private Order order;
 
@@ -50,12 +52,21 @@ public class WaterBills extends BaseEntity implements Serializable {
         this.type = type == null ? null : type.trim();
     }
 
+    public String getWaterbillssource() {
+        return waterbillssource;
+    }
+
+    public void setWaterbillssource(String waterbillssource) {
+        this.waterbillssource = waterbillssource == null ? null : waterbillssource.trim();
+    }
+
     @Override
     public String toString() {
         return "WaterBills{" +
                 "oid=" + oid +
                 ", amount='" + amount + '\'' +
                 ", type='" + type + '\'' +
+                ", waterbillssource='" + waterbillssource + '\'' +
                 ", order=" + order +
                 '}';
     }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 import java.util.Map;
 
-import static com.charge.web.utils.WXUtil.getSessionKeyOrOpenId;
+import static com.charge.web.utils.getSessionKeyAndOpenIdUtil.getSessionKeyOrOpenId;
 
 /**
  * Created by vincent on 17/09/2018.
@@ -58,13 +58,16 @@ public class LoginUserController {
         String telephone = "";
 
         //用户的openId
-        String openId = SessionKeyOpenId.getString("openId");
+        String openId = SessionKeyOpenId.getString("openid");
 
         //用户的session_key
         String sessionKey = SessionKeyOpenId.getString("session_key");
 
         //将openId和session_key加生成唯一skey
         String skey = UserEndecryptUtil.md5OpenIDSessionKey(openId, sessionKey, 2);
+
+        //前端缓存不了 = 号
+        skey = skey.replace("=","!");
 
         //先去redis查询是否有openId对应skey的用户
         String skeyRedis = RedisPoolUtil.getRedis(openId);
@@ -80,7 +83,6 @@ public class LoginUserController {
             //将openId和skey存入数据库并缓存一份skey进redis
             //openId和skey存入数据库
             User userNew = new User();
-            System.out.println(user);
             userNew.setWxOpenid(openId);
             userNew.setSkey(skey);
             userNew.setTelephone(telephone);

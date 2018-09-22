@@ -45,9 +45,11 @@ public class User extends BaseEntity implements Serializable {
     private Date updateTime;
 
     /**
-     * t_user关联t_account 一对一关系
+     * 用户表关联账户表
      */
     private Account account;
+
+    private static final long serialVersionUID = 1L;
 
     public Account getAccount() {
         return account;
@@ -56,8 +58,6 @@ public class User extends BaseEntity implements Serializable {
     public void setAccount(Account account) {
         this.account = account;
     }
-
-    private static final long serialVersionUID = 1L;
 
     public String getNickName() {
         return nickName;

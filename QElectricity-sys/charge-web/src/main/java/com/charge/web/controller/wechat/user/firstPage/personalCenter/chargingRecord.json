@@ -10,30 +10,32 @@
   "msg": "",
   //返回数据
   //充电记录
-  "chargingRecord": [
-    {
-      //充电开始时间
-      "chargingStartTime": "",
-      //充电宝编号
-      "powerBankNO": "",
-      //充电时长
-      "chargingTimeAmount": "",
-      //充电花费
-      "chargingCost": "",
-      //充电状态
-      "chargingStatus": ""
-    },
-    {
-      //充电开始时间
-      "chargingStartTime": "",
-      //充电宝编号
-      "powerBankNO": "",
-      //充电时长
-      "chargingTimeAmount": "",
-      //充电花费
-      "chargingCost": "",
-      //充电状态
-      "chargingStatus": ""
-    }
-  ]
+  "chargingRecordPage": {
+    "chargingRecord": [
+      {
+        //充电开始时间
+        "chargingStartTime": "",
+        //充电宝编号
+        "powerBankNO": "",
+        //充电时长
+        "chargingTimeAmount": "",
+        //充电花费
+        "chargingCost": "",
+        //充电状态
+        "chargingStatus": ""
+      },
+      {
+        //充电开始时间
+        "chargingStartTime": "",
+        //充电宝编号
+        "powerBankNO": "",
+        //充电时长
+        "chargingTimeAmount": "",
+        //充电花费
+        "chargingCost": "",
+        //充电状态
+        "chargingStatus": ""
+      }
+    ]
+  }
 }

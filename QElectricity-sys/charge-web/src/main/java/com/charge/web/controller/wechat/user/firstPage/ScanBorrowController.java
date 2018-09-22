@@ -10,4 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("wechat/user/firstPage/scanBorrow")
 public class ScanBorrowController {
+
+
 }

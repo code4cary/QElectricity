@@ -11,14 +11,14 @@
   "msg" : "",
 
   //返回数据
-  "data" : {
+  "myWalletPage" : {
     //用户登录
     "myWallet" : {
       //余下两个数据其实是为了在余额页显示 提前返回
       //充值余额
-      "rechargeBlance" : "",
+      "recharge_balance" : "",
       //赠送余额
-      "balanceGived" : ""
+      "balance_gived" : ""
     }
   }
 }

@@ -41,7 +41,7 @@
 
     <dependencies>
 
-        <!--Spring boot will try automatically create a entity factory for jpa, but you do not have defined anything regarding JPA models.-->
+        <!--Spring boot will try automatically create wxPayUtil entity factory for jpa, but you do not have defined anything regarding JPA models.-->
 
         <!--Try removing it in order to test what have you done so far.-->
         <!--<dependency>
@@ -68,6 +68,7 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

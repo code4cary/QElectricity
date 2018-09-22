@@ -1,96 +1,145 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.charge.dao.mapper.wechat.user.WaterBillsMapper" >
-  <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.WaterBills" >
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="OID" property="oid" jdbcType="INTEGER" />
-    <result column="AMOUNT" property="amount" jdbcType="VARCHAR" />
-    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="TYPE" property="type" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    ID, OID, AMOUNT, CREATE_TIME, TYPE
+<mapper namespace="com.charge.dao.mapper.wechat.user.WaterBillsMapper">
+    <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.WaterBills">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="OID" property="oid" jdbcType="INTEGER"/>
+        <result column="AMOUNT" property="amount" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="TYPE" property="type" jdbcType="VARCHAR"/>
+        <result column="WATERBILLSSOURCE" property="waterbillssource" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, OID, AMOUNT, CREATE_TIME, TYPE, WATERBILLSSOURCE
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_water_bills
-    where ID = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_water_bills
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_water_bills
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
+    <insert id="insert" parameterType="com.charge.entity.po.wechat.user.WaterBills">
     insert into t_water_bills (ID, OID, AMOUNT, 
-      CREATE_TIME, TYPE)
+      CREATE_TIME, TYPE, WATERBILLSSOURCE
+      )
     values (#{id,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{amount,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR})
+      #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR}, #{waterbillssource,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
-    insert into t_water_bills
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="oid != null" >
-        OID,
-      </if>
-      <if test="amount != null" >
-        AMOUNT,
-      </if>
-      <if test="createTime != null" >
-        CREATE_TIME,
-      </if>
-      <if test="type != null" >
-        TYPE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="oid != null" >
-        #{oid,jdbcType=INTEGER},
-      </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="type != null" >
-        #{type,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
-    update t_water_bills
-    <set >
-      <if test="oid != null" >
-        OID = #{oid,jdbcType=INTEGER},
-      </if>
-      <if test="amount != null" >
-        AMOUNT = #{amount,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="type != null" >
-        TYPE = #{type,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
+    <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.WaterBills">
+        insert into t_water_bills
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="oid != null">
+                OID,
+            </if>
+            <if test="amount != null">
+                AMOUNT,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="waterbillssource != null">
+                WATERBILLSSOURCE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="oid != null">
+                #{oid,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="waterbillssource != null">
+                #{waterbillssource,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.wechat.user.WaterBills">
+        update t_water_bills
+        <set>
+            <if test="oid != null">
+                OID = #{oid,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                AMOUNT = #{amount,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="type != null">
+                TYPE = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="waterbillssource != null">
+                WATERBILLSSOURCE = #{waterbillssource,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.WaterBills">
     update t_water_bills
     set OID = #{oid,jdbcType=INTEGER},
       AMOUNT = #{amount,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-      TYPE = #{type,jdbcType=VARCHAR}
+      TYPE = #{type,jdbcType=VARCHAR},
+      WATERBILLSSOURCE = #{waterbillssource,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.user.WaterBills" >
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.user.WaterBills">
      select * from t_water_bills
   </select>
+
+    <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
+    <resultMap type="com.charge.common.pojo.TransactionDetail" id="transactionDetailMap">
+        <result column="t_power_bank.PB_SN" property="recordNo"/>
+        <result column="TYPE" property="type"/>
+        <result column="WATERBILLSSOURCE" property="transactionSource"/>
+        <result column="CREATE_TIME" property="transactionTime"/>
+        <result column="AMOUNT" property="transactionAmount"/>
+    </resultMap>
+
+    <!--根据skey查询交易明细(即流水明细)-->
+    <select id="findTransactionDetailBySkey" resultMap="transactionDetailMap" parameterType="String">
+        <if test="skey != null">
+            select
+                t_power_bank.PB_SN,
+                t_water_bills.TYPE,
+                t_water_bills.WATERBILLSSOURCE,
+                t_water_bills.CREATE_TIME,
+                t_water_bills.AMOUNT
+            from
+                t_user,
+                t_account,
+                t_order,
+                t_water_bills,
+                t_power_bank
+            where
+                #{skey} = t_user.Skey and
+                t_account.UID = t_user.ID and
+                t_order.AID = t_account.ID and
+                t_water_bills.OID = t_order.ID and
+                t_order.POWER_BANK_ID = t_power_bank.ID
+        </if>
+
+    </select>
+
+
 </mapper>

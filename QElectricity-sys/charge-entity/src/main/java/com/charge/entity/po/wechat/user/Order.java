@@ -16,6 +16,8 @@ public class Order extends BaseEntity implements Serializable {
 
     private String payStatus;
 
+    private String orderType;
+
     private String powerBankBorrowPlace;
 
     private String powerBankBackPlace;
@@ -28,7 +30,34 @@ public class Order extends BaseEntity implements Serializable {
 
     private Date payTime;
 
+    /**
+     * 订单表关联流水表  一对一
+     */
+    private WaterBills waterBills;
+
+    /**
+     * 订单表关联账户表  多对一
+     */
+    private Account account;
+
     private static final long serialVersionUID = 1L;
+
+    public WaterBills getWaterBills() {
+        return waterBills;
+    }
+
+    public void setWaterBills(WaterBills waterBills) {
+        this.waterBills = waterBills;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
 
     public Integer getAid() {
         return aid;
@@ -68,6 +97,14 @@ public class Order extends BaseEntity implements Serializable {
 
     public void setPayStatus(String payStatus) {
         this.payStatus = payStatus == null ? null : payStatus.trim();
+    }
+
+    public String getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType == null ? null : orderType.trim();
     }
 
     public String getPowerBankBorrowPlace() {
@@ -120,23 +157,21 @@ public class Order extends BaseEntity implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", aid=").append(aid);
-        sb.append(", orderNum=").append(orderNum);
-        sb.append(", endTime=").append(endTime);
-        sb.append(", payAmount=").append(payAmount);
-        sb.append(", payStatus=").append(payStatus);
-        sb.append(", powerBankBorrowPlace=").append(powerBankBorrowPlace);
-        sb.append(", powerBankBackPlace=").append(powerBankBackPlace);
-        sb.append(", powerBankStatus=").append(powerBankStatus);
-        sb.append(", powerBankId=").append(powerBankId);
-        sb.append(", boxChargingId=").append(boxChargingId);
-        sb.append(", payTime=").append(payTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "Order{" +
+                "aid=" + aid +
+                ", orderNum='" + orderNum + '\'' +
+                ", endTime=" + endTime +
+                ", payAmount='" + payAmount + '\'' +
+                ", payStatus='" + payStatus + '\'' +
+                ", orderType='" + orderType + '\'' +
+                ", powerBankBorrowPlace='" + powerBankBorrowPlace + '\'' +
+                ", powerBankBackPlace='" + powerBankBackPlace + '\'' +
+                ", powerBankStatus='" + powerBankStatus + '\'' +
+                ", powerBankId='" + powerBankId + '\'' +
+                ", boxChargingId='" + boxChargingId + '\'' +
+                ", payTime=" + payTime +
+                ", waterBills=" + waterBills +
+                ", account=" + account +
+                '}';
     }
 }

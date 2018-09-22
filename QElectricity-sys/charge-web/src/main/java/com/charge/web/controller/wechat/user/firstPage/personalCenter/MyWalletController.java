@@ -31,7 +31,7 @@ public class MyWalletController {
         //直接查询数据库该skey对应的用户的钱包信息.如果前端能传来skey,说明skey肯定没过期,所以数据库存的skey也没有更新
         Map<String,String> userWalletInfo = userService.findUserWalletInfoBySkey(skey);
 
-        Map myWallet = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "personalCenter", "personalInfo", userWalletInfo);
+        Map myWallet = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "myWalletPage", "myWallet", userWalletInfo);
 
         return myWallet;
     }
