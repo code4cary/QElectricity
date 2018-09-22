@@ -147,18 +147,20 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
             if (order.getPowerBankStatus().equals("0")) {
                 //获取创建时间(即用户充电开始时间)的时间戳,单位毫秒
                 Long createTime = order.getCreateTime().getTime();
+                System.out.println("createTime= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( order.getCreateTime()));
                 //获取当前时间的时间戳,单位毫秒
                 Long nowTime = new Date().getTime();
+                System.out.println("nowTime= " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format( new Date()));
 
                 //计算用户当前已使用充电宝时间,单位分钟
-                timeAmount = Math.ceil(Double.valueOf(createTime - nowTime) / 1000.0 / 60.0);
+                timeAmount = Math.ceil(Double.valueOf(nowTime - createTime) / 1000.0 / 60.0);
                 chargingRecord.setChargingTimeAmount(String.valueOf(new Double(timeAmount).intValue()));
 
                 //查询该充电箱的定价策略
                 //获得该充电箱的id
                 String chargingBoxId = order.getBoxChargingId();//此id为充电箱id,不是编号
                 //根据充电箱id去定价策略表查询该充电箱的定价策略
-                PriceTypeCB priceTypeCB = priceTypeCBMapper.findPriceTypeCBByCbId(order.getBoxChargingId());
+                PriceTypeCB priceTypeCB = priceTypeCBMapper.findPriceTypeCBByCbId(Integer.valueOf(chargingBoxId));
 
 
                 //获取详细价格策略,免费时长,每小时价格,每日封顶都为整型
