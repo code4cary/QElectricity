@@ -43,10 +43,10 @@ public class LoginAgentController {
             String agentPwd = agentService.findPwdByName(username);
             if (agentPwd == null) {//用户不存在
                 return CommonDataReturnUtil.requestSuccess(StatusInfo.FailInfo2, "loginAgentPage", "loginAgent", null);
-            } else if (agentPwd != password) {//密码错误
+            } else if (!agentPwd.equals(password)) {//密码错误
                 return CommonDataReturnUtil.requestSuccess(StatusInfo.FailInfo3, "loginAgentPage", "loginAgent", null);
             }
-        } else if (password_redis != password) {//密码错误
+        } else if (!password_redis.equals(password)) {//密码错误
 
             return CommonDataReturnUtil.requestSuccess(StatusInfo.FailInfo3, "loginAgentPage", "loginAgent", null);
 
