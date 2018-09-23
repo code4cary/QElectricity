@@ -297,13 +297,16 @@
     <!-- 根据id更新skey-->
     <update id="updateSkeyById">
         update t_user
-        <if test="Id != null ">
+        <set>
             <if test="skey != null">
-                set SKEY = #{skey}
-                where #{Id} = ID
+                SKEY = #{skey}
             </if>
-        </if>
-
+        </set>
+        <where>
+            <if test="Id != null ">
+                #{Id} = ID
+            </if>
+        </where>
     </update>
 
     <!-- 根据openId更新skey-->
