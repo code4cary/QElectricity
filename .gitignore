@@ -27,3 +27,4 @@ QElectricity-sys/charge-entity/target/
 QElectricity-sys/charge-service/target/
 QElectricity-sys/charge-web/target/
 *.iml
+/.idea/workspace.xml
