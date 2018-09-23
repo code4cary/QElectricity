@@ -263,56 +263,37 @@
 
     <!--根据用户名查询密码-->
     <select id="findAgentByName" resultType="String" parameterType="String">
+        SELECT PASSWORD
+        FROM t_agent
+        <where>
+            <if test="name != null">
 
-        <if test="name != null">
-
-            SELECT PASSWORD
-            FROM t_agent
-
-
-            <where>
-
-                <if test="name != null">
-
-                    #{name} = t_agent.USER_NAME
-                </if>
-            </where>
-        </if>
+                #{name} = t_agent.USER_NAME
+            </if>
+        </where>
     </select>
 
     <!--根据代理商用户名查询id,次id为代理商省份证号-->
     <select id="findAgentIdNoByName" resultType="String" parameterType="String">
-
         SELECT ID_NUMBER
         FROM t_agent
-
         <where>
-
             <if test="name != null">
 
                 #{name} = t_agent.USER_NAME
             </if>
         </where>
-
     </select>
 
     <!--根据代理商用户名查询id,次id为代理商省份证号-->
     <select id="findPwdByName" resultType="String" parameterType="String">
-
-
         SELECT PASSWORD
         FROM t_agent
-
         <where>
-
             <if test="name != null">
-
                 #{name} = t_agent.USER_NAME
             </if>
         </where>
-
-
     </select>
-
 
 </mapper>

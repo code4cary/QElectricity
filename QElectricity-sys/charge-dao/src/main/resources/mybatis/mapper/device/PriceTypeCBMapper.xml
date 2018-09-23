@@ -109,16 +109,18 @@
 
     <!--根据充电箱id查询其对应的价格策略表-->
     <select id="findPriceTypeCBByCbId" resultMap="BaseResultMap" parameterType="Integer">
-        <if test="cbId != null">
-            select *
-            from
-              t_price_type_cb,
-              t_charging_box
-            where
-              #{cbId} = t_charging_box.id and
-              t_price_type_cb.ID = t_charging_box.PT_ID
 
-        </if>
+        select *
+        from
+        t_price_type_cb,
+        t_charging_box
+        <where>
+            <if test="cbId != null">
+                #{cbId} = t_charging_box.id and
+            </if>
+            t_price_type_cb.ID = t_charging_box.PT_ID
+        </where>
+
     </select>
 
 </mapper>

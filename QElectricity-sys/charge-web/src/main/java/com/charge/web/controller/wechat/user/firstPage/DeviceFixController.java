@@ -1,6 +1,5 @@
 package com.charge.web.controller.wechat.user.firstPage;
 
-import com.charge.common.enums.StatusInfo;
 import com.charge.common.utils.QEFileUtils;
 import com.charge.entity.model.CommonOutputDO;
 import com.charge.entity.model.fix.DeviceFixDO;
@@ -8,7 +7,6 @@ import com.charge.entity.po.device.Malfunction;
 import com.charge.service.biz.wechat.user.firstPage.UserService;
 import com.charge.service.biz.wechat.user.fix.MalfunctionService;
 import com.charge.web.controller.base.BaseController;
-import com.charge.web.utils.CommonDataReturnUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.Date;
 import java.util.Map;
 import java.util.UUID;

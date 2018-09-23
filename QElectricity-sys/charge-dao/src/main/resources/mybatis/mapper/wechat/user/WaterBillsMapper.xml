@@ -118,28 +118,27 @@
 
     <!--根据skey查询交易明细(即流水明细)-->
     <select id="findTransactionDetailBySkey" resultMap="transactionDetailMap" parameterType="String">
-        <if test="skey != null">
-            select
-                t_power_bank.PB_SN,
-                t_water_bills.TYPE,
-                t_water_bills.WATERBILLSSOURCE,
-                t_water_bills.CREATE_TIME,
-                t_water_bills.AMOUNT
-            from
-                t_user,
-                t_account,
-                t_order,
-                t_water_bills,
-                t_power_bank
-            where
+        select
+        t_power_bank.PB_SN,
+        t_water_bills.TYPE,
+        t_water_bills.WATERBILLSSOURCE,
+        t_water_bills.CREATE_TIME,
+        t_water_bills.AMOUNT
+        from
+        t_user,
+        t_account,
+        t_order,
+        t_water_bills,
+        t_power_bank
+        <where>
+            <if test="skey != null">
                 #{skey} = t_user.Skey and
-                t_account.UID = t_user.ID and
-                t_order.AID = t_account.ID and
-                t_water_bills.OID = t_order.ID and
-                t_order.POWER_BANK_ID = t_power_bank.ID
-        </if>
-
+            </if>
+            t_account.UID = t_user.ID and
+            t_order.AID = t_account.ID and
+            t_water_bills.OID = t_order.ID and
+            t_order.POWER_BANK_ID = t_power_bank.ID
+        </where>
     </select>
-
 
 </mapper>

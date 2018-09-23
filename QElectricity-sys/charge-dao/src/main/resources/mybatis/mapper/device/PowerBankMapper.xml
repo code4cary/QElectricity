@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.charge.dao.mapper.device.PowerBankMapper" >
-<resultMap id="BaseResultMap" type="com.charge.entity.po.device.PowerBank">
-<id column="ID" property="id" jdbcType="INTEGER"/>
-<result column="LOCK_ID" property="lockId" jdbcType="VARCHAR"/>
-<result column="LOCK_STATUS" property="lockStatus" jdbcType="VARCHAR"/>
-<result column="LOCK_OPERATION_STATUS" property="lockOperationStatus" jdbcType="VARCHAR"/>
-<result column="PB_CUSTOMER_ID" property="pbCustomerId" jdbcType="VARCHAR"/>
-<result column="PB_MODEL" property="pbModel" jdbcType="VARCHAR"/>
-<result column="PB_DATE" property="pbDate" jdbcType="VARCHAR"/>
-<result column="PB_SN" property="pbSn" jdbcType="VARCHAR"/>
-<result column="PB_CAPACITY" property="pbCapacity" jdbcType="VARCHAR"/>
-<result column="PB_STATUS" property="pbStatus" jdbcType="VARCHAR"/>
-<result column="PB_PRIORITY" property="pbPriority" jdbcType="VARCHAR"/>
-<result column="BORROW_TIMES" property="borrowTimes" jdbcType="VARCHAR"/>
-<result column="TOTAL_USE_TIME" property="totalUseTime" jdbcType="VARCHAR"/>
-<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
-<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
-</resultMap>
-<sql id="Base_Column_List">
+<mapper namespace="com.charge.dao.mapper.device.PowerBankMapper">
+    <resultMap id="BaseResultMap" type="com.charge.entity.po.device.PowerBank">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="LOCK_ID" property="lockId" jdbcType="VARCHAR"/>
+        <result column="LOCK_STATUS" property="lockStatus" jdbcType="VARCHAR"/>
+        <result column="LOCK_OPERATION_STATUS" property="lockOperationStatus" jdbcType="VARCHAR"/>
+        <result column="PB_CUSTOMER_ID" property="pbCustomerId" jdbcType="VARCHAR"/>
+        <result column="PB_MODEL" property="pbModel" jdbcType="VARCHAR"/>
+        <result column="PB_DATE" property="pbDate" jdbcType="VARCHAR"/>
+        <result column="PB_SN" property="pbSn" jdbcType="VARCHAR"/>
+        <result column="PB_CAPACITY" property="pbCapacity" jdbcType="VARCHAR"/>
+        <result column="PB_STATUS" property="pbStatus" jdbcType="VARCHAR"/>
+        <result column="PB_PRIORITY" property="pbPriority" jdbcType="VARCHAR"/>
+        <result column="BORROW_TIMES" property="borrowTimes" jdbcType="VARCHAR"/>
+        <result column="TOTAL_USE_TIME" property="totalUseTime" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     ID, LOCK_ID, LOCK_STATUS, LOCK_OPERATION_STATUS, PB_CUSTOMER_ID, PB_MODEL, PB_DATE, 
     PB_SN, PB_CAPACITY, PB_STATUS, PB_PRIORITY, BORROW_TIMES, TOTAL_USE_TIME, CREATE_TIME, 
     UPDATE_TIME
   </sql>
-<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-select
-<include refid="Base_Column_List"/>
-from t_power_bank
-where ID = #{id,jdbcType=INTEGER}
-</select>
-<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_power_bank
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_power_bank
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-<insert id="insert" parameterType="com.charge.entity.po.device.PowerBank">
+    <insert id="insert" parameterType="com.charge.entity.po.device.PowerBank">
     insert into t_power_bank (ID, LOCK_ID, LOCK_STATUS, 
       LOCK_OPERATION_STATUS, PB_CUSTOMER_ID, PB_MODEL, 
       PB_DATE, PB_SN, PB_CAPACITY, 
@@ -47,152 +47,152 @@ where ID = #{id,jdbcType=INTEGER}
       #{totalUseTime,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-<insert id="insertSelective" parameterType="com.charge.entity.po.device.PowerBank">
-insert into t_power_bank
-<trim prefix="(" suffix=")" suffixOverrides=",">
-    <if test="id != null">
-        ID,
-    </if>
-    <if test="lockId != null">
-        LOCK_ID,
-    </if>
-    <if test="lockStatus != null">
-        LOCK_STATUS,
-    </if>
-    <if test="lockOperationStatus != null">
-        LOCK_OPERATION_STATUS,
-    </if>
-    <if test="pbCustomerId != null">
-        PB_CUSTOMER_ID,
-    </if>
-    <if test="pbModel != null">
-        PB_MODEL,
-    </if>
-    <if test="pbDate != null">
-        PB_DATE,
-    </if>
-    <if test="pbSn != null">
-        PB_SN,
-    </if>
-    <if test="pbCapacity != null">
-        PB_CAPACITY,
-    </if>
-    <if test="pbStatus != null">
-        PB_STATUS,
-    </if>
-    <if test="pbPriority != null">
-        PB_PRIORITY,
-    </if>
-    <if test="borrowTimes != null">
-        BORROW_TIMES,
-    </if>
-    <if test="totalUseTime != null">
-        TOTAL_USE_TIME,
-    </if>
-    <if test="createTime != null">
-        CREATE_TIME,
-    </if>
-    <if test="updateTime != null">
-        UPDATE_TIME,
-    </if>
-</trim>
-<trim prefix="values (" suffix=")" suffixOverrides=",">
-    <if test="id != null">
-        #{id,jdbcType=INTEGER},
-    </if>
-    <if test="lockId != null">
-        #{lockId,jdbcType=VARCHAR},
-    </if>
-    <if test="lockStatus != null">
-        #{lockStatus,jdbcType=VARCHAR},
-    </if>
-    <if test="lockOperationStatus != null">
-        #{lockOperationStatus,jdbcType=VARCHAR},
-    </if>
-    <if test="pbCustomerId != null">
-        #{pbCustomerId,jdbcType=VARCHAR},
-    </if>
-    <if test="pbModel != null">
-        #{pbModel,jdbcType=VARCHAR},
-    </if>
-    <if test="pbDate != null">
-        #{pbDate,jdbcType=VARCHAR},
-    </if>
-    <if test="pbSn != null">
-        #{pbSn,jdbcType=VARCHAR},
-    </if>
-    <if test="pbCapacity != null">
-        #{pbCapacity,jdbcType=VARCHAR},
-    </if>
-    <if test="pbStatus != null">
-        #{pbStatus,jdbcType=VARCHAR},
-    </if>
-    <if test="pbPriority != null">
-        #{pbPriority,jdbcType=VARCHAR},
-    </if>
-    <if test="borrowTimes != null">
-        #{borrowTimes,jdbcType=VARCHAR},
-    </if>
-    <if test="totalUseTime != null">
-        #{totalUseTime,jdbcType=VARCHAR},
-    </if>
-    <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-    </if>
-    <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-    </if>
-</trim>
-</insert>
-<update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.device.PowerBank">
-update t_power_bank
-<set>
-    <if test="lockId != null">
-        LOCK_ID = #{lockId,jdbcType=VARCHAR},
-    </if>
-    <if test="lockStatus != null">
-        LOCK_STATUS = #{lockStatus,jdbcType=VARCHAR},
-    </if>
-    <if test="lockOperationStatus != null">
-        LOCK_OPERATION_STATUS = #{lockOperationStatus,jdbcType=VARCHAR},
-    </if>
-    <if test="pbCustomerId != null">
-        PB_CUSTOMER_ID = #{pbCustomerId,jdbcType=VARCHAR},
-    </if>
-    <if test="pbModel != null">
-        PB_MODEL = #{pbModel,jdbcType=VARCHAR},
-    </if>
-    <if test="pbDate != null">
-        PB_DATE = #{pbDate,jdbcType=VARCHAR},
-    </if>
-    <if test="pbSn != null">
-        PB_SN = #{pbSn,jdbcType=VARCHAR},
-    </if>
-    <if test="pbCapacity != null">
-        PB_CAPACITY = #{pbCapacity,jdbcType=VARCHAR},
-    </if>
-    <if test="pbStatus != null">
-        PB_STATUS = #{pbStatus,jdbcType=VARCHAR},
-    </if>
-    <if test="pbPriority != null">
-        PB_PRIORITY = #{pbPriority,jdbcType=VARCHAR},
-    </if>
-    <if test="borrowTimes != null">
-        BORROW_TIMES = #{borrowTimes,jdbcType=VARCHAR},
-    </if>
-    <if test="totalUseTime != null">
-        TOTAL_USE_TIME = #{totalUseTime,jdbcType=VARCHAR},
-    </if>
-    <if test="createTime != null">
-        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-    </if>
-    <if test="updateTime != null">
-        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-    </if>
-</set>
-where ID = #{id,jdbcType=INTEGER}
-</update>
-<update id="updateByPrimaryKey" parameterType="com.charge.entity.po.device.PowerBank">
+    <insert id="insertSelective" parameterType="com.charge.entity.po.device.PowerBank">
+        insert into t_power_bank
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="lockId != null">
+                LOCK_ID,
+            </if>
+            <if test="lockStatus != null">
+                LOCK_STATUS,
+            </if>
+            <if test="lockOperationStatus != null">
+                LOCK_OPERATION_STATUS,
+            </if>
+            <if test="pbCustomerId != null">
+                PB_CUSTOMER_ID,
+            </if>
+            <if test="pbModel != null">
+                PB_MODEL,
+            </if>
+            <if test="pbDate != null">
+                PB_DATE,
+            </if>
+            <if test="pbSn != null">
+                PB_SN,
+            </if>
+            <if test="pbCapacity != null">
+                PB_CAPACITY,
+            </if>
+            <if test="pbStatus != null">
+                PB_STATUS,
+            </if>
+            <if test="pbPriority != null">
+                PB_PRIORITY,
+            </if>
+            <if test="borrowTimes != null">
+                BORROW_TIMES,
+            </if>
+            <if test="totalUseTime != null">
+                TOTAL_USE_TIME,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="lockId != null">
+                #{lockId,jdbcType=VARCHAR},
+            </if>
+            <if test="lockStatus != null">
+                #{lockStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="lockOperationStatus != null">
+                #{lockOperationStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="pbCustomerId != null">
+                #{pbCustomerId,jdbcType=VARCHAR},
+            </if>
+            <if test="pbModel != null">
+                #{pbModel,jdbcType=VARCHAR},
+            </if>
+            <if test="pbDate != null">
+                #{pbDate,jdbcType=VARCHAR},
+            </if>
+            <if test="pbSn != null">
+                #{pbSn,jdbcType=VARCHAR},
+            </if>
+            <if test="pbCapacity != null">
+                #{pbCapacity,jdbcType=VARCHAR},
+            </if>
+            <if test="pbStatus != null">
+                #{pbStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="pbPriority != null">
+                #{pbPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="borrowTimes != null">
+                #{borrowTimes,jdbcType=VARCHAR},
+            </if>
+            <if test="totalUseTime != null">
+                #{totalUseTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.device.PowerBank">
+        update t_power_bank
+        <set>
+            <if test="lockId != null">
+                LOCK_ID = #{lockId,jdbcType=VARCHAR},
+            </if>
+            <if test="lockStatus != null">
+                LOCK_STATUS = #{lockStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="lockOperationStatus != null">
+                LOCK_OPERATION_STATUS = #{lockOperationStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="pbCustomerId != null">
+                PB_CUSTOMER_ID = #{pbCustomerId,jdbcType=VARCHAR},
+            </if>
+            <if test="pbModel != null">
+                PB_MODEL = #{pbModel,jdbcType=VARCHAR},
+            </if>
+            <if test="pbDate != null">
+                PB_DATE = #{pbDate,jdbcType=VARCHAR},
+            </if>
+            <if test="pbSn != null">
+                PB_SN = #{pbSn,jdbcType=VARCHAR},
+            </if>
+            <if test="pbCapacity != null">
+                PB_CAPACITY = #{pbCapacity,jdbcType=VARCHAR},
+            </if>
+            <if test="pbStatus != null">
+                PB_STATUS = #{pbStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="pbPriority != null">
+                PB_PRIORITY = #{pbPriority,jdbcType=VARCHAR},
+            </if>
+            <if test="borrowTimes != null">
+                BORROW_TIMES = #{borrowTimes,jdbcType=VARCHAR},
+            </if>
+            <if test="totalUseTime != null">
+                TOTAL_USE_TIME = #{totalUseTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.device.PowerBank">
     update t_power_bank
     set LOCK_ID = #{lockId,jdbcType=VARCHAR},
       LOCK_STATUS = #{lockStatus,jdbcType=VARCHAR},
@@ -210,14 +210,17 @@ where ID = #{id,jdbcType=INTEGER}
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-<select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.device.PowerBank">
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.device.PowerBank">
      select * from t_power_bank
   </select>
 
     <!--根据id查询充电宝的sn-->
     <select id="findSNById" resultType="String" parameterType="String">
-        <if test="id != null">
-            select PB_SN from t_power_bank where #{id} = t_power_bank.ID
-        </if>
+        select PB_SN from t_power_bank
+        <where>
+            <if test="id != null">
+                #{id} = t_power_bank.ID
+            </if>
+        </where>
     </select>
 </mapper>
