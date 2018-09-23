@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * 用户支付
+ * 用户支付,用户借完充电宝支付的费用
  */
 @RestController
 @RequestMapping("wechat/user/firstPage/rechargeBorrowed")

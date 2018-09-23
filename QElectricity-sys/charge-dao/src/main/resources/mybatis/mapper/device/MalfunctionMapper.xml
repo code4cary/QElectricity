@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.charge.dao.mapper.device.MalfunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.charge.entity.po.device.Malfunction" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="CHARGINGBOXNO" property="chargingboxno" jdbcType="VARCHAR" />
+    <result column="REASONS" property="reasons" jdbcType="VARCHAR" />
+    <result column="WINDOWNO" property="windowno" jdbcType="VARCHAR" />
+    <result column="POWERBANKNO" property="powerbankno" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PHOTO" property="photo" jdbcType="VARCHAR" />
+    <result column="WX_OPENID" property="wxOpenid" jdbcType="VARCHAR" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CREATE_TIME, CHARGINGBOXNO, REASONS, WINDOWNO, POWERBANKNO, REMARK, PHOTO, WX_OPENID, 
+    END_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_malfunction
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_malfunction
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.charge.entity.po.device.Malfunction" >
+    insert into t_malfunction (ID, CREATE_TIME, CHARGINGBOXNO, 
+      REASONS, WINDOWNO, POWERBANKNO, 
+      REMARK, PHOTO, WX_OPENID, 
+      END_TIME)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{chargingboxno,jdbcType=VARCHAR}, 
+      #{reasons,jdbcType=VARCHAR}, #{windowno,jdbcType=VARCHAR}, #{powerbankno,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{wxOpenid,jdbcType=VARCHAR}, 
+      #{endTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.charge.entity.po.device.Malfunction" >
+    insert into t_malfunction
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="chargingboxno != null" >
+        CHARGINGBOXNO,
+      </if>
+      <if test="reasons != null" >
+        REASONS,
+      </if>
+      <if test="windowno != null" >
+        WINDOWNO,
+      </if>
+      <if test="powerbankno != null" >
+        POWERBANKNO,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="photo != null" >
+        PHOTO,
+      </if>
+      <if test="wxOpenid != null" >
+        WX_OPENID,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargingboxno != null" >
+        #{chargingboxno,jdbcType=VARCHAR},
+      </if>
+      <if test="reasons != null" >
+        #{reasons,jdbcType=VARCHAR},
+      </if>
+      <if test="windowno != null" >
+        #{windowno,jdbcType=VARCHAR},
+      </if>
+      <if test="powerbankno != null" >
+        #{powerbankno,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenid != null" >
+        #{wxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.device.Malfunction" >
+    update t_malfunction
+    <set >
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargingboxno != null" >
+        CHARGINGBOXNO = #{chargingboxno,jdbcType=VARCHAR},
+      </if>
+      <if test="reasons != null" >
+        REASONS = #{reasons,jdbcType=VARCHAR},
+      </if>
+      <if test="windowno != null" >
+        WINDOWNO = #{windowno,jdbcType=VARCHAR},
+      </if>
+      <if test="powerbankno != null" >
+        POWERBANKNO = #{powerbankno,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        PHOTO = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenid != null" >
+        WX_OPENID = #{wxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.device.Malfunction" >
+    update t_malfunction
+    set CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      CHARGINGBOXNO = #{chargingboxno,jdbcType=VARCHAR},
+      REASONS = #{reasons,jdbcType=VARCHAR},
+      WINDOWNO = #{windowno,jdbcType=VARCHAR},
+      POWERBANKNO = #{powerbankno,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PHOTO = #{photo,jdbcType=VARCHAR},
+      WX_OPENID = #{wxOpenid,jdbcType=VARCHAR},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.device.Malfunction" >
+     select * from t_malfunction
+  </select>
+</mapper>

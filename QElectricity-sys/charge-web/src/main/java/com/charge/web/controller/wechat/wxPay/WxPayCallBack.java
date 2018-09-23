@@ -18,11 +18,11 @@ import java.util.Map;
  * Created by vincent on 22/09/2018.
  */
 @RestController
-@RequestMapping("wechat/wechat/wxPay")
+@RequestMapping("wechat/wxPay")
 public class WxPayCallBack {
 
     /**
-     * @Description:微信支付
+     * @Description:微信支付成功后微信后台发送到小程序服务器后台的消息
      * @return
      * @throws Exception
      */

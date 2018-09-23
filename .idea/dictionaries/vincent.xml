@@ -3,8 +3,11 @@
     <words>
       <w>appid</w>
       <w>appidid</w>
+      <w>jsapi</w>
       <w>recipt</w>
       <w>skey</w>
+      <w>spbill</w>
+      <w>tradetype</w>
       <w>userfrom</w>
       <w>waterbillssource</w>
       <w>wechat</w>

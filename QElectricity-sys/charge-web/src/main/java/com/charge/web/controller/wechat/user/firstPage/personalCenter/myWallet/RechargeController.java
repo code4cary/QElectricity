@@ -43,11 +43,11 @@ public class RechargeController {
         String openid = userService.findUserOpenIdBySkey(skey);
 
         //发起微信支付
-        JSON wxPayData = WxPayUtil.wxPay(openid, request);
+        JSON wxPayData = WxPayUtil.wxPay(openid, request,amount);
 
+        //封装数据返回前端
         Map wxPay =
                 CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "wxPayPage", "wxPay", wxPayData);
-
 
         return  wxPay;
     }

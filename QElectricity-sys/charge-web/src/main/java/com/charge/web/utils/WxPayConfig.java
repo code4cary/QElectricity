@@ -13,7 +13,8 @@ public class WxPayConfig {
     public static final String key = "";
     //支付成功后的服务器回调url
    // public static final String notify_url = "https://??/??/weixin/api/wxNotify";
-    public static final String notify_url = "https://www.wxqdtech.com";
+   // public static final String notify_url = "https://qdtechwx.com/wechat/wxPay/wxNotify";
+    public static final String notify_url = "https://qdtechwx.com/wechat/wxPay";
     //签名方式，固定值
     public static final String SIGNTYPE = "MD5";
     //交易类型，小程序支付的固定值为JSAPI

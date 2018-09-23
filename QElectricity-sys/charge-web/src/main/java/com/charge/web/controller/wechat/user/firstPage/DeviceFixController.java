@@ -10,4 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/wechat/user/firstPage/deviceFix")
 public class DeviceFixController {
+
+
 }
