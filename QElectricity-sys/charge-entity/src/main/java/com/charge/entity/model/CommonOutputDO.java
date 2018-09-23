@@ -2,6 +2,7 @@ package com.charge.entity.model;
 
 
 import com.charge.common.enums.ErrCode;
+import com.charge.common.enums.StatusInfo;
 
 public class CommonOutputDO<T extends Object> extends BaseDO {
 
@@ -26,9 +27,14 @@ public class CommonOutputDO<T extends Object> extends BaseDO {
         this.msg = se.getMessage();
     }
 
-    public CommonOutputDO(ErrCode ec) {
+   /* public CommonOutputDO(ErrCode ec) {
         this.code = ec.getEcode();
         this.msg = ec.getEmsg();
+    }*/
+
+    public CommonOutputDO(StatusInfo ec) {
+        this.code = ec.getCode();
+        this.msg = ec.getMsg();
     }
 
     public CommonOutputDO(String flag,String code,String msg) {

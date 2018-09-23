@@ -82,4 +82,18 @@ public class CommonDataReturnUtil {
         dataMap.put(pageKey, map);
         return dataMap;
     }
+
+    public static Map returnSuccess(StatusInfo statusInfo) {
+        Map dataMap = new HashMap<>();
+        dataMap.put("code", statusInfo.getCode());
+        dataMap.put("msg", statusInfo.getMsg());
+        return dataMap;
+    }
+
+    public static Map returnFailed(StatusInfo statusInfo) {
+        Map dataMap = new HashMap<>();
+        dataMap.put("code", statusInfo.getCode());
+        dataMap.put("msg", statusInfo.getMsg());
+        return dataMap;
+    }
 }

@@ -349,15 +349,13 @@
   </select>
 
   <!--根据skey查询用户openid-->
-<select id="findUserOpenIdBySkey" parameterType="String" resultType="String">
-  <if test="skey != null">
+<select id="findUserOpenIdBySkey" resultType="String">
     select
     WX_OPENID
     from
     t_user
     where
     #{skey} = t_user.SKEY
-  </if>
 </select>
 
 

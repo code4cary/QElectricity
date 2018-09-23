@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
 import com.charge.common.enums.StatusInfo;
 import com.charge.common.pojo.ShopInfo;
+import com.charge.dao.mapper.device.MalfunctionMapper;
+import com.charge.entity.po.device.Malfunction;
 import com.charge.service.biz.wechat.user.FirstPageService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
@@ -33,6 +35,8 @@ public class FirstPageControllerTest {
     @Autowired
     private FirstPageService firstPageService;
 
+    @Autowired
+    MalfunctionMapper malfunctionMapper;
     //
     public static void main(String... args) {
 
@@ -86,5 +90,12 @@ public class FirstPageControllerTest {
 
         Object json = JSON.toJSON(firstPage);
         System.out.println(json);
+    }
+
+    @Test
+    public  void test01(){
+
+        System.out.println();
+        Malfunction malfunction = malfunctionMapper.selectByPrimaryKey(2);
     }
 }
