@@ -1,0 +1,36 @@
+//firstPage 代理商小程序首页数据返回样例
+
+{
+  //状态码
+  //可选值SUCCESS_CODE=1或FAIL_CODE=0
+  "code": "",
+  //返回信息
+  //和code代码一一对应,比如code为SUCCESS_CODE,则msg为请求成功,如此类推.
+  //请求成功:SUCCESS_CODE:请求失败:FAIL_CODE
+  "msg": "",
+  //首页,可以封装到一个类里面
+  "firstPage": {
+    //订单数据
+    "orderData": {
+      //今日订单
+      "todayOrder": " ",
+      //今日收益
+      "todayIncome": " ",
+      //总订单
+      "totalOrder": " ",
+      //总分成
+      "totalSharing": " "
+    },
+    //充电箱状态
+    "chargingBoxStatus": {
+      //充电箱总数量
+      "ToTalNum": " ",
+      //充电箱离线数量
+      "offlineNum": " "
+    },
+    //预警数量
+    "earlyWarningNum": " ",
+    //代理上id
+    "agentId" :""
+  }
+}

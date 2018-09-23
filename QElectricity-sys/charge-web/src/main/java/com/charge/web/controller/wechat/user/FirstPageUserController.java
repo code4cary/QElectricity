@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.user;
 
+import com.charge.common.back.wechat.user.ShopInfoBack;
 import com.charge.common.enums.StatusInfo;
-import com.charge.common.pojo.ShopInfo;
 import com.charge.service.biz.wechat.user.FirstPageService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
@@ -23,7 +23,7 @@ import java.util.*;
 @RestController
 @PropertySource(value = "classpath:prop.properties")
 @RequestMapping("wechat/user/firstPage")
-public class FirstPageController {
+public class FirstPageUserController {
 
     @Autowired
     private FirstPageService firstPageService;
@@ -58,7 +58,7 @@ public class FirstPageController {
         Double userLatitude = Double.parseDouble((String) userPositionList.get(1));
 
         //获取离当前用户50km范围的最大最小经纬度,
-        List<ShopInfo> shopList = null;
+        List<ShopInfoBack> shopList = null;
         do {
             PositionModel positionModel = DistanceHelperUtil.FindNeighPosition(userLongitude, userLatitude, distance);
             distance += addDistance;

@@ -259,4 +259,32 @@
   <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.agent.Agent" >
      select * from t_agent
   </select>
+
+
+    <!--根据用户名查询密码-->
+    <select id="findAgentByName" resultType="String" parameterType="String">
+
+        <if test="name != null">
+
+            SELECT PASSWORD
+            FROM t_agent
+            WHERE
+            #{name} = t_agent.USER_NAME
+        </if>
+    </select>
+
+    <!--根据代理商用户名查询id,次id为代理商省份证号-->
+    <select id="findAgentIdNoByName" resultType="String" parameterType="String">
+
+        <if test="name != null">
+
+            SELECT ID_NUMBER
+            FROM t_agent
+            WHERE
+            #{name} = t_agent.USER_NAME
+        </if>
+    </select>
+
+
+
 </mapper>

@@ -1,6 +1,6 @@
 package com.charge.service.biz.wechat.user.firstPage;
 
-import com.charge.common.pojo.ShopInfo;
+import com.charge.common.back.wechat.user.ShopInfoBack;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.service.biz.base.BaseService;
 
@@ -13,5 +13,5 @@ import java.util.Map;
 public interface ShopService extends BaseService<Shop, Integer> {
 
 
-    List<ShopInfo> findShopBySearch(Map positionMap, String searchData);
+    List<ShopInfoBack> findShopBySearch(Map positionMap, String searchData);
 }

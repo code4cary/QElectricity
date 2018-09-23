@@ -1,10 +1,11 @@
-package com.charge.service.biz.wechat.user.firstPage.impl;
+package com.charge.service.biz.wechat.user.impl;
 
 import com.charge.common.back.wechat.user.ShopInfoBack;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.entity.po.wechat.agent.Shop;
+import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.service.biz.wechat.user.FirstPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,39 +14,50 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by vincent on 20/09/2018.
+ * Created by vincent on 18/09/2018.
  */
 @Service
-public class ShopServiceImpl extends BaseServiceImpl<Shop, Integer> implements ShopService {
+public class FirstPageServiceImpl extends BaseServiceImpl<Shop, Integer> implements FirstPageService {
 
     @Autowired
     ShopMapper shopMapper;
 
+
     @PostConstruct
     @Override
     public void initBaseMapper() {
-
         setBaseMapper(shopMapper);
     }
 
-
     /**
-     * 根据搜索内容对附近商家进行模糊匹配
-     * 搜索内容匹配字段:NAME,ADDRESS,SHOP_STATUS
-     * @param positionMap
-     * @param searchData
+     *
+     * @param shopNo
      * @return
      */
     @Override
-    public List<ShopInfoBack> findShopBySearch(Map positionMap, String searchData) {
+    public User findByShopNo(String shopNo) {
 
-        List<ShopInfoBack> shopInfoList = shopMapper.findShopBySearch(positionMap,searchData);
+        return null;
+    }
+
+    /**
+     * 查询经纬度符合小于最大经纬度,大于最小经纬度的商家
+     */
+    @Override
+    public List<ShopInfoBack> findShopByCoordinates(Map<String, Double> map) {
+        //符合经纬度范围的商户,只能查到SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,CONTRACT_PERSON_NAM等信息
+        List<ShopInfoBack> shopInfoList = shopMapper.findShopByCoordinates(map);
 
         //向device查询符合当前经纬度范围的商户名下的充电箱可借和可还的充电宝数量
         //首次向数据库查询当前商户名下的设备的编号
 
         //再想device查询其当前可借和可还的充电宝数量
 
+
+
+
         return shopInfoList;
     }
+
+
 }

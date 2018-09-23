@@ -1,6 +1,6 @@
 package com.charge.service.biz.wechat.user.firstPage.impl;
 
-import com.charge.common.pojo.ChargingRecord;
+import com.charge.common.back.wechat.user.ChargingRecordBack;
 import com.charge.dao.mapper.device.PowerBankMapper;
 import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
@@ -131,16 +131,16 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
      * @return
      */
     @Override
-    public List<ChargingRecord> findUserChargingRecordBySkey(String skey) {
+    public List<ChargingRecordBack> findUserChargingRecordBySkey(String skey) {
 
         //-- 1:先把订单记录查询出
         //根据skey在t_order表下关联查询该用户的账户下的订单
         List<Order> orderList = orderMapper.findUserOrderRecordBySkey(skey);
         System.out.println(orderList);
 
-        List<ChargingRecord> chargingRecordList = new ArrayList<>();
+        List<ChargingRecordBack> chargingRecordList = new ArrayList<>();
         orderList.forEach(order -> {
-            ChargingRecord chargingRecord = new ChargingRecord();
+            ChargingRecordBack chargingRecord = new ChargingRecordBack();
             Double timeAmount = null;
             //-- 2:判断订单中是否有未完成充电的订单,如果有,就要根据时间变化来计算费用
             //①如果用户正在使用充电宝

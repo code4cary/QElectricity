@@ -9,30 +9,9 @@
   //和code代码一一对应,比如code为LOGIN_SUCCESS_CODE,则msg为请求成功,如此类推.
   //请求成功:LOGIN_SUCCESS_CODE:请求失败:LOGIN_FAIL_CODE
   "msg": "",
-
-  "data": {
-    //首页,可以封装到一个类里面
-    "firstPage": {
-      //订单数据
-      "orderData": {
-        //今日订单
-        "todayOrder": " ",
-        //今日收益
-        "todayIncome": " ",
-        //总订单
-        "totalOrder": " ",
-        //总分成
-        "totalSharing": " "
-      },
-      //充电箱状态
-      "chargingBoxStatus": {
-        //充电箱总数量
-        "ToTalNum": " ",
-        //充电箱离线数量
-        "offlineNum": " "
-      },
-      //预警数量
-      "earlyWarningNum": " "
+  "loginAgentPage": {
+    "loginAgent":{
+      "agentId" : ""
     }
   }
 }

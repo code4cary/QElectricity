@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.user.firstPage;
 
 import com.charge.common.enums.StatusInfo;
-import com.charge.common.pojo.ShopInfo;
+import com.charge.common.back.wechat.user.ShopInfoBack;
 import com.charge.service.biz.wechat.user.firstPage.ShopService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
@@ -56,7 +56,7 @@ public class ShopController {
         //解析前端的searchData请求参数
         String searchDataValue = (String) queryData.get("searchData");
 
-        List<ShopInfo> shopInfoList = null;
+        List<ShopInfoBack> shopInfoList = null;
         do {
             PositionModel positionModel = DistanceHelperUtil.FindNeighPosition(userLongitude, userLatitude, distance);
             distance += addDistance;

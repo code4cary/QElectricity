@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.user.firstPage.personalCenter.myWallet;
 
 import com.charge.common.enums.StatusInfo;
-import com.charge.common.pojo.TransactionDetail;
+import com.charge.common.back.wechat.user.TransactionDetailBack;
 import com.charge.service.biz.wechat.user.firstPage.personalCenter.myWallet.WaterBillsService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class TransactionDetailController {
         String skey = queryData.get("skey");
 
         //查询交易明细,主要在流水表里查询,关联其他表再查询一些字段
-        List<TransactionDetail> transactionDetailList =
+        List<TransactionDetailBack> transactionDetailList =
                 waterBillsService.findTransactionDetail(skey);
 
         Map transactionDetail =

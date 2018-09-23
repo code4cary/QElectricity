@@ -356,7 +356,7 @@
     </sql>
 
     <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
-    <resultMap type="com.charge.common.pojo.ShopInfo" id="shopInfoMap">
+    <resultMap type="com.charge.common.back.wechat.user.ShopInfoBack" id="shopInfoMap">
         <result column="SHOP_PHOTO" property="shopPhoto"/>
         <result column="NAME" property="shopName"/>
         <result column="BUSINESS_TIME" property="businessTime"/>

@@ -73,4 +73,5 @@ public abstract class BaseServiceImpl<T,ID extends Serializable> implements Base
             throw new RuntimeException(e);
         }
     }
+
 }

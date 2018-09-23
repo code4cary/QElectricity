@@ -11,7 +11,8 @@
   "msg" : "",
 
   //返回数据
-  "data" : {
+  "deviceFixInfoPage" : {
+    "deviceFixInfo" : ""
 
   }
 }

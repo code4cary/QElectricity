@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.user.firstPage.personalCenter;
 
 import com.charge.common.enums.StatusInfo;
-import com.charge.common.pojo.ChargingRecord;
+import com.charge.common.back.wechat.user.ChargingRecordBack;
 import com.charge.service.biz.wechat.user.firstPage.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class ChargingRecordController {
         String skey = skeyMap.get("skey");
 
         //查询用户充电记录
-        List<ChargingRecord> userChargingRecord = userService.findUserChargingRecordBySkey(skey);
+        List<ChargingRecordBack> userChargingRecord = userService.findUserChargingRecordBySkey(skey);
 
         Map chargingRecord = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "chargingRecordPage", "chargingRecord", userChargingRecord);
 

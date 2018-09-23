@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.user.firstPage;
 
 import com.charge.ChargeApplication;
-import com.charge.common.pojo.ShopInfo;
+import com.charge.common.back.wechat.user.ShopInfoBack;
 import com.charge.service.biz.wechat.user.firstPage.ShopService;
 import com.charge.web.utils.DistanceHelperUtil;
 import org.junit.Test;
@@ -41,7 +41,7 @@ public class ShopControllerTest {
         positionMap.put("MaxLat", 22.64);
 
         //对附近商家进行模糊匹配
-        List<ShopInfo> shopInfoList = shopService.findShopBySearch(positionMap, "砂锅");
+        List<ShopInfoBack> shopInfoList = shopService.findShopBySearch(positionMap, "砂锅");
         shopInfoList.forEach(shopInfo -> System.out.println(shopInfo));
 
         System.out.println("-----------------------------------------");

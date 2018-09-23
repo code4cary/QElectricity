@@ -1,7 +1,7 @@
 package com.charge.dao.mapper.wechat.agent;
 
 import com.charge.ChargeApplication;
-import com.charge.common.pojo.ShopInfo;
+import com.charge.common.back.wechat.user.ShopInfoBack;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * 接口测试方法
  * 测试shopMapper
- * List<ShopInfo> findShopByCoordinates(Map<String, Double> map);
+ * List<ShopInfoBack> findShopByCoordinates(Map<String, Double> map);
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ChargeApplication.class)
@@ -38,7 +38,7 @@ public class shopMapperTest {
         map.put("MaxLat", 24.00);
         System.out.println(map);
 
-        List<ShopInfo> shopInfoList = shopMapper.findShopByCoordinates(map);
+        List<ShopInfoBack> shopInfoList = shopMapper.findShopByCoordinates(map);
 
         System.out.println("---------------");
         shopInfoList.forEach(shopInfo -> System.out.println(shopInfo));

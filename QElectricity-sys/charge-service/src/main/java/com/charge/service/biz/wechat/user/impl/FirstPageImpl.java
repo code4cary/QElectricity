@@ -1,5 +1,6 @@
 package com.charge.service.biz.wechat.user.impl;
 
+import com.charge.common.back.wechat.user.ShopInfoBack;
 import com.charge.common.pojo.ShopInfo;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.entity.po.wechat.agent.Shop;
@@ -44,9 +45,9 @@ public class FirstPageImpl extends BaseServiceImpl<Shop, Integer> implements Fir
      * 查询经纬度符合小于最大经纬度,大于最小经纬度的商家
      */
     @Override
-    public List<ShopInfo> findShopByCoordinates(Map<String, Double> map) {
+    public List<ShopInfoBack> findShopByCoordinates(Map<String, Double> map) {
         //符合经纬度范围的商户,只能查到SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,CONTRACT_PERSON_NAM等信息
-        List<ShopInfo> shopInfoList = shopMapper.findShopByCoordinates(map);
+        List<ShopInfoBack> shopInfoList = shopMapper.findShopByCoordinates(map);
 
         //向device查询符合当前经纬度范围的商户名下的充电箱可借和可还的充电宝数量
         //首次向数据库查询当前商户名下的设备的编号
@@ -58,6 +59,8 @@ public class FirstPageImpl extends BaseServiceImpl<Shop, Integer> implements Fir
 
         return shopInfoList;
     }
+
+
 
 
 }

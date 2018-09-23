@@ -1,6 +1,6 @@
 package com.charge.service.biz.wechat.user.firstPage.personalCenter.myWallet.impl;
 
-import com.charge.common.pojo.TransactionDetail;
+import com.charge.common.back.wechat.user.TransactionDetailBack;
 import com.charge.dao.mapper.wechat.user.WaterBillsMapper;
 import com.charge.entity.po.wechat.user.WaterBills;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
@@ -39,9 +39,9 @@ public class WaterBillsServiceImpl extends BaseServiceImpl<WaterBills, Integer> 
      * @return
      */
     @Override
-    public List<TransactionDetail> findTransactionDetail(String skey) {
+    public List<TransactionDetailBack> findTransactionDetail(String skey) {
 
-        List<TransactionDetail>  transactionDetailList =  waterBillsMapper.findTransactionDetailBySkey(skey);
+        List<TransactionDetailBack>  transactionDetailList =  waterBillsMapper.findTransactionDetailBySkey(skey);
         return transactionDetailList;
     }
 }
