@@ -175,13 +175,15 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         //先查询代理商名下的商户
         List<Shop> shopList = shopMapper.findShopByAgentId(agentId);
 
-        //通过商户id去查询指定日期的订单
         List<TodayIncome> todayIncomeList = new ArrayList<>();
         shopList.forEach(shop->{
             TodayIncome todayIncome = new TodayIncome();
             //封装商户名
             todayIncome.setShopName(shop.getName());
-            List<Order> orderList = orderMapper.findOrdersByIdAndDate(shop.getId(),dateStart,dateEnd);
+            //通过商户id去查询指定日期的订单
+           // System.out.println(shop.getId());
+            Integer shopId = shop.getId();
+            List<Order> orderList = orderMapper.findOrdersByIdAndDate(shopId,dateStart,dateEnd);
             //算出总收益
             int totalIncome = 0;
             for (Order  order: orderList) {
@@ -195,7 +197,8 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
         });
 
-
+        //排序,将每个商户下的当日收益按最高到最低排序
+        Collections.sort(todayIncomeList, (s1, s2) -> s1.getTotalIncome().compareTo(s2.getTotalIncome()));
         return todayIncomeList;
     }
 

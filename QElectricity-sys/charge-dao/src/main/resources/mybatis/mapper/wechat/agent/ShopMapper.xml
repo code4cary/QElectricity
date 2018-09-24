@@ -384,4 +384,18 @@
             SHOP_STATUS like '%${searchData}%'
         </if>
     </select>
+
+    <!--根据代理商id查询名下shop-->
+    <select id="findShopByAgentId" resultMap="BaseResultMap" parameterType="String">
+        select  t_shop.*
+        from
+        t_agent,
+        t_shop
+        <where>
+            <if test="id_num != null">
+                #{id_num} = t_agent.ID_NUMBER and
+            </if>
+            t_shop.AG_ID = t_agent.ID
+        </where>
+    </select>
 </mapper>

@@ -277,7 +277,7 @@
         根据agent_id查询代理商拥有的充电箱预警详情
     -->
     <select id="findChargingBoxByAgentId" resultMap="BaseResultMap" parameterType="String">
-        select *
+        select t_charging_box.*
         from
         t_charging_box,
         t_agent,

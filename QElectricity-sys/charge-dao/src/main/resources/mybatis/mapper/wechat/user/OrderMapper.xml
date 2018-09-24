@@ -214,7 +214,7 @@
          -->
     <!--根据skey关联查询该表下的用户订单-->
     <select id="findUserOrderRecordBySkey" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select *
+        select t_order.*
         from
         t_order,
         t_user,
@@ -230,7 +230,7 @@
 
     <!--通过agent_id查询代理商的今日订单-->
     <select id="findTodayOrdersByAgentId" resultMap="BaseResultMap">
-        SELECT *
+        SELECT  t_order.*
         FROM
         t_order,
         t_agent,
@@ -254,28 +254,25 @@
         </where>
     </select>
 
-    <!--通过id查询,日期查询订单-->
+    <!--通过id,日期查询指定代理商名下指定日期的订单-->
     <select id="findOrdersByIdAndDate" resultMap="BaseResultMap">
-        select *
+        select t_order.*
         from
         t_order,
-        t_shop,
         t_charging_box
         <where>
-            <if test="dateTodayStart != null">
-                t_order.CREATE_TIME &gt;= #{dateTodayStart} AND
+            <if test="dateStart != null">
+                t_order.CREATE_TIME &gt;= #{dateStart} AND
             </if>
-            <if test="dateTodayEnd != null">
-                t_order.CREATE_TIME &lt;= #{dateTodayEnd}  AND
+            <if test="dateEnd != null">
+                t_order.CREATE_TIME &lt;= #{dateEnd}  AND
             </if>
             <if test="shopId != null">
                 #{shopId} = t_charging_box.S_ID and
             </if>
             t_order.BOX_CHARGING_ID = t_charging_box.ID
+
         </where>
-
-
-
 
     </select>
 

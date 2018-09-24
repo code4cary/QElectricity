@@ -19,6 +19,6 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
                                          @Param("dateTodayEnd") Date dateTodayEnd);
 
     List<Order> findOrdersByIdAndDate(@Param("shopId") Integer shopId,
-                                      @Param("dateTodayStart") Date dateTodayStart,
-                                      @Param("dateTodayEnd") Date dateTodayEnd);
+                                      @Param("dateStart") Date dateStart,
+                                      @Param("dateEnd") Date dateEnd);
 }

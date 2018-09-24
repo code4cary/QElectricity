@@ -35,7 +35,7 @@ public class DateUtil {
     /**
      * 获取指定日期的起始时间
      */
-    public static Date getCurrentDateStartTime(Date date) {
+    public static Date getSpecificDateStartTime(Date date) {
         Calendar calendar = Calendar. getInstance();
         calendar.setTime(date);
         calendar.set(Calendar. HOUR_OF_DAY, 0);
@@ -46,7 +46,7 @@ public class DateUtil {
     /**
      * 获取指定日期的结束时间
      */
-    public static Date getCurrentDateEndTime(Date date) {
+    public static Date getSpecificDateEndTime(Date date) {
         Calendar calendar = Calendar. getInstance();
         calendar.setTime(date);
         calendar.set(Calendar. HOUR_OF_DAY, 23);

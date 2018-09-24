@@ -48,9 +48,9 @@ public class TodayIncomeController extends BaseController{
         Date date = TimeUtil.getSpecificDateFormat(dateStr);
 
         //获得该日的开始时间
-        Date dateStart = DateUtil.getCurrentDateStartTime(date);
+        Date dateStart = DateUtil.getSpecificDateStartTime(date);
         //获得该日的结束时间
-        Date dateEnd = DateUtil.getCurrentDateStartTime(date);
+        Date dateEnd = DateUtil.getSpecificDateEndTime(date);
 
         //去数据库查询
         List<TodayIncome> todayIncomeDetail = agentService.findTodayIncomeDetail(agentId,dateStart,dateEnd);

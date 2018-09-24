@@ -12,12 +12,11 @@ public class TimeUtil {
     /**
      * 返回指定格式的日期
      */
-
-
     public static Date getSpecificDateFormat(String date) throws ParseException {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date dateFormat = df.parse(date);
         return dateFormat;
+
     }
 
 }

@@ -34,25 +34,25 @@
         where ID = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_agent
-    where ID = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from t_agent
+        where ID = #{id,jdbcType=INTEGER}
+    </delete>
     <insert id="insert" parameterType="com.charge.entity.po.wechat.agent.Agent">
-    insert into t_agent (ID, REAL_NAME, CREDENTIALS_SALT,
-      USER_NAME, PASSWORD, ID_NUMBER,
-      LEVEL, PARENT_AGENT_ID, SHARGING_RATIO,
-      SERVICE_CHARGES, CAN_WITHDRAW, CHARGING_BOX_NUM,
-      FROZEN_AMOUNT, ORDER_NUM, TOTAL_REVENUE,
-      TOTAL_SHARE, CREATE_TIME, LEAVE_TIME,
-      UPDATE_TIME)
-    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{credentialsSalt,jdbcType=VARCHAR},
-      #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR},
-      #{level,jdbcType=VARCHAR}, #{parentAgentId,jdbcType=VARCHAR}, #{shargingRatio,jdbcType=VARCHAR},
-      #{serviceCharges,jdbcType=VARCHAR}, #{canWithdraw,jdbcType=VARCHAR}, #{chargingBoxNum,jdbcType=VARCHAR},
-      #{frozenAmount,jdbcType=VARCHAR}, #{orderNum,jdbcType=VARCHAR}, #{totalRevenue,jdbcType=VARCHAR},
-      #{totalShare,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{leaveTime,jdbcType=TIMESTAMP},
-      #{updateTime,jdbcType=TIMESTAMP})
-  </insert>
+        insert into t_agent (ID, REAL_NAME, CREDENTIALS_SALT,
+        USER_NAME, PASSWORD, ID_NUMBER,
+        LEVEL, PARENT_AGENT_ID, SHARGING_RATIO,
+        SERVICE_CHARGES, CAN_WITHDRAW, CHARGING_BOX_NUM,
+        FROZEN_AMOUNT, ORDER_NUM, TOTAL_REVENUE,
+        TOTAL_SHARE, CREATE_TIME, LEAVE_TIME,
+        UPDATE_TIME)
+        values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{credentialsSalt,jdbcType=VARCHAR},
+        #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR},
+        #{level,jdbcType=VARCHAR}, #{parentAgentId,jdbcType=VARCHAR}, #{shargingRatio,jdbcType=VARCHAR},
+        #{serviceCharges,jdbcType=VARCHAR}, #{canWithdraw,jdbcType=VARCHAR}, #{chargingBoxNum,jdbcType=VARCHAR},
+        #{frozenAmount,jdbcType=VARCHAR}, #{orderNum,jdbcType=VARCHAR}, #{totalRevenue,jdbcType=VARCHAR},
+        #{totalShare,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{leaveTime,jdbcType=TIMESTAMP},
+        #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.agent.Agent">
         insert into t_agent
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -308,6 +308,7 @@
         </where>
 
     </select>
+
 
 
 </mapper>

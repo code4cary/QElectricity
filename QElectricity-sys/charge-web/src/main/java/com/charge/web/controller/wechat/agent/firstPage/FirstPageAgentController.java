@@ -38,14 +38,13 @@ public class FirstPageAgentController extends BaseController {
         log.info("查询代理商首页需要显示的信息...");
         //获取agenId
         String agenId = agentIdMap.get("agentID");
+
         //通过agentId查询代理商相关信息
-        //获得该日的开始时间
+        //获得今日的开始时间
         Date dateStart = DateUtil.getTodayStartTime();
-        //获得该日的结束时间
+        //获得今日的结束时间
         Date dateEnd = DateUtil.getTodayEndTime();
-
-
-        FirstPage agentInfo = agentService.findAgentInfoByIdNum(agenId,dateStart,dateEnd);
+        FirstPage agentInfo = agentService.findAgentInfoByIdNum(agenId, dateStart, dateEnd);
         log.info("over");
         return returnSuccess(agentInfo);
     }

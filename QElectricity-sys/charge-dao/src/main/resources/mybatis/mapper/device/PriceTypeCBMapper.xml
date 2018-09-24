@@ -110,7 +110,7 @@
     <!--根据充电箱id查询其对应的价格策略表-->
     <select id="findPriceTypeCBByCbId" resultMap="BaseResultMap" parameterType="Integer">
 
-        select *
+        select t_price_type_cb.*
         from
         t_price_type_cb,
         t_charging_box

@@ -55,17 +55,17 @@ public class Shop extends BaseEntity implements Serializable {
     /**
      * t_shop关联t_agent 多对一关系
      */
-    private Agent agent;
+    //private Agent agent;
 
     private static final long serialVersionUID = 1L;
 
-    public Agent getAgent() {
-        return agent;
-    }
-
-    public void setAgent(Agent agent) {
-        this.agent = agent;
-    }
+//    public Agent getAgent() {
+//        return agent;
+//    }
+//
+//    public void setAgent(Agent agent) {
+//        this.agent = agent;
+//    }
 
     public Integer getAgId() {
         return agId;
@@ -277,7 +277,7 @@ public class Shop extends BaseEntity implements Serializable {
                 ", businessTime='" + businessTime + '\'' +
                 ", leaveTime=" + leaveTime +
                 ", updateTime=" + updateTime +
-                ", agent=" + agent +
+                ", agent=" + "agent" +
                 '}';
     }
 }
