@@ -1,7 +1,7 @@
 package com.charge.dao.mapper.wechat.agent;
 
 import com.charge.ChargeApplication;
-import com.charge.common.back.wechat.user.ShopInfoBack;
+import com.charge.entity.po.back.wechat.user.ShopInfoBack;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

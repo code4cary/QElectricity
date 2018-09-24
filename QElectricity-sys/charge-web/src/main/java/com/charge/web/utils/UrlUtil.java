@@ -1,8 +1,5 @@
 package com.charge.web.utils;
 
-/**
- * Created by vincent on 11/09/2018.
- */
 import org.apache.http.Consts;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -21,12 +18,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Created by vincent on 11/09/2018.
+ */
+
 public class UrlUtil {
 
     private static final CloseableHttpClient httpclient = HttpClients.createDefault();
 
     /**
      * 发送HttpGet请求
+     *
      * @param url
      * @return
      */
@@ -59,6 +61,7 @@ public class UrlUtil {
 
     /**
      * 发送HttpPost请求，参数为map
+     *
      * @param url
      * @param map
      * @return
@@ -89,6 +92,7 @@ public class UrlUtil {
 
     /**
      * 发送不带参数的HttpPost请求
+     *
      * @param url
      * @return
      */

@@ -1,6 +1,6 @@
 package com.charge.dao.mapper.wechat.agent;
 
-import com.charge.common.back.wechat.user.ShopInfoBack;
+import com.charge.entity.po.back.wechat.user.ShopInfoBack;
 import com.charge.dao.mapper.base.BaseMapper;
 import com.charge.entity.po.wechat.agent.Shop;
 import org.apache.ibatis.annotations.Param;

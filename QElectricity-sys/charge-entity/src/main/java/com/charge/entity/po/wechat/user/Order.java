@@ -8,6 +8,7 @@ import java.util.Date;
 public class Order extends BaseEntity implements Serializable {
     private Integer aid;
 
+    //订单编号
     private String orderNum;
 
     private Date endTime;

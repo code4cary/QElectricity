@@ -1,6 +1,6 @@
 package com.charge.dao.mapper.wechat.user;
 
-import com.charge.common.back.wechat.user.TransactionDetailBack;
+import com.charge.entity.po.back.wechat.user.TransactionDetailBack;
 import com.charge.dao.mapper.base.BaseMapper;
 import com.charge.entity.po.wechat.user.WaterBills;
 import org.apache.ibatis.annotations.Param;

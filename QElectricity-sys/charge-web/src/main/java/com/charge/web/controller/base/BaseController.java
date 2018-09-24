@@ -1,7 +1,6 @@
 package com.charge.web.controller.base;
 
 
-import com.charge.common.enums.ErrCode;
 import com.charge.common.enums.StatusInfo;
 import com.charge.entity.model.CommonOutputDO;
 

@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.user;
 
 import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
-import com.charge.common.back.wechat.user.ShopInfoBack;
+import com.charge.entity.po.back.wechat.user.ShopInfoBack;
 import com.charge.common.enums.StatusInfo;
 import com.charge.dao.mapper.device.MalfunctionMapper;
 import com.charge.entity.po.device.Malfunction;
