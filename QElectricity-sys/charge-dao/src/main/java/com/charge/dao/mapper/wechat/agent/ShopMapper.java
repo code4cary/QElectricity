@@ -15,4 +15,7 @@ public interface ShopMapper extends BaseMapper<Shop, Integer> {
     List<ShopInfoBack> findShopByCoordinates(@Param("map") Map<String, Double> map);
 
     List<ShopInfoBack> findShopBySearch(@Param("map") Map positionMap, @Param("searchData") String searchDataValue);
+
+    int updateContractPhoto(@Param("contractPhoto") String contractPhoto,@Param("agentId")String agentId);
+
 }

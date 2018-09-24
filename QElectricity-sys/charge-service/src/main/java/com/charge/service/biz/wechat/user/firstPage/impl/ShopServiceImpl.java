@@ -48,4 +48,9 @@ public class ShopServiceImpl extends BaseServiceImpl<Shop, Integer> implements S
 
         return shopInfoList;
     }
+
+    @Override
+    public int updateContractPhoto(String agentId,String contractPhoto) {
+        return shopMapper.updateContractPhoto(agentId,contractPhoto);
+    }
 }

@@ -64,7 +64,7 @@
       #{bankAccount,jdbcType=VARCHAR}, #{businessTime,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{leaveTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.agent.Shop">
+    <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.agent.Shop" useGeneratedKeys="true" keyProperty="id">
         insert into t_shop
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -383,5 +383,15 @@
             ADDRESS like '%${searchData}%' or
             SHOP_STATUS like '%${searchData}%'
         </if>
+    </select>
+
+    <update id="updateContractPhoto">
+
+        update  t_shop set CONTRACT_PHOTO = #{contractPhoto,jdbcType=VARCHAR}
+        where AG_ID = #{agentId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="findShop" resultMap="BaseResultMap">
+
     </select>
 </mapper>
