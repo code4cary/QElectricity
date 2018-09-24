@@ -1,6 +1,6 @@
 package com.charge.service.biz.wechat.user.firstPage;
 
-import com.charge.common.back.wechat.user.ChargingRecordBack;
+import com.charge.entity.po.back.wechat.user.ChargingRecordBack;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.BaseService;
 

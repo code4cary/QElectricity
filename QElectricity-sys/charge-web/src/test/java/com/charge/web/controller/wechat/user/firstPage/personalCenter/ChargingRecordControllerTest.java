@@ -3,7 +3,7 @@ package com.charge.web.controller.wechat.user.firstPage.personalCenter;
 import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
 import com.charge.common.enums.StatusInfo;
-import com.charge.common.back.wechat.user.ChargingRecordBack;
+import com.charge.entity.po.back.wechat.user.ChargingRecordBack;
 import com.charge.service.biz.wechat.user.firstPage.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import org.junit.Test;

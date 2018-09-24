@@ -1,4 +1,4 @@
-package com.charge.common.back.wechat.user;
+package com.charge.entity.po.back.wechat.user;
 
 import java.io.Serializable;
 

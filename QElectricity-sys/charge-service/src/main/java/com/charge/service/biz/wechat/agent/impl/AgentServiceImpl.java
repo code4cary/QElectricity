@@ -1,8 +1,10 @@
 package com.charge.service.biz.wechat.agent.impl;
 
-import com.charge.common.back.wechat.agent.loginAgent.LoginAgentBack;
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
+import com.charge.dao.mapper.wechat.user.OrderMapper;
+import com.charge.entity.po.back.wechat.loginAgent.LoginAgentBack;
 import com.charge.entity.po.wechat.agent.Agent;
+import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.wechat.agent.AgentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,11 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
     @Autowired
     private AgentMapper agentMapper;
 
+    @Autowired
+    private OrderMapper orderMapper;
+
+
+
     @Override
     public void initBaseMapper() {
         setBaseMapper(agentMapper);
@@ -27,29 +34,33 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
 
     /**
-     * 根据用户名查询代理商首页相关信息
-     * @param username
+     * 根据代理商id(此id为代理商id_num)查询代理商首页相关信息
+     *
+     * @param agentId
      * @return
      */
     @Override
-    public List<LoginAgentBack> findAgentInfoByName(String username) {
+    public LoginAgentBack findAgentInfoByIdNum(String agentId) {
 
-        LoginAgentBack loginAgentBack = new LoginAgentBack();
+        List<Order> todayOrdersCountAndIncome = orderMapper.findTodayOrdersByAgentId(agentId);
 
-        //1:查询代理商订单数据
-        Map<String,String> orderData = new HashMap<>();
-        //今日订单
+        int todayIncome = 0;
+        int todayOrdersNum = 0;
+        for (Order  order: todayOrdersCountAndIncome) {
+            //计算今日订单收益,以及今日订单数
+            //如果订单支付完成,才能算给代理商
+            if (order.getPayStatus().equals("1")) {
+                todayIncome += Integer.valueOf(order.getPayAmount());
+                todayOrdersNum++;
+            }
+        }
 
-
-        //今日收益
-
-        //订单总数
-
-        //总分成
+        //总分成,查询t_agent表获取订单总数和总分成
+        List<String> totalOrderAndIncome = agentMapper.findTotalOrderAndIncome(agentId);
 
 
         //2:查询用代理商充电箱状态
-        Map<String,String> chargingBoxStatus = new HashMap<>();
+        Map<String, String> chargingBoxStatus = new HashMap<>();
         //充电箱总数量
 
         //充电箱离线数量
@@ -62,6 +73,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     /**
      * 根据用户名查询用户密码
+     *
      * @param agentName
      * @return
      */
@@ -74,6 +86,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     /**
      * 根据用户名查询该用户的ID_NUMBER
+     *
      * @param username
      * @return
      */

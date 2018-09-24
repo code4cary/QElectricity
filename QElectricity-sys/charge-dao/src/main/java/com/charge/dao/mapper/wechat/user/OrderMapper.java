@@ -12,4 +12,6 @@ import java.util.List;
 public interface OrderMapper extends BaseMapper<Order, Integer> {
 
     List<Order> findUserOrderRecordBySkey(@Param("skey") String skey);
+
+    List<Order> findTodayOrdersByAgentId(@Param("id_num") String id_num);
 }

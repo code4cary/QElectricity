@@ -1,6 +1,6 @@
 package com.charge.service.biz.wechat.user.firstPage.impl;
 
-import com.charge.common.back.wechat.user.ChargingRecordBack;
+import com.charge.entity.po.back.wechat.user.ChargingRecordBack;
 import com.charge.dao.mapper.device.PowerBankMapper;
 import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;

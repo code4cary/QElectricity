@@ -1,6 +1,6 @@
 package com.charge.service.biz.wechat.user;
 
-import com.charge.common.back.wechat.user.ShopInfoBack;
+import com.charge.entity.po.back.wechat.user.ShopInfoBack;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.BaseService;

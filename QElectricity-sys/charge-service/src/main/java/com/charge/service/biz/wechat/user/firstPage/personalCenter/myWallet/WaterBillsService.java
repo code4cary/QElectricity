@@ -1,6 +1,6 @@
 package com.charge.service.biz.wechat.user.firstPage.personalCenter.myWallet;
 
-import com.charge.common.back.wechat.user.TransactionDetailBack;
+import com.charge.entity.po.back.wechat.user.TransactionDetailBack;
 import com.charge.entity.po.wechat.user.WaterBills;
 import com.charge.service.biz.base.BaseService;
 

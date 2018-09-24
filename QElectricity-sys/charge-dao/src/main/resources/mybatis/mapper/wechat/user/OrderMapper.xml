@@ -226,7 +226,24 @@
             t_user.ID = t_account.UID and
             t_order.AID = t_account.ID
         </where>
-
-
     </select>
+
+    <!--通过agent_id查询代理商的今日订单-->
+    <select id="findTodayOrdersByAgentId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT *
+        FROM
+        t_order,
+        t_agent,
+        t_shop,
+        t_charging_box
+        <where>
+            <if test="id_num != null">
+              #{id_num} = t_agent.ID_NUMBER AND
+            </if>
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID AND
+            t_order.BOX_CHARGING_ID = t_charging_box.ID
+        </where>
+    </select>
+
 </mapper>
