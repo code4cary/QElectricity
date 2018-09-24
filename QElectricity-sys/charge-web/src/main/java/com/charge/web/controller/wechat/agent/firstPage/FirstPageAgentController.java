@@ -2,9 +2,10 @@ package com.charge.web.controller.wechat.agent.firstPage;
 
 
 import com.charge.entity.model.CommonOutputDO;
-import com.charge.entity.po.back.wechat.loginAgent.LoginAgentBack;
+import com.charge.entity.po.back.wechat.agent.loginAgent.FirstPage;
 import com.charge.service.biz.wechat.agent.AgentService;
 import com.charge.web.controller.base.BaseController;
+import com.charge.web.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Map;
 
 
@@ -37,7 +39,13 @@ public class FirstPageAgentController extends BaseController {
         //获取agenId
         String agenId = agentIdMap.get("agentID");
         //通过agentId查询代理商相关信息
-        LoginAgentBack agentInfo = agentService.findAgentInfoByIdNum(agenId);
+        //获得该日的开始时间
+        Date dateStart = DateUtil.getTodayStartTime();
+        //获得该日的结束时间
+        Date dateEnd = DateUtil.getTodayEndTime();
+
+
+        FirstPage agentInfo = agentService.findAgentInfoByIdNum(agenId,dateStart,dateEnd);
         log.info("over");
         return returnSuccess(agentInfo);
     }

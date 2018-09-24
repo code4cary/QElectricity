@@ -4,6 +4,7 @@ import com.charge.dao.mapper.base.BaseMapper;
 import com.charge.entity.po.wechat.user.Order;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,5 +14,11 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
 
     List<Order> findUserOrderRecordBySkey(@Param("skey") String skey);
 
-    List<Order> findTodayOrdersByAgentId(@Param("id_num") String id_num);
+    List<Order> findTodayOrdersByAgentId(@Param("id_num") String id_num,
+                                         @Param("dateTodayStart") Date dateTodayStart,
+                                         @Param("dateTodayEnd") Date dateTodayEnd);
+
+    List<Order> findOrdersByIdAndDate(@Param("shopId") Integer shopId,
+                                      @Param("dateTodayStart") Date dateTodayStart,
+                                      @Param("dateTodayEnd") Date dateTodayEnd);
 }

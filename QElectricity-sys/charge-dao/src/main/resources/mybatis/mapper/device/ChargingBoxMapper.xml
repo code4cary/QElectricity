@@ -1,250 +1,250 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.charge.dao.mapper.device.ChargingBoxMapper" >
-  <resultMap id="BaseResultMap" type="com.charge.entity.po.device.ChargingBox" >
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="PT_ID" property="ptId" jdbcType="INTEGER" />
-    <result column="S_ID" property="sId" jdbcType="INTEGER" />
-    <result column="BOX_CUSTOMER_ID" property="boxCustomerId" jdbcType="VARCHAR" />
-    <result column="BOX_DATE" property="boxDate" jdbcType="VARCHAR" />
-    <result column="BOX_SN" property="boxSn" jdbcType="VARCHAR" />
-    <result column="LOCATION" property="location" jdbcType="VARCHAR" />
-    <result column="STATUS" property="status" jdbcType="VARCHAR" />
-    <result column="MODEL" property="model" jdbcType="VARCHAR" />
-    <result column="SOFTWARE_VERSION" property="softwareVersion" jdbcType="VARCHAR" />
-    <result column="BUSINESS" property="business" jdbcType="VARCHAR" />
-    <result column="BORROW_NUM" property="borrowNum" jdbcType="VARCHAR" />
-    <result column="POWER_BANK_NUM" property="powerBankNum" jdbcType="VARCHAR" />
-    <result column="CAN_BORROW_NUM" property="canBorrowNum" jdbcType="VARCHAR" />
-    <result column="CAN_BACK_NUM" property="canBackNum" jdbcType="VARCHAR" />
-    <result column="MALFUNCTION_NUM" property="malfunctionNum" jdbcType="VARCHAR" />
-    <result column="SPEAKER_STATUS" property="speakerStatus" jdbcType="VARCHAR" />
-    <result column="SIM_CCID" property="simCcid" jdbcType="VARCHAR" />
-    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    ID, PT_ID, S_ID, BOX_CUSTOMER_ID, BOX_DATE, BOX_SN, LOCATION, STATUS, MODEL, SOFTWARE_VERSION, 
-    BUSINESS, BORROW_NUM, POWER_BANK_NUM, CAN_BORROW_NUM, CAN_BACK_NUM, MALFUNCTION_NUM, 
+<mapper namespace="com.charge.dao.mapper.device.ChargingBoxMapper">
+    <resultMap id="BaseResultMap" type="com.charge.entity.po.device.ChargingBox">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="PT_ID" property="ptId" jdbcType="INTEGER"/>
+        <result column="S_ID" property="sId" jdbcType="INTEGER"/>
+        <result column="BOX_CUSTOMER_ID" property="boxCustomerId" jdbcType="VARCHAR"/>
+        <result column="BOX_DATE" property="boxDate" jdbcType="VARCHAR"/>
+        <result column="BOX_SN" property="boxSn" jdbcType="VARCHAR"/>
+        <result column="LOCATION" property="location" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="MODEL" property="model" jdbcType="VARCHAR"/>
+        <result column="SOFTWARE_VERSION" property="softwareVersion" jdbcType="VARCHAR"/>
+        <result column="BUSINESS" property="business" jdbcType="VARCHAR"/>
+        <result column="BORROW_NUM" property="borrowNum" jdbcType="VARCHAR"/>
+        <result column="POWER_BANK_NUM" property="powerBankNum" jdbcType="VARCHAR"/>
+        <result column="CAN_BORROW_NUM" property="canBorrowNum" jdbcType="VARCHAR"/>
+        <result column="CAN_BACK_NUM" property="canBackNum" jdbcType="VARCHAR"/>
+        <result column="MALFUNCTION_NUM" property="malfunctionNum" jdbcType="VARCHAR"/>
+        <result column="SPEAKER_STATUS" property="speakerStatus" jdbcType="VARCHAR"/>
+        <result column="SIM_CCID" property="simCcid" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, PT_ID, S_ID, BOX_CUSTOMER_ID, BOX_DATE, BOX_SN, LOCATION, STATUS, MODEL, SOFTWARE_VERSION,
+    BUSINESS, BORROW_NUM, POWER_BANK_NUM, CAN_BORROW_NUM, CAN_BACK_NUM, MALFUNCTION_NUM,
     SPEAKER_STATUS, SIM_CCID, CREATE_TIME, UPDATE_TIME
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_charging_box
-    where ID = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from t_charging_box
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_charging_box
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.charge.entity.po.device.ChargingBox" >
-    insert into t_charging_box (ID, PT_ID, S_ID, 
-      BOX_CUSTOMER_ID, BOX_DATE, BOX_SN, 
-      LOCATION, STATUS, MODEL, 
-      SOFTWARE_VERSION, BUSINESS, BORROW_NUM, 
-      POWER_BANK_NUM, CAN_BORROW_NUM, CAN_BACK_NUM, 
-      MALFUNCTION_NUM, SPEAKER_STATUS, SIM_CCID, 
+    <insert id="insert" parameterType="com.charge.entity.po.device.ChargingBox">
+    insert into t_charging_box (ID, PT_ID, S_ID,
+      BOX_CUSTOMER_ID, BOX_DATE, BOX_SN,
+      LOCATION, STATUS, MODEL,
+      SOFTWARE_VERSION, BUSINESS, BORROW_NUM,
+      POWER_BANK_NUM, CAN_BORROW_NUM, CAN_BACK_NUM,
+      MALFUNCTION_NUM, SPEAKER_STATUS, SIM_CCID,
       CREATE_TIME, UPDATE_TIME)
-    values (#{id,jdbcType=INTEGER}, #{ptId,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER}, 
-      #{boxCustomerId,jdbcType=VARCHAR}, #{boxDate,jdbcType=VARCHAR}, #{boxSn,jdbcType=VARCHAR}, 
-      #{location,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR}, 
-      #{softwareVersion,jdbcType=VARCHAR}, #{business,jdbcType=VARCHAR}, #{borrowNum,jdbcType=VARCHAR}, 
-      #{powerBankNum,jdbcType=VARCHAR}, #{canBorrowNum,jdbcType=VARCHAR}, #{canBackNum,jdbcType=VARCHAR}, 
-      #{malfunctionNum,jdbcType=VARCHAR}, #{speakerStatus,jdbcType=VARCHAR}, #{simCcid,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{ptId,jdbcType=INTEGER}, #{sId,jdbcType=INTEGER},
+      #{boxCustomerId,jdbcType=VARCHAR}, #{boxDate,jdbcType=VARCHAR}, #{boxSn,jdbcType=VARCHAR},
+      #{location,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{model,jdbcType=VARCHAR},
+      #{softwareVersion,jdbcType=VARCHAR}, #{business,jdbcType=VARCHAR}, #{borrowNum,jdbcType=VARCHAR},
+      #{powerBankNum,jdbcType=VARCHAR}, #{canBorrowNum,jdbcType=VARCHAR}, #{canBackNum,jdbcType=VARCHAR},
+      #{malfunctionNum,jdbcType=VARCHAR}, #{speakerStatus,jdbcType=VARCHAR}, #{simCcid,jdbcType=VARCHAR},
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.charge.entity.po.device.ChargingBox" >
-    insert into t_charging_box
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="ptId != null" >
-        PT_ID,
-      </if>
-      <if test="sId != null" >
-        S_ID,
-      </if>
-      <if test="boxCustomerId != null" >
-        BOX_CUSTOMER_ID,
-      </if>
-      <if test="boxDate != null" >
-        BOX_DATE,
-      </if>
-      <if test="boxSn != null" >
-        BOX_SN,
-      </if>
-      <if test="location != null" >
-        LOCATION,
-      </if>
-      <if test="status != null" >
-        STATUS,
-      </if>
-      <if test="model != null" >
-        MODEL,
-      </if>
-      <if test="softwareVersion != null" >
-        SOFTWARE_VERSION,
-      </if>
-      <if test="business != null" >
-        BUSINESS,
-      </if>
-      <if test="borrowNum != null" >
-        BORROW_NUM,
-      </if>
-      <if test="powerBankNum != null" >
-        POWER_BANK_NUM,
-      </if>
-      <if test="canBorrowNum != null" >
-        CAN_BORROW_NUM,
-      </if>
-      <if test="canBackNum != null" >
-        CAN_BACK_NUM,
-      </if>
-      <if test="malfunctionNum != null" >
-        MALFUNCTION_NUM,
-      </if>
-      <if test="speakerStatus != null" >
-        SPEAKER_STATUS,
-      </if>
-      <if test="simCcid != null" >
-        SIM_CCID,
-      </if>
-      <if test="createTime != null" >
-        CREATE_TIME,
-      </if>
-      <if test="updateTime != null" >
-        UPDATE_TIME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="ptId != null" >
-        #{ptId,jdbcType=INTEGER},
-      </if>
-      <if test="sId != null" >
-        #{sId,jdbcType=INTEGER},
-      </if>
-      <if test="boxCustomerId != null" >
-        #{boxCustomerId,jdbcType=VARCHAR},
-      </if>
-      <if test="boxDate != null" >
-        #{boxDate,jdbcType=VARCHAR},
-      </if>
-      <if test="boxSn != null" >
-        #{boxSn,jdbcType=VARCHAR},
-      </if>
-      <if test="location != null" >
-        #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="model != null" >
-        #{model,jdbcType=VARCHAR},
-      </if>
-      <if test="softwareVersion != null" >
-        #{softwareVersion,jdbcType=VARCHAR},
-      </if>
-      <if test="business != null" >
-        #{business,jdbcType=VARCHAR},
-      </if>
-      <if test="borrowNum != null" >
-        #{borrowNum,jdbcType=VARCHAR},
-      </if>
-      <if test="powerBankNum != null" >
-        #{powerBankNum,jdbcType=VARCHAR},
-      </if>
-      <if test="canBorrowNum != null" >
-        #{canBorrowNum,jdbcType=VARCHAR},
-      </if>
-      <if test="canBackNum != null" >
-        #{canBackNum,jdbcType=VARCHAR},
-      </if>
-      <if test="malfunctionNum != null" >
-        #{malfunctionNum,jdbcType=VARCHAR},
-      </if>
-      <if test="speakerStatus != null" >
-        #{speakerStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="simCcid != null" >
-        #{simCcid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.device.ChargingBox" >
-    update t_charging_box
-    <set >
-      <if test="ptId != null" >
-        PT_ID = #{ptId,jdbcType=INTEGER},
-      </if>
-      <if test="sId != null" >
-        S_ID = #{sId,jdbcType=INTEGER},
-      </if>
-      <if test="boxCustomerId != null" >
-        BOX_CUSTOMER_ID = #{boxCustomerId,jdbcType=VARCHAR},
-      </if>
-      <if test="boxDate != null" >
-        BOX_DATE = #{boxDate,jdbcType=VARCHAR},
-      </if>
-      <if test="boxSn != null" >
-        BOX_SN = #{boxSn,jdbcType=VARCHAR},
-      </if>
-      <if test="location != null" >
-        LOCATION = #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        STATUS = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="model != null" >
-        MODEL = #{model,jdbcType=VARCHAR},
-      </if>
-      <if test="softwareVersion != null" >
-        SOFTWARE_VERSION = #{softwareVersion,jdbcType=VARCHAR},
-      </if>
-      <if test="business != null" >
-        BUSINESS = #{business,jdbcType=VARCHAR},
-      </if>
-      <if test="borrowNum != null" >
-        BORROW_NUM = #{borrowNum,jdbcType=VARCHAR},
-      </if>
-      <if test="powerBankNum != null" >
-        POWER_BANK_NUM = #{powerBankNum,jdbcType=VARCHAR},
-      </if>
-      <if test="canBorrowNum != null" >
-        CAN_BORROW_NUM = #{canBorrowNum,jdbcType=VARCHAR},
-      </if>
-      <if test="canBackNum != null" >
-        CAN_BACK_NUM = #{canBackNum,jdbcType=VARCHAR},
-      </if>
-      <if test="malfunctionNum != null" >
-        MALFUNCTION_NUM = #{malfunctionNum,jdbcType=VARCHAR},
-      </if>
-      <if test="speakerStatus != null" >
-        SPEAKER_STATUS = #{speakerStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="simCcid != null" >
-        SIM_CCID = #{simCcid,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.device.ChargingBox" >
+    <insert id="insertSelective" parameterType="com.charge.entity.po.device.ChargingBox">
+        insert into t_charging_box
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="ptId != null">
+                PT_ID,
+            </if>
+            <if test="sId != null">
+                S_ID,
+            </if>
+            <if test="boxCustomerId != null">
+                BOX_CUSTOMER_ID,
+            </if>
+            <if test="boxDate != null">
+                BOX_DATE,
+            </if>
+            <if test="boxSn != null">
+                BOX_SN,
+            </if>
+            <if test="location != null">
+                LOCATION,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="model != null">
+                MODEL,
+            </if>
+            <if test="softwareVersion != null">
+                SOFTWARE_VERSION,
+            </if>
+            <if test="business != null">
+                BUSINESS,
+            </if>
+            <if test="borrowNum != null">
+                BORROW_NUM,
+            </if>
+            <if test="powerBankNum != null">
+                POWER_BANK_NUM,
+            </if>
+            <if test="canBorrowNum != null">
+                CAN_BORROW_NUM,
+            </if>
+            <if test="canBackNum != null">
+                CAN_BACK_NUM,
+            </if>
+            <if test="malfunctionNum != null">
+                MALFUNCTION_NUM,
+            </if>
+            <if test="speakerStatus != null">
+                SPEAKER_STATUS,
+            </if>
+            <if test="simCcid != null">
+                SIM_CCID,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="ptId != null">
+                #{ptId,jdbcType=INTEGER},
+            </if>
+            <if test="sId != null">
+                #{sId,jdbcType=INTEGER},
+            </if>
+            <if test="boxCustomerId != null">
+                #{boxCustomerId,jdbcType=VARCHAR},
+            </if>
+            <if test="boxDate != null">
+                #{boxDate,jdbcType=VARCHAR},
+            </if>
+            <if test="boxSn != null">
+                #{boxSn,jdbcType=VARCHAR},
+            </if>
+            <if test="location != null">
+                #{location,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="model != null">
+                #{model,jdbcType=VARCHAR},
+            </if>
+            <if test="softwareVersion != null">
+                #{softwareVersion,jdbcType=VARCHAR},
+            </if>
+            <if test="business != null">
+                #{business,jdbcType=VARCHAR},
+            </if>
+            <if test="borrowNum != null">
+                #{borrowNum,jdbcType=VARCHAR},
+            </if>
+            <if test="powerBankNum != null">
+                #{powerBankNum,jdbcType=VARCHAR},
+            </if>
+            <if test="canBorrowNum != null">
+                #{canBorrowNum,jdbcType=VARCHAR},
+            </if>
+            <if test="canBackNum != null">
+                #{canBackNum,jdbcType=VARCHAR},
+            </if>
+            <if test="malfunctionNum != null">
+                #{malfunctionNum,jdbcType=VARCHAR},
+            </if>
+            <if test="speakerStatus != null">
+                #{speakerStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="simCcid != null">
+                #{simCcid,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.charge.entity.po.device.ChargingBox">
+        update t_charging_box
+        <set>
+            <if test="ptId != null">
+                PT_ID = #{ptId,jdbcType=INTEGER},
+            </if>
+            <if test="sId != null">
+                S_ID = #{sId,jdbcType=INTEGER},
+            </if>
+            <if test="boxCustomerId != null">
+                BOX_CUSTOMER_ID = #{boxCustomerId,jdbcType=VARCHAR},
+            </if>
+            <if test="boxDate != null">
+                BOX_DATE = #{boxDate,jdbcType=VARCHAR},
+            </if>
+            <if test="boxSn != null">
+                BOX_SN = #{boxSn,jdbcType=VARCHAR},
+            </if>
+            <if test="location != null">
+                LOCATION = #{location,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="model != null">
+                MODEL = #{model,jdbcType=VARCHAR},
+            </if>
+            <if test="softwareVersion != null">
+                SOFTWARE_VERSION = #{softwareVersion,jdbcType=VARCHAR},
+            </if>
+            <if test="business != null">
+                BUSINESS = #{business,jdbcType=VARCHAR},
+            </if>
+            <if test="borrowNum != null">
+                BORROW_NUM = #{borrowNum,jdbcType=VARCHAR},
+            </if>
+            <if test="powerBankNum != null">
+                POWER_BANK_NUM = #{powerBankNum,jdbcType=VARCHAR},
+            </if>
+            <if test="canBorrowNum != null">
+                CAN_BORROW_NUM = #{canBorrowNum,jdbcType=VARCHAR},
+            </if>
+            <if test="canBackNum != null">
+                CAN_BACK_NUM = #{canBackNum,jdbcType=VARCHAR},
+            </if>
+            <if test="malfunctionNum != null">
+                MALFUNCTION_NUM = #{malfunctionNum,jdbcType=VARCHAR},
+            </if>
+            <if test="speakerStatus != null">
+                SPEAKER_STATUS = #{speakerStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="simCcid != null">
+                SIM_CCID = #{simCcid,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.device.ChargingBox">
     update t_charging_box
     set PT_ID = #{ptId,jdbcType=INTEGER},
       S_ID = #{sId,jdbcType=INTEGER},
@@ -265,9 +265,31 @@
       SIM_CCID = #{simCcid,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.device.ChargingBox" >
+    <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.device.ChargingBox">
      select * from t_charging_box
   </select>
+
+
+    <!--
+        根据agent_id查询代理商拥有的充电箱预警详情
+    -->
+    <select id="findChargingBoxByAgentId" resultMap="BaseResultMap" parameterType="String">
+        select *
+        from
+        t_charging_box,
+        t_agent,
+        t_shop
+        <where>
+            <if test="id_num != null">
+                #{id_num} = t_agent.ID_NUMBER AND
+            </if>
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID
+        </where>
+    </select>
+
+
 </mapper>

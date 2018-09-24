@@ -229,7 +229,7 @@
     </select>
 
     <!--通过agent_id查询代理商的今日订单-->
-    <select id="findTodayOrdersByAgentId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="findTodayOrdersByAgentId" resultMap="BaseResultMap">
         SELECT *
         FROM
         t_order,
@@ -238,12 +238,45 @@
         t_charging_box
         <where>
             <if test="id_num != null">
-              #{id_num} = t_agent.ID_NUMBER AND
+                #{id_num} = t_agent.ID_NUMBER AND
             </if>
             t_shop.AG_ID = t_agent.ID AND
             t_charging_box.S_ID = t_shop.ID AND
+            <if test="dateTodayStart != null">
+                t_order.CREATE_TIME &gt;= #{dateTodayStart} AND
+
+            </if>
+            <if test="dateTodayEnd != null">
+                t_order.CREATE_TIME &lt;= #{dateTodayEnd}  AND
+            </if>
+
             t_order.BOX_CHARGING_ID = t_charging_box.ID
         </where>
+    </select>
+
+    <!--通过id查询,日期查询订单-->
+    <select id="findOrdersByIdAndDate" resultMap="BaseResultMap">
+        select *
+        from
+        t_order,
+        t_shop,
+        t_charging_box
+        <where>
+            <if test="dateTodayStart != null">
+                t_order.CREATE_TIME &gt;= #{dateTodayStart} AND
+            </if>
+            <if test="dateTodayEnd != null">
+                t_order.CREATE_TIME &lt;= #{dateTodayEnd}  AND
+            </if>
+            <if test="shopId != null">
+                #{shopId} = t_charging_box.S_ID and
+            </if>
+            t_order.BOX_CHARGING_ID = t_charging_box.ID
+        </where>
+
+
+
+
     </select>
 
 </mapper>

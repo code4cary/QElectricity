@@ -1,23 +1,32 @@
 package com.charge.service.biz.wechat.agent.impl;
 
+import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
+import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
-import com.charge.entity.po.back.wechat.loginAgent.LoginAgentBack;
+import com.charge.entity.po.back.wechat.agent.loginAgent.ChargingBoxStatus;
+import com.charge.entity.po.back.wechat.agent.loginAgent.FirstPage;
+import com.charge.entity.po.back.wechat.agent.loginAgent.OrderData;
+import com.charge.entity.po.back.wechat.agent.todayIncomeDetail.TodayIncome;
+import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.wechat.agent.Agent;
+import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.wechat.agent.AgentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vincent on 23/09/2018.
  */
+
 @Service
+@PropertySource(value = "classpath:impl.properties")
 public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements AgentService {
     @Autowired
     private AgentMapper agentMapper;
@@ -25,7 +34,15 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
     @Autowired
     private OrderMapper orderMapper;
 
+    @Autowired
+    private ChargingBoxMapper chargingBoxMapper;
 
+    @Autowired
+    private ShopMapper shopMapper;
+
+    //充电箱预警数量阈值,即充电箱里充电宝可借数量少于多少时发生预警
+    @Value("${earlyWarningThreshold}")
+    private String earlyWarningThreshold;
 
     @Override
     public void initBaseMapper() {
@@ -40,13 +57,18 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
      * @return
      */
     @Override
-    public LoginAgentBack findAgentInfoByIdNum(String agentId) {
+    public FirstPage findAgentInfoByIdNum(String agentId,Date dateStart,Date dateEnd) {
 
-        List<Order> todayOrdersCountAndIncome = orderMapper.findTodayOrdersByAgentId(agentId);
+        //查询t_order表获取订单信息
+        Date dateTodayStart = dateStart;
+        Date dateTodayEnd = dateEnd;
+        List<Order> todayOrdersCountAndIncome = orderMapper.findTodayOrdersByAgentId(agentId,
+                dateTodayStart,dateTodayEnd);
+
 
         int todayIncome = 0;
         int todayOrdersNum = 0;
-        for (Order  order: todayOrdersCountAndIncome) {
+        for (Order order : todayOrdersCountAndIncome) {
             //计算今日订单收益,以及今日订单数
             //如果订单支付完成,才能算给代理商
             if (order.getPayStatus().equals("1")) {
@@ -55,20 +77,62 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
             }
         }
 
-        //总分成,查询t_agent表获取订单总数和总分成
-        List<String> totalOrderAndIncome = agentMapper.findTotalOrderAndIncome(agentId);
+        //查询t_agent表获取订单总数和总分成
 
+        Agent totalOrderAndIncome = agentMapper.findTotalOrderAndShare(agentId);
+        //订单总数
+        String totalOrder = totalOrderAndIncome.getOrderNum();
+        //总分成
+        String totalSharing = totalOrderAndIncome.getTotalShare();
+
+        //封装订单数据信息
+        OrderData orderData = new OrderData();
+        orderData.setTodayIncome(String.valueOf(todayIncome));
+        orderData.setTodayOrder(String.valueOf(todayOrdersNum));
+        orderData.setTotalOrder(String.valueOf(totalOrder));
+        orderData.setTotalSharing(String.valueOf(totalSharing));
 
         //2:查询用代理商充电箱状态
-        Map<String, String> chargingBoxStatus = new HashMap<>();
-        //充电箱总数量
+        ChargingBoxStatus chargingBoxStatus = new ChargingBoxStatus();
+        List<ChargingBox> chargingBoxList = chargingBoxMapper.findChargingBoxByAgentId(agentId);
+        //充电箱总数量  根据agentId去t_charging_box表查询代理商拥有的充电箱数量
+        int toTalNum = chargingBoxList.size();
 
         //充电箱离线数量
+        int offlineNum = chargingBoxList.size();
+        //充电箱预警数量
+        int earlyWarningNum = 0;
+        for (ChargingBox chargingBox : chargingBoxList) {
+            if (chargingBox.getStatus().equals("1")) {
+                offlineNum--;
+                if (chargingBox.getBorrowNum().compareTo(earlyWarningThreshold) < 0) {
+                    earlyWarningNum++;
+                }
+            }
+        }
 
-        //3:查询代理商充电箱预警数量
-        String earlyWarningNum;
+        toTalNum = toTalNum - offlineNum;
+        //封装充电箱状态数据
+        chargingBoxStatus.setToTalNum(String.valueOf(toTalNum));
+        chargingBoxStatus.setOfflineNum(String.valueOf(offlineNum));
 
-        return null;
+
+        //封装数据总的返回前端数据
+        FirstPage firstPage = new FirstPage();
+        //封装今日订单数据
+        firstPage.setOrderData(orderData);
+        //封装充电箱状态数据
+        firstPage.setChargingBoxStatus(chargingBoxStatus);
+        //封装预警数量数据
+        Map<String,String> earlyWarningNumMap = new HashMap<>();
+        earlyWarningNumMap.put("earlyWarningNum",String.valueOf(earlyWarningNum));
+        firstPage.setEarlyWarningNum(earlyWarningNumMap);
+        //封装代理商id数据
+        Map<String,String> agentIdMap = new HashMap<>();
+        agentIdMap.put("agentId",agentId);
+        firstPage.setAgentId(agentIdMap);
+
+        return firstPage;
     }
 
     /**
@@ -87,7 +151,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
     /**
      * 根据用户名查询该用户的ID_NUMBER
      *
-     * @param username
+     * @param
      * @return
      */
     @Override
@@ -97,5 +161,44 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
         return agentId;
     }
+
+
+    /**
+     * 根据agentId查询代理商的今日收益详情
+     * @param agentId
+     * @param
+     * @return
+     */
+    @Override
+    public List<TodayIncome> findTodayIncomeDetail(String agentId, Date dateStart,Date dateEnd) {
+
+        //先查询代理商名下的商户
+        List<Shop> shopList = shopMapper.findShopByAgentId(agentId);
+
+        //通过商户id去查询指定日期的订单
+        List<TodayIncome> todayIncomeList = new ArrayList<>();
+        shopList.forEach(shop->{
+            TodayIncome todayIncome = new TodayIncome();
+            //封装商户名
+            todayIncome.setShopName(shop.getName());
+            List<Order> orderList = orderMapper.findOrdersByIdAndDate(shop.getId(),dateStart,dateEnd);
+            //算出总收益
+            int totalIncome = 0;
+            for (Order  order: orderList) {
+                if (order.getPayStatus().equals("1")) {
+                    totalIncome += Integer.valueOf(order.getPayAmount());
+                }
+            }
+            //封装总收益
+            todayIncome.setTotalIncome(String.valueOf(totalIncome));
+            todayIncomeList.add(todayIncome);
+
+        });
+
+
+        return todayIncomeList;
+    }
+
+
 
 }

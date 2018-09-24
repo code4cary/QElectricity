@@ -1,4 +1,4 @@
-package com.charge.entity.po.back.wechat.loginAgent;
+package com.charge.entity.po.back.wechat.agent.loginAgent;
 
 import java.io.Serializable;
 
@@ -9,11 +9,12 @@ public class OrderData implements Serializable {
 
     //今日订单数
     private String todayOrder;
+    //今日收益
     private String todayIncome;
     //订单总数
     private String totalOrder;
+    //总分成
     private String totalSharing;
-
 
     public String getTodayOrder() {
         return todayOrder;

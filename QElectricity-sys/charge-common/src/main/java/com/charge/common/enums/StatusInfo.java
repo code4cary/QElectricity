@@ -20,7 +20,8 @@ public enum StatusInfo {
     StatusInfo7777("7777","没有权限") ,
     StatusInfo9999("9999","系统错误") ,
     StatusInfo5555("5555","用户验证失败") ,
-    StatusInfo8888("8888","认证失败") ;
+    StatusInfo8888("8888","认证失败") ,
+    StatusInfo4444("4444","日期格式错误");
 
     private String code;
 

@@ -21,4 +21,13 @@ public class QEExceptionHandler {
         return CommonDataReturnUtil.requestFail(StatusInfo.StatusInfo9999);
     }
 
+//    @ExceptionHandler
+//    @ResponseBody
+//    public Map dateFormatException(Exception ex) {
+//        log.error("前端传输的字符串日期格式不对..." + ex.getMessage());
+//        ex.printStackTrace();
+//        return CommonDataReturnUtil.requestFail(StatusInfo.StatusInfo4444);
+//    }
+
+
 }

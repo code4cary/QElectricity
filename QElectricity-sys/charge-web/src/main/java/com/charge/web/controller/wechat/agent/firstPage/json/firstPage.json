@@ -30,7 +30,7 @@
     },
     //预警数量
     "earlyWarningNum": " ",
-    //代理上id
+    //代理商id
     "agentId" :""
   }
 }

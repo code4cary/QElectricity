@@ -260,7 +260,6 @@
      select * from t_agent
   </select>
 
-
     <!--根据用户名查询密码-->
     <select id="findAgentByName" resultType="String" parameterType="String">
         SELECT PASSWORD
@@ -295,5 +294,20 @@
             </if>
         </where>
     </select>
+
+    <!--根据代理商编号查询代理商订单总数和总分成-->
+    <select id="findTotalOrderAndShare" resultMap="BaseResultMap" parameterType="String">
+
+        SELECT ORDER_NUM,TOTAL_SHARE
+        FROM t_agent
+        <where>
+            <if test="id_num != null">
+
+                #{id_num} = ID_NUMBER
+            </if>
+        </where>
+
+    </select>
+
 
 </mapper>
