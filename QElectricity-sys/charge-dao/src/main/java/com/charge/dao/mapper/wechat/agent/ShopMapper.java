@@ -14,8 +14,5 @@ import java.util.Map;
 public interface ShopMapper extends BaseMapper<Shop, Integer> {
     List<ShopInfoBack> findShopByCoordinates(@Param("map") Map<String, Double> map);
 
-    List<ShopInfoBack> findShopBySearch(@Param("map") Map positionMap,
-                                        @Param("searchData") String searchDataValue);
-
-    List<Shop> findShopByAgentId(@Param("id_num") String id_num);
+    List<ShopInfoBack> findShopBySearch(@Param("map") Map positionMap, @Param("searchData") String searchDataValue);
 }

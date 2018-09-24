@@ -384,19 +384,4 @@
             SHOP_STATUS like '%${searchData}%'
         </if>
     </select>
-
-
-    <!--根据代理商id查询今日收益详情-->
-    <select id="findShopByAgentId" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select t_shop.NAME,t_shop.ID
-        from
-         t_shop,
-         t_agent
-         <where>
-          <if test="id_num !=null">
-              t_agent.ID_NUMBER = #{id_num} and
-          </if>
-             t_shop.AG_ID = t_agent.ID and
-         </where>
-    </select>
 </mapper>
