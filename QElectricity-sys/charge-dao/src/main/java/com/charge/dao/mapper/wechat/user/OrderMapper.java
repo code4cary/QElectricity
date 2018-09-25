@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 由MyBatis Generator工具自动生成，请不要手动修改
@@ -21,4 +22,6 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
     List<Order> findOrdersByIdAndDate(@Param("shopId") Integer shopId,
                                       @Param("dateStart") Date dateStart,
                                       @Param("dateEnd") Date dateEnd);
+
+    List<Map<Date,Integer>> findOrderDataNumPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
 }

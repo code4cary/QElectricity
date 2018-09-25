@@ -1,4 +1,4 @@
-package com.charge.entity.po.back.wechat.agent.loginAgent;
+package com.charge.entity.po.back.wechat.agent;
 
 import java.io.Serializable;
 import java.util.Map;

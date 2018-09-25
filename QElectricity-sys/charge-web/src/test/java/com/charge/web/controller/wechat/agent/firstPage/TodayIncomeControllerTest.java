@@ -2,10 +2,9 @@ package com.charge.web.controller.wechat.agent.firstPage;
 
 import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
-import com.charge.entity.po.back.wechat.agent.todayIncomeDetail.TodayIncome;
+import com.charge.entity.po.back.wechat.agent.TodayIncome;
 import com.charge.service.biz.wechat.agent.AgentService;
 import com.charge.web.utils.DateUtil;
-import com.charge.web.utils.TimeUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,8 @@ public class TodayIncomeControllerTest {
         String dateStr = "2018-09-24";
 
         //将字符串日期变为Date类型
-        Date date = TimeUtil.getSpecificDateFormat(dateStr);
+        String format = "yyyy-MM-dd";//日期格式
+        Date date = DateUtil.getSpecificDateFormat(dateStr,format);
 
         //获得该日的开始时间
         Date dateStart = DateUtil.getSpecificDateStartTime(date);

@@ -4,23 +4,28 @@
   //状态码
   //可选值ORDERDATA_SUCCESS_CODE=1或ORDERDATA_FAIL_CODE=0
   "code": "",
-
   //返回信息
   //和code代码一一对应,比如code为ORDERDATA_SUCCESS_CODE,则msg为请求成功,如此类推.
   //请求成功:ORDERDATA_SUCCESS_CODE:请求失败:ORDERDATA_FAIL_CODE
   "msg": "",
-
   //返回数据
-  "data": {
-    //订单数据类,
-    "orderData" : {
-      //类型
-      "type" : "",//BOX=0或LINE=1
-      //总订单
-      "totalOrder" : "",
-      //按月初到月末排序返回
-      "dayOrder": ["","",""]
-    }
+
+  //订单数据类,
+  "orderDataDetail": {
+    //类型
+    "type": "",
+    //BOX=0或LINE=1
+    //总订单
+    "totalOrder": "",
+    //按月初到月末排序返回
+    "dayOrder": [
+      {
+        "":"",
+        "":"",
+        "":""
+      }
+    ]
   }
 }
+
 

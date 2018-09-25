@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.agent.firstPage;
 
 import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
-import com.charge.entity.po.back.wechat.agent.loginAgent.FirstPage;
+import com.charge.entity.po.back.wechat.agent.FirstPage;
 import com.charge.service.biz.wechat.agent.AgentService;
 import com.charge.web.utils.DateUtil;
 import org.junit.Test;

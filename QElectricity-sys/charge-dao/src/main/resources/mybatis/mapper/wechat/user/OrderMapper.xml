@@ -230,7 +230,7 @@
 
     <!--通过agent_id查询代理商的今日订单-->
     <select id="findTodayOrdersByAgentId" resultMap="BaseResultMap">
-        SELECT  t_order.*
+        SELECT t_order.*
         FROM
         t_order,
         t_agent,
@@ -247,7 +247,7 @@
 
             </if>
             <if test="dateTodayEnd != null">
-                t_order.CREATE_TIME &lt;= #{dateTodayEnd}  AND
+                t_order.CREATE_TIME &lt;= #{dateTodayEnd} AND
             </if>
 
             t_order.BOX_CHARGING_ID = t_charging_box.ID
@@ -265,7 +265,7 @@
                 t_order.CREATE_TIME &gt;= #{dateStart} AND
             </if>
             <if test="dateEnd != null">
-                t_order.CREATE_TIME &lt;= #{dateEnd}  AND
+                t_order.CREATE_TIME &lt;= #{dateEnd} AND
             </if>
             <if test="shopId != null">
                 #{shopId} = t_charging_box.S_ID and
@@ -274,6 +274,38 @@
 
         </where>
 
+    </select>
+
+
+    <!--通过agentId,date,type查询代理商每月中的每天的的订单数量-->
+    <select id="findOrderDataNumPerDay" resultType="Map" parameterType="Map">
+        SELECT
+        DATE_FORMAT(t_order.create_time, '%Y-%m-%d') createTime,
+        COUNT(t_order.id) count
+        FROM
+        t_order,
+        t_charging_box,
+        t_shop,
+        t_agent
+        WHERE
+        t_order.BOX_CHARGING_ID = t_charging_box.ID AND
+        t_charging_box.S_ID = t_shop.ID AND
+        t_shop.AG_ID = t_agent.ID AND
+        <if test="queryDataMap.agentId != null">
+            #{queryDataMap.agentId} = t_agent.ID_NUMBER and
+        </if>
+        t_order.create_time
+        BETWEEN
+        <if test="queryDataMap.dateStart != null">
+            #{queryDataMap.dateStart} AND
+        </if>
+        <if test="queryDataMap.dateEnd != null">
+            #{queryDataMap.dateEnd}
+        </if>
+        GROUP BY
+        createTime
+        ORDER BY  <!-- 按时间升序排列-->
+        createTime
     </select>
 
 </mapper>

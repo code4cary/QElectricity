@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.agent.firstPage;
 
 
 import com.charge.entity.model.CommonOutputDO;
-import com.charge.entity.po.back.wechat.agent.loginAgent.FirstPage;
+import com.charge.entity.po.back.wechat.agent.FirstPage;
 import com.charge.service.biz.wechat.agent.AgentService;
 import com.charge.web.controller.base.BaseController;
 import com.charge.web.utils.DateUtil;

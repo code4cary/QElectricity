@@ -1,11 +1,10 @@
 package com.charge.web.controller.wechat.agent.firstPage;
 
 import com.charge.entity.model.CommonOutputDO;
-import com.charge.entity.po.back.wechat.agent.todayIncomeDetail.TodayIncome;
+import com.charge.entity.po.back.wechat.agent.TodayIncome;
 import com.charge.service.biz.wechat.agent.AgentService;
 import com.charge.web.controller.base.BaseController;
 import com.charge.web.utils.DateUtil;
-import com.charge.web.utils.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -45,7 +44,8 @@ public class TodayIncomeController extends BaseController{
         String dateStr = queryData.get("date");
 
         //将字符串日期变为Date类型
-        Date date = TimeUtil.getSpecificDateFormat(dateStr);
+        String format = "yyyy-MM-dd";//日期格式
+        Date date = DateUtil.getSpecificDateFormat(dateStr,format);
 
         //获得该日的开始时间
         Date dateStart = DateUtil.getSpecificDateStartTime(date);
@@ -55,7 +55,7 @@ public class TodayIncomeController extends BaseController{
         //去数据库查询
         List<TodayIncome> todayIncomeDetail = agentService.findTodayIncomeDetail(agentId,dateStart,dateEnd);
 
-        log.info("over");;
+        log.info("over");
         return returnSuccess(todayIncomeDetail);
     }
 

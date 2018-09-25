@@ -1,4 +1,4 @@
-package com.charge.entity.po.back.wechat.agent.todayIncomeDetail;
+package com.charge.entity.po.back.wechat.agent;
 
 /**
  * Created by vincent on 24/09/2018.
