@@ -12,5 +12,7 @@ public interface AgentMapper extends BaseMapper<Agent, Integer> {
 
     String findPwdByName(@Param("name") String agentName);
 
-    Agent findTotalOrderAndShare(@Param("id_num")String id_num);
+    Agent findTotalOrderAndShare(@Param("id_num") String id_num);
+
+    String findShargingRatioByAgent(@Param("id_num") String agentId);
 }

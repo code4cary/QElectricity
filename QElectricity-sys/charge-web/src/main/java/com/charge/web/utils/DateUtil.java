@@ -140,12 +140,7 @@ public class DateUtil {
         System.out.println(specificDateFormat1);
 
         System.out.println("--------------------");
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
-        // 输出字符串
-        String dateFormat1 = df.format(new Date());
-        System.out.println(dateFormat1);
-        Date specificDateFormat2 = getSpecificDateFormat(dateFormat1, "yyyy-MM-");
-        System.out.println(specificDateFormat2);
+
 
     }
 }

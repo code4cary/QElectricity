@@ -308,4 +308,36 @@
         createTime
     </select>
 
+    <!--通过agentId,date,type查询代理商每月中的每天的的订单总收益-->
+    <select id="findIncomeDataPerDay" resultType="Map" parameterType="Map">
+        SELECT
+        DATE_FORMAT(t_order.create_time, '%Y-%m-%d') createTime,
+        sum(t_order.PAY_AMOUNT) income
+        FROM
+        t_order,
+        t_charging_box,
+        t_shop,
+        t_agent
+        WHERE
+        t_order.BOX_CHARGING_ID = t_charging_box.ID AND
+        t_charging_box.S_ID = t_shop.ID AND
+        t_shop.AG_ID = t_agent.ID AND
+        <if test="queryDataMap.agentId != null">
+            #{queryDataMap.agentId} = t_agent.ID_NUMBER and
+        </if>
+        t_order.create_time
+        BETWEEN
+        <if test="queryDataMap.dateStart != null">
+            #{queryDataMap.dateStart} AND
+        </if>
+        <if test="queryDataMap.dateEnd != null">
+            #{queryDataMap.dateEnd}
+        </if>
+        GROUP BY
+        createTime
+        ORDER BY  <!-- 按时间升序排列-->
+        createTime
+    </select>
+
+
 </mapper>

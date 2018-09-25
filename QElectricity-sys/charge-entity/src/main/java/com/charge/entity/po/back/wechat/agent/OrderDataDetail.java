@@ -2,19 +2,20 @@ package com.charge.entity.po.back.wechat.agent;
 
 import com.alibaba.fastjson.JSON;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Created by vincent on 25/09/2018.
  */
-public class OrderDataDetail {
+public class OrderDataDetail implements Serializable {
 
     //类型
     private String type;
     //当前月总的订单数
     private String totalOrder;
     // 当前月每天的订单数 按月初到月末排序返回
-    private List<Map<Date,Integer>> dayOrder;
+    private List<Map<String,Object>> dayOrder;
 
     public String getType() {
         return type;
@@ -33,11 +34,11 @@ public class OrderDataDetail {
     }
 
 
-    public List<Map<Date, Integer>> getDayOrder() {
+    public List<Map<String,Object>> getDayOrder() {
         return dayOrder;
     }
 
-    public void setDayOrder(List<Map<Date, Integer>> dayOrder) {
+    public void setDayOrder(List<Map<String,Object>> dayOrder) {
         this.dayOrder = dayOrder;
     }
 
@@ -61,7 +62,7 @@ public class OrderDataDetail {
         list.add(map2);
 
 
-        orderDataDetail.setDayOrder(list);
+        //orderDataDetail.setDayOrder(list);
         orderDataDetail.setTotalOrder("55");
         orderDataDetail.setType("1");
         Object json = JSON.toJSON(orderDataDetail);

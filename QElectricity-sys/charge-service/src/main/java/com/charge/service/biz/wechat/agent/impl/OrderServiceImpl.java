@@ -1,6 +1,9 @@
 package com.charge.service.biz.wechat.agent.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
+import com.charge.entity.po.back.wechat.agent.IncomeData;
 import com.charge.entity.po.back.wechat.agent.OrderDataDetail;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
@@ -8,7 +11,6 @@ import com.charge.service.biz.wechat.agent.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +21,9 @@ import java.util.Map;
 public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private AgentMapper agentMapper;
 
     @Override
     public void initBaseMapper() {
@@ -35,7 +40,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
      */
     @Override
     public OrderDataDetail findOrderDataNumPerDay(Map<String, Object> queryDataMap) {
-        List<Map<Date, Integer>> orderList = orderMapper.findOrderDataNumPerDay(queryDataMap);
+        List<Map<String,Object>> orderList = orderMapper.findOrderDataNumPerDay(queryDataMap);
         //订单总数
         String totalOrder = String.valueOf(orderList.size());
 
@@ -49,5 +54,63 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
         orderDataDetail.setDayOrder(orderList);
 
         return orderDataDetail;
+    }
+
+    /**
+     * 通过agentId,date,type查询代理商每月中的每天的的收益数据
+     *
+     * @param queryDataMap
+     * @return
+     */
+    @Override
+    public IncomeData findIncomeDataPerDay(Map<String, Object> queryDataMap) {
+
+        List<Map<String,Object>> incomeList = orderMapper.findIncomeDataPerDay(queryDataMap);
+        Object json = JSON.toJSON(incomeList);
+        System.out.println(json);
+
+        //获取总收益
+        Double incomeTotalTemp = 0.0;
+        for (Map<String, Object> map : incomeList) {
+            Double income = (Double) map.get("income");
+            incomeTotalTemp += income;
+        }
+        //将总收益转成字符串
+        String totalIncome = String.valueOf(incomeTotalTemp);
+
+        //总分成
+        //查询代理商的分成比例
+        String agentId = (String) queryDataMap.get("agentId");
+        //Double sharging_ratio = Double.valueOf(agentMapper.findShargingRatioByAgent(agentId))/100.0;
+        Double sharging_ratio = 90/100.0;
+        String totalSharing = String.valueOf(incomeTotalTemp * sharging_ratio);
+
+        //计算每天的分成
+        incomeList.forEach(incomeMap -> {
+            //每一天的收益
+            Double sharingPerDay = (Double) incomeMap.get("income") * sharging_ratio;
+            incomeMap.put("income",sharingPerDay);
+        });
+
+        //租借收益
+        String rentIncome = totalIncome;
+
+        //99收益
+        String _99Income = null;
+
+        //子代理商收益
+        String subAgentIncome = null;
+
+        //封装数据
+        IncomeData incomeData = new IncomeData();
+        incomeData.setType((String) queryDataMap.get("type"));
+        incomeData.setTotalSharing(totalSharing);
+        incomeData.setTotalIncome(totalIncome);
+        incomeData.setRentIncome(rentIncome);
+        incomeData.set_99Income(_99Income);
+        incomeData.setSubAgentIncome(subAgentIncome);
+        incomeData.setDaySharing(incomeList);
+
+        return incomeData;
     }
 }

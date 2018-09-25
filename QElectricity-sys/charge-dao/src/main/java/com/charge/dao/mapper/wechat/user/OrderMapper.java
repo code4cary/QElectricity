@@ -23,5 +23,7 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
                                       @Param("dateStart") Date dateStart,
                                       @Param("dateEnd") Date dateEnd);
 
-    List<Map<Date,Integer>> findOrderDataNumPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
+    List<Map<String,Object>> findOrderDataNumPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
+
+    List<Map<String,Object>> findIncomeDataPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
 }

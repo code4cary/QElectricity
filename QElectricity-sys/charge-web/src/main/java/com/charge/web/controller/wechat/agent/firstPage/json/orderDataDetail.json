@@ -18,11 +18,14 @@
     //总订单
     "totalOrder": "",
     //按月初到月末排序返回
-    "dayOrder": [
+    "dayOrder":[
       {
-        "":"",
-        "":"",
-        "":""
+        "count":1,
+        "createTime":"2018-09-19"
+      },
+      {
+        "count":1,
+        "createTime":"2018-09-22"
       }
     ]
   }

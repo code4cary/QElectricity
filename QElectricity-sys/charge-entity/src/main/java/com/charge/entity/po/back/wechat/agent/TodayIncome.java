@@ -1,9 +1,11 @@
 package com.charge.entity.po.back.wechat.agent;
 
+import java.io.Serializable;
+
 /**
  * Created by vincent on 24/09/2018.
  */
-public class TodayIncome {
+public class TodayIncome implements Serializable {
 
 
     private String shopName;

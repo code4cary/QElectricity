@@ -35,7 +35,7 @@ public class TodayIncomeController extends BaseController{
         if (!validateParam(queryData)) {
             return returnFailed(null, "参属为空异常");
         }
-        log.info("查询代理商今日订单详情...");
+        log.info("查询代理商今日收益详情...");
 
         //获取agenId
         String agentId = queryData.get("agentID");
