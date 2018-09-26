@@ -14,7 +14,9 @@ import java.util.Map;
 public interface ChargingBoxService extends BaseService<ChargingBox,Integer> {
     List<DeviceManage> findDeviceManageInfo(Map<String, String> queryDataMap);
 
-    Boolean opereteChargingBox(Map<String, String> queryDataMap);
+    Boolean operateChargingBoxDeviceManagePage(Map<String, String> queryDataMap);
+
+    Boolean operateChargingBoxDevicePopPage(Map<String, Object> queryDataMap);
 
     DevicePop findDevicePopInfo(Map<String, String> queryDataMap);
 }

@@ -41,13 +41,13 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
     }
 
     /**
-     * 通过agentId,type,operateType,deviceNO进行设备操作:解绑或重启
+     * 通过agentId,type,operateType,deviceNO进行设备管理页操作:解绑或重启
      *
      * @param queryDataMap
      * @return
      */
     @Override
-    public Boolean opereteChargingBox(Map<String, String> queryDataMap) {
+    public Boolean operateChargingBoxDeviceManagePage(Map<String, String> queryDataMap) {
         //获取操作类型
         String operateType = queryDataMap.get("operateType");
         //获取设备编号
@@ -61,16 +61,17 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         } else if (operateType.equals("1")) {//重启操作
             //向曾斌那边发起请求 对设备进行重启
             //如果收到曾斌那边返回成功的消息
-            //充电箱是否有相关信息进行更新???
+            //充电箱是否有相关信息进行更新??? 有变化曾斌那边会自动请求接口告诉后台
 
         }
-        
+
         return isOperateSuccess;
 
     }
 
     /**
      * 根据agentId,deviceNO查询代理商设备弹出页信息
+     *
      * @param queryDataMap
      * @return
      */
@@ -91,5 +92,38 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         devicePopInfo.setWindowNo(windowList);
 
         return devicePopInfo;
+    }
+
+    /**
+     * 根据agentId,operateType,deviceNO,windowNO操作设备弹出页操作:弹出或重启
+     *
+     * @param queryDataMap
+     * @return
+     */
+    @Override
+    public Boolean operateChargingBoxDevicePopPage(Map<String, Object> queryDataMap) {
+        //获取操作类型 0:pop,1:reboot
+        String operateType = (String) queryDataMap.get("operateType");
+
+        Boolean isOperateSuccess = false;
+        if (operateType.equals("0")){//弹出充电宝
+            //请求设备中介弹出设备
+            //获取需要弹出的充电宝的窗口号
+            List<String> windowNo = (List<String>) queryDataMap.get("windowNo");
+            //获取设备号
+            String deviceNO = (String) queryDataMap.get("deviceNO");
+            //将deviceNO,windowNo传入相应请求接口
+
+
+
+        } else if (operateType.equals("1")){//重启设备
+            //向曾斌那边发起请求 对设备进行重启
+
+            //测试数据
+            isOperateSuccess = true;
+        }
+
+
+        return isOperateSuccess;
     }
 }

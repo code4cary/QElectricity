@@ -49,7 +49,7 @@ public class OperateController extends BaseController {
         queryDataMap.put("deviceNO",deviceNO);
 
         //进行代理商设备管理页之解绑/重启操作
-        Boolean operateDeviceManage = chargingBoxService.opereteChargingBox(queryDataMap);
+        Boolean operateDeviceManage = chargingBoxService.operateChargingBoxDeviceManagePage(queryDataMap);
 
         log.info("over");
         return operateDeviceManage?returnSuccess(null):
