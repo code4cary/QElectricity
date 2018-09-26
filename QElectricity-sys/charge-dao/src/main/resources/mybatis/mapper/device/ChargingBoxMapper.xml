@@ -331,4 +331,50 @@
     </select>
 
 
+    <!--
+        通过agentId,statusRange,type,searchData查询代理商指定搜索内容,指定日期的订单记录
+        queryDataMap
+    -->
+    <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
+    <resultMap type="com.charge.entity.po.back.wechat.agent.DeviceManage" id="deviceManageMap">
+        <result column="chargingBoxNO" property="chargingBoxNO"/>
+        <result column="powerBankNum" property="powerBankNum"/>
+        <result column="shopName" property="shopName"/>
+        <result column="status" property="status"/>
+
+    </resultMap>
+    <select id="findDeviceManageInfo" resultMap="deviceManageMap" parameterType="Map">
+        SELECT
+        t_charging_box.BOX_CUSTOMER_ID chargingBoxNO,
+        IFNULL(t_charging_box.CAN_BORROW_NUM,0) +
+        IFNULL(t_charging_box.MALFUNCTION_NUM,0) powerBankNum,
+        t_shop.NAME shopName,
+        t_charging_box.STATUS status
+        FROM
+        t_agent,
+        t_charging_box,
+        t_shop
+        <where>
+            <if test="queryDataMap.agentId != null">
+                #{queryDataMap.agentId} = t_agent.ID_NUMBER AND
+            </if>
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID
+            <if test="queryDataMap.statusRange != null">
+                AND #{queryDataMap.statusRange} = t_charging_box.STATUS
+            </if>
+            <if test="queryDataMap.searchData != null">
+                AND
+                CONCAT(
+                t_charging_box.BOX_CUSTOMER_ID,
+                t_shop.NAME,
+                IFNULL(
+                t_charging_box.CAN_BORROW_NUM,0) +
+                IFNULL(t_charging_box.MALFUNCTION_NUM,0))
+                like '%${queryDataMap.searchData}%'
+            </if>
+        </where>
+    </select>
+
+
 </mapper>

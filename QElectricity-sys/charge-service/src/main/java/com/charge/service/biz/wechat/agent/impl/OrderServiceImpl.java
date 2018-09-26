@@ -122,7 +122,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
     }
 
     /**
-     * 通过agentId,dateRange,type,search查询代理商指定搜索内容,指定日期的订单记录
+     * 通过agentId,dateRange,type,searchData查询代理商指定搜索内容,指定日期的订单记录
      * @param queryDataMap
      * @return
      */

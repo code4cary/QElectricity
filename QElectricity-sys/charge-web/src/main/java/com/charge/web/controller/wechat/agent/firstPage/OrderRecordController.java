@@ -63,7 +63,7 @@ public class OrderRecordController extends BaseController {
         queryDataMap.put("endTime",dateEnd);
 
 
-        //查询代理商订单记录详情详情页信息
+        //查询代理商订单记录详情页信息
         List<OrderRecord> OrderRecordList = orderService.findOrderRecord(queryDataMap);
 
         log.info("over");

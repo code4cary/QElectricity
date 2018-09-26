@@ -1,6 +1,7 @@
 package com.charge.dao.mapper.device;
 
 import com.charge.dao.mapper.base.BaseMapper;
+import com.charge.entity.po.back.wechat.agent.DeviceManage;
 import com.charge.entity.po.back.wechat.agent.EarlyWarning;
 import com.charge.entity.po.device.ChargingBox;
 import org.apache.ibatis.annotations.Param;
@@ -17,4 +18,6 @@ public interface ChargingBoxMapper extends BaseMapper<ChargingBox, Integer> {
     List<ChargingBox> findChargingBoxByAgentId(@Param("id_num") String id_num);
 
     List<EarlyWarning> findEarlyWarning(@Param("queryDataMap")Map<String, String> queryDataMap);
+
+    List<DeviceManage> findDeviceManageInfo(@Param("queryDataMap")Map<String, String> queryDataMap);
 }
