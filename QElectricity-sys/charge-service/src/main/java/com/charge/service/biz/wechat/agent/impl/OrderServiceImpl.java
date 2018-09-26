@@ -4,6 +4,7 @@ import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
 import com.charge.entity.po.back.wechat.agent.IncomeData;
 import com.charge.entity.po.back.wechat.agent.OrderDataDetail;
+import com.charge.entity.po.back.wechat.agent.OrderRecord;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.wechat.agent.OrderService;
@@ -118,5 +119,17 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
         incomeData.setDaySharing(incomeList);
 
         return incomeData;
+    }
+
+    /**
+     * 通过agentId,dateRange,type,search查询代理商指定搜索内容,指定日期的订单记录
+     * @param queryDataMap
+     * @return
+     */
+    @Override
+    public List<OrderRecord> findOrderRecord(Map<String, Object> queryDataMap) {
+        List<OrderRecord> orderRecordList = orderMapper.findOrderRecord(queryDataMap);
+
+        return orderRecordList;
     }
 }

@@ -368,5 +368,73 @@
 
     </select>
 
+    <!--
+        通过agentId,dateRange,type,search查询代理商指定搜索内容,指定日期的订单记录
+    -->
+    <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
+    <resultMap type="com.charge.entity.po.back.wechat.agent.OrderRecord" id="orderRecordMap">
+        <result column="userPhone" property="userPhone"/>
+        <result column="shopName" property="shopName"/>
+        <result column="cost" property="cost"/>
+        <result column="startTime" property="startTime"/>
+        <result column="endTime" property="endTime"/>
+        <result column="orderStatus" property="orderStatus"/>
+    </resultMap>
+    <select id="findOrderRecord" resultMap="orderRecordMap" parameterType="Map">
+        SELECT
+        t_user.TELEPHONE userPhone,
+        t_shop.NAME shopName,
+        t_order.PAY_AMOUNT cost,
+        DATE_FORMAT(t_order.CREATE_TIME, '%Y-%m-%d %T') startTime,
+        DATE_FORMAT(t_order.END_TIME, '%Y-%m-%d %T') endTime,
+        t_order.PAY_STATUS orderStatus
+        FROM
+        t_user,
+        t_shop,
+        t_order,
+        t_agent,
+        t_charging_box,
+        t_account
+        <where>
+            <if test="queryDataMap.agentId != null">
+                #{queryDataMap.agentId} = t_agent.ID_NUMBER AND
+            </if>
+            <!-- 通过agentId关联到哪些订单属于该代理商-->
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID AND
+            t_order.BOX_CHARGING_ID = t_charging_box.ID AND
+            t_order.AID = t_account.ID AND
+            t_account.UID = t_user.ID AND
+            t_order.CREATE_TIME
+            BETWEEN
+            <if test="queryDataMap.startTime != null ">
+                #{queryDataMap.startTime}
+                AND
+            </if>
+            <if test="queryDataMap.endTime != null ">
+                #{queryDataMap.endTime}
+                AND
+            </if>
+            t_order.END_TIME
+            BETWEEN
+            <if test="queryDataMap.endTime != null ">
+                #{queryDataMap.startTime}
+                AND
+            </if>
+            <if test="queryDataMap.endTime != null ">
+                #{queryDataMap.endTime}
+            </if>
+            <if test="queryDataMap.searchData != null">
+                AND
+                CONCAT(
+                t_shop.NAME,
+                t_order.PAY_STATUS)
+                like '%${queryDataMap.searchData}%'
+            </if>
+            ORDER BY
+            startTime
+        </where>
+    </select>
+
 
 </mapper>

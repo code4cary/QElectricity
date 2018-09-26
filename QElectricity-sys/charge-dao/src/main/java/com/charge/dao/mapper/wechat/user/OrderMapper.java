@@ -1,6 +1,7 @@
 package com.charge.dao.mapper.wechat.user;
 
 import com.charge.dao.mapper.base.BaseMapper;
+import com.charge.entity.po.back.wechat.agent.OrderRecord;
 import com.charge.entity.po.wechat.user.Order;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,4 +31,5 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
     Double findSubAgentIncomeBySubId(@Param("subQueryDataMap") Map<String, Object> subQueryDataMap);
 
 
+    List<OrderRecord> findOrderRecord(@Param("queryDataMap")Map<String, Object> queryDataMap);
 }
