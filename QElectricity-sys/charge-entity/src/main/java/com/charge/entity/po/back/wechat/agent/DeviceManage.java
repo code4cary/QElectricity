@@ -1,9 +1,11 @@
 package com.charge.entity.po.back.wechat.agent;
 
+import java.io.Serializable;
+
 /**
  * Created by vincent on 26/09/2018.
  */
-public class DeviceManage {
+public class DeviceManage implements Serializable {
 
     //充电箱编号
     private String chargingBoxNO;

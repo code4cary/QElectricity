@@ -1,11 +1,12 @@
 package com.charge.entity.po.back.wechat.agent;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by vincent on 26/09/2018.
  */
-public class DevicePop {
+public class DevicePop implements Serializable {
 
 
 //        //充电宝编号

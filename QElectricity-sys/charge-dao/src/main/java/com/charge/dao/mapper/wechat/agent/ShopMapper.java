@@ -1,5 +1,6 @@
 package com.charge.dao.mapper.wechat.agent;
 
+import com.charge.entity.po.back.wechat.agent.ShopManage;
 import com.charge.entity.po.back.wechat.user.ShopInfoBack;
 import com.charge.dao.mapper.base.BaseMapper;
 import com.charge.entity.po.wechat.agent.Shop;
@@ -19,4 +20,6 @@ public interface ShopMapper extends BaseMapper<Shop, Integer> {
     int updateContractPhoto(String agentId, String contractPhoto);
 
     List<Shop> findShopByAgentId(@Param("id_num") String id_num);
+
+    List<ShopManage> findShopManageInfo(@Param("queryDataMap") Map<String, String> queryDataMap);
 }

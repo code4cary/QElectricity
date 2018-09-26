@@ -1,10 +1,12 @@
 package com.charge.entity.po.back.wechat.agent;
 
 
+import java.io.Serializable;
+
 /**
  * Created by vincent on 26/09/2018.
  */
-public class OrderRecord {
+public class OrderRecord implements Serializable {
 
     //用户手机号,注意是借充电宝的用户手机号
     private String userPhone;

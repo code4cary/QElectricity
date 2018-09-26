@@ -380,16 +380,16 @@
         <if test="searchData != null">
             AND
             CONCAT(
-                NAME,
-                ADDRESS,
-                SHOP_STATUS)
-                like '%${searchData}%'
+            NAME,
+            ADDRESS,
+            SHOP_STATUS)
+            like '%${searchData}%'
         </if>
     </select>
 
     <!--根据代理商id查询名下shop-->
     <select id="findShopByAgentId" resultMap="BaseResultMap" parameterType="String">
-        select  t_shop.*
+        select t_shop.*
         from
         t_agent,
         t_shop
@@ -399,5 +399,47 @@
             </if>
             t_shop.AG_ID = t_agent.ID
         </where>
+    </select>
+
+    <!--通过agentId,searchData,type获取商户管理页信息-->
+    <resultMap type="com.charge.entity.po.back.wechat.agent.ShopManage" id="shopManageMap">
+        <result column="shopName" property="shopName"/>
+        <result column="shopContract" property="shopContract"/>
+        <result column="shopAddress" property="shopAddress"/>
+        <result column="shopToTalIncome" property="shopToTalIncome"/>
+        <result column="chargingBoxNum" property="chargingBoxNum"/>
+    </resultMap>
+    <select id="findShopManageInfo" resultMap="shopManageMap" parameterType="Map">
+        select
+        t_shop.name shopName,
+        t_shop.CONTRACT_PERSON_PHONE shopContract,
+        t_shop.ADDRESS shopAddress,
+        sum(t_order.PAY_AMOUNT) shopToTalIncome,
+        COUNT(distinct t_charging_box.id) chargingBoxNum
+        from
+        t_shop,
+        t_order,
+        t_charging_box,
+        t_agent
+        <where>
+            <if test="queryDataMap.agentId != null">
+                #{queryDataMap.agentId} = t_agent.ID_NUMBER AND
+            </if>
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID AND
+            t_order.BOX_CHARGING_ID = t_charging_box.ID AND
+            t_order.PAY_STATUS = '1'
+        </where>
+        <if test="queryDataMap.searchData != null"><!-- 搜索范围：shopName(合作点名称，即商户名字), shopContract(联系方式),address(地址)， shopContract和address作为可选-->
+            AND
+            CONCAT(
+            NAME,
+            t_shop.CONTRACT_PERSON_PHONE,
+            t_shop.ADDRESS)
+            like '%${queryDataMap.searchData}%'
+        </if>
+        GROUP BY
+        t_shop.ID
+
     </select>
 </mapper>
