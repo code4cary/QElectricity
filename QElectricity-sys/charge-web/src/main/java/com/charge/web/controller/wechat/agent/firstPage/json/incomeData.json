@@ -1,42 +1,25 @@
 //incomeData收益数据页数据返回样例
 
 {
-  //状态码
-  //可选值INCOMEDATA_SUCCESS_CODE=1或INCOMEDATA_FAIL_CODE=0
-  "code": "",
-  //返回信息
-  //和code代码一一对应,比如code为INCOMEDATA_SUCCESS_CODE,则msg为请求成功,如此类推.
-  //请求成功:INCOMEDATA_SUCCESS_CODE:请求失败:INCOMEDATA_FAIL_CODE
-  "msg": "",
-  //返回数据
+  "msg": "请求成功",
+  "code": "1",
+  "flag": "1",
   "data": {
-    //收益数据类
-    "incomeData": {
-      //类型
-      "type": " ",
-      //BOX=0或LINE=1
-      //总分成
-      "totalSharing": "",
-      //总收益
-      "totalIncome": "",
-      //租借收益
-      "rentIncome": "",
-      //99收益
-      "_99Income": "",
-      //子代理商收益
-      "subAgentIncome": "",
-      //每天分成
-      "daySharing": [
-        //月初到月末排序返回
-        {
-          "income": 0.9,
-          "createTime": "2018-09-19"
-        },
-        {
-          "income": 2.7,
-          "createTime": "2018-09-22"
-        }
-      ]
-    }
+    "type": "1",
+    "totalSharing": "41.4",
+    "totalIncome": "46.0",
+    "rentIncome": "46.0",
+    "subAgentIncome": "0",
+    "99Income": "0",
+    "daySharing": [
+      {
+        "income": 0.9,
+        "createTime": "2018-09-19"
+      },
+      {
+        "income": 2.7,
+        "createTime": "2018-09-22"
+      }
+    ]
   }
 }

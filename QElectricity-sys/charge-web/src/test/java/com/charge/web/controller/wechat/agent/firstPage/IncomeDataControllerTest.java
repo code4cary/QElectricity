@@ -2,8 +2,10 @@ package com.charge.web.controller.wechat.agent.firstPage;
 
 import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
+import com.charge.entity.model.CommonOutputDO;
 import com.charge.entity.po.back.wechat.agent.IncomeData;
 import com.charge.service.biz.wechat.agent.OrderService;
+import com.charge.web.controller.base.BaseController;
 import com.charge.web.utils.DateUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +22,7 @@ import java.util.Map;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ChargeApplication.class)
-public class IncomeDataControllerTest {
+public class IncomeDataControllerTest extends BaseController {
     @Autowired
     private OrderService orderService;
 
@@ -52,7 +54,11 @@ public class IncomeDataControllerTest {
         //通过agentId查询数据库当前月的收益数据详情
         IncomeData incomeData = orderService.findIncomeDataPerDay(queryDataMap);
 
-        Object json = JSON.toJSON(incomeData);
+        CommonOutputDO commonOutputDO = returnSuccess(incomeData);
+        Object json = JSON.toJSON(commonOutputDO);
         System.out.println(json);
+        System.out.println("--------------------------------------------");
+        Object json2 = JSON.toJSON(incomeData);
+        System.out.println(json2);
     }
 }

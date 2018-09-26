@@ -4,10 +4,7 @@ import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
-import com.charge.entity.po.back.wechat.agent.ChargingBoxStatus;
-import com.charge.entity.po.back.wechat.agent.FirstPage;
-import com.charge.entity.po.back.wechat.agent.OrderData;
-import com.charge.entity.po.back.wechat.agent.TodayIncome;
+import com.charge.entity.po.back.wechat.agent.*;
 import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.wechat.agent.Agent;
 import com.charge.entity.po.wechat.agent.Shop;
@@ -202,6 +199,16 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         return todayIncomeList;
     }
 
+    /**
+     * 通过agentId,searchData查询代理商名下的商户拥有的充电箱的预警详情
+     * @param queryDataMap
+     * @return
+     */
+    @Override
+    public List<EarlyWarning> findEarlyWarning(Map<String, String> queryDataMap) {
+        List<EarlyWarning> EarlyWarningList = chargingBoxMapper.findEarlyWarning(queryDataMap);
+        return EarlyWarningList;
+    }
 
 
 }

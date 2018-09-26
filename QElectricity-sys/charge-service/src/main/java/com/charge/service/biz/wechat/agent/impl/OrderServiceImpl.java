@@ -1,6 +1,5 @@
 package com.charge.service.biz.wechat.agent.impl;
 
-import com.alibaba.fastjson.JSON;
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
 import com.charge.entity.po.back.wechat.agent.IncomeData;
@@ -11,6 +10,7 @@ import com.charge.service.biz.wechat.agent.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +40,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
      */
     @Override
     public OrderDataDetail findOrderDataNumPerDay(Map<String, Object> queryDataMap) {
-        List<Map<String,Object>> orderList = orderMapper.findOrderDataNumPerDay(queryDataMap);
+        List<Map<String, Object>> orderList = orderMapper.findOrderDataNumPerDay(queryDataMap);
         //订单总数
         String totalOrder = String.valueOf(orderList.size());
 
@@ -65,9 +65,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
     @Override
     public IncomeData findIncomeDataPerDay(Map<String, Object> queryDataMap) {
 
-        List<Map<String,Object>> incomeList = orderMapper.findIncomeDataPerDay(queryDataMap);
-        Object json = JSON.toJSON(incomeList);
-        System.out.println(json);
+        List<Map<String, Object>> incomeList = orderMapper.findIncomeDataPerDay(queryDataMap);
 
         //获取总收益
         Double incomeTotalTemp = 0.0;
@@ -81,25 +79,33 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
         //总分成
         //查询代理商的分成比例
         String agentId = (String) queryDataMap.get("agentId");
-        //Double sharging_ratio = Double.valueOf(agentMapper.findShargingRatioByAgent(agentId))/100.0;
-        Double sharging_ratio = 90/100.0;
+        Double sharging_ratio = Double.valueOf(agentMapper.findShargingRatioByAgent(agentId)) / 100.0;
+        // Double sharging_ratio = 90/100.0;
         String totalSharing = String.valueOf(incomeTotalTemp * sharging_ratio);
 
         //计算每天的分成
         incomeList.forEach(incomeMap -> {
             //每一天的收益
             Double sharingPerDay = (Double) incomeMap.get("income") * sharging_ratio;
-            incomeMap.put("income",sharingPerDay);
+            incomeMap.put("income", sharingPerDay);
         });
 
-        //租借收益
-        String rentIncome = totalIncome;
+        //租借收益 ???
+        String rentIncome = "0";
 
-        //99收益
-        String _99Income = null;
+        //99收益 ???
+        String _99Income = "0";
 
         //子代理商收益
-        String subAgentIncome = null;
+        //先查询子代理商id  次id为表id
+        String subAgentId = agentMapper.findSubAgentIdByParentId((String) queryDataMap.get("agentId"));
+        //查询子代理商id查询其该月的收益
+        Map<String, Object> subQueryDataMap = new HashMap<>();
+        subQueryDataMap.put("subId", subAgentId);
+        subQueryDataMap.put("type", queryDataMap.get("type"));
+        subQueryDataMap.put("dateStart", queryDataMap.get("dateStart"));
+        subQueryDataMap.put("dateEnd", queryDataMap.get("dateEnd"));
+        String subAgentIncome = String.valueOf(orderMapper.findSubAgentIncomeBySubId(subQueryDataMap));
 
         //封装数据
         IncomeData incomeData = new IncomeData();

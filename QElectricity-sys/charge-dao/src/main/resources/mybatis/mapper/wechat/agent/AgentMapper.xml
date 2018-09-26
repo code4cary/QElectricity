@@ -9,7 +9,7 @@
         <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
         <result column="ID_NUMBER" property="idNumber" jdbcType="VARCHAR"/>
         <result column="LEVEL" property="level" jdbcType="VARCHAR"/>
-        <result column="PARENT_AGENT_ID" property="parentAgentId" jdbcType="VARCHAR"/>
+        <result column="SUB_AGENT_ID" property="subAgentId" jdbcType="VARCHAR"/>
         <result column="SHARGING_RATIO" property="shargingRatio" jdbcType="VARCHAR"/>
         <result column="SERVICE_CHARGES" property="serviceCharges" jdbcType="VARCHAR"/>
         <result column="CAN_WITHDRAW" property="canWithdraw" jdbcType="VARCHAR"/>
@@ -23,7 +23,7 @@
         <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <sql id="Base_Column_List">
-    ID, REAL_NAME, CREDENTIALS_SALT, USER_NAME, PASSWORD, ID_NUMBER, LEVEL, PARENT_AGENT_ID,
+    ID, REAL_NAME, CREDENTIALS_SALT, USER_NAME, PASSWORD, ID_NUMBER, LEVEL, SUB_AGENT_ID,
     SHARGING_RATIO, SERVICE_CHARGES, CAN_WITHDRAW, CHARGING_BOX_NUM, FROZEN_AMOUNT, ORDER_NUM,
     TOTAL_REVENUE, TOTAL_SHARE, CREATE_TIME, LEAVE_TIME, UPDATE_TIME
   </sql>
@@ -40,14 +40,14 @@
     <insert id="insert" parameterType="com.charge.entity.po.wechat.agent.Agent">
         insert into t_agent (ID, REAL_NAME, CREDENTIALS_SALT,
         USER_NAME, PASSWORD, ID_NUMBER,
-        LEVEL, PARENT_AGENT_ID, SHARGING_RATIO,
+        LEVEL, SUB_AGENT_ID, SHARGING_RATIO,
         SERVICE_CHARGES, CAN_WITHDRAW, CHARGING_BOX_NUM,
         FROZEN_AMOUNT, ORDER_NUM, TOTAL_REVENUE,
         TOTAL_SHARE, CREATE_TIME, LEAVE_TIME,
         UPDATE_TIME)
         values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{credentialsSalt,jdbcType=VARCHAR},
         #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR},
-        #{level,jdbcType=VARCHAR}, #{parentAgentId,jdbcType=VARCHAR}, #{shargingRatio,jdbcType=VARCHAR},
+        #{level,jdbcType=VARCHAR}, #{subAgentId,jdbcType=VARCHAR}, #{shargingRatio,jdbcType=VARCHAR},
         #{serviceCharges,jdbcType=VARCHAR}, #{canWithdraw,jdbcType=VARCHAR}, #{chargingBoxNum,jdbcType=VARCHAR},
         #{frozenAmount,jdbcType=VARCHAR}, #{orderNum,jdbcType=VARCHAR}, #{totalRevenue,jdbcType=VARCHAR},
         #{totalShare,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{leaveTime,jdbcType=TIMESTAMP},
@@ -77,8 +77,8 @@
             <if test="level != null">
                 LEVEL,
             </if>
-            <if test="parentAgentId != null">
-                PARENT_AGENT_ID,
+            <if test="subAgentId != null">
+                SUB_AGENT_ID,
             </if>
             <if test="shargingRatio != null">
                 SHARGING_RATIO,
@@ -136,8 +136,8 @@
             <if test="level != null">
                 #{level,jdbcType=VARCHAR},
             </if>
-            <if test="parentAgentId != null">
-                #{parentAgentId,jdbcType=VARCHAR},
+            <if test="subAgentId != null">
+                #{subAgentId,jdbcType=VARCHAR},
             </if>
             <if test="shargingRatio != null">
                 #{shargingRatio,jdbcType=VARCHAR},
@@ -195,8 +195,8 @@
             <if test="level != null">
                 LEVEL = #{level,jdbcType=VARCHAR},
             </if>
-            <if test="parentAgentId != null">
-                PARENT_AGENT_ID = #{parentAgentId,jdbcType=VARCHAR},
+            <if test="subAgentId != null">
+                SUB_AGENT_ID = #{subAgentId,jdbcType=VARCHAR},
             </if>
             <if test="shargingRatio != null">
                 SHARGING_RATIO = #{shargingRatio,jdbcType=VARCHAR},
@@ -242,7 +242,7 @@
       PASSWORD = #{password,jdbcType=VARCHAR},
       ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
       LEVEL = #{level,jdbcType=VARCHAR},
-      PARENT_AGENT_ID = #{parentAgentId,jdbcType=VARCHAR},
+      SUB_AGENT_ID = #{subAgentId,jdbcType=VARCHAR},
       SHARGING_RATIO = #{shargingRatio,jdbcType=VARCHAR},
       SERVICE_CHARGES = #{serviceCharges,jdbcType=VARCHAR},
       CAN_WITHDRAW = #{canWithdraw,jdbcType=VARCHAR},
@@ -307,6 +307,28 @@
             </if>
         </where>
 
+    </select>
+
+    <!--通过代理商id_num查询代理商的分成比例-->
+    <select id="findShargingRatioByAgent" resultType="String" parameterType="String">
+        select SHARGING_RATIO
+        from t_agent
+        <where>
+            <if test="id_num != null">
+                #{id_num} = t_agent.ID_NUMBER
+            </if>
+        </where>
+    </select>
+
+    <!--通过父代理商的id_number查询子代理商的表id-->
+    <select id="findSubAgentIdByParentId" resultType="String" parameterType="String">
+        select SUB_AGENT_ID
+        from t_agent
+        <where>
+            <if test="p_id_num != null">
+                #{p_id_num} = t_agent.ID_NUMBER
+            </if>
+        </where>
     </select>
 
 

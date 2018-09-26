@@ -319,6 +319,7 @@
         t_shop,
         t_agent
         WHERE
+        t_order.PAY_STATUS = '1' AND
         t_order.BOX_CHARGING_ID = t_charging_box.ID AND
         t_charging_box.S_ID = t_shop.ID AND
         t_shop.AG_ID = t_agent.ID AND
@@ -337,6 +338,34 @@
         createTime
         ORDER BY  <!-- 按时间升序排列-->
         createTime
+    </select>
+
+    <!--通过子代理商的agentId,date,type查询查询子代理商该月的收益-->
+    <select id="findSubAgentIncomeBySubId" resultType="Double" parameterType="Map">
+        SELECT
+        sum(t_order.PAY_AMOUNT) totalIncome
+        FROM
+        t_order,
+        t_charging_box,
+        t_shop,
+        t_agent
+        WHERE
+        t_order.PAY_STATUS = '1' AND
+        t_order.BOX_CHARGING_ID = t_charging_box.ID AND
+        t_charging_box.S_ID = t_shop.ID AND
+        t_shop.AG_ID = t_agent.ID AND
+        <if test="subQueryDataMap.subId != null">
+            #{subQueryDataMap.subId} = t_agent.ID and
+        </if>
+        t_order.create_time
+        BETWEEN
+        <if test="subQueryDataMap.dateStart != null">
+            #{subQueryDataMap.dateStart} AND
+        </if>
+        <if test="subQueryDataMap.dateEnd != null">
+            #{subQueryDataMap.dateEnd}
+        </if>
+
     </select>
 
 

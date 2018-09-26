@@ -27,7 +27,7 @@ public class ControllerTemplate extends BaseController {
 
 
 
-        log.info("over");;
+        log.info("over");
         return returnSuccess(null);
     }
 

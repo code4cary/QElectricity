@@ -21,7 +21,7 @@ public class Agent extends BaseEntity implements Serializable {
 
     private String level;
 
-    private String parentAgentId;
+    private String subAgentId;
 
     private String shargingRatio;
 
@@ -117,12 +117,12 @@ public class Agent extends BaseEntity implements Serializable {
         this.level = level == null ? null : level.trim();
     }
 
-    public String getParentAgentId() {
-        return parentAgentId;
+    public String getSubAgentId() {
+        return subAgentId;
     }
 
-    public void setParentAgentId(String parentAgentId) {
-        this.parentAgentId = parentAgentId == null ? null : parentAgentId.trim();
+    public void setSubAgentId(String subAgentId) {
+        this.subAgentId = subAgentId == null ? null : subAgentId.trim();
     }
 
     public String getShargingRatio() {
@@ -214,7 +214,7 @@ public class Agent extends BaseEntity implements Serializable {
                 ", password='" + password + '\'' +
                 ", idNumber='" + idNumber + '\'' +
                 ", level='" + level + '\'' +
-                ", parentAgentId='" + parentAgentId + '\'' +
+                ", subAgentId='" + subAgentId + '\'' +
                 ", shargingRatio='" + shargingRatio + '\'' +
                 ", serviceCharges='" + serviceCharges + '\'' +
                 ", canWithdraw='" + canWithdraw + '\'' +

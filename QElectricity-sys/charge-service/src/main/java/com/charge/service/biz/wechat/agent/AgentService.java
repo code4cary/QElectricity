@@ -1,5 +1,6 @@
 package com.charge.service.biz.wechat.agent;
 
+        import com.charge.entity.po.back.wechat.agent.EarlyWarning;
         import com.charge.entity.po.back.wechat.agent.FirstPage;
         import com.charge.entity.po.back.wechat.agent.TodayIncome;
         import com.charge.entity.po.wechat.agent.Agent;
@@ -7,6 +8,7 @@ package com.charge.service.biz.wechat.agent;
 
         import java.util.Date;
         import java.util.List;
+        import java.util.Map;
 
 /**
  * Created by vincent on 23/09/2018.
@@ -19,4 +21,6 @@ public interface AgentService extends BaseService<Agent,Integer> {
     String findAgentIdNoByName(String username);
 
     List<TodayIncome> findTodayIncomeDetail(String agentId, Date dateStart,Date dateEnd);
+
+    List<EarlyWarning> findEarlyWarning(Map<String, String> queryDataMap);
 }

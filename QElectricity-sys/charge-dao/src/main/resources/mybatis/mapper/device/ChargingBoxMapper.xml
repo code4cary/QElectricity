@@ -291,5 +291,44 @@
         </where>
     </select>
 
+    <!--通过agentId,searchData查询代理商名下的商户拥有的充电箱的预警详情-->
+    <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
+    <resultMap type="com.charge.entity.po.back.wechat.agent.EarlyWarning" id="earlyWarningMap">
+        <result column="shopName" property="shopName"/>
+        <result column="shopContract" property="shopContract"/>
+        <result column="shopAddress" property="shopAddress"/>
+        <result column="powerBankNum" property="powerBankNum"/>
+        <result column="deviceNO" property="deviceNO"/>
+    </resultMap>
+
+    <select id="findEarlyWarning" resultMap="earlyWarningMap" parameterType="Map">
+        SELECT
+        t_shop.NAME shopName,
+        t_shop.CONTRACT_PERSON_PHONE shopContract,
+        t_shop.ADDRESS shopAddress,
+        t_charging_box.CAN_BORROW_NUM powerBankNum,
+        t_charging_box.BOX_CUSTOMER_ID deviceNO
+        FROM
+        t_shop,
+        t_charging_box,
+        t_agent
+        <where>
+            <if test="queryDataMap.agentId != null">
+                #{queryDataMap.agentId} = t_agent.ID_NUMBER AND
+            </if>
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID AND
+            (t_charging_box.CAN_BORROW_NUM+0) &lt;= 3
+            <if test="queryDataMap.searchData != null">
+                AND
+                CONCAT(
+                t_shop.NAME,
+                t_shop.ADDRESS,
+                t_charging_box.CAN_BORROW_NUM)
+                like '%${queryDataMap.searchData}%'
+            </if>
+        </where>
+    </select>
+
 
 </mapper>
