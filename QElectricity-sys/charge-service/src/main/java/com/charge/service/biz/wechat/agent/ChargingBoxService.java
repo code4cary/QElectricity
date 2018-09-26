@@ -1,6 +1,7 @@
 package com.charge.service.biz.wechat.agent;
 
 import com.charge.entity.po.back.wechat.agent.DeviceManage;
+import com.charge.entity.po.back.wechat.agent.DevicePop;
 import com.charge.entity.po.device.ChargingBox;
 import com.charge.service.biz.base.BaseService;
 
@@ -12,4 +13,8 @@ import java.util.Map;
  */
 public interface ChargingBoxService extends BaseService<ChargingBox,Integer> {
     List<DeviceManage> findDeviceManageInfo(Map<String, String> queryDataMap);
+
+    Boolean opereteChargingBox(Map<String, String> queryDataMap);
+
+    DevicePop findDevicePopInfo(Map<String, String> queryDataMap);
 }

@@ -22,7 +22,6 @@ import java.util.Map;
 @RequestMapping("wechat/agent/firstPage/deviceManage")
 public class DeviceManageController extends BaseController {
 
-
     @Autowired
     private ChargingBoxService chargingBoxService;
 

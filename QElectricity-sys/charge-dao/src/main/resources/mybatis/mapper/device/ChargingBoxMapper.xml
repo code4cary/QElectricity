@@ -341,7 +341,6 @@
         <result column="powerBankNum" property="powerBankNum"/>
         <result column="shopName" property="shopName"/>
         <result column="status" property="status"/>
-
     </resultMap>
     <select id="findDeviceManageInfo" resultMap="deviceManageMap" parameterType="Map">
         SELECT
@@ -376,5 +375,51 @@
         </where>
     </select>
 
+    <!--
+        进行代理商设备管理页之解绑/重启操作
+        将需要解绑的充电箱的s_id设为空,即该充电箱没有对应的商户了
+    -->
+    <update id="updateAgentInfo" parameterType="Map">
+        update t_charging_box
+        <set>
+            t_charging_box.S_ID = NULL
+            <where>
+                <if test="queryDataMap.deviceNO != null">
+                    #{queryDataMap.deviceNO} = t_charging_box.BOX_CUSTOMER_ID
+                </if>
+            </where>
+        </set>
+    </update>
+
+
+    <!--根据agentId,deviceNO查询代理商设备弹出页信息-->
+    <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
+    <resultMap type="com.charge.entity.po.back.wechat.agent.DevicePop" id="devicePopMap">
+        <result column="version" property="version"/>
+        <result column="deviceStatus" property="deviceStatus"/>
+        <result column="shopName" property="shopName"/>
+    </resultMap>
+
+    <select id="findDevicePopInfo" resultMap="devicePopMap" parameterType="Map">
+        SELECT
+        t_charging_box.SOFTWARE_VERSION version,
+        t_charging_box.STATUS deviceStatus,
+        t_shop.NAME shopName
+        FROM
+        t_charging_box,
+        t_shop,
+        t_agent
+        <where>
+            <if test="queryDataMap.deviceNO != null">
+                #{queryDataMap.deviceNO} = t_charging_box.BOX_CUSTOMER_ID AND  <!--  扫码出来的数据是否是BOX_CUSTOMER_ID???-->
+            </if>
+            t_charging_box.S_ID = t_shop.ID AND
+            t_shop.AG_ID = t_agent.ID
+            <if test="queryDataMap.agentId != null">
+                AND
+                #{queryDataMap.agentId} = t_agent.ID_NUMBER
+            </if>
+        </where>
+    </select>
 
 </mapper>
