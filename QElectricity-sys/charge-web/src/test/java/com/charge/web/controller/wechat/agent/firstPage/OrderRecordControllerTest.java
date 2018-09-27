@@ -34,12 +34,14 @@ public class OrderRecordControllerTest extends BaseController {
     public void testGetOrderRecordInfo() throws Exception {
 
 
-        //获取字符串日期的起始时间和结束时间
         String format = "yyyy-MM-dd";//日期格式
-        String startTime = "2018-09-19 ";
-        String endTime = "2018-09-25";
-        Date dateStart = DateUtil.getSpecificDateStartTime(DateUtil.getSpecificDateFormat(startTime,format));//获取指定日期的起始时间
-        Date dateEnd = DateUtil.getSpecificDateEndTime(DateUtil.getSpecificDateFormat(endTime,format));//获取指定日期的结束时间
+        Date startTimeSpecificFormat = DateUtil.getSpecificDateFormat("2018-09-19", format);
+        Date endTimeSpecificFormat = DateUtil.getSpecificDateFormat("2018-09-25", format);
+        String firstDay = DateUtil.getSpecificMonthFirstDayLastday(startTimeSpecificFormat).get("firstDay");
+        String lastDay = DateUtil.getSpecificMonthFirstDayLastday(endTimeSpecificFormat).get("lastDay");
+        Date dateStart = DateUtil.getSpecificDateFormat(firstDay, "yyyy-MM-dd HH:mm:ss");
+        Date dateEnd = DateUtil.getSpecificDateFormat(lastDay, "yyyy-MM-dd HH:mm:ss");
+
 
         //封装查询条件到map
         Map<String,Object> queryDataMap = new HashMap<>();

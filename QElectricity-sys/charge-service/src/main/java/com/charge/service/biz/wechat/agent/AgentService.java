@@ -5,6 +5,7 @@ package com.charge.service.biz.wechat.agent;
         import com.charge.entity.po.back.wechat.agent.FirstPage;
         import com.charge.entity.po.back.wechat.agent.TodayIncome;
         import com.charge.entity.po.wechat.agent.Agent;
+        import com.charge.entity.po.wechat.agent.MyAccount;
         import com.charge.service.biz.base.BaseService;
 
         import java.util.Date;
@@ -26,4 +27,6 @@ public interface AgentService extends BaseService<Agent,Integer> {
     List<EarlyWarning> findEarlyWarning(Map<String, String> queryDataMap);
 
     Boolean modifyPrice(ModifyPriceTypeCBDO modifyPriceDO);
+
+    List<MyAccount> getMyAccountInfo(Map<String, String> queryData);
 }

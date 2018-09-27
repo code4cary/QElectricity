@@ -9,6 +9,7 @@ import com.charge.entity.model.ModifyPriceTypeCBDO;
 import com.charge.entity.po.back.wechat.agent.*;
 import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.wechat.agent.Agent;
+import com.charge.entity.po.wechat.agent.MyAccount;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
@@ -41,6 +42,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     @Autowired
     private PriceTypeCBMapper priceTypeCBMapper;
+
 
     //充电箱预警数量阈值,即充电箱里充电宝可借数量少于多少时发生预警
     @Value("${earlyWarningThreshold}")
@@ -201,7 +203,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         });
 
         //排序,将每个商户下的当日收益按最高到最低排序
-        Collections.sort(todayIncomeList, (s1, s2) -> s1.getTotalIncome().compareTo(s2.getTotalIncome()));
+        Collections.sort(todayIncomeList, (s1, s2) -> s2.getTotalIncome().compareTo(s1.getTotalIncome()));
         return todayIncomeList;
     }
 
@@ -227,6 +229,20 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
     public Boolean modifyPrice(ModifyPriceTypeCBDO modifyPriceDO) {
         int row = priceTypeCBMapper.modifyPrice(modifyPriceDO);
         return row > 0 ? true : false;
+    }
+
+    /**
+     * 查询代理商我的账户页数据
+     * @param queryData
+     * @return
+     */
+    @Override
+    public List<MyAccount> getMyAccountInfo(Map<String, String> queryData) {
+
+        //查询可提现余额,即该代理商名下的商户的总收益乘以代理商的分成比例
+        Double totalIncome = orderMapper.findAgentWithdrawalAmountCan(queryData);
+
+        return null;
     }
 
 }

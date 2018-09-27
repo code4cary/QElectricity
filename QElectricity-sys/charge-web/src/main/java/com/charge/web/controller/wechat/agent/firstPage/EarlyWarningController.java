@@ -54,7 +54,7 @@ public class EarlyWarningController extends BaseController {
 
 
     private boolean validateParam(Map<String, String> queryData) {
-        if (StringUtils.isEmpty(queryData.get("agentId"))) {
+        if (StringUtils.isEmpty(queryData.get("agentID"))) {
             return false;
         }
         return true;

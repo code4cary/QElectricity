@@ -106,7 +106,7 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         String operateType = (String) queryDataMap.get("operateType");
 
         Boolean isOperateSuccess = false;
-        if (operateType.equals("0")){//弹出充电宝
+        if (operateType.equals("0")) {//弹出充电宝
             //请求设备中介弹出设备
             //获取需要弹出的充电宝的窗口号
             List<String> windowNo = (List<String>) queryDataMap.get("windowNo");
@@ -115,8 +115,7 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
             //将deviceNO,windowNo传入相应请求接口
 
 
-
-        } else if (operateType.equals("1")){//重启设备
+        } else if (operateType.equals("1")) {//重启设备
             //向曾斌那边发起请求 对设备进行重启
 
             //测试数据
@@ -126,4 +125,23 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
 
         return isOperateSuccess;
     }
+
+
+    /**
+     * 分配充电箱,建立充电箱和商户的关系
+     *
+     * @param queryData
+     * @return
+     */
+    @Override
+    public Boolean AddDevice(Map<String, String> queryData) {
+
+
+        //建立设备与商户的关系
+        int updateRow = chargingBoxMapper.updateDeviceSID(queryData);
+
+        return updateRow>0?true:false;
+    }
+
+
 }

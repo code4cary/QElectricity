@@ -45,6 +45,8 @@ public class IncomeDataControllerTest extends BaseController {
         Date dateStart = DateUtil.getSpecificDateStartTime(DateUtil.getSpecificDateFormat("2018-09", format));//获取指定日期的起始时间
         Date dateEnd = DateUtil.getSpecificDateEndTime(DateUtil.getSpecificDateFormat("2018-10", format));//获取指定日期的结束时间
 
+        System.out.println(dateStart);
+
         Map<String, Object> queryDataMap = new HashMap<>();
         queryDataMap.put("agentId", agentId);
         queryDataMap.put("type", type);

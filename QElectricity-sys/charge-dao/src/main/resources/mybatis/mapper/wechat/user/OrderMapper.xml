@@ -436,5 +436,28 @@
         </where>
     </select>
 
+    <!--
+        查询可提现余额,即该代理商名下的商户的总收益乘以代理商的分成比例
+
+    -->
+    <select id="findAgentWithdrawalAmountCan" parameterType="Map">
+        SELECT
+        sum(t_order.PAY_AMOUNT * (t_agent.SHARGING_RATIO + 0))
+        from
+        t_order,
+        t_agent,
+        t_shop,
+        t_charging_box
+        <where>
+          <if test="queryDataMap.agentID != null">
+              t_agent.ID_NUMBER = #{queryDataMap.agentID}<!--这里的agentID的d为大写是因为控制层直接将前端接收到的参数传过来了,没有封装 -->
+          </if>
+            AND
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID AND
+            t_order.BOX_CHARGING_ID = t_charging_box.ID
+        </where>
+    </select>
+
 
 </mapper>

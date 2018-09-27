@@ -37,7 +37,7 @@ public class TodayIncomeController extends BaseController{
         }
         log.info("查询代理商今日收益详情...");
 
-        //获取agenId
+        //获取agentId
         String agentId = queryData.get("agentID");
 
         //获取date,字符串形式

@@ -422,4 +422,32 @@
         </where>
     </select>
 
+    <!--通过设备编号查询设备是否存在,并返回id-->
+    <select id="queryDeviceByDeviceNO" resultType="Integer" parameterType="String">
+        select ID
+        FROM
+        t_charging_box
+        <where>
+            <if test="deviceNO != null">
+                t_charging_box.BOX_CUSTOMER_ID = deviceNO
+            </if>
+        </where>
+    </select>
+
+
+    <!--更新设备关联的商户-->
+    <update id="updateDeviceSID" parameterType="Map">
+        update t_charging_box
+        <set>
+            <if test="queryDataMap.shopID != null">
+                t_charging_box.S_ID = #{queryDataMap.shopID}
+            </if>
+        </set>
+        <where>
+            <if test="queryDataMap.deviceNO != null">
+                t_charging_box.BOX_CUSTOMER_ID =#{queryDataMap.deviceNO}
+            </if>
+        </where>
+    </update>
+
 </mapper>

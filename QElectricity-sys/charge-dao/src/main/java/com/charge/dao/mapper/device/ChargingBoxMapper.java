@@ -25,4 +25,7 @@ public interface ChargingBoxMapper extends BaseMapper<ChargingBox, Integer> {
     int updateAgentInfo(@Param("queryDataMap") Map<String, String> queryDataMap);
 
     DevicePop findDevicePopInfo(@Param("queryDataMap") Map<String, String> queryDataMap);
+
+
+    int updateDeviceSID(@Param("queryDataMap") Map<String, String> queryDataMap);
 }

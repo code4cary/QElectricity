@@ -31,5 +31,7 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
     Double findSubAgentIncomeBySubId(@Param("subQueryDataMap") Map<String, Object> subQueryDataMap);
 
 
-    List<OrderRecord> findOrderRecord(@Param("queryDataMap")Map<String, Object> queryDataMap);
+    List<OrderRecord> findOrderRecord(@Param("queryDataMap") Map<String, Object> queryDataMap);
+
+    Double findAgentWithdrawalAmountCan(@Param("queryDataMap") Map<String, String> queryData);
 }

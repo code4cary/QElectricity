@@ -14,16 +14,19 @@
   "data" : {
     "myAccount" : {
 
-      //账户余额(直营)
-      "accountBalanceDirectOperation" : "",
+      //可提现金额
+      "withdrawalAmountCan":""
 
-      //账户余额(代理)
-      "accountBalanceAgent" : "",
+      //已提现金额(元)
+      "withdrawalAmountDone" : "",
 
-      //已提现总额(元)
-      "totalWithdrawalAmount" : "",
+      //直营总收入
+      "totalIncomeDirect" : "",
 
-      //提现次数(月/次)
+      //子代理分成
+      "subAgentSharing" : "",
+
+      //提现次数(月/次),为了给提现数据显示,所以就提前返回到小程序
       "withdrawNum" : "",
 
       //冻结资金,为了给提现数据显示,所以就提前返回到小程序

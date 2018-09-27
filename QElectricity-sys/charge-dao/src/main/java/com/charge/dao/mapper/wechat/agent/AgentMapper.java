@@ -17,4 +17,6 @@ public interface AgentMapper extends BaseMapper<Agent, Integer> {
     String findShargingRatioByAgent(@Param("id_num") String id_num);
 
     String findSubAgentIdByParentId(@Param("p_id_num") String p_id_num);
+
+
 }

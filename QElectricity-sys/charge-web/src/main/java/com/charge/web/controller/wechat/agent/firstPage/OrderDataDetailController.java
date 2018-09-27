@@ -40,27 +40,35 @@ public class OrderDataDetailController extends BaseController {
         String agentId = queryData.get("agentID");
 
         //获取类型:充电箱还是充电线:1代表充电线,0代表充电宝
-        String type =  queryData.get("type");
+        String type = queryData.get("type");
 
         //获取date,字符串形式,请求参数为年月两个数据
         String dateStr = queryData.get("date");
 
         //获取字符串日期的起始时间和结束时间
         String format = "yyyy-MM";//日期格式
-        Date dateStart = DateUtil.getSpecificDateStartTime(DateUtil.getSpecificDateFormat(dateStr,format));//获取指定日期的起始时间
-        Date dateEnd = DateUtil.getSpecificDateEndTime(DateUtil.getSpecificDateFormat(dateStr,format));//获取指定日期的结束时间
+        Date specificDateFormat = DateUtil.getSpecificDateFormat(dateStr, format);
+        String firstDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("firstDay");
+        String lastDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("lastDay");
+        Date dateStart = DateUtil.getSpecificDateFormat(firstDay, "yyyy-MM-dd HH:mm:ss");
+        Date dateEnd = DateUtil.getSpecificDateFormat(lastDay, "yyyy-MM-dd HH:mm:ss");
+//        Date dateStart = DateUtil.getSpecificDateStartTime(DateUtil.getSpecificDateFormat(dateStr,format));//获取指定日期的第一天起始时间
+//
+//        Date dateEnd = DateUtil.getSpecificDateEndTime(DateUtil.getSpecificDateFormat(dateStr,format));//获取指定日期的最后一天的结束时间
+
 
         //封装查询条件到map
-        Map<String,Object> queryDataMap = new HashMap<>();
-        queryDataMap.put("agentId",agentId);
-        queryDataMap.put("type",type);
-        queryDataMap.put("dateStart",dateStart);
-        queryDataMap.put("dateEnd",dateEnd);
+        Map<String, Object> queryDataMap = new HashMap<>();
+        queryDataMap.put("agentId", agentId);
+        queryDataMap.put("type", type);
+        queryDataMap.put("dateStart", dateStart);
+        queryDataMap.put("dateEnd", dateEnd);
 
         //通过agentId查询数据库当前月的订单数据详情
-        OrderDataDetail orderDataDetail= orderService.findOrderDataNumPerDay(queryDataMap);
+        OrderDataDetail orderDataDetail = orderService.findOrderDataNumPerDay(queryDataMap);
 
-        log.info("over");;
+        log.info("over");
+        ;
         return returnSuccess(orderDataDetail);
     }
 

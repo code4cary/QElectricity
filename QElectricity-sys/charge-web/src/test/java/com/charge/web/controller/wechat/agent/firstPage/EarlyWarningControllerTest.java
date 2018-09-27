@@ -33,13 +33,11 @@ public class EarlyWarningControllerTest extends BaseController {
     @Test
     public void testGetEarlyWarningInfo() throws Exception {
 
-
-
         //封装查询条件到map
         Map<String,String> queryDataMap = new HashMap<>();
         String agentId = "123";
         queryDataMap.put("agentId",agentId);
-        String searchData = "1";
+        String searchData = "";
         queryDataMap.put("searchData",searchData);
 
         //查询预警详情页信息
