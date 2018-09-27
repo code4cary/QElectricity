@@ -7,6 +7,7 @@ import com.charge.web.controller.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class ShopManageController extends BaseController {
     private ShopService shopService;
 
     @RequestMapping
-    public CommonOutputDO<Object> getShopManageInfo(Map<String, String> queryData) {
+    public CommonOutputDO<Object> getShopManageInfo(@RequestBody(required = true) Map<String, String> queryData) {
         if (!validateParam(queryData)) {
             return returnFailed(null, "参属为空异常");
         }

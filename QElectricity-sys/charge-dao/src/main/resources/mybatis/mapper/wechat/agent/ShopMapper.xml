@@ -408,6 +408,8 @@
         <result column="shopAddress" property="shopAddress"/>
         <result column="shopToTalIncome" property="shopToTalIncome"/>
         <result column="chargingBoxNum" property="chargingBoxNum"/>
+        <result column="shopId" property="shopId"/>
+
     </resultMap>
     <select id="findShopManageInfo" resultMap="shopManageMap" parameterType="Map">
         select
@@ -415,7 +417,8 @@
         t_shop.CONTRACT_PERSON_PHONE shopContract,
         t_shop.ADDRESS shopAddress,
         sum(t_order.PAY_AMOUNT) shopToTalIncome,
-        COUNT(distinct t_charging_box.id) chargingBoxNum
+        COUNT(distinct t_charging_box.id) chargingBoxNum,
+        t_shop.ID shopId
         from
         t_shop,
         t_order,

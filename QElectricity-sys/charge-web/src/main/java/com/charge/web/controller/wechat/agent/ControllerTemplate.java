@@ -4,6 +4,7 @@ import com.charge.entity.model.CommonOutputDO;
 import com.charge.web.controller.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ import java.util.Map;
 public class ControllerTemplate extends BaseController {
 
     @RequestMapping
-    public CommonOutputDO<Object> xxxx(Map<String, String> queryData) {
+    public CommonOutputDO<Object> xxxx(@RequestBody(required = true) Map<String, String> queryData) {
         if (!validateParam(queryData)) {
             return returnFailed(null, "参属为空异常");
         }

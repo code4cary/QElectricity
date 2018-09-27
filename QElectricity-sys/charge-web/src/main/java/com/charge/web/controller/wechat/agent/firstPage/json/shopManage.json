@@ -9,6 +9,7 @@
       "shopContract": "911110112114",
       "chargingBoxNum": "3",
       "shopName": "砂锅粥1",
+      "shopId": 1,
       "shopAddress": "后瑞",
       "shopToTalIncome": "69"
     },
@@ -16,6 +17,7 @@
       "shopContract": "911110112114",
       "chargingBoxNum": "2",
       "shopName": "砂锅粥3",
+      "shopId": 3,
       "shopAddress": "后瑞",
       "shopToTalIncome": "25"
     }

@@ -123,4 +123,33 @@
 
     </select>
 
+    <!--通过agentId,价格策略修改指定商户的充电箱价格策略-->
+    <update id="modifyPrice" parameterType="com.charge.entity.model.ModifyPriceTypeCBDO">
+        update t_price_type_cb,t_agent,t_charging_box
+        <set>
+            <if test="modifyPriceDO.priceTypeCB.freeTime != null">
+                t_price_type_cb.FREE_TIME = #{modifyPriceDO.priceTypeCB.freeTime}
+            </if>
+            <if test="modifyPriceDO.priceTypeCB.pricePerHour != null">
+                ,
+                t_price_type_cb.PRICE_PER_HOUR = #{modifyPriceDO.priceTypeCB.pricePerHour}
+            </if>
+            <if test="modifyPriceDO.priceTypeCB.topPricePerDay != null">
+                ,
+                t_price_type_cb.TOP_PRICE_PER_DAY =  #{modifyPriceDO.priceTypeCB.topPricePerDay}
+            </if>
+        </set>
+        <where>
+            <if test="modifyPriceDO.AgentId != null">
+                t_agent.ID_NUMBER = #{modifyPriceDO.AgentId}
+            </if>
+            <if test="modifyPriceDO.shopId != null"> <!--用shop表的主键ID来作为shop的编号,可以保证唯一性 -->
+                and
+                t_charging_box.S_ID = #{modifyPriceDO.shopId}
+            </if>
+            and
+            t_charging_box.PT_ID = t_price_type_cb.ID
+        </where>
+    </update>
+
 </mapper>

@@ -1,6 +1,7 @@
 package com.charge.dao.mapper.device;
 
 import com.charge.dao.mapper.base.BaseMapper;
+import com.charge.entity.model.ModifyPriceTypeCBDO;
 import com.charge.entity.po.device.PriceTypeCB;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,4 +12,6 @@ public interface PriceTypeCBMapper extends BaseMapper<PriceTypeCB, Integer> {
 
 
     PriceTypeCB findPriceTypeCBByCbId(@Param("cbId") Integer cb_id);
+
+    int modifyPrice(@Param("modifyPriceDO") ModifyPriceTypeCBDO modifyPriceDO);
 }

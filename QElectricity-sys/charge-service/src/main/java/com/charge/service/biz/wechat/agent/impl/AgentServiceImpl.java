@@ -1,9 +1,11 @@
 package com.charge.service.biz.wechat.agent.impl;
 
 import com.charge.dao.mapper.device.ChargingBoxMapper;
+import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
+import com.charge.entity.model.ModifyPriceTypeCBDO;
 import com.charge.entity.po.back.wechat.agent.*;
 import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.wechat.agent.Agent;
@@ -37,6 +39,9 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
     @Autowired
     private ShopMapper shopMapper;
 
+    @Autowired
+    private PriceTypeCBMapper priceTypeCBMapper;
+
     //充电箱预警数量阈值,即充电箱里充电宝可借数量少于多少时发生预警
     @Value("${earlyWarningThreshold}")
     private String earlyWarningThreshold;
@@ -54,13 +59,13 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
      * @return
      */
     @Override
-    public FirstPage findAgentInfoByIdNum(String agentId,Date dateStart,Date dateEnd) {
+    public FirstPage findAgentInfoByIdNum(String agentId, Date dateStart, Date dateEnd) {
 
         //查询t_order表获取订单信息
         Date dateTodayStart = dateStart;
         Date dateTodayEnd = dateEnd;
         List<Order> todayOrdersCountAndIncome = orderMapper.findTodayOrdersByAgentId(agentId,
-                dateTodayStart,dateTodayEnd);
+                dateTodayStart, dateTodayEnd);
 
 
         int todayIncome = 0;
@@ -121,12 +126,12 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         //封装充电箱状态数据
         firstPage.setChargingBoxStatus(chargingBoxStatus);
         //封装预警数量数据
-        Map<String,String> earlyWarningNumMap = new HashMap<>();
-        earlyWarningNumMap.put("earlyWarningNum",String.valueOf(earlyWarningNum));
+        Map<String, String> earlyWarningNumMap = new HashMap<>();
+        earlyWarningNumMap.put("earlyWarningNum", String.valueOf(earlyWarningNum));
         firstPage.setEarlyWarningNum(earlyWarningNumMap);
         //封装代理商id数据
-        Map<String,String> agentIdMap = new HashMap<>();
-        agentIdMap.put("agentId",agentId);
+        Map<String, String> agentIdMap = new HashMap<>();
+        agentIdMap.put("agentId", agentId);
         firstPage.setAgentId(agentIdMap);
 
         return firstPage;
@@ -162,28 +167,29 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     /**
      * 根据agentId查询代理商的今日收益详情
+     *
      * @param agentId
      * @param
      * @return
      */
     @Override
-    public List<TodayIncome> findTodayIncomeDetail(String agentId, Date dateStart,Date dateEnd) {
+    public List<TodayIncome> findTodayIncomeDetail(String agentId, Date dateStart, Date dateEnd) {
 
         //先查询代理商名下的商户
         List<Shop> shopList = shopMapper.findShopByAgentId(agentId);
 
         List<TodayIncome> todayIncomeList = new ArrayList<>();
-        shopList.forEach(shop->{
+        shopList.forEach(shop -> {
             TodayIncome todayIncome = new TodayIncome();
             //封装商户名
             todayIncome.setShopName(shop.getName());
             //通过商户id去查询指定日期的订单
-           // System.out.println(shop.getId());
+            // System.out.println(shop.getId());
             Integer shopId = shop.getId();
-            List<Order> orderList = orderMapper.findOrdersByIdAndDate(shopId,dateStart,dateEnd);
+            List<Order> orderList = orderMapper.findOrdersByIdAndDate(shopId, dateStart, dateEnd);
             //算出总收益
             int totalIncome = 0;
-            for (Order  order: orderList) {
+            for (Order order : orderList) {
                 if (order.getPayStatus().equals("1")) {
                     totalIncome += Integer.valueOf(order.getPayAmount());
                 }
@@ -201,6 +207,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     /**
      * 通过agentId,searchData查询代理商名下的商户拥有的充电箱的预警详情
+     *
      * @param queryDataMap
      * @return
      */
@@ -210,5 +217,16 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         return EarlyWarningList;
     }
 
+    /**
+     * 通过agentId,价格策略修改指定商户的充电箱价格策略
+     *
+     * @param modifyPriceDO
+     * @return
+     */
+    @Override
+    public Boolean modifyPrice(ModifyPriceTypeCBDO modifyPriceDO) {
+        int row = priceTypeCBMapper.modifyPrice(modifyPriceDO);
+        return row > 0 ? true : false;
+    }
 
 }

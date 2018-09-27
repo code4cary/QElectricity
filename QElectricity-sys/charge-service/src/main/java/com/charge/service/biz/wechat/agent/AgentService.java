@@ -1,5 +1,6 @@
 package com.charge.service.biz.wechat.agent;
 
+        import com.charge.entity.model.ModifyPriceTypeCBDO;
         import com.charge.entity.po.back.wechat.agent.EarlyWarning;
         import com.charge.entity.po.back.wechat.agent.FirstPage;
         import com.charge.entity.po.back.wechat.agent.TodayIncome;
@@ -23,4 +24,6 @@ public interface AgentService extends BaseService<Agent,Integer> {
     List<TodayIncome> findTodayIncomeDetail(String agentId, Date dateStart,Date dateEnd);
 
     List<EarlyWarning> findEarlyWarning(Map<String, String> queryDataMap);
+
+    Boolean modifyPrice(ModifyPriceTypeCBDO modifyPriceDO);
 }

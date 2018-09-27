@@ -6,6 +6,7 @@ import com.charge.web.controller.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +26,7 @@ public class OperateDevicePopController extends BaseController{
     private ChargingBoxService chargingBoxService;
 
     @RequestMapping
-    public CommonOutputDO<Object> getOperatePopInfo(Map<String, Object> queryData) {
+    public CommonOutputDO<Object> getOperatePopInfo(@RequestBody(required = true) Map<String, Object> queryData) {
         if (!validateParam(queryData)) {
             return returnFailed(null, "参属为空异常");
         }

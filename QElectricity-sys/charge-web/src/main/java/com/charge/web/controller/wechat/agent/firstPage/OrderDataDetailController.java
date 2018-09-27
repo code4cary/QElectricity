@@ -8,6 +8,7 @@ import com.charge.web.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,7 @@ public class OrderDataDetailController extends BaseController {
     private OrderService orderService;
 
     @RequestMapping
-    public CommonOutputDO<Object> getOrderDataInfo(Map<String, String> queryData) throws ParseException {
+    public CommonOutputDO<Object> getOrderDataInfo(@RequestBody(required = true) Map<String, String> queryData) throws ParseException {
 
         if (!validateParam(queryData)) {
             return returnFailed(null, "参属为空异常");

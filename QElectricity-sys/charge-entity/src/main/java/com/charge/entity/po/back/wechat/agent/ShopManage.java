@@ -12,6 +12,15 @@ public class ShopManage implements Serializable {
     private String shopAddress;
     private String shopToTalIncome;
     private String chargingBoxNum;
+    private Integer shopId;
+
+    public Integer getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
+    }
 
     public String getShopName() {
         return shopName;
@@ -53,7 +62,6 @@ public class ShopManage implements Serializable {
         this.chargingBoxNum = chargingBoxNum;
     }
 
-
     @Override
     public String toString() {
         return "ShopManage{" +
@@ -62,6 +70,7 @@ public class ShopManage implements Serializable {
                 ", shopAddress='" + shopAddress + '\'' +
                 ", shopToTalIncome='" + shopToTalIncome + '\'' +
                 ", chargingBoxNum='" + chargingBoxNum + '\'' +
+                ", shopId=" + shopId +
                 '}';
     }
 }
