@@ -73,7 +73,7 @@ public class OrderRecordController extends BaseController {
 
 
     private boolean validateParam(Map<String, Object> queryData) {
-        if (StringUtils.isEmpty(queryData.get("agentId")) ||
+        if (StringUtils.isEmpty(queryData.get("agentID")) ||
                 StringUtils.isEmpty(queryData.get("searchData")) ||
                 StringUtils.isEmpty(queryData.get("type")) ||
                 StringUtils.isEmpty(queryData.get("dateRange")) ||

@@ -61,7 +61,7 @@ public class DeviceManageController extends BaseController {
 
 
     private boolean validateParam(Map<String, String> queryData) {
-        if (StringUtils.isEmpty(queryData.get("agentId")) ||
+        if (StringUtils.isEmpty(queryData.get("agentID")) ||
                 StringUtils.isEmpty(queryData.get("type")) ||
                 StringUtils.isEmpty(queryData.get("statusRange")) ||
                 StringUtils.isEmpty(queryData.get("searchData"))) {

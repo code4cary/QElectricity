@@ -36,7 +36,7 @@ public class editShopController extends BaseController {
     private ShopService shopService;
 
     @RequestMapping
-    public CommonOutputDO<Object> editeditShop(@RequestParam(required = false, value = "file") MultipartFile file, CreateShopDO editShopDO) throws Exception {
+    public CommonOutputDO<Object> editShop(@RequestParam(required = false, value = "file") MultipartFile file, CreateShopDO editShopDO) throws Exception {
 
         if (!validateParam(editShopDO)) {
             returnFailed(null, "没有商户id");
