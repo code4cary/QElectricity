@@ -35,7 +35,7 @@ public class IncomeDataControllerTest extends BaseController {
     public void testGetIncomeDataInfo() throws Exception {
 
         //获取agentId
-        String agentId = "123";
+        String agentId = "456";
 
         //获取类型:充电箱还是充电线:1代表充电线,0代表充电宝
         String type = "1";

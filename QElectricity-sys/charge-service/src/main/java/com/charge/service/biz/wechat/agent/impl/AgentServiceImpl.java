@@ -3,6 +3,7 @@ package com.charge.service.biz.wechat.agent.impl;
 import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
+import com.charge.dao.mapper.wechat.agent.AgentWithdrawalMapper;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
 import com.charge.entity.model.ModifyPriceTypeCBDO;
@@ -42,6 +43,9 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     @Autowired
     private PriceTypeCBMapper priceTypeCBMapper;
+
+    @Autowired
+    private AgentWithdrawalMapper agentWithdrawalMapper;
 
 
     //充电箱预警数量阈值,即充电箱里充电宝可借数量少于多少时发生预警
@@ -233,14 +237,25 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     /**
      * 查询代理商我的账户页数据
+     *
      * @param queryData
      * @return
      */
     @Override
     public List<MyAccount> getMyAccountInfo(Map<String, String> queryData) {
 
-        //查询可提现余额,即该代理商名下的商户的总收益乘以代理商的分成比例
-        Double totalIncome = orderMapper.findAgentWithdrawalAmountCan(queryData);
+        //直营总收入
+        Double totalIncomeDirect = orderMapper.findAgentTotalIncomeDirect(queryData);
+
+        //已提现金额
+        Double withdrawalAmountDone = agentWithdrawalMapper.findAgentWithdrawalAmountDone(queryData);
+
+        //查询可提现余额,即该代理商名下的商户的总收益乘以代理商的分成比例 - 已提现金额
+        Double withdrawalAmountCan = totalIncomeDirect - withdrawalAmountDone;
+
+
+        //子代理分成收入
+        //查询子代理商名下的商户总收入,然后乘以(1-子代理商的的分成比例),即可得到从子代理商那里得到的分成收入
 
         return null;
     }

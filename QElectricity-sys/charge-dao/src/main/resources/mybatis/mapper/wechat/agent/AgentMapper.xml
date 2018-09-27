@@ -272,7 +272,7 @@
         </where>
     </select>
 
-    <!--根据代理商用户名查询id,次id为代理商省份证号-->
+    <!--根据代理商用户名查询id,次id为代理商省份证号,如果没有身份证号,也可以为后台自动生成的uuid等唯一标识-->
     <select id="findAgentIdNoByName" resultType="String" parameterType="String">
         SELECT ID_NUMBER
         FROM t_agent
@@ -284,7 +284,7 @@
         </where>
     </select>
 
-    <!--根据代理商用户名查询id,次id为代理商省份证号-->
+    <!--根据代理商用户名查询id,次id为代理商省份证号,如果没有身份证号,也可以为后台自动生成的uuid等唯一标识-->
     <select id="findPwdByName" resultType="String" parameterType="String">
         SELECT PASSWORD
         FROM t_agent
@@ -320,17 +320,27 @@
         </where>
     </select>
 
-    <!--通过父代理商的id_number查询子代理商的表id-->
-    <select id="findSubAgentIdByParentId" resultType="String" parameterType="String">
-        select SUB_AGENT_ID
+    <!--通过id_num查询id-->
+    <select id="findIDByIdNum" resultType="String" parameterType="String">
+        select t_agent.ID
         from t_agent
         <where>
-            <if test="p_id_num != null">
-                #{p_id_num} = t_agent.ID_NUMBER
+            <if test="agentId != null ">
+                #{agentId} = t_agent.ID_NUMBER
             </if>
         </where>
     </select>
 
+    <!--通过父代理商的表id查询子代理商的表id-->
+    <select id="findSubAgentIdByParentId" resultType="String" parameterType="String">
+        select t_agent.ID
+        from t_agent
+        <where>
+            <if test="p_id != null ">
+                #{p_id} = t_agent.PARENT_AGENT_ID
+            </if>
+        </where>
+    </select>
 
 
 </mapper>

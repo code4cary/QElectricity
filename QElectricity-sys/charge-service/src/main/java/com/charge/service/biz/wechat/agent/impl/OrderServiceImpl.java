@@ -8,9 +8,12 @@ import com.charge.entity.po.back.wechat.agent.OrderRecord;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.wechat.agent.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +21,7 @@ import java.util.Map;
 /**
  * Created by vincent on 25/09/2018.
  */
+@Slf4j
 @Service
 public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements OrderService {
     @Autowired
@@ -80,9 +84,10 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
         //总分成
         //查询代理商的分成比例
         String agentId = (String) queryDataMap.get("agentId");
-        Double sharging_ratio = Double.valueOf(agentMapper.findShargingRatioByAgent(agentId)) / 100.0;
+        Double sharging_ratio = Double.valueOf(agentMapper.findShargingRatioByAgent(agentId));
         // Double sharging_ratio = 90/100.0;
-        String totalSharing = String.valueOf(incomeTotalTemp * sharging_ratio);
+        Double totalSharingTemp = new BigDecimal(incomeTotalTemp * sharging_ratio).setScale(1, RoundingMode.DOWN).doubleValue();
+        String totalSharing = String.valueOf(totalSharingTemp);
 
         //计算每天的分成
         incomeList.forEach(incomeMap -> {
@@ -98,15 +103,25 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
         String _99Income = "0";
 
         //子代理商收益
-        //先查询子代理商id  次id为表id
-        String subAgentId = agentMapper.findSubAgentIdByParentId((String) queryDataMap.get("agentId"));
-        //查询子代理商id查询其该月的收益
-        Map<String, Object> subQueryDataMap = new HashMap<>();
-        subQueryDataMap.put("subId", subAgentId);
-        subQueryDataMap.put("type", queryDataMap.get("type"));
-        subQueryDataMap.put("dateStart", queryDataMap.get("dateStart"));
-        subQueryDataMap.put("dateEnd", queryDataMap.get("dateEnd"));
-        String subAgentIncome = String.valueOf(orderMapper.findSubAgentIncomeBySubId(subQueryDataMap));
+        //先查询该代理商的id,通过该代理商的id去查询子代理商的id
+        String id = agentMapper.findIDByIdNum((String) queryDataMap.get("agentId"));
+        String subID = agentMapper.findSubAgentIdByParentId(id);
+        if (id.equals(subID)) {
+            log.info("子代理商id和父代理商id一样了,请查看后台系统哪里出了问题...");
+            subID = null;
+        }
+
+        System.out.println(subID);
+        String subAgentIncome = "0";
+        if (subID != null) {
+            //根据子代理商id查询其该月的收益
+            Map<String, Object> subQueryDataMap = new HashMap<>();
+            subQueryDataMap.put("Id", subID);
+            subQueryDataMap.put("type", queryDataMap.get("type"));
+            subQueryDataMap.put("dateStart", queryDataMap.get("dateStart"));
+            subQueryDataMap.put("dateEnd", queryDataMap.get("dateEnd"));
+            subAgentIncome = String.valueOf(orderMapper.findAgentIncomeById(subQueryDataMap));
+        }
 
         //封装数据
         IncomeData incomeData = new IncomeData();
@@ -123,6 +138,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
 
     /**
      * 通过agentId,dateRange,type,searchData查询代理商指定搜索内容,指定日期的订单记录
+     *
      * @param queryDataMap
      * @return
      */

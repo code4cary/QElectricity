@@ -340,8 +340,8 @@
         createTime
     </select>
 
-    <!--通过子代理商的agentId,date,type查询查询子代理商该月的收益-->
-    <select id="findSubAgentIncomeBySubId" resultType="Double" parameterType="Map">
+    <!--通过代理商的agentId,date,type查询查询其该月的总收益-->
+    <select id="findAgentIncomeById" resultType="Double" parameterType="Map">
         SELECT
         sum(t_order.PAY_AMOUNT) totalIncome
         FROM
@@ -354,16 +354,16 @@
         t_order.BOX_CHARGING_ID = t_charging_box.ID AND
         t_charging_box.S_ID = t_shop.ID AND
         t_shop.AG_ID = t_agent.ID AND
-        <if test="subQueryDataMap.subId != null">
-            #{subQueryDataMap.subId} = t_agent.ID and
+        <if test="queryDataMap.Id != null">
+            #{queryDataMap.Id} = t_agent.ID and
         </if>
         t_order.create_time
         BETWEEN
-        <if test="subQueryDataMap.dateStart != null">
-            #{subQueryDataMap.dateStart} AND
+        <if test="queryDataMap.dateStart != null">
+            #{queryDataMap.dateStart} AND
         </if>
-        <if test="subQueryDataMap.dateEnd != null">
-            #{subQueryDataMap.dateEnd}
+        <if test="queryDataMap.dateEnd != null">
+            #{queryDataMap.dateEnd}
         </if>
 
     </select>
@@ -437,12 +437,11 @@
     </select>
 
     <!--
-        查询可提现余额,即该代理商名下的商户的总收益乘以代理商的分成比例
-
+        查询代理商的直营总收入,即代理商名下的商户的总收益乘以代理商的分成比例
     -->
-    <select id="findAgentWithdrawalAmountCan" parameterType="Map">
+    <select id="findAgentTotalIncomeDirect" parameterType="Map">
         SELECT
-        sum(t_order.PAY_AMOUNT * (t_agent.SHARGING_RATIO + 0))
+        sum(t_order.PAY_AMOUNT * t_agent.SHARGING_RATIO/100.0)
         from
         t_order,
         t_agent,
@@ -450,7 +449,8 @@
         t_charging_box
         <where>
           <if test="queryDataMap.agentID != null">
-              t_agent.ID_NUMBER = #{queryDataMap.agentID}<!--这里的agentID的d为大写是因为控制层直接将前端接收到的参数传过来了,没有封装 -->
+              <!--这里的agentID的d为大写是因为控制层直接将前端接收到的参数传过来了,没有封装 -->
+              t_agent.ID_NUMBER = #{queryDataMap.agentID}
           </if>
             AND
             t_shop.AG_ID = t_agent.ID AND
@@ -458,6 +458,5 @@
             t_order.BOX_CHARGING_ID = t_charging_box.ID
         </where>
     </select>
-
 
 </mapper>
