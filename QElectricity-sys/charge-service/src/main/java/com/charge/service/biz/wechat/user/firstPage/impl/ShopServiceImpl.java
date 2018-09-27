@@ -68,4 +68,6 @@ public class ShopServiceImpl extends BaseServiceImpl<Shop, Integer> implements S
         List<ShopManage> shopManageList = shopMapper.findShopManageInfo(queryDataMap);
         return shopManageList;
     }
+
+
 }

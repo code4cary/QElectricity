@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.UUID;
 
 public class QEFileUtils {
 
@@ -22,7 +21,7 @@ public class QEFileUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(getImgTimePath("C:/Users/sir/Desktop/img/"));
+        System.out.println(getImgTimePath("/Users/vincent/program/java/img/"));
     }
 
     private static void validatePath(String path) {

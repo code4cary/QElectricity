@@ -22,4 +22,5 @@ public interface ShopMapper extends BaseMapper<Shop, Integer> {
     List<Shop> findShopByAgentId(@Param("id_num") String id_num);
 
     List<ShopManage> findShopManageInfo(@Param("queryDataMap") Map<String, String> queryDataMap);
+
 }

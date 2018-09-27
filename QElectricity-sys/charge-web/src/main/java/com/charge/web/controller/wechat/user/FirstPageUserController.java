@@ -21,7 +21,7 @@ import java.util.*;
 
 //@RestController是@Controller和@ResponseBody的结合体，两个标注合并起来的作用。
 @RestController
-@PropertySource(value = "classpath:prop.properties")
+@PropertySource(value = "classpath:shopDistance.properties")
 @RequestMapping("wechat/user/firstPage")
 public class FirstPageUserController {
 

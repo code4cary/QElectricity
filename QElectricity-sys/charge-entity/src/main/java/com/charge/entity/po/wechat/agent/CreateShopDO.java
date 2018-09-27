@@ -9,6 +9,14 @@ public class CreateShopDO implements Serializable {
     private String city;
     private String areaLabel;
     private String shopAddress;
+
+    /**
+     * 添加经纬度字段  2018-09-27 vincent
+     */
+    private String longitude;
+
+    private String latitude;
+
     private String shopName;
     private String contractPerson;
     private String contractPhone;
@@ -18,6 +26,22 @@ public class CreateShopDO implements Serializable {
     private String startBusinessTime;
     private String categoryLabel;
     private String locationLabel;
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
     public String getId() {
         return id;

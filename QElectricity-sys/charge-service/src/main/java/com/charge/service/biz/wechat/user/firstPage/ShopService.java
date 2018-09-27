@@ -19,4 +19,5 @@ public interface ShopService extends BaseService<Shop, Integer> {
     int updateContractPhoto(String agentId,String contractPhoto);
 
     List<ShopManage> findShopManageInfo(Map<String, String> queryDataMap);
+
 }
