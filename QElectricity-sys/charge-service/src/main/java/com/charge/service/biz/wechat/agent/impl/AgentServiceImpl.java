@@ -282,4 +282,19 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         return myAccount;
     }
 
+
+    /**
+     * 通过agentId,date查询代理商的提现记录
+     * @param queryDataMap
+     * @return
+     */
+    @Override
+    public List<WithdrawalRecord> findAgentWithdrawalRecord(Map<String, Object> queryDataMap) {
+
+        List<WithdrawalRecord> withdrawalRecordList =
+                agentWithdrawalMapper.findAgentWithdrawalRecord(queryDataMap);
+
+        return withdrawalRecordList;
+    }
+
 }

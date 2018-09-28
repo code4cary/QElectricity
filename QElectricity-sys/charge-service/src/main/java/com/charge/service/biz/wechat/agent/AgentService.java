@@ -4,6 +4,7 @@ package com.charge.service.biz.wechat.agent;
         import com.charge.entity.po.back.wechat.agent.EarlyWarning;
         import com.charge.entity.po.back.wechat.agent.FirstPage;
         import com.charge.entity.po.back.wechat.agent.TodayIncome;
+        import com.charge.entity.po.back.wechat.agent.WithdrawalRecord;
         import com.charge.entity.po.wechat.agent.Agent;
         import com.charge.entity.po.wechat.agent.MyAccount;
         import com.charge.service.biz.base.BaseService;
@@ -29,4 +30,6 @@ public interface AgentService extends BaseService<Agent,Integer> {
     Boolean modifyPrice(ModifyPriceTypeCBDO modifyPriceDO);
 
     MyAccount getMyAccountInfo(Map<String, String> queryData);
+
+    List<WithdrawalRecord> findAgentWithdrawalRecord(Map<String, Object> queryDataMap);
 }

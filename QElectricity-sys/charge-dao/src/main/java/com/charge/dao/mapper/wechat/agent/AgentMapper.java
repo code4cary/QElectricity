@@ -22,4 +22,5 @@ public interface AgentMapper extends BaseMapper<Agent, Integer> {
     String findIDByIdNum(@Param("agentId") String agentId);
 
     String findAgentTotalSharing(@Param("id_num") String id_num);
+
 }

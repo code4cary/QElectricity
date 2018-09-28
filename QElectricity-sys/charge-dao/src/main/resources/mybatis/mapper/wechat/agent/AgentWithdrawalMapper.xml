@@ -7,11 +7,12 @@
         <result column="WITHDRAWAL_NO" property="withdrawalNo" jdbcType="VARCHAR"/>
         <result column="AMOUNT" property="amount" jdbcType="VARCHAR"/>
         <result column="STATUS" property="status" jdbcType="VARCHAR"/>
+        <result column="WITHDRAWALTYPE" property="withdrawalType" jdbcType="VARCHAR"/>
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP"/>
     </resultMap>
     <sql id="Base_Column_List">
-    ID, AG_ID, WITHDRAWAL_NO, AMOUNT, STATUS, CREATE_TIME, END_TIME
+    ID, AG_ID, WITHDRAWAL_NO, AMOUNT, STATUS, WITHDRAWALTYPE,CREATE_TIME, END_TIME
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -25,11 +26,11 @@
   </delete>
     <insert id="insert" parameterType="com.charge.entity.po.wechat.agent.AgentWithdrawal">
     insert into t_agent_withdrawal (ID, AG_ID, WITHDRAWAL_NO, 
-      AMOUNT, STATUS, CREATE_TIME, 
+      AMOUNT, STATUS,WITHDRAWALTYPE, CREATE_TIME,
       END_TIME)
     values (#{id,jdbcType=INTEGER}, #{agId,jdbcType=INTEGER}, #{withdrawalNo,jdbcType=VARCHAR}, 
-      #{amount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP})
+      #{amount,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{withdrawalType,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP},#{endTime,jdbcType=TIMESTAMP})
   </insert>
     <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.agent.AgentWithdrawal">
         insert into t_agent_withdrawal
@@ -48,6 +49,9 @@
             </if>
             <if test="status != null">
                 STATUS,
+            </if>
+            <if test="withdrawalType != null">
+                WITHDRAWALTYPE,
             </if>
             <if test="createTime != null">
                 CREATE_TIME,
@@ -72,6 +76,9 @@
             <if test="status != null">
                 #{status,jdbcType=VARCHAR},
             </if>
+            <if test="withdrawalType != null">
+                #{withdrawalType,jdbcType=VARCHAR},
+            </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
             </if>
@@ -95,6 +102,9 @@
             <if test="status != null">
                 STATUS = #{status,jdbcType=VARCHAR},
             </if>
+            <if test="WITHDRAWALTYPE != null">
+                WITHDRAWALTYPE = #{withdrawalType,jdbcType=VARCHAR},
+            </if>
             <if test="createTime != null">
                 CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
             </if>
@@ -110,6 +120,7 @@
       WITHDRAWAL_NO = #{withdrawalNo,jdbcType=VARCHAR},
       AMOUNT = #{amount,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=VARCHAR},
+      WITHDRAWALTYPE = #{withdrawalType,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       END_TIME = #{endTime,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=INTEGER}
@@ -118,8 +129,7 @@
      select * from t_agent_withdrawal
   </select>
 
-
-    <!--查询代理商已提现金额-->
+    <!--查询代理商已提现金额总和-->
     <select id="findAgentWithdrawalAmountDone" resultType="Double" parameterType="Map">
         SELECT
         sum(t_agent_withdrawal.AMOUNT)
@@ -133,5 +143,44 @@
             t_agent_withdrawal.AG_ID = t_agent.ID AND
             t_agent_withdrawal.STATUS = '2'
         </where>
+
+
     </select>
+
+    <!--通过agentId(id_num),date查询代理商的提现记录-->
+    <resultMap id="withdrawalRecord" type="com.charge.entity.po.back.wechat.agent.WithdrawalRecord">
+        <result column="withdrawalNo" property="withdrawalNo"/>
+        <result column="withdrawalTime" property="withdrawalTime"/>
+        <result column="withdrawalAmount" property="withdrawalAmount"/>
+        <result column="withdrawalStatus" property="withdrawalStatus"/>
+        <result column="withdrawalType" property="withdrawalType"/>
+    </resultMap>
+
+    <select id="findAgentWithdrawalRecord" resultMap="withdrawalRecord" parameterType="Map">
+        SELECT
+        t_agent_withdrawal.WITHDRAWAL_NO withdrawalNo,
+        DATE_FORMAT(t_agent_withdrawal.CREATE_TIME, '%Y-%m-%d %T')  withdrawalTime,
+        t_agent_withdrawal.AMOUNT withdrawalAmount,
+        t_agent_withdrawal.STATUS withdrawalStatus,
+        t_agent_withdrawal.WITHDRAWALTYPE withdrawalType
+        FROM
+        t_agent_withdrawal,
+        t_agent
+        <where>
+            <if test="queryDataMap.agentId != null">
+                t_agent.ID_NUMBER = #{queryDataMap.agentId} AND
+            </if>
+            t_agent_withdrawal.AG_ID = t_agent.ID AND
+            t_agent_withdrawal.CREATE_TIME
+            BETWEEN
+            <if test="queryDataMap.dateStart != null ">
+                #{queryDataMap.dateStart}
+                AND
+            </if>
+            <if test="queryDataMap.dateEnd != null ">
+                #{queryDataMap.dateEnd}
+            </if>
+        </where>
+    </select>
+
 </mapper>

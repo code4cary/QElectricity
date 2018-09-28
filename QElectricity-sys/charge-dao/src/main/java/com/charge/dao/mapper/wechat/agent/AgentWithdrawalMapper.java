@@ -1,9 +1,11 @@
 package com.charge.dao.mapper.wechat.agent;
 
 import com.charge.dao.mapper.base.BaseMapper;
+import com.charge.entity.po.back.wechat.agent.WithdrawalRecord;
 import com.charge.entity.po.wechat.agent.AgentWithdrawal;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,4 +14,6 @@ import java.util.Map;
 public interface AgentWithdrawalMapper extends BaseMapper<AgentWithdrawal, Integer> {
 
     Double findAgentWithdrawalAmountDone(@Param("queryDataMap")Map<String, String> queryData);
+
+    List<WithdrawalRecord> findAgentWithdrawalRecord(@Param("queryDataMap")Map<String, Object> queryDataMap);
 }

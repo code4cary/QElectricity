@@ -14,7 +14,11 @@ public class AgentWithdrawal extends BaseEntity implements Serializable {
 
     private String status;
 
+    private Date createTime;
+
     private Date endTime;
+
+    private String withdrawalType;
 
     private static final long serialVersionUID = 1L;
 
@@ -22,6 +26,24 @@ public class AgentWithdrawal extends BaseEntity implements Serializable {
      * t_agent_withdrawal关联t_agent 多对一
      */
     private Agent agent;
+
+    public String getWithdrawalType() {
+        return withdrawalType;
+    }
+
+    public void setWithdrawalType(String withdrawalType) {
+        this.withdrawalType = withdrawalType;
+    }
+
+    @Override
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    @Override
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
     public Agent getAgent() {
         return agent;
@@ -78,7 +100,9 @@ public class AgentWithdrawal extends BaseEntity implements Serializable {
                 ", withdrawalNo='" + withdrawalNo + '\'' +
                 ", amount='" + amount + '\'' +
                 ", status='" + status + '\'' +
+                ", createTime=" + createTime +
                 ", endTime=" + endTime +
+                ", withdrawalType='" + withdrawalType + '\'' +
                 ", agent=" + agent +
                 '}';
     }
