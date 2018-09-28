@@ -15,17 +15,20 @@ import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.wechat.agent.AgentService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 /**
  * Created by vincent on 23/09/2018.
  */
-
+@Slf4j
 @Service
 @PropertySource(value = "classpath:impl.properties")
 public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements AgentService {
@@ -73,7 +76,6 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         List<Order> todayOrdersCountAndIncome = orderMapper.findTodayOrdersByAgentId(agentId,
                 dateTodayStart, dateTodayEnd);
 
-
         int todayIncome = 0;
         int todayOrdersNum = 0;
         for (Order order : todayOrdersCountAndIncome) {
@@ -86,7 +88,6 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
         }
 
         //查询t_agent表获取订单总数和总分成
-
         Agent totalOrderAndIncome = agentMapper.findTotalOrderAndShare(agentId);
         //订单总数
         String totalOrder = totalOrderAndIncome.getOrderNum();
@@ -242,22 +243,43 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
      * @return
      */
     @Override
-    public List<MyAccount> getMyAccountInfo(Map<String, String> queryData) {
+    public MyAccount getMyAccountInfo(Map<String, String> queryData) {
 
-        //直营总收入
-        Double totalIncomeDirect = orderMapper.findAgentTotalIncomeDirect(queryData);
+        //直营总收入,即代理商总分成
+        String totalIncomeDirect = agentMapper.findAgentTotalSharing(queryData.get("agentID"));
 
-        //已提现金额
+        //已提现金额,查询代理商的提现表,状态为已完成的提现记录的金额之和则为已提现金额
         Double withdrawalAmountDone = agentWithdrawalMapper.findAgentWithdrawalAmountDone(queryData);
+        withdrawalAmountDone = new BigDecimal(withdrawalAmountDone).setScale(1, RoundingMode.DOWN).doubleValue();
 
-        //查询可提现余额,即该代理商名下的商户的总收益乘以代理商的分成比例 - 已提现金额
-        Double withdrawalAmountCan = totalIncomeDirect - withdrawalAmountDone;
-
+        //可提现余额, 直营总收入 - 已提现金额
+        Double withdrawalAmountCan = Double.valueOf(totalIncomeDirect) - withdrawalAmountDone;
+        withdrawalAmountCan = new BigDecimal(withdrawalAmountCan).setScale(1, RoundingMode.DOWN).doubleValue();
 
         //子代理分成收入
         //查询子代理商名下的商户总收入,然后乘以(1-子代理商的的分成比例),即可得到从子代理商那里得到的分成收入
+        //先查询该代理商的id,通过该代理商的id去查询子代理商的id
+        String id = agentMapper.findIDByIdNum(queryData.get("agentID"));
+        String subID = agentMapper.findSubAgentIdByParentId(id);
+        if (id.equals(subID)) {
+            log.info("子代理商id和父代理商id一样了,请查看后台系统哪里出了问题...");
+            subID = null;
+        }
+        //根据子代理商的id查询其需要给到父代理商的分成金额,需要判断其有无父代理商:子代理商不是一级代理商以及父代理商字段不为空
+        Double subAgentSharing = 0.0;
+        if (subID != null) {
+            subAgentSharing = orderMapper.findSubAgentSharingIncome(subID);
+        }
+        subAgentSharing = new BigDecimal(subAgentSharing).setScale(1, RoundingMode.DOWN).doubleValue();
 
-        return null;
+        //封装数据
+        MyAccount myAccount = new MyAccount();
+        myAccount.setWithdrawalAmountCan(String.valueOf(withdrawalAmountCan));
+        myAccount.setWithdrawalAmountDone(String.valueOf(withdrawalAmountDone));
+        myAccount.setTotalIncomeDirect(String.valueOf(totalIncomeDirect));
+        myAccount.setSubAgentSharing(String.valueOf(subAgentSharing));
+
+        return myAccount;
     }
 
 }

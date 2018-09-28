@@ -28,5 +28,5 @@ public interface AgentService extends BaseService<Agent,Integer> {
 
     Boolean modifyPrice(ModifyPriceTypeCBDO modifyPriceDO);
 
-    List<MyAccount> getMyAccountInfo(Map<String, String> queryData);
+    MyAccount getMyAccountInfo(Map<String, String> queryData);
 }

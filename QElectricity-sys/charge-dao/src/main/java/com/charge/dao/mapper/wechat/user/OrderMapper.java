@@ -35,5 +35,7 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
 
     Double findAgentTotalIncomeDirect(@Param("queryDataMap") Map<String, String> queryData);
 
+    Double findSubAgentSharingIncome(@Param("id")String id);
+
 
 }

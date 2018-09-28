@@ -9,6 +9,26 @@ import java.util.*;
  */
 public class DateUtil {
 
+    /**
+     * 获取字符串日期的起始时间和结束时间并返回泛型为date的map
+     *
+     * @param dateStr
+     * @param format
+     * @return
+     * @throws ParseException
+     */
+    public static Map<String, Date> getSpecificFormatStartAndEndTime(String dateStr, String format) throws ParseException {
+        Date specificDateFormat = DateUtil.getSpecificDateFormat(dateStr, format);
+        String firstDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("firstDay");
+        String lastDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("lastDay");
+        Date dateStart = getSpecificDateFormat(firstDay, "yyyy-MM-dd HH:mm:ss");
+        Date dateEnd = getSpecificDateFormat(lastDay, "yyyy-MM-dd HH:mm:ss");
+        Map<String, Date> map = new HashMap<>();
+        map.put("dateStart",dateStart);
+        map.put("dateEnd",dateEnd);
+        return map;
+    }
+
 
     /**
      * 返回指定格式的日期
@@ -40,7 +60,6 @@ public class DateUtil {
         return df.parse(df.format(date));
     }
 
-
     /**
      * 获取今日开始时间
      */
@@ -66,7 +85,7 @@ public class DateUtil {
     }
 
     /**
-     * 获取指定日期的起始时间
+     * 获取指定日期的起始时间,指该天的起始
      */
     public static Date getSpecificDateStartTime(Date date) {
         Calendar calendar = Calendar.getInstance();
@@ -78,7 +97,7 @@ public class DateUtil {
     }
 
     /**
-     * 获取指定日期的结束时间
+     * 获取指定日期的结束时间,指该天的结束
      */
     public static Date getSpecificDateEndTime(Date date) {
         Calendar calendar = Calendar.getInstance();
@@ -102,7 +121,6 @@ public class DateUtil {
 
     }
 
-
     /**
      * 获取当前月最后一天
      */
@@ -112,26 +130,12 @@ public class DateUtil {
         return c.getTime();
     }
 
-    /**
-     * 获取指定年月最后一天
-     *
-     * @param
-     * @throws ParseException
-     */
-    //获取指定年月第一天 
-    public static Calendar getlastDaySpecificMonth() {
-        Calendar calstar = Calendar.getInstance();
-        calstar.set(Calendar.DAY_OF_MONTH, 0);//最后一天
-        return calstar;
-
-    }
-
 
     /**
-     * 某一个月第一天和最后一天
+     * 获取某一个月第一天的起始和最后一天的末尾
      *
      * @param date
-     * @return
+     * @return firstDay:map.get("firstDay");lastDay:map.get("lastDay")
      */
     public static Map<String, String> getSpecificMonthFirstDayLastday(Date date) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -157,7 +161,7 @@ public class DateUtil {
                 " 23:59:59");
         day_last = endStr.toString();
 
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap();
         map.put("firstDay", day_first);
         map.put("lastDay", day_last);
         return map;
@@ -179,6 +183,15 @@ public class DateUtil {
         System.out.println(specificDateFormat1);
         System.out.println(specificDateFormat2);
 
+
+        //获取date,字符串形式,请求参数为年月两个数据
+        String dateStr = "2019-06-5";
+        Map<String,Date> dateMap = DateUtil.getSpecificFormatStartAndEndTime(dateStr, "yyyy-MM");
+        Date dateStart = dateMap.get("dateStart");
+        Date dateEnd = dateMap.get("dateEnd");
+
+        System.out.println(dateStart);
+        System.out.println(dateEnd);
 
     }
 }

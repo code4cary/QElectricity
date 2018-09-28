@@ -342,5 +342,16 @@
         </where>
     </select>
 
+    <!--根据代理商id_num查询代理商的总分成-->
+    <select id="findAgentTotalSharing" parameterType="String" resultType="String">
+        SELECT TOTAL_SHARE
+        FROM t_agent
+        <where>
+            <if test="id_num != null">
+                t_agent.ID_NUMBER = #{id_num}
+            </if>
+        </where>
+    </select>
+
 
 </mapper>

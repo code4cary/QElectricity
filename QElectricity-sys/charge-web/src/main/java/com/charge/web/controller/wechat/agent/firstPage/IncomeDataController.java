@@ -48,13 +48,17 @@ public class IncomeDataController extends BaseController {
         //获取date,字符串形式,请求参数为年月两个数据
         String dateStr = queryData.get("date");
 
-        //获取字符串日期的起始时间和结束时间
         String format = "yyyy-MM";//日期格式
-        Date specificDateFormat = DateUtil.getSpecificDateFormat(dateStr, format);
-        String firstDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("firstDay");
-        String lastDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("lastDay");
-        Date dateStart = DateUtil.getSpecificDateFormat(firstDay, "yyyy-MM-dd HH:mm:ss");
-        Date dateEnd = DateUtil.getSpecificDateFormat(lastDay, "yyyy-MM-dd HH:mm:ss");
+        //获取指定字符串日期的起始时间和结束时间
+        Map<String,Date> dateMap = DateUtil.getSpecificFormatStartAndEndTime(dateStr, format);
+        Date dateStart = dateMap.get("dateStart");
+        Date dateEnd = dateMap.get("dateEnd");
+
+//        Date specificDateFormat = DateUtil.getSpecificDateFormat(dateStr, format);
+//        String firstDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("firstDay");
+//        String lastDay = DateUtil.getSpecificMonthFirstDayLastday(specificDateFormat).get("lastDay");
+//        Date dateStart = DateUtil.getSpecificDateFormat(firstDay, "yyyy-MM-dd HH:mm:ss");
+//        Date dateEnd = DateUtil.getSpecificDateFormat(lastDay, "yyyy-MM-dd HH:mm:ss");
 
         //封装查询条件到map
         Map<String,Object> queryDataMap = new HashMap<>();

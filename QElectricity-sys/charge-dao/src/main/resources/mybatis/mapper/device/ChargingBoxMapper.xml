@@ -318,7 +318,7 @@
             </if>
             t_shop.AG_ID = t_agent.ID AND
             t_charging_box.S_ID = t_shop.ID AND
-            (t_charging_box.CAN_BORROW_NUM+0) &lt;= 3
+            (t_charging_box.CAN_BORROW_NUM+0) &lt;= '3'
             <if test="queryDataMap.searchData != null">
                 AND
                 CONCAT(

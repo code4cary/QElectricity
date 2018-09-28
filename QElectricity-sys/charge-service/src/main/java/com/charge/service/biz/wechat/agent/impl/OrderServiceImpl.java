@@ -86,6 +86,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
         String agentId = (String) queryDataMap.get("agentId");
         Double sharging_ratio = Double.valueOf(agentMapper.findShargingRatioByAgent(agentId));
         // Double sharging_ratio = 90/100.0;
+        //保留一位小数,直接截取,没有四舍五入
         Double totalSharingTemp = new BigDecimal(incomeTotalTemp * sharging_ratio).setScale(1, RoundingMode.DOWN).doubleValue();
         String totalSharing = String.valueOf(totalSharingTemp);
 
@@ -111,7 +112,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
             subID = null;
         }
 
-        System.out.println(subID);
+        //System.out.println(subID);
         String subAgentIncome = "0";
         if (subID != null) {
             //根据子代理商id查询其该月的收益

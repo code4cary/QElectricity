@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -33,7 +32,7 @@ public class MyAccountController extends BaseController {
         }
         log.info("查询代理商我的账户信息...");
 
-        List<MyAccount> myAccountList = agentService.getMyAccountInfo(queryData);
+        MyAccount myAccountList = agentService.getMyAccountInfo(queryData);
 
         log.info("over");
         return returnSuccess(myAccountList);

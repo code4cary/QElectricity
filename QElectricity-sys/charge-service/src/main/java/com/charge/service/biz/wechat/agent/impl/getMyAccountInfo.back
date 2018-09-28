@@ -1,0 +1,30 @@
+ //直营总收入,即该代理商名下的商户的总收益乘以代理商的分成比例
+        Double totalIncomeDirect = orderMapper.findAgentTotalIncomeDirect(queryData);
+        //保留一位小数
+        totalIncomeDirect = new BigDecimal(totalIncomeDirect).setScale(1, RoundingMode.DOWN).doubleValue();
+        //算出总收益存入数据库,方便以后pc端查询数据,可以直接查询数据库
+
+        //已提现金额,查询代理商的提现表,状态为已完成的提现记录的金额之和则为已提现金额
+        Double withdrawalAmountDone = agentWithdrawalMapper.findAgentWithdrawalAmountDone(queryData);
+        withdrawalAmountDone = new BigDecimal(withdrawalAmountDone).setScale(1, RoundingMode.DOWN).doubleValue();
+
+        //可提现余额, 直营总收入 - 已提现金额
+        Double withdrawalAmountCan = totalIncomeDirect - withdrawalAmountDone;
+        withdrawalAmountCan = new BigDecimal(withdrawalAmountCan).setScale(1, RoundingMode.DOWN).doubleValue();
+
+
+        //子代理分成收入
+        //查询子代理商名下的商户总收入,然后乘以(1-子代理商的的分成比例),即可得到从子代理商那里得到的分成收入
+        //先查询该代理商的id,通过该代理商的id去查询子代理商的id
+        String id = agentMapper.findIDByIdNum(queryData.get("agentID"));
+        String subID = agentMapper.findSubAgentIdByParentId(id);
+        if (id.equals(subID)) {
+            log.info("子代理商id和父代理商id一样了,请查看后台系统哪里出了问题...");
+            subID = null;
+        }
+        //根据子代理商的id查询其需要给到父代理商的分成金额,需要判断其有无父代理商:子代理商不是一级代理商以及父代理商字段不为空
+        Double subAgentSharing = 0.0;
+        if (subID != null) {
+            subAgentSharing = orderMapper.findSubAgentSharingIncome(subID);
+        }
+        subAgentSharing = new BigDecimal(subAgentSharing).setScale(1, RoundingMode.DOWN).doubleValue();

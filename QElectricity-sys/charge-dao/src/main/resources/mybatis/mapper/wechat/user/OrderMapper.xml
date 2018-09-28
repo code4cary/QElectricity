@@ -340,7 +340,7 @@
         createTime
     </select>
 
-    <!--通过代理商的agentId,date,type查询查询其该月的总收益-->
+    <!--通过代理商的agentId,date,type查询其日期范围内的的总收益,这是没有乘以分成比例的收益,不是分成-->
     <select id="findAgentIncomeById" resultType="Double" parameterType="Map">
         SELECT
         sum(t_order.PAY_AMOUNT) totalIncome
@@ -439,24 +439,50 @@
     <!--
         查询代理商的直营总收入,即代理商名下的商户的总收益乘以代理商的分成比例
     -->
-    <select id="findAgentTotalIncomeDirect" parameterType="Map">
+    <select id="findAgentTotalIncomeDirect" resultType="Double" parameterType="Map">
         SELECT
-        sum(t_order.PAY_AMOUNT * t_agent.SHARGING_RATIO/100.0)
+        sum(t_order.PAY_AMOUNT * t_agent.SHARGING_RATIO)
         from
         t_order,
         t_agent,
         t_shop,
         t_charging_box
         <where>
-          <if test="queryDataMap.agentID != null">
-              <!--这里的agentID的d为大写是因为控制层直接将前端接收到的参数传过来了,没有封装 -->
-              t_agent.ID_NUMBER = #{queryDataMap.agentID}
-          </if>
+            <if test="queryDataMap.agentID != null">
+                <!--这里的agentID的d为大写是因为控制层直接将前端接收到的参数传过来了,没有封装 -->
+                t_agent.ID_NUMBER = #{queryDataMap.agentID}
+            </if>
             AND
+            t_order.PAY_STATUS = '1' AND
             t_shop.AG_ID = t_agent.ID AND
             t_charging_box.S_ID = t_shop.ID AND
             t_order.BOX_CHARGING_ID = t_charging_box.ID
         </where>
+    </select>
+
+
+    <!--根据子代理商id查询其需要给到父代理商的分成金额,需要判断其有无父代理商:子代理商不是一级代理商以及父代理商字段不为空-->
+    <select id="findSubAgentSharingIncome" resultType="Double" parameterType="String">
+        SELECT
+        sum(t_order.PAY_AMOUNT * (1 - t_agent.SHARGING_RATIO))
+        from
+        t_order,
+        t_agent,
+        t_shop,
+        t_charging_box
+        <where>
+            <if test="id != null">
+                t_agent.ID = #{id}
+            </if>
+            AND
+            t_order.PAY_STATUS = '1' AND
+            t_agent.LEVEL != '1' AND
+            t_agent.PARENT_AGENT_ID != 'NULL' AND
+            t_shop.AG_ID = t_agent.ID AND
+            t_charging_box.S_ID = t_shop.ID AND
+            t_order.BOX_CHARGING_ID = t_charging_box.ID
+        </where>
+
     </select>
 
 </mapper>
