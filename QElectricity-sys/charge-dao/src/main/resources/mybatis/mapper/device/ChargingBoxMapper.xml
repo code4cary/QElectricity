@@ -450,4 +450,31 @@
         </where>
     </update>
 
+
+    <!--通过shopId获取商户名下的充电宝编号-->
+    <select id="findChargingBoxNO" parameterType="String" resultType="String">
+        SELECT t_charging_box.BOX_CUSTOMER_ID chargingBoxNo
+        FROM
+        t_charging_box
+        <where>
+            <if test="shopId != null">
+                t_charging_box.S_ID = #{shopId}
+            </if>
+        </where>
+    </select>
+
+    <!--获取充电宝可借可还数量-->
+    <select id="findBorrowBackNum" resultMap="BaseResultMap" parameterType="String">
+          SELECT
+            CAN_BORROW_NUM,
+            CAN_BACK_NUM
+            FROM
+            t_charging_box
+            <where>
+                <if test="chargingBoxNO != null">
+                    t_charging_box.BOX_CUSTOMER_ID = #{chargingBoxNO}
+                </if>
+            </where>
+    </select>
+
 </mapper>

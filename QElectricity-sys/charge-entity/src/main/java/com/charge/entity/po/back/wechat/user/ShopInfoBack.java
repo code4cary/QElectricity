@@ -11,6 +11,7 @@ import java.io.Serializable;
  */
 public class ShopInfoBack implements Serializable{
 
+    private String shopId;
     private String shopPhoto;
     private String shopName;
     private String businessTime;
@@ -23,82 +24,44 @@ public class ShopInfoBack implements Serializable{
     private String distance;
     private String shopTel;
 
+    public String getShopId() {
+        return shopId;
+    }
 
-    public String getCanBackwNum() {return canBackNum;}
+    public void setShopId(String shopId) {
+        this.shopId = shopId;
+    }
 
     public String getShopPhoto() {
         return shopPhoto;
-    }
-
-    public String getShopName() {
-        return shopName;
-    }
-
-    public String getBusinessTime() {
-        return businessTime;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getShopStatus() {
-        return shopStatus;
-    }
-
-    public String getCanBorrowNum() {
-        return canBorrowNum;
-    }
-
-    public String getDistance() {
-        return distance;
-    }
-
-    public String getShopTel() {
-        return shopTel;
     }
 
     public void setShopPhoto(String shopPhoto) {
         this.shopPhoto = shopPhoto;
     }
 
+    public String getShopName() {
+        return shopName;
+    }
+
     public void setShopName(String shopName) {
         this.shopName = shopName;
+    }
+
+    public String getBusinessTime() {
+        return businessTime;
     }
 
     public void setBusinessTime(String businessTime) {
         this.businessTime = businessTime;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void setShopStatus(String shopStatus) {
-        this.shopStatus = shopStatus;
-    }
-
-    public void setCanBorrowNum(String canBorrowNum) {
-        this.canBorrowNum = canBorrowNum;
-    }
-
-    public void setDistance(String distance) {
-        this.distance = distance;
-    }
-
-    public void setShopTel(String shopTel) {
-        this.shopTel = shopTel;
-    }
-
-    public void setCanBackwNum(String canBackNum) {this.canBackNum = canBackNum;}
-
-
-    public String getCanBackNum() {
-        return canBackNum;
-    }
-
-    public void setCanBackNum(String canBackNum) {
-        this.canBackNum = canBackNum;
     }
 
     public String getLongitude() {
@@ -117,20 +80,61 @@ public class ShopInfoBack implements Serializable{
         this.latitude = latitude;
     }
 
+    public String getShopStatus() {
+        return shopStatus;
+    }
+
+    public void setShopStatus(String shopStatus) {
+        this.shopStatus = shopStatus;
+    }
+
+    public String getCanBorrowNum() {
+        return canBorrowNum;
+    }
+
+    public void setCanBorrowNum(String canBorrowNum) {
+        this.canBorrowNum = canBorrowNum;
+    }
+
+    public String getCanBackNum() {
+        return canBackNum;
+    }
+
+    public void setCanBackNum(String canBackNum) {
+        this.canBackNum = canBackNum;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getShopTel() {
+        return shopTel;
+    }
+
+    public void setShopTel(String shopTel) {
+        this.shopTel = shopTel;
+    }
+
     @Override
     public String toString() {
         return "ShopInfoBack{" +
-                "shopPhoto='" + shopPhoto + '\'' +
+                "shopId='" + shopId + '\'' +
+                ", shopPhoto='" + shopPhoto + '\'' +
                 ", shopName='" + shopName + '\'' +
                 ", businessTime='" + businessTime + '\'' +
                 ", address='" + address + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
                 ", shopStatus='" + shopStatus + '\'' +
                 ", canBorrowNum='" + canBorrowNum + '\'' +
                 ", canBackNum='" + canBackNum + '\'' +
                 ", distance='" + distance + '\'' +
                 ", shopTel='" + shopTel + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", latitude='" + latitude + '\'' +
                 '}';
     }
 }

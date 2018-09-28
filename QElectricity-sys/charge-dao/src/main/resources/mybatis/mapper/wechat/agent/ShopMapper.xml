@@ -334,7 +334,7 @@
     <!--创建动态SQL,即sql片段-->
     <sql id="find_shop">
         select
-        SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,LONGITUDE,LATITUDE,CONTRACT_PERSON_NAME
+        ID,SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,LONGITUDE,LATITUDE,CONTRACT_PERSON_NAME
         from t_shop
         <where>
             <if test="map.MinLng != null">
@@ -354,14 +354,15 @@
                 LATITUDE+0 &lt; #{map.MaxLat}
             </if>
         </where>
-
     </sql>
 
     <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
     <resultMap type="com.charge.entity.po.back.wechat.user.ShopInfoBack" id="shopInfoMap">
+        <result column="ID" property="shopId"/>
         <result column="SHOP_PHOTO" property="shopPhoto"/>
         <result column="NAME" property="shopName"/>
         <result column="BUSINESS_TIME" property="businessTime"/>
+        <result column="ADDRESS" property="address"/>
         <result column="SHOP_STATUS" property="shopStatus"/>
         <result column="CONTRACT_PERSON_NAME" property="shopTel"/>
     </resultMap>
