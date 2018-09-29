@@ -1,17 +1,24 @@
 package com.charge.service.biz.wechat.agent.impl;
 
 import com.charge.dao.mapper.device.ChargingBoxMapper;
+import com.charge.dao.mapper.device.PowerBankMapper;
+import com.charge.dao.mapper.wechat.agent.ShopMapper;
+import com.charge.dao.mapper.wechat.user.AccountMapper;
+import com.charge.dao.mapper.wechat.user.OrderMapper;
+import com.charge.dao.mapper.wechat.user.UserMapper;
 import com.charge.entity.po.back.wechat.agent.DeviceManage;
 import com.charge.entity.po.back.wechat.agent.DevicePop;
 import com.charge.entity.po.device.ChargingBox;
+import com.charge.entity.po.device.PowerBank;
+import com.charge.entity.po.wechat.agent.Shop;
+import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
+import com.charge.service.biz.device.BorrowChargingBox;
 import com.charge.service.biz.wechat.agent.ChargingBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vincent on 26/09/2018.
@@ -21,6 +28,25 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
 
     @Autowired
     private ChargingBoxMapper chargingBoxMapper;
+
+    @Autowired
+    private BorrowChargingBox borrowChargingBox;
+
+    @Autowired
+    private OrderMapper orderMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private ShopMapper shopMapper;
+
+    @Autowired
+    private PowerBankMapper powerBankMapper;
+
+    @Autowired
+    private AccountMapper accountMapper;
+
 
     @Override
     public void initBaseMapper() {
@@ -156,12 +182,55 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
                 return null;
         }
 
-        //请求设备打开指定充电箱的一个充电宝,并把充电宝的编号返还给后台
+        //请求设备打开指定充电箱的一个充电宝,并获取设备返回的充电宝编号信息,然后返还给后台
+        Map<Object, Object> backDataMap = borrowChargingBox.borrowChargingBox(chargingBox.getBoxCustomerId());
+        String powerBankNO = (String) backDataMap.get("powerBankID");
 
+        //判断当前充电宝是否在数据库有记录,如果有,更新其相应信息;如果没有,为其建立数据库记录
+        PowerBank powerBank = powerBankMapper.findPowerBank(powerBankNO);
+        //为当前充电宝建立/更新记录
+        powerBank.setLockId((String) backDataMap.get("lockID"));
+        powerBank.setLockStatus("0");//0关闭，1开启
+        powerBank.setLockOperationStatus("1");//0操作失败，1操作成功
+        powerBank.setPbCustomerId(powerBankNO);
+        powerBank.setPbStatus("0");//电宝状态：0借出，1在位
+        powerBank.setUpdateTime(new Date());
+        if (powerBank.getId() == null) {//当前充电宝在数据库没记录
+            //为当前充电宝建立记录
+            powerBank.setBorrowTimes("1");//首次借出次数设为1
+            powerBank.setCreateTime(new Date());
+            //插入数据库
+            powerBankMapper.insertSelective(powerBank);
+        } else {//当前充电宝在数据库已有记录,更新相关信息
+            powerBank.setBorrowTimes(String.valueOf(Integer.valueOf(powerBank.getBorrowTimes()) + 1));
+            //更新数据库
+            powerBankMapper.updateByPrimaryKeySelective(powerBank);
+        }
 
+        //为用户创建新的订单
+        //获取用户的账户id
+        Integer aid = accountMapper.findAIDBySkey(queryData.get("skey"));
+        Order order = new Order();
+        order.setAid(aid);
+        order.setOrderNum(UUID.randomUUID().toString().replaceAll("-", "").toLowerCase());
+        order.setCreateTime(new Date());
+        order.setPayStatus("0");//0:未支付
+        order.setOrderType("0");//0：借充电宝订单
+        //查询用户借充电宝所在商户的地址
+        Shop shop = shopMapper.findShopAddress(chargingBox.getBoxCustomerId());
+        order.setPowerBankStatus(shop.getAddress());
+        order.setPowerBankStatus("0");//0：租借中
+        order.setPowerBankId(powerBankNO);//这里应该是充电宝的编号
+        order.setBoxChargingId(chargingBox.getBoxCustomerId());//这里应该是充电箱的编号
+        //插入数据库
+        orderMapper.insertSelective(order);
 
-
-        return null;
+        return powerBankNO;
+    }
+    
+    public static void main(String... args) {
+        String uuid = UUID.randomUUID().toString().replaceAll("-", "").toLowerCase();
+        System.out.println(uuid);
     }
 
 }

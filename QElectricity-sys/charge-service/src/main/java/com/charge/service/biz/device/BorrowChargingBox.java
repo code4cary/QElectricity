@@ -7,5 +7,5 @@ import java.util.Map;
  */
 public interface BorrowChargingBox {
 
-    Map<String,String> borrowChargingBox(String chargingBoxNo);
+    Map<Object, Object> borrowChargingBox(String chargingBoxNo);
 }

@@ -10,4 +10,7 @@ import org.apache.ibatis.annotations.Param;
 public interface AccountMapper extends BaseMapper<Account, Integer> {
     Integer findAIDByUID(@Param("uid") Integer uid);
 
+    Account findAccountInfo(@Param("skey") String skey);
+
+    Integer findAIDBySkey(@Param("skey") String skey);
 }

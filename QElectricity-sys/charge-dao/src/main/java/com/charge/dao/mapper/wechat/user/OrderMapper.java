@@ -41,4 +41,6 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
     Order findOrderUndone(@Param("skey") String skey);
 
     Order findOrderDoing(@Param("skey") String skey);
+
+    int createOrder(@Param("skey")String skey);
 }

@@ -223,4 +223,19 @@
             </if>
         </where>
     </select>
+
+    <!--查询是否数据库是否存在指定充电宝编号的充电宝,如果有,返回表id-->
+    <select id="findPowerBank" parameterType="String" resultMap="BaseResultMap">
+        SELECT
+        t_power_bank.ID,
+        t_power_bank.BORROW_TIMES
+        FROM
+        t_power_bank
+        <where>
+            <if test="powerBankNO != null">
+                t_power_bank.PB_CUSTOMER_ID = #{powerBankNO}
+            </if>
+        </where>
+
+    </select>
 </mapper>

@@ -1,13 +1,14 @@
 package com.charge.web.controller.wechat.user.firstPage;
 
 import com.charge.entity.model.CommonOutputDO;
+import com.charge.entity.po.wechat.user.Account;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.wechat.agent.ChargingBoxService;
 import com.charge.service.biz.wechat.user.OrderService;
+import com.charge.service.biz.wechat.user.UserService;
 import com.charge.web.controller.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ public class ScanBorrowController extends BaseController {
     private OrderService orderService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private ChargingBoxService chargingBoxService;
 
     public CommonOutputDO<Object> scanBorrow(@RequestBody(required = true) Map<String, String> queryData) {
@@ -34,6 +38,12 @@ public class ScanBorrowController extends BaseController {
             return returnFailed(null, "参属为空异常");
         }
         log.info("用户扫码借充电宝...");
+
+        //获取用户账户信息
+        Account account = userService.findAccountInfo(queryData.get("skey"));
+        if (account.getDepositStatus() == null) {
+            return returnFailed(null,"当前用户没交押金");
+        }
 
         //判断用户是否有未完成支付的订单
         Order orderUnpaid = orderService.findOrderUnpaid(queryData.get("skey"));
@@ -45,12 +55,11 @@ public class ScanBorrowController extends BaseController {
         //判断用户是否有正在进行的订单
         Order orderUndone = orderService.findOrderDoing(queryData.get("skey"));
         if (orderUndone != null) {
-            returnFailed(orderUndone,"用户有正在进行的订单");
+            returnFailed(orderUndone,"用户是否有正在进行的订单");
         }
 
         //判断当前用户想借充电宝的充电箱是否有可借的充电宝(需要判断充电箱是否在线并是否有可借的充电宝),
         //如果有,请求设备打开一个窗口位,并返回充电宝编号给后台
-
         String powerBankNO = chargingBoxService.findCanBorrow(queryData);
 
         log.info("over");

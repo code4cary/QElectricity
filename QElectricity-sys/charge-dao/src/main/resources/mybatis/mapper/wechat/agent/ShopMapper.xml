@@ -466,4 +466,21 @@
         t_shop.ID
 
     </select>
+
+
+    <!--查询用户借充电宝所在商户的地址-->
+    <select id="findShopAddress" parameterType="String" resultMap="BaseResultMap">
+        SELECT t_shop.ADDRESS
+        FROM
+        t_shop,
+        t_charging_box
+        <where>
+            <if test="boxCustomerId != null">
+                t_charging_box.BOX_CUSTOMER_ID = #{boxCustomerId} AND
+            </if>
+            t_shop.ID = t_charging_box.S_ID
+        </where>
+    </select>
+
+
 </mapper>

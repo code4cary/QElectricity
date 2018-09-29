@@ -1,11 +1,13 @@
 package com.charge.service.biz.wechat.user.impl;
 
+import com.charge.dao.mapper.wechat.user.AccountMapper;
 import com.charge.entity.po.back.wechat.user.ChargingRecordBack;
 import com.charge.dao.mapper.device.PowerBankMapper;
 import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
 import com.charge.dao.mapper.wechat.user.UserMapper;
 import com.charge.entity.po.device.PriceTypeCB;
+import com.charge.entity.po.wechat.user.Account;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
@@ -39,6 +41,9 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
 
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private AccountMapper accountMapper;
 
 
     /**
@@ -253,5 +258,16 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
     public String findUserOpenIdBySkey(String skey) {
         String openid = userMapper.findUserOpenIdBySkey(skey);
         return openid;
+    }
+
+    /**
+     * 获取用户账户信息
+     * @param skey
+     * @return
+     */
+    @Override
+    public Account findAccountInfo(String skey) {
+        Account account = accountMapper.findAccountInfo(skey);
+        return account;
     }
 }
