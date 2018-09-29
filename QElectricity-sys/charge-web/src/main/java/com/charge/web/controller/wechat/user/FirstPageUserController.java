@@ -6,6 +6,7 @@ import com.charge.service.biz.wechat.user.FirstPageService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
 import com.charge.web.utils.PositionModel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -19,6 +20,7 @@ import java.util.*;
  * Created by vincent on 17/09/2018.
  */
 
+@Slf4j
 //@RestController是@Controller和@ResponseBody的结合体，两个标注合并起来的作用。
 @RestController
 @PropertySource(value = "classpath:shopDistance.properties")
@@ -45,10 +47,10 @@ public class FirstPageUserController {
     @RequestMapping
     public Map getFirstPageInfo(@RequestBody Map<String, List<String>> userPosition) {//{"userPosition":["userLongitude"，"userLatitude"]}
 
-
         //如果传入的参数不符合要求
         if (userPosition == null || userPosition.isEmpty()) CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
 
+        log.info("查询用户端小程序首页信息...");
         // ArrayList userPositionList = userPosition.get("userPosition");
         List userPositionList = userPosition.get("userPosition");
 
@@ -86,6 +88,7 @@ public class FirstPageUserController {
         //将数据包装起来返回
         Map firstPage = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "firstPage", "shopInfo", shopList);
 
+        log.info("over");
         return firstPage;
 
     }

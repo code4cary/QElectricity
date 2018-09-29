@@ -1,0 +1,86 @@
+{
+  "msg": "请求成功",
+  "firstPage": {
+    "shopInfo": [
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "5",
+        "canBorrowNum": "5",
+        "distance": "0",
+        "latitude": "22.631872",
+        "shopName": "海滨洗浴城",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.836378"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "6",
+        "canBorrowNum": "4",
+        "distance": "34",
+        "latitude": "22.631772",
+        "shopName": "砂锅粥2",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.836062"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "7",
+        "canBorrowNum": "3",
+        "distance": "71",
+        "latitude": "22.632084",
+        "shopName": "砂锅粥3",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.837038"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "8",
+        "canBorrowNum": "2",
+        "distance": "119",
+        "latitude": "22.632634",
+        "shopName": "砂锅粥4",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.835558"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "9",
+        "canBorrowNum": "1",
+        "distance": "155",
+        "latitude": "22.632456",
+        "shopName": "砂锅粥6",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.835000"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "10",
+        "canBorrowNum": "0",
+        "distance": "7212",
+        "latitude": "22.696070",
+        "shopName": "砂锅粥8",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.845825"
+      }
+    ]
+  },
+  "code": "1"
+}

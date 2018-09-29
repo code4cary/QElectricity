@@ -1,8 +1,11 @@
 package com.charge.web.controller.wechat.user.firstPage;
 
+import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
+import com.charge.common.enums.StatusInfo;
 import com.charge.entity.po.back.wechat.user.ShopInfoBack;
 import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,7 +60,11 @@ public class ShopControllerTest {
 
         //将shopList中商户按离用户最近->最远的顺序排序
         Collections.sort(shopInfoList, (s1, s2) -> Double.valueOf(s1.getDistance()).compareTo(Double.valueOf(s2.getDistance())));
-        shopInfoList.forEach(shopInfo -> System.out.println(shopInfo));
+
+        Map shop  = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "firstPage", "shopInfo", shopInfoList);
+
+        Object json = JSON.toJSON(shop);
+        System.out.println(json);
 
     }
 }

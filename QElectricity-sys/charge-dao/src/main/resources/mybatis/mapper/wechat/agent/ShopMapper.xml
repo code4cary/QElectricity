@@ -334,8 +334,16 @@
     <!--创建动态SQL,即sql片段-->
     <sql id="find_shop">
         select
-        ID,SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,LONGITUDE,LATITUDE,CONTRACT_PERSON_NAME
-        from t_shop
+        t_shop.ID,
+        t_shop.SHOP_PHOTO,
+        t_shop.NAME,
+        t_shop.BUSINESS_TIME,
+        t_shop.ADDRESS,
+        t_shop.SHOP_STATUS,
+        t_shop.LONGITUDE,
+        t_shop.LATITUDE,
+        t_shop.CONTRACT_PERSON_NAME
+        from t_shop,t_charging_box
         <where>
             <if test="map.MinLng != null">
                 <!--商户经度大于最小经度 -->
@@ -370,7 +378,12 @@
     <!--根据经纬度范围查询商户-->
     <select id="findShopByCoordinates" resultMap="shopInfoMap" parameterType="Map">
         <include refid="find_shop"/>
+        and
+        t_shop.ID = t_charging_box.S_ID
+        GROUP by
+        t_shop.ID
     </select>
+
 
     <!--
         根据搜索内容以及经纬度范围查询商户
@@ -386,6 +399,10 @@
             SHOP_STATUS)
             like '%${searchData}%'
         </if>
+        and
+        t_shop.ID = t_charging_box.S_ID
+        GROUP by
+        t_shop.ID
     </select>
 
     <!--根据代理商id查询名下shop-->
@@ -401,6 +418,9 @@
             t_shop.AG_ID = t_agent.ID
         </where>
     </select>
+
+
+
 
     <!--通过agentId,searchData,type获取商户管理页信息-->
     <resultMap type="com.charge.entity.po.back.wechat.agent.ShopManage" id="shopManageMap">

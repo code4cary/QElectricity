@@ -1,8 +1,10 @@
 package com.charge.service.biz.wechat.user.firstPage.impl;
 
+import com.charge.dao.mapper.device.ChargingBoxMapper;
+import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.entity.po.back.wechat.agent.ShopManage;
 import com.charge.entity.po.back.wechat.user.ShopInfoBack;
-import com.charge.dao.mapper.wechat.agent.ShopMapper;
+import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.wechat.user.firstPage.ShopService;
@@ -20,7 +22,11 @@ import java.util.Map;
 public class ShopServiceImpl extends BaseServiceImpl<Shop, Integer> implements ShopService {
 
     @Autowired
-    ShopMapper shopMapper;
+    private ShopMapper shopMapper;
+
+    @Autowired
+    private ChargingBoxMapper chargingBoxMapper;
+
 
     @PostConstruct
     @Override
@@ -43,10 +49,33 @@ public class ShopServiceImpl extends BaseServiceImpl<Shop, Integer> implements S
 
         List<ShopInfoBack> shopInfoList = shopMapper.findShopBySearch(positionMap, searchData);
 
-        //向device查询符合当前经纬度范围的商户名下的充电箱可借和可还的充电宝数量
-        //首次向数据库查询当前商户名下的设备的编号
+        //查询数据库充电宝的可借可还数量,并将可借数量最大的充电宝的可借可还数据封装进shopInfo
+        shopInfoList.forEach(shopInfo -> {
 
-        //再想device查询其当前可借和可还的充电宝数量
+            String shopId = shopInfo.getShopId();
+
+            //查询商户名下的充电宝编号,一个商户名下可能存在多个充电宝
+            List<String> chargingBoxNoList = chargingBoxMapper.findChargingBoxNO(shopId);
+
+            //查询充电宝的可借可还数量
+            Integer canBorrowNumMax = 0;
+            Integer canBackNum = 0;
+            for (String chargingBoxNo : chargingBoxNoList) {
+                ChargingBox chargingBox = chargingBoxMapper.findBorrowBackNum(chargingBoxNo);
+                System.out.println(chargingBox);
+                int canBorrowNum = Integer.valueOf(chargingBox.getCanBorrowNum());
+                //这里用等于的原因是可借的数量可能会为0
+                if (canBorrowNum >= canBorrowNumMax) {
+                    canBorrowNumMax = canBorrowNum;
+                    canBackNum = Integer.valueOf(chargingBox.getCanBackNum());
+                }
+            }
+            shopInfo.setCanBorrowNum(String.valueOf(canBorrowNumMax));
+            shopInfo.setCanBackNum(String.valueOf(canBackNum));
+
+            //这个数据不需要返回前端
+            shopInfo.setShopId(null);
+        });
 
         return shopInfoList;
     }

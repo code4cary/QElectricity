@@ -51,7 +51,7 @@ public class FirstPageServiceImpl extends BaseServiceImpl<Shop, Integer> impleme
         //符合经纬度范围的商户,只能查到SHOP_PHOTO,NAME,BUSINESS_TIME,ADDRESS,SHOP_STATUS,CONTRACT_PERSON_NAM等信息
         List<ShopInfoBack> shopInfoList = shopMapper.findShopByCoordinates(map);
 
-        //查询数据库充电箱的可借可还数量,并将可借数量最大的充电箱的可借可还数据封装进shopInfo
+        //查询数据库充电宝的可借可还数量,并将可借数量最大的充电宝的可借可还数据封装进shopInfo
         shopInfoList.forEach(shopInfo -> {
 
             //查询商户名下的充电宝编号

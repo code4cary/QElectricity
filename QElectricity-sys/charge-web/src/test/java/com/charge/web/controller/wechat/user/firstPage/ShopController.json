@@ -1,0 +1,60 @@
+{
+  "msg": "请求成功",
+  "firstPage": {
+    "shopInfo": [
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "7",
+        "canBorrowNum": "3",
+        "distance": "7671000",
+        "latitude": "22.632084",
+        "shopName": "砂锅粥3",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.837038"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "8",
+        "canBorrowNum": "2",
+        "distance": "7671010",
+        "latitude": "22.632634",
+        "shopName": "砂锅粥4",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.835558"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "9",
+        "canBorrowNum": "1",
+        "distance": "7671053",
+        "latitude": "22.632456",
+        "shopName": "砂锅粥6",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.835000"
+      },
+      {
+        "shopTel": "zxw",
+        "shopStatus": "营业中",
+        "address": "后瑞",
+        "canBackNum": "6",
+        "canBorrowNum": "4",
+        "distance": "7671074",
+        "latitude": "22.631772",
+        "shopName": "砂锅粥2",
+        "businessTime": "08:00-22:00",
+        "shopPhoto": "~/qd/device/pic/shop_photo.jpg",
+        "longitude": "113.836062"
+      }
+    ]
+  },
+  "code": "1"
+}

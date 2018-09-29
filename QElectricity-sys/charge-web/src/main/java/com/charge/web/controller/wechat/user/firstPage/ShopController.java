@@ -6,6 +6,7 @@ import com.charge.service.biz.wechat.user.firstPage.ShopService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
 import com.charge.web.utils.PositionModel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import java.util.Map;
 /**
  * Created by vincent on 17/09/2018.
  */
+@Slf4j
 @RestController
 @RequestMapping("wechat/user/firstPage/shop")
 public class ShopController {
@@ -44,6 +46,8 @@ public class ShopController {
     public Map getShopInfo(@RequestBody Map queryData) {
         //如果传入的参数不符合要求
         if (queryData == null || queryData.isEmpty()) CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
+
+        log.info("查询用户端小程序商户页信息...");
 
         //解析前端的userPosition请求参数
         List userPositionList = (List) queryData.get("userPosition");
@@ -83,6 +87,7 @@ public class ShopController {
 
         Map shop = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "shop", "shopInfo", shopInfoList);
 
+        log.info("over");
         return shop;
 
     }
