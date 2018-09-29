@@ -21,4 +21,6 @@ public interface ChargingBoxService extends BaseService<ChargingBox,Integer> {
     DevicePop findDevicePopInfo(Map<String, String> queryDataMap);
 
     Boolean AddDevice(Map<String, String> queryData);
+
+    String findCanBorrow(Map<String, String> queryData);
 }

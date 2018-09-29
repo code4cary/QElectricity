@@ -1,4 +1,4 @@
-package com.charge.service.biz.wechat.agent.impl;
+package com.charge.service.biz.wechat.user.impl;
 
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
@@ -7,7 +7,7 @@ import com.charge.entity.po.back.wechat.agent.OrderDataDetail;
 import com.charge.entity.po.back.wechat.agent.OrderRecord;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.agent.OrderService;
+import com.charge.service.biz.wechat.user.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -148,5 +148,27 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
         List<OrderRecord> orderRecordList = orderMapper.findOrderRecord(queryDataMap);
 
         return orderRecordList;
+    }
+
+    /**
+     * 通过skey查询用户是否有未完成支付的订单
+     * @param skey
+     * @return
+     */
+    @Override
+    public Order findOrderUnpaid(String skey) {
+        Order order = orderMapper.findOrderUndone(skey);
+        return order;
+    }
+
+    /**
+     * 通过skey查询用户是否有正在进行的订单
+     * @param skey
+     * @return
+     */
+    @Override
+    public Order findOrderDoing(String skey) {
+        Order order = orderMapper.findOrderDoing(skey);
+        return order;
     }
 }

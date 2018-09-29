@@ -28,18 +28,16 @@
       "chargingStatus" : "onCharging",
 
       //2:如果用户有未完成支付的订单
-      //充电开始时间
-      "time" : "",
-      //充电宝编号
+      //订单编号
       "powerBankNO" : "",
-      //充电时长
-      "timeAmount" : "",
+      //借充电宝时间
+      "createTime" : "",
+      //归还充电宝时间
+      "endTime": "",
       //充电花费
       "cost" : "",
-      //充电状态
-      "chargingStatus" : "",
       //订单状态,未完成支付
-      "orderStatus" : "unfinished",
+      "orderStatus" : "未支付",
 
       //3:请求成功,可借充电宝
       //充电宝编号

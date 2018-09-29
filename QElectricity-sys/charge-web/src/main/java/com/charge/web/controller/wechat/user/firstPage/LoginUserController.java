@@ -3,7 +3,7 @@ package com.charge.web.controller.wechat.user.firstPage;
 import com.alibaba.fastjson.JSONObject;
 import com.charge.common.enums.StatusInfo;
 import com.charge.entity.po.wechat.user.User;
-import com.charge.service.biz.wechat.user.firstPage.UserService;
+import com.charge.service.biz.wechat.user.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.RedisPoolUtil;
 import com.charge.web.utils.UserEndecryptUtil;

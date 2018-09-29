@@ -1,4 +1,4 @@
-package com.charge.service.biz.wechat.user.firstPage.impl;
+package com.charge.service.biz.wechat.user.impl;
 
 import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
@@ -7,7 +7,7 @@ import com.charge.entity.po.back.wechat.user.ShopInfoBack;
 import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.service.biz.wechat.user.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

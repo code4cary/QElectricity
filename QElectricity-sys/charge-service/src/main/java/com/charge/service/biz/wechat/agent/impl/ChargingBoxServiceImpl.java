@@ -143,5 +143,25 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         return updateRow>0?true:false;
     }
 
+    /**
+     * 通过skey,deviceNo,判断当前用户扫描的充电箱有可借的充电宝
+     * @param queryData
+     * @return
+     */
+    @Override
+    public String findCanBorrow(Map<String, String> queryData) {
+        //判断当前充电箱是否在线以及手否有可借的充电宝
+        ChargingBox chargingBox = chargingBoxMapper.findDeviceInfo(queryData.get("deviceNO"));
+        if(!chargingBox.getStatus().equals(1) || chargingBox.getCanBorrowNum().equals(0)) {
+                return null;
+        }
+
+        //请求设备打开指定充电箱的一个充电宝,并把充电宝的编号返还给后台
+
+
+
+
+        return null;
+    }
 
 }

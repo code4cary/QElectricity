@@ -1,9 +1,9 @@
-package com.charge.service.biz.wechat.user.fix.impl;
+package com.charge.service.biz.wechat.user.impl;
 
 import com.charge.dao.mapper.device.MalfunctionMapper;
 import com.charge.entity.po.device.Malfunction;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.user.fix.MalfunctionService;
+import com.charge.service.biz.wechat.user.MalfunctionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

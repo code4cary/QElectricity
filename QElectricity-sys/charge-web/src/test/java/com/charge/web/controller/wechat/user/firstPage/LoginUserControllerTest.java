@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.user.firstPage;
 
 import com.charge.ChargeApplication;
 import com.charge.entity.po.wechat.user.User;
-import com.charge.service.biz.wechat.user.firstPage.UserService;
+import com.charge.service.biz.wechat.user.UserService;
 import com.charge.web.utils.RedisPoolUtil;
 import com.charge.web.utils.UserEndecryptUtil;
 import org.junit.Test;

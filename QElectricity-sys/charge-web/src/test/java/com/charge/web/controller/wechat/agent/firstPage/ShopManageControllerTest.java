@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.charge.ChargeApplication;
 import com.charge.entity.model.CommonOutputDO;
 import com.charge.entity.po.back.wechat.agent.ShopManage;
-import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.service.biz.wechat.user.ShopService;
 import com.charge.web.controller.base.BaseController;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.agent.firstPage.shopManage;
 
 import com.charge.ChargeApplication;
-import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.service.biz.wechat.user.ShopService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

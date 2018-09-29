@@ -30,7 +30,7 @@ import java.util.*;
  */
 @Slf4j
 @Service
-@PropertySource(value = "classpath:impl.properties")
+@PropertySource(value = "classpath:earlyWarning.properties")
 public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements AgentService {
     @Autowired
     private AgentMapper agentMapper;

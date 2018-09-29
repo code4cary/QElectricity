@@ -477,4 +477,31 @@
             </where>
     </select>
 
+    <!--查询指定设备的运行状态-->
+    <select id="findDeviceStatus" parameterType="String" resultType="String">
+        SELECT
+        STATUS
+        FROM
+        t_charging_box
+        <where>
+            <if test="deviceNO != null">
+                t_charging_box.BOX_CUSTOMER_ID = #{deviceNO}
+            </if>
+        </where>
+    </select>
+
+    <!--查询指定设备的运行状态,可借充电宝数量-->
+    <select id="findDeviceStatus" parameterType="String" resultMap="BaseResultMap">
+        SELECT
+        STATUS,
+        CAN_BORROW_NUM
+        FROM
+        t_charging_box
+        <where>
+            <if test="deviceNO != null">
+                t_charging_box.BOX_CUSTOMER_ID = #{deviceNO}
+            </if>
+        </where>
+    </select>
+
 </mapper>

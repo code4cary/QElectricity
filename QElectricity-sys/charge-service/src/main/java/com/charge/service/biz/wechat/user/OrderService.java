@@ -1,4 +1,4 @@
-package com.charge.service.biz.wechat.agent;
+package com.charge.service.biz.wechat.user;
 
 import com.charge.entity.po.back.wechat.agent.IncomeData;
 import com.charge.entity.po.back.wechat.agent.OrderDataDetail;
@@ -19,4 +19,8 @@ public interface OrderService extends BaseService<Order,Integer> {
     IncomeData findIncomeDataPerDay(Map<String, Object> queryDataMap);
 
     List<OrderRecord> findOrderRecord(Map<String, Object> queryDataMap);
+
+    Order findOrderUnpaid(String skey);
+
+    Order findOrderDoing(String skey);
 }

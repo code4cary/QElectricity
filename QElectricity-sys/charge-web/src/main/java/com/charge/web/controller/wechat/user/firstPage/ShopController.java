@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.user.firstPage;
 
 import com.charge.common.enums.StatusInfo;
 import com.charge.entity.po.back.wechat.user.ShopInfoBack;
-import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.service.biz.wechat.user.ShopService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.DistanceHelperUtil;
 import com.charge.web.utils.PositionModel;

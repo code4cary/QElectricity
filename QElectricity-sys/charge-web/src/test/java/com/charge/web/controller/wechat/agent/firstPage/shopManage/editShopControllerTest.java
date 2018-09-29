@@ -5,7 +5,7 @@ import com.charge.ChargeApplication;
 import com.charge.common.utils.QEFileUtils;
 import com.charge.entity.model.CommonOutputDO;
 import com.charge.entity.po.wechat.agent.Shop;
-import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.service.biz.wechat.user.ShopService;
 import com.charge.web.controller.base.BaseController;
 import org.junit.Test;
 import org.junit.runner.RunWith;

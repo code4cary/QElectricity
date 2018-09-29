@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.user.firstPage.personalCenter.myWallet;
 
 import com.charge.common.enums.StatusInfo;
 import com.charge.entity.po.back.wechat.user.TransactionDetailBack;
-import com.charge.service.biz.wechat.user.firstPage.personalCenter.myWallet.WaterBillsService;
+import com.charge.service.biz.wechat.user.WaterBillsService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

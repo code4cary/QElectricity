@@ -1,4 +1,4 @@
-package com.charge.service.biz.wechat.user.fix;
+package com.charge.service.biz.wechat.user;
 
 import com.charge.entity.po.device.Malfunction;
 import com.charge.service.biz.base.BaseService;

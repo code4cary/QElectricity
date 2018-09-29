@@ -485,4 +485,47 @@
 
     </select>
 
+
+    <!--通过skey查询用户是否有未完成支付完成的订单-->
+    <select id="findOrderUnpaid" resultMap="BaseResultMap" parameterType="String">
+        SELECT
+        t_order.ORDER_NUM,
+        t_order.CREATE_TIME,
+        t_order.END_TIME,
+        t_order.PAY_AMOUNT,
+        t_order.PAY_STATUS
+        FROM
+        t_order,
+        t_user,
+        t_account
+        <where>
+            <if test="skey != null">
+                t_user.SKEY = #{skey} and
+            </if>
+            t_account.UID = t_user.ID AND
+            t_order.AID = t_account.ID AND
+            t_order.PAY_STATUS = '0'
+        </where>
+    </select>
+
+    <!--通过skey查询用户是否有正在进行的订单-->
+    <select id="findOrderDoing" resultMap="BaseResultMap" parameterType="String">
+        SELECT
+        t_order.ORDER_NUM,
+        t_order.CREATE_TIME,
+        t_order.POWER_BANK_STATUS
+        FROM
+        t_order,
+        t_user,
+        t_account
+        <where>
+            <if test="skey != null">
+                t_user.SKEY = #{skey} and
+            </if>
+            t_account.UID = t_user.ID AND
+            t_order.AID = t_account.ID AND
+            t_order.POWER_BANK_STATUS = '0'
+        </where>
+    </select>
+
 </mapper>

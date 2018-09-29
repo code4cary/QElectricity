@@ -1,10 +1,10 @@
-package com.charge.service.biz.wechat.user.firstPage.personalCenter.myWallet.impl;
+package com.charge.service.biz.wechat.user.impl;
 
 import com.charge.entity.po.back.wechat.user.TransactionDetailBack;
 import com.charge.dao.mapper.wechat.user.WaterBillsMapper;
 import com.charge.entity.po.wechat.user.WaterBills;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.user.firstPage.personalCenter.myWallet.WaterBillsService;
+import com.charge.service.biz.wechat.user.WaterBillsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

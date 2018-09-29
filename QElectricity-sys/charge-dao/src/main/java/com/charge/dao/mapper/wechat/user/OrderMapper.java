@@ -38,4 +38,7 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
     Double findSubAgentSharingIncome(@Param("id")String id);
 
 
+    Order findOrderUndone(@Param("skey") String skey);
+
+    Order findOrderDoing(@Param("skey") String skey);
 }

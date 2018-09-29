@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.agent.firstPage.shopManage;
 
 import com.charge.entity.model.CommonOutputDO;
-import com.charge.service.biz.wechat.user.firstPage.ShopService;
+import com.charge.service.biz.wechat.user.ShopService;
 import com.charge.web.controller.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

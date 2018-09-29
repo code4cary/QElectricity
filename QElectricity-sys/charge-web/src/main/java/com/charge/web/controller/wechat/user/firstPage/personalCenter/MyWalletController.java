@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.user.firstPage.personalCenter;
 
 import com.charge.common.enums.StatusInfo;
-import com.charge.service.biz.wechat.user.firstPage.UserService;
+import com.charge.service.biz.wechat.user.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

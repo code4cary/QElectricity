@@ -2,7 +2,7 @@ package com.charge.web.controller.wechat.user.firstPage.personalCenter.myWallet;
 
 import com.alibaba.fastjson.JSON;
 import com.charge.common.enums.StatusInfo;
-import com.charge.service.biz.wechat.user.firstPage.UserService;
+import com.charge.service.biz.wechat.user.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
 import com.charge.web.utils.WxPayUtil;
 import org.springframework.beans.factory.annotation.Autowired;

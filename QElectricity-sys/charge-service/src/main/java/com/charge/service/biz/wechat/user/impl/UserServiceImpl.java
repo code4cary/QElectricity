@@ -1,4 +1,4 @@
-package com.charge.service.biz.wechat.user.firstPage.impl;
+package com.charge.service.biz.wechat.user.impl;
 
 import com.charge.entity.po.back.wechat.user.ChargingRecordBack;
 import com.charge.dao.mapper.device.PowerBankMapper;
@@ -9,7 +9,7 @@ import com.charge.entity.po.device.PriceTypeCB;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.wechat.user.firstPage.UserService;
+import com.charge.service.biz.wechat.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
