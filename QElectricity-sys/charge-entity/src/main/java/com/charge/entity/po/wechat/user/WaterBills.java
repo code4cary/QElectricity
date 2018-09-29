@@ -7,6 +7,8 @@ import java.io.Serializable;
 public class WaterBills extends BaseEntity implements Serializable {
     private Integer oid;
 
+    private String waterBillNum;
+
     private String amount;
 
     private String type;
@@ -19,6 +21,14 @@ public class WaterBills extends BaseEntity implements Serializable {
     private Order order;
 
     private static final long serialVersionUID = 1L;
+
+    public String getWaterBillNum() {
+        return waterBillNum;
+    }
+
+    public void setWaterBillNum(String waterBillNum) {
+        this.waterBillNum = waterBillNum;
+    }
 
     public Order getOrder() {
         return order;
@@ -64,6 +74,7 @@ public class WaterBills extends BaseEntity implements Serializable {
     public String toString() {
         return "WaterBills{" +
                 "oid=" + oid +
+                ", waterBillNum='" + waterBillNum + '\'' +
                 ", amount='" + amount + '\'' +
                 ", type='" + type + '\'' +
                 ", waterbillssource='" + waterbillssource + '\'' +

@@ -33,7 +33,7 @@ public class TransactionDetailControllerTest {
     @Test
     public void testGetTransactionDetail() throws Exception {
 
-        String skey = "NZxk/qZSozPf7VEWdfun/Q!!";
+        String skey = "skey9876543210";
         List<TransactionDetailBack> transactionDetailList =
                 waterBillsService.findTransactionDetail(skey);
 

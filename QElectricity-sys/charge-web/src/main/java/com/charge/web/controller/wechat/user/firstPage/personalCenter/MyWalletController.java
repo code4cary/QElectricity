@@ -3,6 +3,7 @@ package com.charge.web.controller.wechat.user.firstPage.personalCenter;
 import com.charge.common.enums.StatusInfo;
 import com.charge.service.biz.wechat.user.firstPage.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import java.util.Map;
 /**
  * Created by vincent on 17/09/2018.
  */
-
+@Slf4j
 @RestController
 @RequestMapping("wechat/user/firstPage/personalCenter/myWallet")
 public class MyWalletController {
@@ -25,6 +26,8 @@ public class MyWalletController {
     public Map getMyWalletInfo(@RequestBody(required = true) Map<String,String> skeyMap) {
         if (skeyMap == null || skeyMap.isEmpty())  return CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
 
+        log.info("查询用户我的钱包页信息...");
+
         //获得skey
         String skey = skeyMap.get("skey");
 
@@ -33,6 +36,7 @@ public class MyWalletController {
 
         Map myWallet = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "myWalletPage", "myWallet", userWalletInfo);
 
+        log.info("over...");
         return myWallet;
     }
 }

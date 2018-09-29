@@ -29,4 +29,5 @@ public interface UserService extends BaseService<User, Integer> {
     List<ChargingRecordBack> findUserChargingRecordBySkey(String skey);
 
     String findUserOpenIdBySkey(String skey);
+
 }

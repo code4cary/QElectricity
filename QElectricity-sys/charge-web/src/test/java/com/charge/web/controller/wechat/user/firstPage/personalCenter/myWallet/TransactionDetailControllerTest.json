@@ -1,0 +1,29 @@
+{
+  "msg": "请求成功",
+  "transactionDetailPage": {
+    "transactionDetail": [
+      {
+        "transactionSource": "1",
+        "transactionAmount": "2",
+        "transactionTime": "2018-09-29 12:12:12.0",
+        "type": "0",
+        "recordNo": "wb20180929020304"
+      },
+      {
+        "transactionSource": "1",
+        "transactionAmount": "99",
+        "transactionTime": "2018-09-29 13:13:13.0",
+        "type": "1",
+        "recordNo": "wb20180930050607"
+      },
+      {
+        "transactionSource": "1",
+        "transactionAmount": "5",
+        "transactionTime": "2018-09-29 14:14:14.0",
+        "type": "2",
+        "recordNo": "wb20181001080910"
+      }
+    ]
+  },
+  "code": "1"
+}

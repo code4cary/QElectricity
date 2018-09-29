@@ -1,0 +1,11 @@
+{
+  "msg": "请求成功",
+  "personalCenter": {
+    "personalInfo": {
+      "deposit_status": "1",
+      "point": 88,
+      "account_balance": "168"
+    }
+  },
+  "code": "1"
+}

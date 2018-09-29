@@ -25,6 +25,7 @@ import java.util.UUID;
 /**
  * Created by vincent on 17/09/2018.
  */
+
 @Slf4j
 @RestController
 @RequestMapping("/wechat/user/firstPage/")
@@ -34,21 +35,21 @@ public class DeviceFixController extends BaseController {
     private String imgPath;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    MalfunctionService malfunctionService;
+    private MalfunctionService malfunctionService;
 
     @RequestMapping(value = "devicefixImg")
     @ResponseBody
     public CommonOutputDO<Object> uploadDeviceFixImg(@RequestParam("file") MultipartFile file, DeviceFixDO deviceFixDO, HttpServletRequest request) throws Exception {
         if (!validateParam(deviceFixDO)) {
-            return returnFailed(null,"参属为空异常");
+            return returnFailed(null, "参属为空异常");
         }
         log.info("上传设备故障+图片 信息");
         //根据skey查询用户，失败返回
         String openId = userService.findUserOpenIdBySkey(deviceFixDO.getSkey());
-        if (StringUtils.isEmpty(openId)) return returnFailed(null,"openId不存在");
+        if (StringUtils.isEmpty(openId)) return returnFailed(null, "openId不存在");
         Malfunction malfunction = new Malfunction();
         BeanUtils.copyProperties(deviceFixDO, malfunction);
         malfunction.setCreateTime(new Date());
@@ -56,8 +57,9 @@ public class DeviceFixController extends BaseController {
         String fileName = UUID.randomUUID().toString().replaceAll("-", "") + ".png";
         String filePath = QEFileUtils.getImgTimePath(imgPath) + fileName;
         FileCopyUtils.copy(file.getBytes(), new File(filePath));
-        //保存故障原因
+        //保存故障图片路径
         malfunction.setPhoto(filePath);
+        //其实保存充电宝编号这个字段没什么用
         malfunction.setPowerbankno("123");
         malfunctionService.insertSelective(malfunction);
         log.info("over");
@@ -68,20 +70,21 @@ public class DeviceFixController extends BaseController {
     @ResponseBody
     public CommonOutputDO<Object> uploadDeviceFix(@RequestBody DeviceFixDO deviceFixDO, HttpServletRequest request) {
         if (!validateParam(deviceFixDO)) {
-            return returnFailed(null,"参属为空异常");
+            return returnFailed(null, "参属为空异常");
         }
         log.info("上传设备故障信息");
         //根据skey查询用户，失败返回
         String openId = userService.findUserOpenIdBySkey(deviceFixDO.getSkey());
-        if (StringUtils.isEmpty(openId)) return returnFailed(null,"openId不存在");
+        if (StringUtils.isEmpty(openId)) return returnFailed(null, "openId不存在");
         Malfunction malfunction = new Malfunction();
         BeanUtils.copyProperties(deviceFixDO, malfunction);
         malfunction.setCreateTime(new Date());
         malfunction.setWxOpenid(openId);
-        //设置默认电箱编号
+        //设置默认充电宝编号
         malfunction.setPowerbankno("123");
         //保存故障原因
         malfunctionService.insertSelective(malfunction);
+
         log.info("over");
         return returnSuccess(null);
     }
@@ -94,7 +97,10 @@ public class DeviceFixController extends BaseController {
     }
 
     private boolean validateParam(DeviceFixDO data) {
-        if (StringUtils.isEmpty(data.getChargingboxno()) || StringUtils.isEmpty(data.getReasons()) || StringUtils.isEmpty(data.getSkey()) || StringUtils.isEmpty(data.getWindowno())) {
+        if (StringUtils.isEmpty(data.getChargingboxno()) ||
+                StringUtils.isEmpty(data.getReasons()) ||
+                StringUtils.isEmpty(data.getSkey()) ||
+                StringUtils.isEmpty(data.getWindowno())) {
             return false;
         }
         return true;

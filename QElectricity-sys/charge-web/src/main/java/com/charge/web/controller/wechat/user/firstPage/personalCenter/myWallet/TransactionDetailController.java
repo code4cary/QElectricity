@@ -4,6 +4,7 @@ import com.charge.common.enums.StatusInfo;
 import com.charge.entity.po.back.wechat.user.TransactionDetailBack;
 import com.charge.service.biz.wechat.user.firstPage.personalCenter.myWallet.WaterBillsService;
 import com.charge.web.utils.CommonDataReturnUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ import java.util.Map;
 /**
  * Created by vincent on 17/09/2018.
  */
-
+@Slf4j
 @RestController
 @RequestMapping("wechat/user/firstPage/personalCenter/myWallet/transactionDetail")
 public class TransactionDetailController {
@@ -28,6 +29,8 @@ public class TransactionDetailController {
         //如果传入的参数不符合要求
         if (queryData == null || queryData.isEmpty()) CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
 
+        log.info("查询用户我的钱包页之交易明细信息...");
+
         //获取请求参数skey
         String skey = queryData.get("skey");
 
@@ -37,6 +40,8 @@ public class TransactionDetailController {
 
         Map transactionDetail =
                 CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "transactionDetailPage", "transactionDetail", transactionDetailList);
+
+        log.info("over");
         return transactionDetail;
     }
 }

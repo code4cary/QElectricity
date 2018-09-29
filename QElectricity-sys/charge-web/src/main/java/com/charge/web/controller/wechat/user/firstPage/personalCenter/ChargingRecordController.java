@@ -4,6 +4,7 @@ import com.charge.common.enums.StatusInfo;
 import com.charge.entity.po.back.wechat.user.ChargingRecordBack;
 import com.charge.service.biz.wechat.user.firstPage.UserService;
 import com.charge.web.utils.CommonDataReturnUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ import java.util.Map;
 /**
  * Created by vincent on 17/09/2018.
  */
-
+@Slf4j
 @RestController
 @RequestMapping("wechat/user/firstPage/personalCenter/chargingRecord")
 public class ChargingRecordController {
@@ -27,6 +28,8 @@ public class ChargingRecordController {
     public Map getChargingRecordInfo(@RequestBody(required = true) Map<String, String> skeyMap) {
         if (skeyMap == null || skeyMap.isEmpty()) return CommonDataReturnUtil.requestFail(StatusInfo.FailInfo1);
 
+        log.info("查询用户充电记录页信息...");
+
         //获得skey
         String skey = skeyMap.get("skey");
 
@@ -35,6 +38,7 @@ public class ChargingRecordController {
 
         Map chargingRecord = CommonDataReturnUtil.requestSuccess(StatusInfo.SuccessInfo1, "chargingRecordPage", "chargingRecord", userChargingRecord);
 
+        log.info("over");
         return chargingRecord;
     }
 }

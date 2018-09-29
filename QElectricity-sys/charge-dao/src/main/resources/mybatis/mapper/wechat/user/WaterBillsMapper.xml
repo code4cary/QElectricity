@@ -4,13 +4,14 @@
     <resultMap id="BaseResultMap" type="com.charge.entity.po.wechat.user.WaterBills">
         <id column="ID" property="id" jdbcType="INTEGER"/>
         <result column="OID" property="oid" jdbcType="INTEGER"/>
+        <result column="WATER_BILL_NUM" property="waterBillNum" jdbcType="INTEGER"/>
         <result column="AMOUNT" property="amount" jdbcType="VARCHAR"/>
         <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="TYPE" property="type" jdbcType="VARCHAR"/>
         <result column="WATERBILLSSOURCE" property="waterbillssource" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    ID, OID, AMOUNT, CREATE_TIME, TYPE, WATERBILLSSOURCE
+    ID, OID, WATER_BILL_NUM, AMOUNT, CREATE_TIME, TYPE, WATERBILLSSOURCE
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -23,10 +24,10 @@
     where ID = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.charge.entity.po.wechat.user.WaterBills">
-    insert into t_water_bills (ID, OID, AMOUNT, 
+    insert into t_water_bills (ID, OID, WATER_BILL_NUM,AMOUNT,
       CREATE_TIME, TYPE, WATERBILLSSOURCE
       )
-    values (#{id,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{amount,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{oid,jdbcType=INTEGER}, #{waterBillNum,jdbcType=VARCHAR}, #{amount,jdbcType=VARCHAR},
       #{createTime,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR}, #{waterbillssource,jdbcType=VARCHAR}
       )
   </insert>
@@ -38,6 +39,9 @@
             </if>
             <if test="oid != null">
                 OID,
+            </if>
+            <if test="waterBillNum != null">
+                WATER_BILL_NUM,
             </if>
             <if test="amount != null">
                 AMOUNT,
@@ -59,6 +63,9 @@
             <if test="oid != null">
                 #{oid,jdbcType=INTEGER},
             </if>
+            <if test="waterBillNum != null">
+                #{waterBillNum,jdbcType=INTEGER},
+            </if>
             <if test="amount != null">
                 #{amount,jdbcType=VARCHAR},
             </if>
@@ -79,6 +86,9 @@
             <if test="oid != null">
                 OID = #{oid,jdbcType=INTEGER},
             </if>
+            <if test="waterBillNum != null">
+                WATER_BILL_NUM = #{waterBillNum,jdbcType=VARCHAR},
+            </if>
             <if test="amount != null">
                 AMOUNT = #{amount,jdbcType=VARCHAR},
             </if>
@@ -97,6 +107,7 @@
     <update id="updateByPrimaryKey" parameterType="com.charge.entity.po.wechat.user.WaterBills">
     update t_water_bills
     set OID = #{oid,jdbcType=INTEGER},
+      WATER_BILL_NUM = #{waterBillNum,jdbcType=VARCHAR},
       AMOUNT = #{amount,jdbcType=VARCHAR},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
       TYPE = #{type,jdbcType=VARCHAR},
@@ -109,7 +120,7 @@
 
     <!--当查询的结果与POJO名字不一致的时候，用resultMap来实现映射。-->
     <resultMap type="com.charge.entity.po.back.wechat.user.TransactionDetailBack" id="transactionDetailMap">
-        <result column="t_power_bank.PB_SN" property="recordNo"/>
+        <result column="WATER_BILL_NUM" property="recordNo"/>
         <result column="TYPE" property="type"/>
         <result column="WATERBILLSSOURCE" property="transactionSource"/>
         <result column="CREATE_TIME" property="transactionTime"/>
@@ -119,7 +130,7 @@
     <!--根据skey查询交易明细(即流水明细)-->
     <select id="findTransactionDetailBySkey" resultMap="transactionDetailMap" parameterType="String">
         select
-        t_power_bank.PB_SN,
+        t_water_bills.WATER_BILL_NUM,
         t_water_bills.TYPE,
         t_water_bills.WATERBILLSSOURCE,
         t_water_bills.CREATE_TIME,
@@ -128,17 +139,17 @@
         t_user,
         t_account,
         t_order,
-        t_water_bills,
-        t_power_bank
+        t_water_bills
         <where>
             <if test="skey != null">
                 #{skey} = t_user.Skey and
             </if>
             t_account.UID = t_user.ID and
             t_order.AID = t_account.ID and
-            t_water_bills.OID = t_order.ID and
-            t_order.POWER_BANK_ID = t_power_bank.ID
+            t_water_bills.OID = t_order.ID
         </where>
+        GROUP BY
+        t_water_bills.ID
     </select>
 
 </mapper>

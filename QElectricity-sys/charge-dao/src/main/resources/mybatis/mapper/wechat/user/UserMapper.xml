@@ -370,7 +370,17 @@
                 #{skey}=t_user.SKEY
             </if>
         </where>
+    </select>
 
+    <!--根据skey查询id-->
+    <select id="findUserIdBySkey" parameterType="String" resultType="Integer">
+        SELECT ID
+        FROM t_user
+        <where>
+            <if test="skey != null">
+                SKEY = #{skey}
+            </if>
+        </where>
     </select>
 
 </mapper>

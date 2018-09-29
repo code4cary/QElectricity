@@ -1,0 +1,10 @@
+{
+  "msg": "请求成功",
+  "personalCenter": {
+    "personalInfo": {
+      "recharge_balance": "100",
+      "balance_gived": "68"
+    }
+  },
+  "code": "1"
+}
