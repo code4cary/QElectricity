@@ -272,7 +272,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
     }
 
     /**
-     * 查询当前用户是否归还成功充电宝,且是第一次查询
+     * 查询当前用户是否归还成功充电宝,且是第一次查询该订单
      * @param skey
      * @return
      */

@@ -43,22 +43,26 @@ public class BackPowerBank extends BaseController {
 
         Order order = userService.findBackPowerBankInfo(queryData.get("skey"));
 
-        if (order.getPowerBankStatus().equals("1") &&
-                order.getPayStatus().equals("0") &&
-                order.getHaveShowed().equals("0")) {//归还成功但未支付且未被该接口访问过
-            //将订单的HAVE_SHOWED字段改为1,因为已经访问过了
-            Order OrderUpdate = new Order();
-            BeanUtils.copyProperties(order,OrderUpdate);
-            OrderUpdate.setHaveShowed("1");
-            userService.updateOrderHaveShowed(OrderUpdate);
-            return returnSuccess(order);
+        if (order == null) {
+            return returnFailed(null, "该用户所有订单的相关状态都已完成");
+        } else {
+            if (order.getPowerBankStatus().equals("1") &&
+                    order.getPayStatus().equals("0") &&
+                    order.getHaveShowed().equals("0")) {//归还成功但未支付且未被该接口访问过
+                //将订单的HAVE_SHOWED字段改为1,因为已经访问过了
+                Order OrderUpdate = new Order();
+                BeanUtils.copyProperties(order, OrderUpdate);
+                OrderUpdate.setHaveShowed("1");
+                userService.updateOrderHaveShowed(OrderUpdate);
+                return returnSuccess(order);
 
-        } else if (order.getPowerBankStatus().equals("0")) {//未归还.订单正在进行中
-            return returnFailed(order, "该用户有正在进行的订单");
+            } else if (order.getPowerBankStatus().equals("0")) {//未归还.订单正在进行中
+                return returnFailed(order, "该用户有正在进行的订单");
+            }
         }
 
         log.info("over");
-        return returnFailed(null, "该用户所有订单的相关状态都已完成");
+        return returnFailed(null, null);
 
     }
 
@@ -75,7 +79,7 @@ public class BackPowerBank extends BaseController {
         order.setHaveShowed("0");
         order.setPayAmount("6");
         Order OrderUpdate = new Order();
-        BeanUtils.copyProperties(order,OrderUpdate);
+        BeanUtils.copyProperties(order, OrderUpdate);
         OrderUpdate.setHaveShowed("1");
         System.out.println(OrderUpdate.getId());
         System.out.println(OrderUpdate);

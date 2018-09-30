@@ -547,8 +547,11 @@
         t_order.CREATE_TIME,
         t_order.END_TIME,
         t_order.PAY_AMOUNT,
+        t_order.PAY_STATUS,
+        t_order.POWER_BANK_STATUS,
         t_order.POWER_BANK_BORROW_PLACE,
-        t_order.POWER_BANK_BACK_PLACE
+        t_order.POWER_BANK_BACK_PLACE,
+        t_order.HAVE_SHOWED
         FROM
         t_order,
         t_account,
