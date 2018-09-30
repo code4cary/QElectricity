@@ -270,4 +270,25 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
         Account account = accountMapper.findAccountInfo(skey);
         return account;
     }
+
+    /**
+     * 查询当前用户是否归还成功充电宝,且是第一次查询
+     * @param skey
+     * @return
+     */
+    @Override
+    public Order findBackPowerBankInfo(String skey) {
+        Order order = orderMapper.findBackPowerBankInfo(skey);
+        return order;
+    }
+
+    /**
+     * 更新订单HAVE_SHOWED字段为1
+     * @param orderUpdate
+     */
+    @Override
+    public void updateOrderHaveShowed(Order orderUpdate) {
+        orderMapper.updateByPrimaryKeySelective(orderUpdate);
+    }
+
 }

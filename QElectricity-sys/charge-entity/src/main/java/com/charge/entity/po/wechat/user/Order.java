@@ -31,6 +31,8 @@ public class Order extends BaseEntity implements Serializable {
 
     private Date payTime;
 
+    private String haveShowed;
+
     /**
      * 订单表关联流水表  一对一
      */
@@ -40,6 +42,14 @@ public class Order extends BaseEntity implements Serializable {
      * 订单表关联账户表  多对一
      */
     private Account account;
+
+    public String getHaveShowed() {
+        return haveShowed;
+    }
+
+    public void setHaveShowed(String haveShowed) {
+        this.haveShowed = haveShowed;
+    }
 
     private static final long serialVersionUID = 1L;
 
@@ -171,6 +181,7 @@ public class Order extends BaseEntity implements Serializable {
                 ", powerBankId='" + powerBankId + '\'' +
                 ", boxChargingId='" + boxChargingId + '\'' +
                 ", payTime=" + payTime +
+                ", haveShowed='" + haveShowed + '\'' +
                 ", waterBills=" + waterBills +
                 ", account=" + account +
                 '}';

@@ -28,9 +28,10 @@ public interface ChargingBoxMapper extends BaseMapper<ChargingBox, Integer> {
 
     int updateDeviceSID(@Param("queryDataMap") Map<String, String> queryDataMap);
 
-    List<String> findChargingBoxNO(@Param("shopId")String shopId);
+    List<String> findChargingBoxNO(@Param("shopId") String shopId);
 
     ChargingBox findBorrowBackNum(@Param("chargingBoxNO") String chargingBoxNO);
 
-    ChargingBox findDeviceInfo(@Param("deviceNO") String deviceNO);
+
+    ChargingBox findDeviceStatusAndBorrowNum(@Param("deviceNO") String deviceNO);
 }

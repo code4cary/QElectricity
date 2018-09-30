@@ -2,6 +2,7 @@ package com.charge.service.biz.wechat.user;
 
 import com.charge.entity.po.back.wechat.user.ChargingRecordBack;
 import com.charge.entity.po.wechat.user.Account;
+import com.charge.entity.po.wechat.user.Order;
 import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.base.BaseService;
 
@@ -32,4 +33,8 @@ public interface UserService extends BaseService<User, Integer> {
     String findUserOpenIdBySkey(String skey);
 
     Account findAccountInfo(String skey);
+
+    Order findBackPowerBankInfo(String skey);
+
+    void updateOrderHaveShowed(Order orderUpdate);
 }

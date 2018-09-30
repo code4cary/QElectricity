@@ -24,9 +24,9 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
                                       @Param("dateStart") Date dateStart,
                                       @Param("dateEnd") Date dateEnd);
 
-    List<Map<String,Object>> findOrderDataNumPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
+    List<Map<String, Object>> findOrderDataNumPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
 
-    List<Map<String,Object>> findIncomeDataPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
+    List<Map<String, Object>> findIncomeDataPerDay(@Param("queryDataMap") Map<String, Object> queryDataMap);
 
     Double findAgentIncomeById(@Param("queryDataMap") Map<String, Object> queryDataMap);
 
@@ -35,12 +35,14 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
 
     Double findAgentTotalIncomeDirect(@Param("queryDataMap") Map<String, String> queryData);
 
-    Double findSubAgentSharingIncome(@Param("id")String id);
+    Double findSubAgentSharingIncome(@Param("id") String id);
 
 
-    Order findOrderUndone(@Param("skey") String skey);
+    Order findOrderUnpaid(@Param("skey") String skey);
 
     Order findOrderDoing(@Param("skey") String skey);
 
-    int createOrder(@Param("skey")String skey);
+    int createOrder(@Param("skey") String skey);
+
+    Order findBackPowerBankInfo(@Param("skey") String skey);
 }

@@ -491,7 +491,7 @@
     </select>
 
     <!--查询指定设备的运行状态,可借充电宝数量-->
-    <select id="findDeviceStatus" parameterType="String" resultMap="BaseResultMap">
+    <select id="findDeviceStatusAndBorrowNum" parameterType="String" resultMap="BaseResultMap">
         SELECT
         STATUS,
         CAN_BORROW_NUM

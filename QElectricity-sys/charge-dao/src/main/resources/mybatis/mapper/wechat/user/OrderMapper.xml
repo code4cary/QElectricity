@@ -16,10 +16,11 @@
         <result column="POWER_BANK_ID" property="powerBankId" jdbcType="VARCHAR"/>
         <result column="BOX_CHARGING_ID" property="boxChargingId" jdbcType="VARCHAR"/>
         <result column="PAY_TIME" property="payTime" jdbcType="TIMESTAMP"/>
+        <result column="HAVE_SHOWED" property="haveShowed" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
     ID, AID, ORDER_NUM, CREATE_TIME, END_TIME, PAY_AMOUNT, PAY_STATUS, ORDER_TYPE, POWER_BANK_BORROW_PLACE, 
-    POWER_BANK_BACK_PLACE, POWER_BANK_STATUS, POWER_BANK_ID, BOX_CHARGING_ID, PAY_TIME
+    POWER_BANK_BACK_PLACE, POWER_BANK_STATUS, POWER_BANK_ID, BOX_CHARGING_ID, PAY_TIME,HAVE_SHOWED
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
@@ -36,12 +37,12 @@
       CREATE_TIME, END_TIME, PAY_AMOUNT, 
       PAY_STATUS, ORDER_TYPE, POWER_BANK_BORROW_PLACE, 
       POWER_BANK_BACK_PLACE, POWER_BANK_STATUS, POWER_BANK_ID, 
-      BOX_CHARGING_ID, PAY_TIME)
+      BOX_CHARGING_ID, PAY_TIME, HAVE_SHOWED)
     values (#{id,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{orderNum,jdbcType=VARCHAR}, 
       #{createTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{payAmount,jdbcType=VARCHAR}, 
       #{payStatus,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, #{powerBankBorrowPlace,jdbcType=VARCHAR}, 
       #{powerBankBackPlace,jdbcType=VARCHAR}, #{powerBankStatus,jdbcType=VARCHAR}, #{powerBankId,jdbcType=VARCHAR}, 
-      #{boxChargingId,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP})
+      #{boxChargingId,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}), #{haveShowed,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.charge.entity.po.wechat.user.Order">
         insert into t_order
@@ -88,6 +89,9 @@
             <if test="payTime != null">
                 PAY_TIME,
             </if>
+            <if test="haveShowed != null">
+                HAVE_SHOWED,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -131,6 +135,9 @@
             </if>
             <if test="payTime != null">
                 #{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="haveShowed != null">
+                #{haveShowed,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -176,6 +183,9 @@
             <if test="payTime != null">
                 PAY_TIME = #{payTime,jdbcType=TIMESTAMP},
             </if>
+            <if test="haveShowed != null">
+                HAVE_SHOWED = #{haveShowed,jdbcType=VARCHAR},
+            </if>
         </set>
         where ID = #{id,jdbcType=INTEGER}
     </update>
@@ -193,7 +203,8 @@
       POWER_BANK_STATUS = #{powerBankStatus,jdbcType=VARCHAR},
       POWER_BANK_ID = #{powerBankId,jdbcType=VARCHAR},
       BOX_CHARGING_ID = #{boxChargingId,jdbcType=VARCHAR},
-      PAY_TIME = #{payTime,jdbcType=TIMESTAMP}
+      PAY_TIME = #{payTime,jdbcType=TIMESTAMP},
+      HAVE_SHOWED = #{haveShowed,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
     <select id="selectAll" resultMap="BaseResultMap" parameterType="com.charge.entity.po.wechat.user.Order">
@@ -525,6 +536,32 @@
             t_account.UID = t_user.ID AND
             t_order.AID = t_account.ID AND
             t_order.POWER_BANK_STATUS = '0'
+        </where>
+    </select>
+
+    <!--查询用户归归还成功,但是未支付的订单-->
+    <select id="findBackPowerBankInfo" parameterType="String" resultMap="BaseResultMap">
+        SELECT
+        t_order.ID,
+        t_order.ORDER_NUM,
+        t_order.CREATE_TIME,
+        t_order.END_TIME,
+        t_order.PAY_AMOUNT,
+        t_order.POWER_BANK_BORROW_PLACE,
+        t_order.POWER_BANK_BACK_PLACE
+        FROM
+        t_order,
+        t_account,
+        t_user
+        <where>
+            <if test="skey != null">
+                t_user.SKEY = #{skey} AND
+            </if>
+            t_account.UID = t_user.ID AND
+            t_order.AID = t_account.ID AND
+            t_order.ORDER_TYPE = '0' AND
+            t_order.POWER_BANK_STATUS = '1' AND
+            t_order.PAY_STATUS = '0'
         </where>
     </select>
 

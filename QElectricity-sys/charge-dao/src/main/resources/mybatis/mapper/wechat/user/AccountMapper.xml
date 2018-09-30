@@ -158,8 +158,8 @@
     </select>
 
     <!--获取用户的账户id-->
-    <select id="findAIDBySkey" resultMap="BaseResultMap" parameterType="String">
-        SELECT t_account.AID
+    <select id="findAIDBySkey" resultType="Integer" parameterType="String">
+        SELECT t_account.ID
         FROM
         t_account,
         t_user

@@ -41,29 +41,28 @@ public class ScanBorrowController extends BaseController {
 
         //获取用户账户信息
         Account account = userService.findAccountInfo(queryData.get("skey"));
-        if (account.getDepositStatus() == null) {
-            return returnFailed(null,"当前用户没交押金");
+        if (account == null || account.getDepositStatus() == null) {
+            return returnFailed(null, "当前用户没交押金");
         }
 
         //判断用户是否有未完成支付的订单
         Order orderUnpaid = orderService.findOrderUnpaid(queryData.get("skey"));
-        if (orderUnpaid != null) {
+        if (orderUnpaid != null && orderUnpaid.getPayStatus().equals("0")) {
             returnFailed(orderUnpaid, "用户有未完成支付的订单");
 
         }
 
         //判断用户是否有正在进行的订单
         Order orderUndone = orderService.findOrderDoing(queryData.get("skey"));
-        if (orderUndone != null) {
-            returnFailed(orderUndone,"用户是否有正在进行的订单");
+        if (orderUndone != null && orderUndone.getPowerBankStatus().equals("0")) {
+            returnFailed(orderUndone, "用户有正在进行的订单");
         }
 
-        //判断当前用户想借充电宝的充电箱是否有可借的充电宝(需要判断充电箱是否在线并是否有可借的充电宝),
-        //如果有,请求设备打开一个窗口位,并返回充电宝编号给后台
+        //查询当前充电箱是否可借充电宝
         String powerBankNO = chargingBoxService.findCanBorrow(queryData);
 
         log.info("over");
-        return powerBankNO != null ? returnSuccess(null) : returnFailed(null,"当前充电箱无法借出充电宝");
+        return powerBankNO != null ? returnSuccess(powerBankNO) : returnFailed(null, "当前充电箱无法借出充电宝");
     }
 
 

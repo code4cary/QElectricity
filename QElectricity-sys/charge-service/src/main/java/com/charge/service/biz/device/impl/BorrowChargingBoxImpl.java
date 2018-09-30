@@ -37,7 +37,7 @@ public class BorrowChargingBoxImpl implements BorrowChargingBox {
         //将返回的数据封装成map
         Map<Object, Object> backDataMap = HttpUtil.strToMap(backData);
 
-        Object code = backDataMap.get("code");
+        Object code = backDataMap.get("code");//设备返回状态码
         if (!code.equals("1")) {//请求失败
             return null;
         }

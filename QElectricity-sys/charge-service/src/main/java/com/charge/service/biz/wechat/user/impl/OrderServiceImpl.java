@@ -157,7 +157,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, Integer> implements
      */
     @Override
     public Order findOrderUnpaid(String skey) {
-        Order order = orderMapper.findOrderUndone(skey);
+        Order order = orderMapper.findOrderUnpaid(skey);
         return order;
     }
 

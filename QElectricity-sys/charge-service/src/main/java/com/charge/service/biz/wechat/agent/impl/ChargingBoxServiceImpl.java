@@ -14,6 +14,7 @@ import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
 import com.charge.service.biz.device.BorrowChargingBox;
+import com.charge.service.biz.util.SysoUtil;
 import com.charge.service.biz.wechat.agent.ChargingBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -166,28 +167,44 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         //建立设备与商户的关系
         int updateRow = chargingBoxMapper.updateDeviceSID(queryData);
 
-        return updateRow>0?true:false;
+        return updateRow > 0 ? true : false;
     }
 
     /**
      * 通过skey,deviceNo,判断当前用户扫描的充电箱有可借的充电宝
+     *
      * @param queryData
      * @return
      */
     @Override
     public String findCanBorrow(Map<String, String> queryData) {
-        //判断当前充电箱是否在线以及手否有可借的充电宝
-        ChargingBox chargingBox = chargingBoxMapper.findDeviceInfo(queryData.get("deviceNO"));
-        if(!chargingBox.getStatus().equals(1) || chargingBox.getCanBorrowNum().equals(0)) {
-                return null;
+        //查询当前用户想借充电宝的充电箱是否有可借的充电宝(需要判断充电箱是否在线并是否有可借的充电宝),
+        //如果有,请求设备打开一个窗口位,并返回充电宝编号给后台
+        ChargingBox chargingBox = chargingBoxMapper.findDeviceStatusAndBorrowNum(queryData.get("deviceNO"));
+        if ((!chargingBox.getStatus().equals("1")) || chargingBox.getCanBorrowNum().equals("0")) {
+            return null;
         }
 
         //请求设备打开指定充电箱的一个充电宝,并获取设备返回的充电宝编号信息,然后返还给后台
-        Map<Object, Object> backDataMap = borrowChargingBox.borrowChargingBox(chargingBox.getBoxCustomerId());
+        //Map<Object, Object> backDataMap = borrowChargingBox.borrowChargingBox(chargingBox.getBoxCustomerId());
+
+        /******************测试数据***********************/
+        Map<Object, Object> backDataMap = new HashMap<>();
+        backDataMap.put("powerBankID","pb20180930");
+        backDataMap.put("lockID","lid123456789");
+        /******************测试数据***********************/
+
+        if (backDataMap == null) {//当前设备无法借出充电宝
+            return null;
+        }
         String powerBankNO = (String) backDataMap.get("powerBankID");
 
         //判断当前充电宝是否在数据库有记录,如果有,更新其相应信息;如果没有,为其建立数据库记录
-        PowerBank powerBank = powerBankMapper.findPowerBank(powerBankNO);
+        PowerBank powerBank= powerBankMapper.findPowerBank(powerBankNO);
+        if (powerBank == null) {
+            powerBank = new PowerBank();
+        }
+
         //为当前充电宝建立/更新记录
         powerBank.setLockId((String) backDataMap.get("lockID"));
         powerBank.setLockStatus("0");//0关闭，1开启
@@ -217,17 +234,17 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         order.setPayStatus("0");//0:未支付
         order.setOrderType("0");//0：借充电宝订单
         //查询用户借充电宝所在商户的地址
-        Shop shop = shopMapper.findShopAddress(chargingBox.getBoxCustomerId());
+        Shop shop = shopMapper.findShopAddress(queryData.get("deviceNO"));
         order.setPowerBankStatus(shop.getAddress());
         order.setPowerBankStatus("0");//0：租借中
         order.setPowerBankId(powerBankNO);//这里应该是充电宝的编号
-        order.setBoxChargingId(chargingBox.getBoxCustomerId());//这里应该是充电箱的编号
+        order.setBoxChargingId(queryData.get("deviceNO"));//这里应该是充电箱的编号
         //插入数据库
         orderMapper.insertSelective(order);
 
         return powerBankNO;
     }
-    
+
     public static void main(String... args) {
         String uuid = UUID.randomUUID().toString().replaceAll("-", "").toLowerCase();
         System.out.println(uuid);
