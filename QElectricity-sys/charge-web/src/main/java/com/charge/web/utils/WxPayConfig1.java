@@ -3,7 +3,7 @@ package com.charge.web.utils;
 /**
  * Created by vincent on 22/09/2018.
  */
-public class WxPayConfig {
+public class WxPayConfig1 {
 
     //小程序appid
     public static final String appid = "wx7d498f7ffd96b40e";

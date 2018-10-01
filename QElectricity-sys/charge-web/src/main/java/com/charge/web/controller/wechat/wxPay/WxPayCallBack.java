@@ -1,7 +1,7 @@
 package com.charge.web.controller.wechat.wxPay;
 
 import com.charge.web.utils.PayUtil;
-import com.charge.web.utils.WxPayConfig;
+import com.charge.web.utils.WxPayConfig1;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +48,7 @@ public class WxPayCallBack {
             //验证签名是否正确
             Map<String, String> validParams = PayUtil.paraFilter(map);  //回调验签时需要去除sign和空值参数
             String validStr = PayUtil.createLinkString(validParams);//把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
-            String sign = PayUtil.sign(validStr, WxPayConfig.key, "utf-8").toUpperCase();//拼装生成服务器端验证的签名
+            String sign = PayUtil.sign(validStr, WxPayConfig1.key, "utf-8").toUpperCase();//拼装生成服务器端验证的签名
             //根据微信官网的介绍，此处不仅对回调的参数进行验签，还需要对返回的金额与系统订单的金额进行比对等
             if(sign.equals(map.get("sign"))){
                 /**此处添加自己的业务逻辑代码start**/

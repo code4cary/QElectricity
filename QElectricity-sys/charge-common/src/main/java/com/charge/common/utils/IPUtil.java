@@ -1,4 +1,4 @@
-package com.charge.web.utils;
+package com.charge.common.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
