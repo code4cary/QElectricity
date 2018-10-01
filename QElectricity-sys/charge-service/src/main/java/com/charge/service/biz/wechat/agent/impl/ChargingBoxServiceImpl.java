@@ -15,7 +15,7 @@ import com.charge.entity.po.wechat.agent.Agent;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.device.SysToSocket;
+import com.charge.service.biz.device.SysToSocketService;
 import com.charge.service.biz.wechat.agent.ChargingBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
     private ChargingBoxMapper chargingBoxMapper;
 
     @Autowired
-    private SysToSocket borrowChargingBox;
+    private SysToSocketService borrowChargingBox;
 
     @Autowired
     private OrderMapper orderMapper;

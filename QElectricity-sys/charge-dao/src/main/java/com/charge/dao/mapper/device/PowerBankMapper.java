@@ -12,4 +12,6 @@ public interface PowerBankMapper extends BaseMapper<PowerBank, Integer> {
     String findSNById(@Param("id") String id);
 
     PowerBank findPowerBank(@Param("powerBankNO") String powerBankNO);
+
+    int updateLockStatusByLockID(@Param("lockID") String lockID);
 }

@@ -67,7 +67,7 @@ public class CreateShopController extends BaseController {
             map.put("id",shop.getId()+"");
         }else if(StringUtils.isNotEmpty(createShopDO.getContractPhoto())){
             Shop shop = shopService.selectByPrimaryKey(Integer.parseInt(createShopDO.getId()));
-            if(null == shop){
+            if(shop == null ){
                 return returnFailed(null,"不存在该商户的信息");
             }
             //更新操作

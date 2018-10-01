@@ -1,6 +1,6 @@
 package com.charge.service.biz.device.impl;
 
-import com.charge.service.biz.device.SysToSocket;
+import com.charge.service.biz.device.SysToSocketService;
 import com.charge.service.biz.util.HttpUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +15,7 @@ import java.util.Map;
  */
 @Service
 @PropertySource(value = "classpath:device.properties")
-public class SysToSocketImpl implements SysToSocket {
+public class SysToSocketImpl implements SysToSocketService {
 
     @Value("baseUrl")
     private String BaseUrl;

@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Created by vincent on 29/09/2018.
  */
-public interface SysToSocket {
+public interface SysToSocketService {
 
     Map<Object, Object> borrowChargingBox(String chargingBoxNo);
 

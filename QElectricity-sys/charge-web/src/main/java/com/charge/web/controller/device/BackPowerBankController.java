@@ -1,12 +1,10 @@
 package com.charge.web.controller.device;
 
-import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.device.PowerBankMapper;
 import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
 import com.charge.entity.model.CommonOutputDO;
-import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.device.PowerBank;
 import com.charge.entity.po.device.PriceTypeCB;
 import com.charge.entity.po.wechat.agent.Shop;
@@ -24,15 +22,12 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Created by vincent on 30/09/2018.
+ * Created by vincent on 01/10/2018.
  */
 @Slf4j
 @RestController
 @RequestMapping("device/")
-public class SocketToSys extends BaseController {
-
-    @Autowired
-    private ChargingBoxMapper chargingBoxMapper;
+public class BackPowerBankController extends BaseController {
 
     @Autowired
     private PowerBankMapper powerBankMapper;
@@ -58,14 +53,10 @@ public class SocketToSys extends BaseController {
      * @json {"powerBank":{"powerBankID":"","powerBankEnergy":""}}
      * {"chargingBox":{"chargingBoxNo":"","lockID":""}}
      */
-    @RequestMapping(value = "backPowerBank")
     @Transactional
+    @RequestMapping(value = "backPowerBank")
     public CommonOutputDO<Object> backPowerBank(Map<String, Map<String, String>> queryData) {
-        if (StringUtils.isEmpty(queryData) ||
-                StringUtils.isEmpty(queryData.get("powerBank").get("powerBankID")) ||
-                StringUtils.isEmpty(queryData.get("powerBank").get("powerBankEnergy")) ||
-                StringUtils.isEmpty(queryData.get("chargingBox").get("chargingBoxNo")) ||
-                StringUtils.isEmpty(queryData.get("chargingBox").get("lockID"))) {
+        if (!validateParam(queryData)) {
             return returnFailed(null, "参数为空异常");
         }
 
@@ -132,7 +123,9 @@ public class SocketToSys extends BaseController {
             //获取充电宝编号
             PowerBank powerBank = powerBankMapper.findPowerBank(powerBankNO);
             powerBank.setLockId(lockID);
-            powerBank.setLockStatus("1");//充电宝锁位状态：0关闭，1开启  充电宝归还后锁位状态肯定是开启了
+            //充电宝锁位状态：0关闭，1开启  这里江南充电宝归还后的锁位设置为1.另外一个锁位失败的借口
+            //如果有对应着该用户借的充电宝锁位失败的数据的话,则将该充电宝的锁位状态更改为0
+            powerBank.setLockStatus("1");
             powerBank.setPbCapacity(powerBankEnergy);
             //充电宝总的使用时间
             Long totalUseTime = Long.valueOf(powerBank.getTotalUseTime()) + timeUseAmount;
@@ -150,75 +143,12 @@ public class SocketToSys extends BaseController {
         return returnSuccess(null);
     }
 
-    /**
-     * 充电箱充电宝状态变化主动上报接口
-     *
-     * @param data chargingBoxNo:充电箱的编号
-     *             canBorrowNum:用户可借的充电宝数量
-     *             canBackNum:用户可还的充电宝数量
-     * @return
-     */
-    @RequestMapping(value = "powerBankCountChanged")
-    public Map powerBankCountChanged(Map data) {
-        return null;
-    }
-
-
-    /**
-     * 充电箱登录接口
-     *
-     * @param queryData chargingBoxNo:充电箱的编号
-     *                  chargingBoxVersion:充电箱固件版本
-     * @return
-     * @json {"chargingBox":{"chargingBoxNo":"","chargingBoxVersion":""}}
-     */
-    @RequestMapping(value = "login")
-    public CommonOutputDO<Object> login(Map<String, Map<String, String>> queryData) {
+    private boolean validateParam(Map<String, Map<String, String>> queryData) {
         if (StringUtils.isEmpty(queryData) ||
+                StringUtils.isEmpty(queryData.get("powerBank").get("powerBankID")) ||
+                StringUtils.isEmpty(queryData.get("powerBank").get("powerBankEnergy")) ||
                 StringUtils.isEmpty(queryData.get("chargingBox").get("chargingBoxNo")) ||
-                StringUtils.isEmpty(queryData.get("chargingBox").get("chargingBoxVersion"))) {
-            return returnFailed(null, "参数为空异常");
-        }
-
-        log.info("充电箱登录后台系统...");
-        //获取参数
-        String chargingBoxNo = queryData.get("chargingBox").get("chargingBoxNo");
-        String chargingBoxVersion = queryData.get("chargingBox").get("chargingBoxVersion");
-
-        //判断数据库是否已经存在该充电箱的记录
-        ChargingBox chargingBox = chargingBoxMapper.findIsExistChargingBox(chargingBoxNo);
-
-        if (chargingBox != null) {//充电箱在数据库有记录
-            //更新数据数据库
-            chargingBox.setSoftwareVersion(chargingBoxVersion);
-            chargingBoxMapper.updateByPrimaryKeySelective(chargingBox);
-        } else {//充电箱在数据库无记录
-            chargingBox.setSoftwareVersion(chargingBoxVersion);
-            chargingBox.setCanBorrowNum(chargingBoxNo);
-            //为充电箱插入一条记录
-            chargingBoxMapper.insertSelective(chargingBox);
-        }
-
-        log.info("over...");
-        return returnSuccess(null);
-    }
-
-
-    /**
-     * 充电箱锁位归还失败接口
-     *
-     * @param data chargingBoxNo:充电箱的编号
-     *             lockID:归还失败的锁ID
-     * @return
-     */
-    @RequestMapping(value = "backBankError")
-    public Map backBankError(Map data) {
-        return null;
-    }
-
-
-    private boolean validateParam(Map<String, String> queryData) {
-        if (StringUtils.isEmpty(queryData.get("skey"))) {
+                StringUtils.isEmpty(queryData.get("chargingBox").get("lockID"))) {
             return false;
         }
         return true;

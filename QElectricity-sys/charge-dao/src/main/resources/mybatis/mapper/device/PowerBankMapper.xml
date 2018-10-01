@@ -236,6 +236,21 @@
                 t_power_bank.PB_CUSTOMER_ID = #{powerBankNO}
             </if>
         </where>
-
     </select>
+
+    <!--通过lockID更新充电宝的锁位状态以及充电宝锁位操作状态0-->
+    <update id="updateLockStatusByLockID" parameterType="String">
+        UPDATE t_power_bank
+        <set>
+            t_power_bank.LOCK_OPERATION_STATUS = '0',
+            t_power_bank.LOCK_STATUS = '0'
+            <where>
+                <if test="lockID != null">
+                    t_power_bank.LOCK_ID = #{lockID}
+                </if>
+            </where>
+        </set>
+    </update>
+
+
 </mapper>
