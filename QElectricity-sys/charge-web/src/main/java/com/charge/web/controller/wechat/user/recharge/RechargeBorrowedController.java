@@ -1,4 +1,4 @@
-package com.charge.web.controller.wechat.recharge;
+package com.charge.web.controller.wechat.user.recharge;
 
 import com.charge.entity.model.CommonOutputDO;
 import com.charge.web.controller.base.BaseController;
