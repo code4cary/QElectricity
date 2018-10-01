@@ -38,8 +38,8 @@ public class DeviceManageControllerTest extends BaseController {
         Map<String,String> queryDataMap = new HashMap<>();
         queryDataMap.put("agentId","123");
         queryDataMap.put("type","1");
-       // queryDataMap.put("statusRange","");
-       // queryDataMap.put("searchData","");
+       queryDataMap.put("statusRange","");
+       queryDataMap.put("searchData","");
 
         //查询代理商设备管理信息
         List<DeviceManage> deviceManageList = chargingBoxService.findDeviceManageInfo(queryDataMap);

@@ -136,7 +136,7 @@
             </if>
             <if test="modifyPriceDO.priceTypeCB.topPricePerDay != null">
                 ,
-                t_price_type_cb.TOP_PRICE_PER_DAY =  #{modifyPriceDO.priceTypeCB.topPricePerDay}
+                t_price_type_cb.TOP_PRICE_PER_DAY = #{modifyPriceDO.priceTypeCB.topPricePerDay}
             </if>
         </set>
         <where>
@@ -151,5 +151,21 @@
             t_charging_box.PT_ID = t_price_type_cb.ID
         </where>
     </update>
+
+
+    <!--根据充电箱编号查询价格策略表-->
+    <select id="findPriceTypeCBbyChargingBoxNo" parameterType="String" resultMap="BaseResultMap">
+        SELECT t_price_type_cb.*
+        FROM
+        t_price_type_cb,
+        t_charging_box
+        <where>
+            <if test="chargingBoxNo != null">
+                t_charging_box.BOX_CUSTOMER_ID = #{chargingBoxNo} AND
+            </if>
+            t_charging_box.PT_ID = t_price_type_cb.ID
+        </where>
+
+    </select>
 
 </mapper>

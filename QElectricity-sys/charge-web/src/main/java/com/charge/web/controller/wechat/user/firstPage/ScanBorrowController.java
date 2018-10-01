@@ -3,6 +3,7 @@ package com.charge.web.controller.wechat.user.firstPage;
 import com.charge.entity.model.CommonOutputDO;
 import com.charge.entity.po.wechat.user.Account;
 import com.charge.entity.po.wechat.user.Order;
+import com.charge.entity.po.wechat.user.User;
 import com.charge.service.biz.wechat.agent.ChargingBoxService;
 import com.charge.service.biz.wechat.user.OrderService;
 import com.charge.service.biz.wechat.user.UserService;
@@ -49,7 +50,6 @@ public class ScanBorrowController extends BaseController {
         Order orderUnpaid = orderService.findOrderUnpaid(queryData.get("skey"));
         if (orderUnpaid != null && orderUnpaid.getPayStatus().equals("0")) {
             returnFailed(orderUnpaid, "用户有未完成支付的订单");
-
         }
 
         //判断用户是否有正在进行的订单
@@ -60,6 +60,12 @@ public class ScanBorrowController extends BaseController {
 
         //查询当前充电箱是否可借充电宝
         String powerBankNO = chargingBoxService.findCanBorrow(queryData);
+
+        /**更新用户的APP_STATUS为租借态**/
+        if (powerBankNO != null) {
+           User user = userService.findUserBySkey(queryData.get("skey"));
+            user.setAppStatus("1");
+        }
 
         log.info("over");
         return powerBankNO != null ? returnSuccess(powerBankNO) : returnFailed(null, "当前充电箱无法借出充电宝");

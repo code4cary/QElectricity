@@ -18,7 +18,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RequestMapping("wechat/agent/firstPage/shopManage/deleteShop")
-public class DeleteShopController extends BaseController{
+public class DeleteShopController extends BaseController {
 
     @Autowired
     private ShopService shopService;
@@ -35,13 +35,13 @@ public class DeleteShopController extends BaseController{
         int deleteRow = shopService.deleteByPrimaryKey(Integer.valueOf(queryData.get("shopID")));
 
         log.info("over");
-        return deleteRow>0?returnSuccess(null):
-                returnFailed(null,"删除商户失败");
+        return deleteRow > 0 ? returnSuccess(null) :
+                returnFailed(null, "删除商户失败");
     }
 
     private boolean validateParam(Map<String, String> queryData) {
         if (StringUtils.isEmpty(queryData.get("agentID")) ||
-                StringUtils.isEmpty(queryData.get("shopID"))){
+                StringUtils.isEmpty(queryData.get("shopID"))) {
             return false;
         }
         return true;

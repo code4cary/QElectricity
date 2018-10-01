@@ -6,10 +6,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by vincent on 27/09/2018.
@@ -22,20 +21,17 @@ public class DeleteShopControllerTest {
 
     }
 
-    @Autowired
-    private ShopService shopService;
-
     @Test
+    @Rollback
+    @Transactional//通常我们单元测试为了保证每个测试之间的数据独立，会使用@Rollback注解让每个单元测试都能在结束时回滚
     public void testDeleteShop() throws Exception {
-
-        DeleteShopController deleteShopController = new DeleteShopController();
-        Map<String,String> map = new HashMap<>();
-        map.put("agentID","1");
-        map.put("shopID","8");
-        System.out.println(map);
 
         int i = shopService.deleteByPrimaryKey(1);
         System.out.println(i);
 
     }
+
+
+    @Autowired
+    private ShopService shopService;
 }

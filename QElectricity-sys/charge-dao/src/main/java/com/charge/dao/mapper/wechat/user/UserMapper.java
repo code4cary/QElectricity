@@ -26,4 +26,6 @@ public interface UserMapper extends BaseMapper<User, Integer> {
     String findUserOpenIdBySkey(@Param("skey") String skey);
 
     Integer findUserIdBySkey(@Param("skey") String skey9876543210);
+
+    User findUserBySkey(@Param("skey") String skey);
 }

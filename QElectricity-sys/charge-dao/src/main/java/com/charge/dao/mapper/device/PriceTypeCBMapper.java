@@ -14,4 +14,6 @@ public interface PriceTypeCBMapper extends BaseMapper<PriceTypeCB, Integer> {
     PriceTypeCB findPriceTypeCBByCbId(@Param("cbId") Integer cb_id);
 
     int modifyPrice(@Param("modifyPriceDO") ModifyPriceTypeCBDO modifyPriceDO);
+
+    PriceTypeCB findPriceTypeCBbyChargingBoxNo(@Param("chargingBoxNo") String chargingBoxNo);
 }

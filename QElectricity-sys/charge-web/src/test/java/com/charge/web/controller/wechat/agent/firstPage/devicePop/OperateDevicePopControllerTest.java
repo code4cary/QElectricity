@@ -37,7 +37,7 @@ public class OperateDevicePopControllerTest extends BaseController{
         Map<String,Object> queryDataMap = new HashMap<>();
         queryDataMap.put("agentId","123");
         queryDataMap.put("operateType","1");
-        queryDataMap.put("deviceNO","123");
+        queryDataMap.put("deviceNO","MC101710123451");
         List<String> windowList = new ArrayList<>();
         windowList.add("1");
         windowList.add("2");

@@ -49,7 +49,7 @@ public class ShopManageController extends BaseController {
         queryDataMap.put("type", type);
 
         //查询代理商商户管理页信息
-        List<ShopManage> shopManageList = shopService.findShopManageInfo(queryDataMap);
+        List<ShopManage> shopManageList =  shopService.findShopManageInfo(queryDataMap);
 
         log.info("over");
         return returnSuccess(shopManageList);

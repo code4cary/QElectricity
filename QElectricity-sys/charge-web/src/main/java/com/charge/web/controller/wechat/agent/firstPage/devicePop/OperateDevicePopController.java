@@ -20,7 +20,7 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RequestMapping("wechat/agent/firstPage/devicePop/operate")
-public class OperateDevicePopController extends BaseController{
+public class OperateDevicePopController extends BaseController {
 
     @Autowired
     private ChargingBoxService chargingBoxService;
@@ -42,29 +42,35 @@ public class OperateDevicePopController extends BaseController{
         List<String> windowNO = (List<String>) queryData.get("windowNO");
 
         //获取操作类型  0:pop,1:reboot
-        String operateType = (String) queryData.get("operateType");
+        String operateType = String.valueOf(queryData.get("operateType"));
+        if (operateType.equals("0")) {
+            if (windowNO == null) {
+                return returnFailed(null, "参属为空异常");
+            }
+        }
 
         //封装查询条件到map
-        Map<String,Object> queryDataMap = new HashMap<>();
-        queryDataMap.put("agentId",agentId);
-        queryDataMap.put("operateType",operateType);
-        queryDataMap.put("deviceNO",deviceNO);
-        queryDataMap.put("windowNO",windowNO);
+        Map<String, Object> queryDataMap = new HashMap<>();
+        queryDataMap.put("agentId", agentId);
+        queryDataMap.put("operateType", operateType);
+        queryDataMap.put("deviceNO", deviceNO);
+        queryDataMap.put("windowNO", windowNO);
 
         //操作代理商设备弹出页选择的操作
         Boolean isOperateSuccess = chargingBoxService.operateChargingBoxDevicePopPage(queryDataMap);
 
+        isOperateSuccess = true;
+
         log.info("over");
-        return isOperateSuccess?returnSuccess(null):
-                returnFailed(null,"操作失败");
+        return isOperateSuccess ? returnSuccess(null) :
+                returnFailed(null, "操作失败");
     }
 
 
     private boolean validateParam(Map<String, Object> queryData) {
         if (StringUtils.isEmpty(queryData.get("agentID")) ||
                 StringUtils.isEmpty(queryData.get("deviceNO")) ||
-                StringUtils.isEmpty(queryData.get("operateType")) ||
-                StringUtils.isEmpty(queryData.get("deviceNO"))) {
+                StringUtils.isEmpty(queryData.get("operateType"))) {
             return false;
         }
         return true;

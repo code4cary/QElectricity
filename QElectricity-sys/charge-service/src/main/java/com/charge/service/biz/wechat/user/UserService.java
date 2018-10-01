@@ -37,4 +37,6 @@ public interface UserService extends BaseService<User, Integer> {
     Order findBackPowerBankInfo(String skey);
 
     void updateOrderHaveShowed(Order orderUpdate);
+
+    User findUserBySkey(String skey);
 }

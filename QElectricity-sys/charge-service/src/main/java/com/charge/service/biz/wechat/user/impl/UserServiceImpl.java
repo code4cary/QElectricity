@@ -291,4 +291,15 @@ public class UserServiceImpl extends BaseServiceImpl<User, Integer> implements U
         orderMapper.updateByPrimaryKeySelective(orderUpdate);
     }
 
+    /**
+     * 根据skey查询用户
+     * @param skey
+     * @return
+     */
+    @Override
+    public User findUserBySkey(String skey) {
+        User user = userMapper.findUserBySkey(skey);
+        return user;
+    }
+
 }

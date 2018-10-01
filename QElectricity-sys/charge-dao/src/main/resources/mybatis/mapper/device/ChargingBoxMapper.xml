@@ -360,7 +360,9 @@
             t_shop.AG_ID = t_agent.ID AND
             t_charging_box.S_ID = t_shop.ID
             <if test="queryDataMap.statusRange != null">
-                AND #{queryDataMap.statusRange} = t_charging_box.STATUS
+                <if test="queryDataMap.statusRange != ''">
+                    AND #{queryDataMap.statusRange} = t_charging_box.STATUS
+                </if>
             </if>
             <if test="queryDataMap.searchData != null">
                 AND
@@ -465,16 +467,16 @@
 
     <!--获取充电宝可借可还数量-->
     <select id="findBorrowBackNum" resultMap="BaseResultMap" parameterType="String">
-          SELECT
-            CAN_BORROW_NUM,
-            CAN_BACK_NUM
-            FROM
-            t_charging_box
-            <where>
-                <if test="chargingBoxNO != null">
-                    t_charging_box.BOX_CUSTOMER_ID = #{chargingBoxNO}
-                </if>
-            </where>
+        SELECT
+        CAN_BORROW_NUM,
+        CAN_BACK_NUM
+        FROM
+        t_charging_box
+        <where>
+            <if test="chargingBoxNO != null">
+                t_charging_box.BOX_CUSTOMER_ID = #{chargingBoxNO}
+            </if>
+        </where>
     </select>
 
     <!--查询指定设备的运行状态-->
@@ -503,5 +505,19 @@
             </if>
         </where>
     </select>
+
+    <!--根据充电箱编号,判断数据库是否存在该充电箱记录,返回充电箱id-->
+    <select id="findIsExistChargingBox" parameterType="String" resultMap="BaseResultMap">
+        SELECT t_charging_box.ID
+        FROM
+        t_charging_box
+        <where>
+            <if test="chargingBoxNo != null">
+                t_charging_box.BOX_CUSTOMER_ID = #{chargingBoxNo}
+            </if>
+        </where>
+    </select>
+
+    <!---->
 
 </mapper>

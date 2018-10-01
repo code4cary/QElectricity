@@ -568,4 +568,20 @@
         </where>
     </select>
 
+    <!--根据充电宝编号查询用户当前正在进行的订单信息-->
+    <select id="findOrderByPowerBankNO" parameterType="String" resultMap="BaseResultMap">
+        SELECT t_order.*
+        FROM
+        t_order,
+        t_power_bank
+        <where>
+            <if test="powerBankNO !=null">
+                t_order.POWER_BANK_ID = #{powerBankNO} AND
+            </if>
+            t_order.PAY_STATUS = '0' AND
+            t_order.ORDER_TYPE = '0' AND
+            t_order.POWER_BANK_STATUS = '0'
+        </where>
+    </select>
+
 </mapper>

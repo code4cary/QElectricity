@@ -2,6 +2,7 @@ package com.charge.service.biz.wechat.agent.impl;
 
 import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.device.PowerBankMapper;
+import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.dao.mapper.wechat.user.AccountMapper;
 import com.charge.dao.mapper.wechat.user.OrderMapper;
@@ -10,11 +11,11 @@ import com.charge.entity.po.back.wechat.agent.DeviceManage;
 import com.charge.entity.po.back.wechat.agent.DevicePop;
 import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.device.PowerBank;
+import com.charge.entity.po.wechat.agent.Agent;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.Order;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.device.BorrowChargingBox;
-import com.charge.service.biz.util.SysoUtil;
+import com.charge.service.biz.device.SysToSocket;
 import com.charge.service.biz.wechat.agent.ChargingBoxService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
     private ChargingBoxMapper chargingBoxMapper;
 
     @Autowired
-    private BorrowChargingBox borrowChargingBox;
+    private SysToSocket borrowChargingBox;
 
     @Autowired
     private OrderMapper orderMapper;
@@ -48,6 +49,9 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
     @Autowired
     private AccountMapper accountMapper;
 
+    @Autowired
+    private AgentMapper agentMapper;
+
 
     @Override
     public void initBaseMapper() {
@@ -63,7 +67,6 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
     @Override
     public List<DeviceManage> findDeviceManageInfo(Map<String, String> queryDataMap) {
         List<DeviceManage> deviceManageList = chargingBoxMapper.findDeviceManageInfo(queryDataMap);
-
         return deviceManageList;
     }
 
@@ -178,14 +181,15 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
      */
     @Override
     public String findCanBorrow(Map<String, String> queryData) {
-        //查询当前用户想借充电宝的充电箱是否有可借的充电宝(需要判断充电箱是否在线并是否有可借的充电宝),
+        /**查询当前用户想借充电宝的充电箱是否有可借的充电宝(需要判断充电箱是否在线并是否有可借的充电宝)**/
+
         //如果有,请求设备打开一个窗口位,并返回充电宝编号给后台
         ChargingBox chargingBox = chargingBoxMapper.findDeviceStatusAndBorrowNum(queryData.get("deviceNO"));
         if ((!chargingBox.getStatus().equals("1")) || chargingBox.getCanBorrowNum().equals("0")) {
             return null;
         }
 
-        //请求设备打开指定充电箱的一个充电宝,并获取设备返回的充电宝编号信息,然后返还给后台
+        /**请求设备打开指定充电箱的一个充电宝,并获取设备返回的充电宝编号信息,然后返还给后台**/
         //Map<Object, Object> backDataMap = borrowChargingBox.borrowChargingBox(chargingBox.getBoxCustomerId());
 
         /******************测试数据***********************/
@@ -199,7 +203,7 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         }
         String powerBankNO = (String) backDataMap.get("powerBankID");
 
-        //判断当前充电宝是否在数据库有记录,如果有,更新其相应信息;如果没有,为其建立数据库记录
+        /**判断当前充电宝是否在数据库有记录,如果有,更新其相应信息;如果没有,为其建立数据库记录**/
         PowerBank powerBank= powerBankMapper.findPowerBank(powerBankNO);
         if (powerBank == null) {
             powerBank = new PowerBank();
@@ -224,7 +228,7 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
             powerBankMapper.updateByPrimaryKeySelective(powerBank);
         }
 
-        //为用户创建新的订单
+        /**为用户创建新的订单**/
         //获取用户的账户id
         Integer aid = accountMapper.findAIDBySkey(queryData.get("skey"));
         Order order = new Order();
@@ -241,6 +245,14 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         order.setBoxChargingId(queryData.get("deviceNO"));//这里应该是充电箱的编号
         //插入数据库
         orderMapper.insertSelective(order);
+
+        /**更新代理商总的订单数:加1**/
+        //查询该充电箱属于哪个代理商并把该代理商的id返回
+        ChargingBox chargingBox1 = chargingBoxMapper.findIsExistChargingBox(queryData.get("deviceNO"));
+        Shop shop1 = shopMapper.findShopByChargingBoxNO(chargingBox1.getBoxCustomerId());
+        Agent agent = agentMapper.selectByPrimaryKey(shop1.getAgId());
+        agent.setOrderNum(String.valueOf(Integer.valueOf(agent.getOrderNum()) + 1));
+        agentMapper.updateByPrimaryKeySelective(agent);
 
         return powerBankNO;
     }

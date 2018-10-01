@@ -45,4 +45,6 @@ public interface OrderMapper extends BaseMapper<Order, Integer> {
     int createOrder(@Param("skey") String skey);
 
     Order findBackPowerBankInfo(@Param("skey") String skey);
+
+    Order findOrderByPowerBankNO(@Param("powerBankNO") String powerBankNO);
 }

@@ -34,4 +34,6 @@ public interface ChargingBoxMapper extends BaseMapper<ChargingBox, Integer> {
 
 
     ChargingBox findDeviceStatusAndBorrowNum(@Param("deviceNO") String deviceNO);
+
+    ChargingBox findIsExistChargingBox(@Param("chargingBoxNo") String chargingBoxNo);
 }

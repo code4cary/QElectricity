@@ -28,6 +28,7 @@ public class DeviceManageController extends BaseController {
 
     @RequestMapping
     public CommonOutputDO<Object> getDeviceManageInfo(@RequestBody(required = true) Map<String, String> queryData) {
+        System.out.println(queryData);
         if (!validateParam(queryData)) {
             return returnFailed(null, "参属为空异常");
         }
@@ -46,11 +47,11 @@ public class DeviceManageController extends BaseController {
         String searchData = queryData.get("searchData");
 
         //封装查询条件到map
-        Map<String,String> queryDataMap = new HashMap<>();
-        queryDataMap.put("agentId",agentId);
-        queryDataMap.put("type",type);
-        queryDataMap.put("statusRange",statusRange);
-        queryDataMap.put("searchData",searchData);
+        Map<String, String> queryDataMap = new HashMap<>();
+        queryDataMap.put("agentId", agentId);
+        queryDataMap.put("type", type);
+        queryDataMap.put("statusRange", statusRange);
+        queryDataMap.put("searchData", searchData);
 
         //查询代理商设备管理信息
         List<DeviceManage> deviceManageList = chargingBoxService.findDeviceManageInfo(queryDataMap);
@@ -62,9 +63,7 @@ public class DeviceManageController extends BaseController {
 
     private boolean validateParam(Map<String, String> queryData) {
         if (StringUtils.isEmpty(queryData.get("agentID")) ||
-                StringUtils.isEmpty(queryData.get("type")) ||
-                StringUtils.isEmpty(queryData.get("statusRange")) ||
-                StringUtils.isEmpty(queryData.get("searchData"))) {
+                StringUtils.isEmpty(queryData.get("type"))) {
             return false;
         }
         return true;
