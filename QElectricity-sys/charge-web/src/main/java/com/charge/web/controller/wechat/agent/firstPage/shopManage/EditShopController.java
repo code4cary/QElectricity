@@ -1,8 +1,8 @@
 package com.charge.web.controller.wechat.agent.firstPage.shopManage;
 
 import com.charge.entity.model.CommonOutputDO;
-import com.charge.entity.po.device.PriceTypeCB;
-import com.charge.service.biz.wechat.agent.ChargingBoxService;
+import com.charge.entity.po.wechat.agent.Shop;
+import com.charge.service.biz.wechat.user.ShopService;
 import com.charge.web.controller.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,31 +18,34 @@ import java.util.Map;
  */
 @Slf4j
 @RestController
-@RequestMapping("wechat/agent/firstPage/shopManage/modifyPrice")
-public class ModifyPriceController extends BaseController {
+@RequestMapping("wechat/agent/firstPage/shopManage/editShop")
+public class EditShopController extends BaseController {
 
     @Autowired
-    private ChargingBoxService chargingBoxService;
+    private ShopService shopService;
 
     @RequestMapping
-    public CommonOutputDO<Object> getPriceInfo(@RequestBody(required = true) Map<String, String> queryData) {
+    public CommonOutputDO<Object> editShop(@RequestBody(required = true) Map<String, String> queryData) throws Exception {
         if (!validateParam(queryData)) {
-            return returnFailed(null, "参属中存在空参异常");
+            returnFailed(null, "没有商户id");
         }
-        log.info("代理商修改充电箱大页面接口...");
+        log.info("修改商户信息之大页面接口...");
 
-        PriceTypeCB priceTypeCB = chargingBoxService.findPriceInfo(queryData);
+        Shop shop = shopService.findShopInfoByShopId(queryData.get("shopID"));
 
         log.info("over...");
-        return priceTypeCB == null?returnFailed(null,"没用对应的价格策略表"):returnSuccess(priceTypeCB);
+        return shop == null?returnFailed(null,"没有该商户信息"):returnSuccess(shop);
     }
 
     private boolean validateParam(Map<String, String> queryData) {
         if (StringUtils.isEmpty(queryData.get("agentID")) ||
-                StringUtils.isEmpty(queryData.get("shopID"))) {
+                StringUtils.isEmpty(queryData.get("shopID"))
+                ) {
             return false;
         }
         return true;
     }
-
 }
+
+
+

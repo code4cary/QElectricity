@@ -31,7 +31,6 @@ public class MyAccountControllerTest {
     @Test
     public void testGetMyAccountInfo() throws Exception {
 
-
         Map<String, String> queryData = new HashMap<>();
         queryData.put("agentID","123");
 

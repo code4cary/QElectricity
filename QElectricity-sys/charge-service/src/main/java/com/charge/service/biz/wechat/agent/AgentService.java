@@ -32,4 +32,6 @@ public interface AgentService extends BaseService<Agent,Integer> {
     MyAccount getMyAccountInfo(Map<String, String> queryData);
 
     List<WithdrawalRecord> findAgentWithdrawalRecord(Map<String, Object> queryDataMap);
+
+    Agent findAgentByAgentIDNum(String id_num);
 }

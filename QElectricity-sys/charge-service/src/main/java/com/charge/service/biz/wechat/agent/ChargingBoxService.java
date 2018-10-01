@@ -3,6 +3,7 @@ package com.charge.service.biz.wechat.agent;
 import com.charge.entity.po.back.wechat.agent.DeviceManage;
 import com.charge.entity.po.back.wechat.agent.DevicePop;
 import com.charge.entity.po.device.ChargingBox;
+import com.charge.entity.po.device.PriceTypeCB;
 import com.charge.service.biz.base.BaseService;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface ChargingBoxService extends BaseService<ChargingBox,Integer> {
     Boolean AddDevice(Map<String, String> queryData);
 
     String findCanBorrow(Map<String, String> queryData);
+
+    PriceTypeCB findPriceInfo(Map<String, String> queryData);
 }

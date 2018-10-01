@@ -127,16 +127,16 @@
     <update id="modifyPrice" parameterType="com.charge.entity.model.ModifyPriceTypeCBDO">
         update t_price_type_cb,t_agent,t_charging_box
         <set>
-            <if test="modifyPriceDO.priceTypeCB.freeTime != null">
-                t_price_type_cb.FREE_TIME = #{modifyPriceDO.priceTypeCB.freeTime}
+            <if test="modifyPriceDO.freeTime != null">
+                t_price_type_cb.FREE_TIME = #{modifyPriceDO.freeTime}
             </if>
-            <if test="modifyPriceDO.priceTypeCB.pricePerHour != null">
+            <if test="modifyPriceDO.pricePerHour != null">
                 ,
-                t_price_type_cb.PRICE_PER_HOUR = #{modifyPriceDO.priceTypeCB.pricePerHour}
+                t_price_type_cb.PRICE_PER_HOUR = #{modifyPriceDO.pricePerHour}
             </if>
-            <if test="modifyPriceDO.priceTypeCB.topPricePerDay != null">
+            <if test="modifyPriceDO.topPricePerDay != null">
                 ,
-                t_price_type_cb.TOP_PRICE_PER_DAY = #{modifyPriceDO.priceTypeCB.topPricePerDay}
+                t_price_type_cb.TOP_PRICE_PER_DAY = #{modifyPriceDO.topPricePerDay}
             </if>
         </set>
         <where>
@@ -166,6 +166,23 @@
             t_charging_box.PT_ID = t_price_type_cb.ID
         </where>
 
+    </select>
+
+    <!--根据agentId和shopId查询价格策略-->
+    <select id="findPriceTypeCBbyShopId" parameterType="String" resultMap="BaseResultMap">
+        SELECT t_price_type_cb.*
+        FROM
+        t_price_type_cb join
+        t_charging_box join
+        t_shop
+        on
+        t_charging_box.PT_ID = t_price_type_cb.ID  AND
+        t_charging_box.S_ID = t_shop.ID
+        <where>
+            <if test="shopId != null">
+                t_shop.ID = #{shopId}
+            </if>
+        </where>
     </select>
 
 </mapper>

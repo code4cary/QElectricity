@@ -1,4 +1,4 @@
-package com.charge.web.controller.wechat.agent.firstPage.shopManage;
+package com.charge.web.controller.wechat.agent.firstPage.shopManage.editShop;
 
 import com.charge.common.utils.QEFileUtils;
 import com.charge.entity.model.CommonOutputDO;
@@ -26,10 +26,10 @@ import java.util.UUID;
  */
 @Slf4j
 @RestController
-@RequestMapping("wechat/agent/firstPage/shopManage/editShop")
-public class editShopController extends BaseController {
+@RequestMapping("wechat/agent/firstPage/shopManage/editShop/operate")
+public class EditShopOperateController extends BaseController {
 
-    @Value("${fixImg.path}")
+    @Value("${shopImg.path}")
     private String imgPath;
 
     @Autowired

@@ -98,5 +98,17 @@ public class ShopServiceImpl extends BaseServiceImpl<Shop, Integer> implements S
         return shopManageList;
     }
 
+    /**
+     * 通过shopId获取shop
+     *
+     * @param shopId
+     * @return
+     */
+    @Override
+    public Shop findShopInfoByShopId(String shopId) {
+        Shop shop = shopMapper.selectByPrimaryKey(Integer.valueOf(shopId));
+        return shop;
+    }
+
 
 }

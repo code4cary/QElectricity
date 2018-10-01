@@ -20,4 +20,5 @@ public interface ShopService extends BaseService<Shop, Integer> {
 
     List<ShopManage> findShopManageInfo(Map<String, String> queryDataMap);
 
+    Shop findShopInfoByShopId(String shopId);
 }

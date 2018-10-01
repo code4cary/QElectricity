@@ -2,6 +2,7 @@ package com.charge.service.biz.wechat.agent.impl;
 
 import com.charge.dao.mapper.device.ChargingBoxMapper;
 import com.charge.dao.mapper.device.PowerBankMapper;
+import com.charge.dao.mapper.device.PriceTypeCBMapper;
 import com.charge.dao.mapper.wechat.agent.AgentMapper;
 import com.charge.dao.mapper.wechat.agent.ShopMapper;
 import com.charge.dao.mapper.wechat.user.AccountMapper;
@@ -11,6 +12,7 @@ import com.charge.entity.po.back.wechat.agent.DeviceManage;
 import com.charge.entity.po.back.wechat.agent.DevicePop;
 import com.charge.entity.po.device.ChargingBox;
 import com.charge.entity.po.device.PowerBank;
+import com.charge.entity.po.device.PriceTypeCB;
 import com.charge.entity.po.wechat.agent.Agent;
 import com.charge.entity.po.wechat.agent.Shop;
 import com.charge.entity.po.wechat.user.Order;
@@ -51,6 +53,9 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
 
     @Autowired
     private AgentMapper agentMapper;
+
+    @Autowired
+    private PriceTypeCBMapper priceTypeCBMapper;
 
 
     @Override
@@ -255,6 +260,18 @@ public class ChargingBoxServiceImpl extends BaseServiceImpl<ChargingBox, Integer
         agentMapper.updateByPrimaryKeySelective(agent);
 
         return powerBankNO;
+    }
+
+
+    /**
+     * 根据agentId和shopId查询价格策略
+     * @param queryData
+     * @return
+     */
+    @Override
+    public PriceTypeCB findPriceInfo(Map<String, String> queryData) {
+        PriceTypeCB priceTypeCB = priceTypeCBMapper.findPriceTypeCBbyShopId(queryData.get("shopID"));
+        return priceTypeCB;
     }
 
     public static void main(String... args) {

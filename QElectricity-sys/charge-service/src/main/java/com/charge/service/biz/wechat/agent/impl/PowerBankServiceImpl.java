@@ -1,14 +1,16 @@
-package com.charge.service.biz.device.impl;
+package com.charge.service.biz.wechat.agent.impl;
 
 import com.charge.dao.mapper.device.PowerBankMapper;
 import com.charge.entity.po.device.PowerBank;
 import com.charge.service.biz.base.impl.BaseServiceImpl;
-import com.charge.service.biz.device.PowerBankService;
+import com.charge.service.biz.wechat.agent.PowerBankService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by vincent on 01/10/2018.
  */
+@Service
 public class PowerBankServiceImpl extends BaseServiceImpl<PowerBank, Integer> implements PowerBankService {
 
     @Autowired

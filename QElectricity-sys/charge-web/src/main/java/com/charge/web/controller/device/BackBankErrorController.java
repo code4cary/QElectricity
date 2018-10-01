@@ -1,7 +1,7 @@
 package com.charge.web.controller.device;
 
 import com.charge.entity.model.CommonOutputDO;
-import com.charge.service.biz.device.PowerBankService;
+import com.charge.service.biz.wechat.agent.PowerBankService;
 import com.charge.web.controller.base.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

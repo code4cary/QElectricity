@@ -1,7 +1,5 @@
 package com.charge.entity.model;
 
-import com.charge.entity.po.device.PriceTypeCB;
-
 import java.io.Serializable;
 
 /**
@@ -9,11 +7,39 @@ import java.io.Serializable;
  */
 public class ModifyPriceTypeCBDO implements Serializable {
 
-    private PriceTypeCB priceTypeCB;
+    private String freeTime;
+
+    private String pricePerHour;
+
+    private String topPricePerDay;
 
     private String AgentId;
 
     private String shopId;
+
+    public String getFreeTime() {
+        return freeTime;
+    }
+
+    public void setFreeTime(String freeTime) {
+        this.freeTime = freeTime;
+    }
+
+    public String getPricePerHour() {
+        return pricePerHour;
+    }
+
+    public void setPricePerHour(String pricePerHour) {
+        this.pricePerHour = pricePerHour;
+    }
+
+    public String getTopPricePerDay() {
+        return topPricePerDay;
+    }
+
+    public void setTopPricePerDay(String topPricePerDay) {
+        this.topPricePerDay = topPricePerDay;
+    }
 
     public String getShopId() {
         return shopId;
@@ -23,13 +49,6 @@ public class ModifyPriceTypeCBDO implements Serializable {
         this.shopId = shopId;
     }
 
-    public PriceTypeCB getPriceTypeCB() {
-        return priceTypeCB;
-    }
-
-    public void setPriceTypeCB(PriceTypeCB priceTypeCB) {
-        this.priceTypeCB = priceTypeCB;
-    }
 
     public String getAgentId() {
         return AgentId;
@@ -42,7 +61,9 @@ public class ModifyPriceTypeCBDO implements Serializable {
     @Override
     public String toString() {
         return "ModifyPriceTypeCBDO{" +
-                "priceTypeCB=" + priceTypeCB +
+                "freeTime='" + freeTime + '\'' +
+                ", pricePerHour='" + pricePerHour + '\'' +
+                ", topPricePerDay='" + topPricePerDay + '\'' +
                 ", AgentId='" + AgentId + '\'' +
                 ", shopId='" + shopId + '\'' +
                 '}';

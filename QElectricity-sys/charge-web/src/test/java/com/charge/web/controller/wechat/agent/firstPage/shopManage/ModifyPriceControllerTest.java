@@ -35,11 +35,9 @@ public class ModifyPriceControllerTest extends BaseController{
         ModifyPriceTypeCBDO modifyPriceDO = new ModifyPriceTypeCBDO();
         modifyPriceDO.setAgentId("123");
         modifyPriceDO.setShopId("1");
-        PriceTypeCB priceTypeCB = new PriceTypeCB();
-        priceTypeCB.setFreeTime("50");
-        priceTypeCB.setPricePerHour("6.6");
-        priceTypeCB.setTopPricePerDay("66.6");
-        modifyPriceDO.setPriceTypeCB(priceTypeCB);
+        modifyPriceDO.setFreeTime("50");
+        modifyPriceDO.setPricePerHour("6.6");
+        modifyPriceDO.setTopPricePerDay("66.6");
 
         Boolean isModifySuccess =  agentService.modifyPrice(modifyPriceDO);
 

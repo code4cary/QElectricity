@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/QElectricity.iml" filepath="$PROJECT_DIR$/QElectricity.iml" />
       <module fileurl="file://$PROJECT_DIR$/QElectricity-sys/QElectricity-sys.iml" filepath="$PROJECT_DIR$/QElectricity-sys/QElectricity-sys.iml" />
       <module fileurl="file://$PROJECT_DIR$/QElectricity-sys/charge-common/charge-common.iml" filepath="$PROJECT_DIR$/QElectricity-sys/charge-common/charge-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/QElectricity-sys/charge-dao/charge-dao.iml" filepath="$PROJECT_DIR$/QElectricity-sys/charge-dao/charge-dao.iml" />

@@ -40,8 +40,6 @@ public class WithdrawalRecordControllerTest {
         Date dateStart = dateMap.get("dateStart");
         Date dateEnd = dateMap.get("dateEnd");
 
-
-
         //封装请求参数
         Map<String,Object> queryDataMap = new HashMap<>();
         queryDataMap.put("agentId","123");

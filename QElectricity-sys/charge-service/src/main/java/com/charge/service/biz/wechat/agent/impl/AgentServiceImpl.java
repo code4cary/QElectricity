@@ -285,6 +285,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
 
     /**
      * 通过agentId,date查询代理商的提现记录
+     *
      * @param queryDataMap
      * @return
      */
@@ -295,6 +296,18 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent, Integer> implements
                 agentWithdrawalMapper.findAgentWithdrawalRecord(queryDataMap);
 
         return withdrawalRecordList;
+    }
+
+    /**
+     * 通过agent id_num查询agent
+     *
+     * @param id_num
+     * @return
+     */
+    @Override
+    public Agent findAgentByAgentIDNum(String id_num) {
+        String id = agentMapper.findIDByIdNum(id_num);
+        return agentMapper.selectByPrimaryKey(Integer.valueOf(id));
     }
 
 }

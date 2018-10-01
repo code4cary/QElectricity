@@ -32,7 +32,7 @@ import java.util.UUID;
 @RequestMapping("wechat/agent/firstPage/shopManage/")
 public class CreateShopController extends BaseController {
 
-    @Value("${fixImg.path}")
+    @Value("${shopImg.path}")
     private String imgPath;
 
     @Autowired

@@ -518,6 +518,16 @@
         </where>
     </select>
 
-    <!---->
+    <!--根据充电箱编号,查询充电箱信息-->
+    <select id="findChargingBoxByChargingBoxNo" parameterType="String" resultMap="BaseResultMap">
+        SELECT *
+        FROM
+        t_charging_box
+        <where>
+            <if test="chargingBoxNo != null">
+                t_charging_box.BOX_CUSTOMER_ID = #{chargingBoxNo}
+            </if>
+        </where>
+    </select>
 
 </mapper>
